@@ -4,7 +4,7 @@
 		this.popupMask=$('<div id="G-lightbox-mask">');
 		this.popupWin=$('<div id="G-lightbox-popup">');
 		this.bodyNode=$(document.body);
-		// this.renderDOM();
+		this.renderDOM();
 		this.groupName=null;
 		this.groupData=[];
 		this.bodyNode.delegate(".js-lightbox,*[data-role=lightbox]",'click',function(e){
