@@ -13,7 +13,7 @@ a{ text-decoration: none;}
 /**/
 
 body{background: #eeebe6;}
-header.commonheader{ height: 70px; background:#323a45; border-bottom: 3px #4bc8b6 solid; position: relative; z-index: 9999;}
+header.commonheader{ height: 70px; background:#323a45; border-bottom: 3px #4bc8b6 solid; position: fixed; z-index: 9999; top:0; width: 100%;}
 .w1280{width: 1280px; margin:0 auto;}
 .w1000{width: 1000px; margin:0 auto;}
 nav a{ display: inline-block; height: 70px; line-height: 70px; color: #fff; font-size: 18px; padding:0 30px; float: left;}

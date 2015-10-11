@@ -4,11 +4,12 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
 	<title>FullPage.js全屏滚动插件</title>
-	<link rel="stylesheet" href="../css/reset.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.6.7/jquery.fullPage.css"/>
+	<link rel="stylesheet" href="../content/css/reset.css">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.6.7/jquery.fullPage.css"/> -->
+	<link rel="stylesheet" href="../content/css/jquery.fullPage.css"/>
 </head>
 <body>
-	<header class="commonheader">
+	<header class="commonheader" id="commonheader">
 		<nav class="w1000">
 			<a href="/" class="active">首页</a>
 			<a href="/kaimier.github.io/index.html">开米尔站</a>
@@ -96,9 +97,9 @@
 		<div class="section">
 			<h1>这是第四屏</h1>
 		</div>
-	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.6.7/jquery.fullPage.js"></script>
+	</div>	
+	<script src="../content/js/jquery.js"></script>
+		<script src="../content/js/jquery.fullPage.js"></script>
 	<script>
 	$(document).ready(function(){
 		$('#fullpage').fullpage({
@@ -107,13 +108,22 @@
 			//verticalCentered:false //内容居中显示
 			// resize:true //文字缩放 默认为false
 			// scrollingSpeed:2000 //滚动速度
-			// anchors:['page1','page2','page3','page4'],//锚链接
+			anchors:['page1','page2','page3','page4'],//锚链接
 			// lockAnchors:true //默认为false 锁定锚链接
 			// easing:easeInOutCubic //定义页面滚动的动画
 			// css3:true//css3实现滚动效果
 			// loopTop:false,loopBottom:false,loopHorizontal:true
 			autoScrolling:true, //是否使用插件的滚动方式
-			scrollBar:true
+			scrollBar:true,
+			paddingTop:'73px',
+			paddingBottom:0,
+			fixedElements:'#commonheader',//固定的元素
+			keyboardScrolling:true,	
+			touchSensitivity:5,
+			continuousVertical:true,//无效
+			animateAnchor:false,//锚点定位滚动效果
+			recordHistory:true,//记录页面滚动的历史
+			menu:false//绑定菜单
 		});
 	})
 	</script>
