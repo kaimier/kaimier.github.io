@@ -1,1 +1,1 @@
-.section{text-align:center;color:#fff;font-size:24px}.section h3{font-size:40px}
+@import url(base.css);@import url(common.css);.commonheader{position:fixed;width:100%;z-index:9999}.section{text-align:center;color:#fff;font-size:24px}.section h3{font-size:40px}
