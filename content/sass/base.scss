@@ -1,3 +1,27 @@
 @charset "utf-8";
-$commonColor:#323A45;
-body{background:$commonColor;}
+$commonColor:#323a45;
+$green:#4bc8b6;
+$headerHeight:70px;
+$center:0 auto;
+header.commonheader{
+	background:$commonColor;
+	height: $headerHeight;
+	border-bottom: 3px $green solid;
+}
+.w1000{
+	width: 1000px;margin:$center;
+}
+nav{
+	a{
+		display: inline-block;
+		height: $headerHeight;
+		line-height: $headerHeight;
+		color:#fff;
+		font-size: 18px;
+		padding: 0 30px;
+		&:hover,&:active{
+			background:$green;
+			color:#fff;
+		}
+	}
+}

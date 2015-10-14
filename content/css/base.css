@@ -1,1 +1,23 @@
-body{background:#323A45}
+header.commonheader {
+  background: #323a45;
+  height: 70px;
+  border-bottom: 3px #4bc8b6 solid;
+}
+
+.w1000 {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+nav a {
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  color: #fff;
+  font-size: 18px;
+  padding: 0 30px;
+}
+nav a:hover, nav a:active {
+  background: #4bc8b6;
+  color: #fff;
+}
