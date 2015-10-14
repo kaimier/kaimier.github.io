@@ -25,3 +25,28 @@ nav{
 		}
 	}
 }
+#proList{
+	margin-top: 20px;
+	li{
+		height: 40px;
+		line-height: 40px;
+		border-bottom: 1px #dbdbdb dashed;
+		transition:1s;
+		transform:all;
+		.data{
+			float: right;
+			color:#666;
+			font-size: 14px;
+		}
+		padding: 10px;
+		&:hover{
+			background:$green;
+			a{
+				color:#fff;
+			}
+			.data{
+				color:#fff
+			}
+		}
+	}
+}

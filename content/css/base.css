@@ -21,3 +21,29 @@ nav a:hover, nav a:active {
   background: #4bc8b6;
   color: #fff;
 }
+
+#proList {
+  margin-top: 20px;
+}
+#proList li {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px #dbdbdb dashed;
+  transition: 1s;
+  transform: all;
+  padding: 10px;
+}
+#proList li .data {
+  float: right;
+  color: #666;
+  font-size: 14px;
+}
+#proList li:hover {
+  background: #4bc8b6;
+}
+#proList li:hover a {
+  color: #fff;
+}
+#proList li:hover .data {
+  color: #fff;
+}
