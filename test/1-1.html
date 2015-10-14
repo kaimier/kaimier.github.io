@@ -10,14 +10,15 @@
 <body>
 	<section id="domePage">
 		<div class="section">
-		<h3>第一屏</h3>
-		<p>fullPage.js — 基本演示</p>
+			<div class="slide slide1" style="background:url(../content/images/1.jpg) 50%"><h3>第一屏的第一屏</h3></div>
+			<div class="slide slide2" style="background:url(../content/images/2.jpg) 50%"><h3>第一屏的第二屏</h3></div>
+			<div class="slide slide3" style="background:url(../content/images/3.jpg) 50%"><h3>第一屏的第三屏</h3></div>
+			<div class="slide slide4" style="background:url(../content/images/4.jpg) 50%"><h3>第一屏的第四屏</h3></div>
 		</div>
 		<div class="section">
-			<div class="slide"><h3>第二屏的第一屏</h3></div>
-			<div class="slide"><h3>第二屏的第二屏</h3></div>
-			<div class="slide"><h3>第二屏的第三屏</h3></div>
-		</div>
+		<h3>第二屏</h3>
+		<p>fullPage.js — 基本演示</p>
+		</div>		
 		<div class="section">
 			<h3>第三屏</h3>
 		</div>
@@ -30,7 +31,9 @@
 	<script src="../content/js/fullPage.js"></script>
 	<script>
 		$(function(){
-			$('#domePage').fullpage();
+			$('#domePage').fullpage({
+				sectionsColor:['green','orange','gray','red']
+			});
 		});
 	</script>
 </body>
