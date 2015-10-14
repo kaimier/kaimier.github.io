@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1-1 百度下拉提示</title>
+	<style>
+	*{padding: 0; margin: 0;}
+	.warp{ width: 980px; margin:0 auto;}
+	#q{width: 300px; height: 30px; padding: 5px; border: 1px #f90 solid; font-size: 16px;}
+	#ul1{border: 1px solid #f90; width: 310px; list-style: none; display: none;}
+	#ul1 li{ list-style: none;}
+	#ul1 li a{display: block; line-height: 30px; padding:5px; color: #333; text-decoration: none;}
+	#ul1 li a:hover{ color: #fff; background: #f90; color: #fff;}
+	</style>
+	<script>
+	function szh(data){
+		var oUl=document.getElementById('ul1');
+		var html='';
+		if (data.s.length) {
+			oUl.style.display='block';
+			for(var i=0; i<data.s.length;i++){
+				html+='<li><a target="_black" href="https://www.baidu.com/s?ie=utf-8&f=3&rsv_bp=0&rsv_idx=1&tn=baidu&wd='+data.s[i]+'">'+data.s[i]+'</li>'
+			}
+			oUl.innerHTML=html;
+		}else{
+			oUl.style.display='none';
+		}
+	}
+	window.onload=function(){
+		var oQ=document.getElementById('q');
+		var oUl=document.getElementById('ul1');
+		oQ.onkeyup=function(){
+			if(this.value!=''){
+				var oScript=document.createElement('script');
+				oScript.src='https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+this.value+'&cb=szh';
+				document.body.appendChild(oScript);
+			}else{
+				oUl.style.display='none';
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<div class="warp">
+		
+	
+	<h1>老苏作品，请务模仿</h1>
+	<!-- https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=d&json=1&p=3&sid=7419_1443_16991_16974_12825_14431_17013_12868_16799_17022_17001_16936_17003_17073_15535_11672_13932_16969_16867_17051&req=2&csor=1&cb=jQuery110201839608484645331_1440763442907&_=1440763442910-->
+	<!-- jQuery110201839608484645331_1440763442907({"q":"d","p":false,"bs":"","csor":"1","g":[ { "q": "斗鱼tv", "t": "n", "st": { "q": "斗鱼tv", "new": 0 } }, { "q": "斗鱼", "t": "n", "st": { "q": "斗鱼", "new": 0 } }, { "q": "电影天堂", "t": "n", "st": { "q": "电影天堂", "new": 0 } }, { "q": "dnf", "t": "n", "st": { "q": "dnf", "new": 0 } }, { "q": "电影", "t": "n", "st": { "q": "电影", "new": 0 } }, { "q": "盗墓笔记", "t": "n", "st": { "q": "盗墓笔记", "new": 0 } }, { "q": "电视剧", "t": "n", "st": { "q": "电视剧", "new": 0 } }, { "q": "dota2", "t": "n", "st": { "q": "dota2", "new": 0 } }, { "q": "地图", "t": "n", "st": { "q": "地图", "new": 0 } }, { "q": "大主宰", "t": "n", "st": { "q": "大主宰", "new": 0 } } ],"s":["斗鱼tv","斗鱼","电影天堂","dnf","电影","盗墓笔记","电视剧","dota2","地图","大主宰"]}); -->
+
+	<!-- https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=d&cb=szh -->
+	<input type="text" id="q">
+	<ul id="ul1">
+		<li><a href="#">1111</a></li>
+		<li><a href="#">1111</a></li>
+		<li><a href="#">1111</a></li>
+	</ul>
+	</div>
+</body>
+</html>

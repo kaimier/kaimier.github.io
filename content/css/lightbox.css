@@ -1,0 +1,28 @@
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin: 0;padding: 0;}
+table{border-collapse: collapse; border-spacing: 0;}
+fieldset,img{border: 0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style: normal; font-weight: normal;}
+ol,ul{list-style: none;}
+caption,th{text-align: left;}
+h1,h2,h3,h4,h5,h6{font-size: 100%; font-weight: normal;}
+q:before,q:after{content: ;}
+abbr,acronym{border: 0;}
+body{font:12px/1.5 '微软雅黑',tahoma,arial;}
+.clearfix:after{visibility: hidden; display: block; font-size: 0; content: '';clear: both; height: 0;}
+.clearfix{zoom:1;}
+.text-ellipsis{white-space: nowrap;text-overflow: ellipsis;-o-text-overflow:ellipsis;overflow: hidden;}
+#G-lightbox-mask{position: fixed; display: none; left:0; top: 0; width:100%; height: 100%; background: #000; opacity: 0.5; filter: alpha(opacity=50%); z-index: 10000;}
+#G-lightbox-popup{position: fixed; display: none; width:300px; height: 300px; left: 50%; top: 0; z-index: 10001;}
+#G-lightbox-popup .lightbox-pic-view{position: relative; border: 5px #fff solid; border-radius: 3px; overflow: hidden; background: #fff url(../images/loading.gif) center center no-repeat;}
+#G-lightbox-popup .lightbox-pic-view .lightbox-btn{position: absolute; top:0; width: 40%; height: 100%; z-index: 1; }
+#G-lightbox-popup .lightbox-pic-view .lightbox-prev-btn{left:0;}
+#G-lightbox-popup .lightbox-pic-view .lightbox-next-btn{right:0;}
+#G-lightbox-popup .lightbox-pic-view .lightbox-prev-btn-show{ background:url(../images/prev.png) no-repeat left center; cursor: pointer;}
+#G-lightbox-popup .lightbox-pic-view .lightbox-next-btn-show{ background: url(../images/next.png) no-repeat right center; cursor: pointer;}
+#G-lightbox-popup .lightbox-pic-view .lightbox-image{display: block;}
+
+#G-lightbox-popup .lightbox-pic-caption{position: relative; background-color:rgba(0,0,0,0.5) ;  margin:  0 5px;margin-top: -60px;}
+#G-lightbox-popup .lightbox-pic-caption .lightbox-caption-area{padding: 10px 5px; color: #fff;}
+#G-lightbox-popup .lightbox-pic-caption .lightbox-caption-area .lightbox-of-index{color: #999;}
+#G-lightbox-popup .lightbox-pic-caption .lightbox-close-btn{ position: absolute; width: 27px; height: 27px; background: url(../images/close.png) no-repeat center center; right: 10px; top:13px;}
