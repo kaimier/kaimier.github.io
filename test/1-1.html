@@ -12,8 +12,8 @@
 	<section id="domePage">
 		
 		<div class="section">
-
-			<div class="slide slide1" style="background:url(../content/images/1.jpg) 50%"><h3>第一屏的第一屏</h3></div>
+			
+			<div class="slide slide1" style="background:url(../content/images/5.jpg) 50%"></div>
 			<div class="slide slide2" style="background:url(../content/images/2.jpg) 50%"><h3>第一屏的第二屏</h3></div>
 			<div class="slide slide3" style="background:url(../content/images/3.jpg) 50%"><h3>第一屏的第三屏</h3></div>
 			<div class="slide slide4" style="background:url(../content/images/4.jpg) 50%"><h3>第一屏的第四屏</h3></div>
@@ -36,14 +36,14 @@
 	<script>
 		$(function(){
 			$('#domePage').fullpage({
-				sectionsColor:['green','orange','gray','red'],
+				sectionsColor:['black','orange','gray','red'],
 				navigation:true,
 				controlArrowColor:'#4bc8b6',
 				paddingTop:'70px'
 			});
-			setInterval(function(){
-				$.fn.fullpage.moveSlideRight();
-			},3000);
+			// setInterval(function(){
+			// 	$.fn.fullpage.moveSlideRight();
+			// },3000);
 		});
 	</script>
 </body>
