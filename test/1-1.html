@@ -126,22 +126,8 @@
 	    </div>
 	</div>		
 	<div class="section">
-			<!-- <h3>第三屏</h3> -->
-			
-		<div id="love-content">
-			<ul class="love-content-warp">
-				<li>
-					<div class="a_background">
-	                    <div class="a_background_top"></div>
-	                    <div class="a_background_middle"></div>
-	                    <div class="a_background_botton"></div>
-	                </div>
-				</li>
-				<li>页面2</li>
-				<li>页面3</li>
-			</ul>
-			<div id="boy" class="charector"></div>
-		</div>	
+			<h3>第三屏</h3>
+		
 	</div>
 	<div class="section">
 			<h3>第四屏</h3>
@@ -152,7 +138,6 @@
 	<script src="../content/js/common.js"></script>
 	<script src="../content/js/fullPage.js"></script>
 	<script src="../content/js/slide-remommend.js"></script>
-	<script src="../content/js/love.min.js"></script>
 	<script>
 		$(function(){
 			$('#domePage').fullpage({
@@ -164,23 +149,6 @@
 			// setInterval(function(){
 			// 	$.fn.fullpage.moveSlideRight();
 			// },3000);
-		});
-		var swipe=Swipe($("#love-content"));
-		var getValue=function(className){
-			var $elem=$(''+className+'');
-			return{
-				height:$elem.height(),
-				top:$elem.position().top
-			};
-		};
-		var pathY=function(){
-			var data=getValue('.a_background_middle');
-			return data.top + data.height / 2;
-		}();
-		var $boy=$("#boy");
-		var boyHeight=$boy.height();
-		$boy.css({
-			top:pathY-boyHeight+25
 		});
 	</script>
 
