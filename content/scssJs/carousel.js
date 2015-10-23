@@ -1,12 +1,14 @@
 ;(function($){
-	var Carousel=function(poster){
+	var Carousel=function(poster){		
+		var This=this;
 	//	console.log(poster.attr('data-setting'));
 		this.poster= poster;
 		this.posterItemMain=poster.find("ul.poster-list");
 		this.nextBtn=poster.find('div.poster-next-btn');
 		this.prevBtn=poster.find('div.poster-prev-btn');
 		this.posterItems=poster.find('li.poster-item');
-		this.posterFirstItem=this.posterItems.eq(0);
+		this.posterFirstItem=this.posterItems.first();
+		this.posterLastItem=this.posterItems.last();
 		
 
 		//默认配置参数
@@ -24,16 +26,72 @@
 		//设置配置参数值
 		this.setSettingValue();
 		this.setPosterPos();
-		var This=this;
-		this.nextBtn.click(function() {
-			
-			This.carouseRotate();
+		this.nextBtn.click(function() {			
+			This.carouseRotate('left');
+		});
+		this.prevBtn.click(function() {			
+			This.carouseRotate('right');
 		});
 	};
 	Carousel.prototype={
 		//旋转方法
-		carouseRotate:function() {
-			alert(" ");	
+		carouseRotate:function(dir) {
+			var _This=this;
+			var zIndexArr=[];
+			if (dir==='left') {
+				this.posterItems.each(function(i) {
+					var This=$(this),
+						prev=This.prev().get(0)?This.prev():_This.posterLastItem,
+						width=prev.width(),
+						height=prev.height(),
+						zIndex=prev.css('zIndex'),
+						opacity=prev.css('opacity'),
+						left=prev.css('left'),
+						top=prev.css('top');						
+						zIndexArr.push(zIndex);
+						This.animate({
+                             width:width,
+                             height:height, 
+                             // zIndex:zIndex,
+                             opacity:opacity,
+                             left:left,
+                             top:top
+						});
+
+
+				});
+				this.posterItems.each(function(i, el) {
+					$(this).css('zIndex',zIndexArr[i]);
+				});
+
+			}else if (dir==='right') {
+
+				this.posterItems.each(function() {
+					var This=$(this),
+						next=This.next().get(0)?This.next():_This.posterFirstItem,
+						width=next.width(),
+						height=next.height(),
+						zIndex=next.css('zIndex'),
+						opacity=next.css('opacity'),
+						left=next.css('left'),
+						top=next.css('top');
+						zIndexArr.push(zIndex);
+						This.animate({
+                             width:width,
+                             height:height, 
+                             // zIndex:zIndex,
+                             opacity:opacity,
+                             left:left,
+                             top:top
+						});
+
+				});
+
+				this.posterItems.each(function(i, el) {
+					$(this).css('zIndex',zIndexArr[i]);
+				});
+
+			}
 		},
 		//设置剩余的帧的位置关系
 		setPosterPos:function(){
@@ -78,7 +136,7 @@
 				leftSlice.each(function(i){
 
 					$(this).css({
-						zIndex:level,
+						zIndex:i,
 						width:lw,
 						height:lh,
 						opacity:1/oloop,
