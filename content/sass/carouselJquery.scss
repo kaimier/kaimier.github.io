@@ -1,0 +1,22 @@
+@charset "utf-8";
+@import "common.css";
+@import "base.css";
+.internetke{ width:800px; margin:0px auto 0 auto;}
+#phoneCarousel{
+	height:390px;margin:0 auto;position:relative;width:800px;
+	.arrow{
+		width:44px;height:44px;background:url(../images/1-4/arrows.png) no-repeat;position:absolute;top:50%;margin-top:-22px;left:0;cursor:pointer;
+		&:hover{background-position:left bottom;}
+	}
+	.next{
+		background-position:right top;left:auto;right:0;
+		&:hover{background-position:right bottom;}
+	}
+}
+
+#stage{
+	left:50%;margin-left:-350px;position:absolute;width:700px;height:100%;margin-top:100px;
+	img{display:none;}
+	.default{display:block;left:50%;margin-left:-135px;position:absolute;}
+	.animationReady{display:block;position:absolute;top:0;left:0;}
+}
