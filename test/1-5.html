@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>query.easypiechart.js简介</title>
+	<link rel="stylesheet" href="../content/css/carouselJquery.css">
+</head>
+<body>
+	<header class="commonheader"><nav class="w1000"></nav></header>
+	<span class="chart chart0" data-percent="86">
+		<span class="percent"></span>
+	</span><br>
+	<span class="chart chart1" data-percent="60000">
+		<span class="percent"></span>
+	</span>
+	<span class="chart chart1 " data-percent="50000">
+		<span class="percent"></span>
+	</span>
+	<span class="chart chart1 " data-percent="40000">
+		<span class="percent"></span>
+	</span>
+	<span class="chart chart1" data-percent="60000">
+		<span class="percent"></span>
+	</span>
+	<span class="chart chart1 " data-percent="50000">
+		<span class="percent"></span>
+	</span>
+	<span class="chart chart1 " data-percent="40000">
+		<span class="percent"></span>
+	</span>
+	<span class="chart chart1" data-percent="60000">
+		<span class="percent"></span>
+	</span>
+	<span class="chart chart1 " data-percent="50000">
+		<span class="percent"></span>
+	</span>
+	<span class="chart chart1 " data-percent="40000">
+		<span class="percent"></span>
+	</span>
+	<span class="chart chart1" data-percent="60000">
+		<span class="percent"></span>
+	</span>
+	<span class="chart chart1 " data-percent="50000">
+		<span class="percent"></span>
+	</span>
+	<span class="chart chart1 " data-percent="40000">
+		<span class="percent"></span>
+	</span>
+    <span class="btn js_update">Update chart</span> <br>
+	<span class="btn js_update2">Update chart 2</span>
+	<script src="../content/js/jquery.js"></script>
+	<script src="../content/js/common.js"></script>
+	<script type="text/javascript" src="../content/js/jquery.easypiechart.min.js"></script>
+	<script type="text/javascript" src="../content/js/carouseJquery.min.js"></script>
+	<script>
+	$(function() {
+		var $chart = $('.chart0');
+		$chart.easyPieChart({
+			onStep: function(from, to, percent) {
+				$(this.el).find('.percent').text(Math.round(percent));
+			}
+		});
+		var chart = window.chart = $chart.data('easyPieChart');
+
+		//chart.update($chart.data('percent'));
+		$('.js_update').on('click', function() {
+			chart.update(Math.random()*200-100);
+		});
+	});
+
+
+	</script>
+
+</body>
+</html>
