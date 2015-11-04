@@ -1,8 +1,10 @@
-<?php 
+<?php
+    header('content-type:text/html;charset=utf-8'); 
     $mysqli=new mysqli('localhost','root','123456','test');
     if ($mysqli->connect_errno) {
         die('Connect error:'.$mysqli->connect_error);
     }
+    $mysqli->set_charset('utf8');
     $sql="SELECT id,username,age FROM user";
     $mysqli_result=$mysqli->query($sql);
     if ($mysqli_result && $mysqli_result->num_rows>0) {
@@ -15,7 +17,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>Document</title>
     <style>
         h2{text-align: center;}
@@ -36,7 +38,7 @@
               <td><?php echo $i; ?></td>
               <td><?php echo $row['username']; ?></td>
               <td><?php echo $row['age']; ?></td>
-              <td><a href="editUser.php">更新</a> | <a href="doAction.php">删除</a></td>
+              <td><a href="editUser.php?id=<?php echo $row['id']; ?>">更新</a> | <a href="doAction.php?act=delUser&id=<?php echo $row['id'];?>">删除</a></td>
           </tr>  
         <?php $i++; endforeach; ?>
     </table>
