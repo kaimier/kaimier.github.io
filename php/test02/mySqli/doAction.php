@@ -65,7 +65,7 @@ header('content-type:text/html;charset=utf-8');
         $url='1-8.php';
         echo "<script type='text/javascript'>
         alert('{$mes}');
-        localtion.href='{$url}';
+        location.href='{$url}';
         </script>";
         break;
     }
