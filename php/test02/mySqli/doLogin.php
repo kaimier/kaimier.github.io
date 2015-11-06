@@ -17,7 +17,7 @@
     // }
     
     //预处理
-    $sql="SELECT * FROM user WHERE username=? AND password=?";
+$sql="SELECT * FROM user WHERE username=? AND password=?";
     $mysqli_stmt=$mysqli->prepare($sql);
     $mysqli_stmt->bind_param('ss',$username,$password);
     if ($mysqli_stmt->execute()) {
@@ -28,7 +28,10 @@
             echo "登陆失败";
         }
     }
+    //释放结果集
     $mysqli_stmt->free_result();
-
+    //关闭预处理语句
+    $mysqli_stmt->close();
+    $mysqli->close();
 
  ?>
