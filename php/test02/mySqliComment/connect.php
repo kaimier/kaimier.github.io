@@ -1,5 +1,5 @@
 <?php 
-    $mysqli=new mysqli('localhost','root','123456','test');
+    $mysqli=new mysqli('localhost','root','123456','imoocComment');
     if ($mysqli->errno) {
         die('Connect error:'.$mysqli->error);
     }else{
