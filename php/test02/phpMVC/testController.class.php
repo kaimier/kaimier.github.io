@@ -1,8 +1,10 @@
 <?php 
     class testController{
-        function show()
-        {
-            echo "ok";
+        function show(){
+            $testModel=new testModel();
+            $data=$testModel->get();
+            $testView=new testView();
+            $testView->display($data);
         }
     }
  ?>
