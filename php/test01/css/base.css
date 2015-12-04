@@ -7,8 +7,8 @@
 /* ==|== CSS RESET======================= */
 @font-face {
   font-family: 'gotham';
-  src: url('/fonts/Gotham-Thin.ttf?20150824');
-  src: url('/fonts/Gotham-Thin.ttf?20150824') format('truetype');
+  src: url('../fonts/Gotham-Thin.ttf?20150824');
+  src: url('../fonts/Gotham-Thin.ttf?20150824') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

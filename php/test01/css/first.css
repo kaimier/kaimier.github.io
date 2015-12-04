@@ -1,5 +1,5 @@
 body{background-color:#393939}
-.icon{background-image: url(/images/icon.png);background-size: 527px auto;}
+.icon{background-image: url(../images/icon.png);background-size: 527px auto;}
 .block_a{display:block;height: 400px;}
 /*swiper banner*/
 .swiper-container {width: 100%;height: 100%;background:#393939; }
@@ -10,18 +10,18 @@ body{background-color:#393939}
 .swiper-container .parallax-bg {position: absolute;left: 0;top: 0;width: 130%;height: 100%;-webkit-background-size: cover;background-size: cover;background-position: center; }
 .swiper-container .swiper-slide .title {font-size: 41px;font-weight: 300;}
 .swiper-container .swiper-slide .tit{height:333px;}
-.swiper-container .swiper-slide .tit_bg01{background: #fff url(/images/h_frist/slider03.jpg) no-repeat;background-size:100% 100%;-moz-background-size:100% 100%;-webkit-background-size:100% 100%;position:absolute;width:90%;left:5%;top: 75px;box-shadow: 6px 9px 9px #8E8686;-webkit-box-shadow: 6px 9px 9px #8E8686;}
-.swiper-container .swiper-slide .tit_bg02{background: #fff url(/images/h_frist/banner.png) no-repeat;background-size:100% 100%;-moz-background-size:100% 100%;-webkit-background-size:100% 100%;position:absolute;width:90%;left:5%;top: 75px;box-shadow: 6px 9px 9px #8E8686;-webkit-box-shadow: 6px 9px 9px #8E8686;}
-.swiper-container .swiper-slide .tit_bg03{background: #fff url(/images/h_frist/banner2.png) no-repeat;background-size:100% 100%;-moz-background-size:100% 100%;-webkit-background-size:100% 100%;position:absolute;width:90%;left:5%;top: 75px;box-shadow: 6px 9px 9px #8E8686;-webkit-box-shadow: 6px 9px 9px #8E8686;}
-.swiper-container .swiper-slide .tit_bg04{background: #fff url(/images/h_frist/banner3.png) no-repeat;background-size:100% 100%;-moz-background-size:100% 100%;-webkit-background-size:100% 100%;position:absolute;width:90%;left:5%;top: 75px;box-shadow: 6px 9px 9px #8E8686;-webkit-box-shadow: 6px 9px 9px #8E8686;}
+.swiper-container .swiper-slide .tit_bg01{background: #fff url(../images/h_frist/slider03.jpg) no-repeat;background-size:100% 100%;-moz-background-size:100% 100%;-webkit-background-size:100% 100%;position:absolute;width:90%;left:5%;top: 75px;box-shadow: 6px 9px 9px #8E8686;-webkit-box-shadow: 6px 9px 9px #8E8686;}
+.swiper-container .swiper-slide .tit_bg02{background: #fff url(../images/h_frist/banner.png) no-repeat;background-size:100% 100%;-moz-background-size:100% 100%;-webkit-background-size:100% 100%;position:absolute;width:90%;left:5%;top: 75px;box-shadow: 6px 9px 9px #8E8686;-webkit-box-shadow: 6px 9px 9px #8E8686;}
+.swiper-container .swiper-slide .tit_bg03{background: #fff url(../images/h_frist/banner2.png) no-repeat;background-size:100% 100%;-moz-background-size:100% 100%;-webkit-background-size:100% 100%;position:absolute;width:90%;left:5%;top: 75px;box-shadow: 6px 9px 9px #8E8686;-webkit-box-shadow: 6px 9px 9px #8E8686;}
+.swiper-container .swiper-slide .tit_bg04{background: #fff url(../images/h_frist/banner3.png) no-repeat;background-size:100% 100%;-moz-background-size:100% 100%;-webkit-background-size:100% 100%;position:absolute;width:90%;left:5%;top: 75px;box-shadow: 6px 9px 9px #8E8686;-webkit-box-shadow: 6px 9px 9px #8E8686;}
 .swiper-container .swiper-slide .subtitle .big{font-size:22px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;height: 40px;position: relative;top:8px;}
 .swiper-container .swiper-slide .subtitle .small{font-size:18px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;height: 30px;position: relative;bottom:1px;}
 .swiper-container .swiper-slide .text {font-size: 14px;max-width: 400px;line-height: 1.3; }
 .swiper-container .swiper-wrapper .sli{background-size:100% 100%;-moz-background-size:100% 100%;-webkit-background-size:100% 100%;}
-.swiper-container .swiper-wrapper .bg01{background: #fff url(/images/h_frist/bg_dls.jpg) no-repeat;}
-.swiper-container .swiper-wrapper .bg02{background: #fff url(/images/h_frist/bg_paper.jpg) no-repeat;}
-.swiper-container .swiper-wrapper .bg03{background: #fff url(/images/h_frist/bg_stone.jpg) no-repeat;}
-.swiper-container .swiper-wrapper .bg04{background: #fff url(/images/h_frist/bg_wall.jpg) no-repeat;}
+.swiper-container .swiper-wrapper .bg01{background: #fff url(../images/h_frist/bg_dls.jpg) no-repeat;}
+.swiper-container .swiper-wrapper .bg02{background: #fff url(../images/h_frist/bg_paper.jpg) no-repeat;}
+.swiper-container .swiper-wrapper .bg03{background: #fff url(../images/h_frist/bg_stone.jpg) no-repeat;}
+.swiper-container .swiper-wrapper .bg04{background: #fff url(../images/h_frist/bg_wall.jpg) no-repeat;}
 .swiper-container .swiper-wrapper .swiper-slide .title a{display: block;background:none;height: 300px;}
 .swiper-container .swiper-slide .subtitle {font-size: 21px; position: absolute; bottom: 38px; background-color: #e5004f; opacity: 0.6; padding: 0px 18px; width: 69%; left: 10%; line-height: 39px; height: 87px; }
 
@@ -34,8 +34,8 @@ body{background-color:#393939}
   background-position: -360px -400px;
   width: 22px;
   height: 28px;}
-.card .card_top .heart:hover{background-image: url(/images/icon.png);background-size: 527px auto;background-position: -384px -400px;}
-.card .card_top .zanheart{background-image:url(/images/icon.png)) ;background-size: 527px auto;background-position: -384px -400px;}
+.card .card_top .heart:hover{background-image: url(../images/icon.png);background-size: 527px auto;background-position: -384px -400px;}
+.card .card_top .zanheart{background-image:url(../images/icon.png)) ;background-size: 527px auto;background-position: -384px -400px;}
 .card .card_top .top_title{font-size:19px;line-height: 30px; color:#000;}
 .card .card_top .top_title i.xf{
   color: #fff;
@@ -97,11 +97,11 @@ body{background-color:#393939}
 .card .card_foot ul li{box-flex:1;-webkit-box-flex:1;-moz-box-flex:1;text-align:center;}
 .card .card_foot ul li span{display:block;font-size:20px;font-family:"gotham";font-weight: normal;}
 .card .card_foot ul li span b{display: inline-block;}
-.card .card_foot ul li span b.dol{width:11px;height: 14px;margin-right:1px;background:url(/images/h_frist/d.png) no-repeat;background-size: 100% 100%;-webkit-background-size: 100% 100%;}
-.card .card_foot ul li span b.day{width:16px;height: 14px;background:url(/images/h_frist/day.png) no-repeat;background-size: 100% 100%;-webkit-background-size: 100% 100%;}
-.card .card_foot ul li span b.wan{width:16px;height: 14px;background:url(/images/h_frist/w.png) no-repeat;background-size: 100% 100%;-webkit-background-size: 100% 100%;}
-.card .card_foot ul li span b.xy{width:9px;height: 14px;margin-right:1px;background:url(/images/h_frist/xiaoyu.png) no-repeat;background-size: 100% 100%;-webkit-background-size: 100% 100%;}
-.card .card_foot ul li span b.no_start{position:relative;top:1px;width:63px;height: 18px;background:url(/images/h_frist/syks.png) no-repeat;background-size: 100% 100%;-webkit-background-size: 100% 100%;}
+.card .card_foot ul li span b.dol{width:11px;height: 14px;margin-right:1px;background:url(../images/h_frist/d.png) no-repeat;background-size: 100% 100%;-webkit-background-size: 100% 100%;}
+.card .card_foot ul li span b.day{width:16px;height: 14px;background:url(../images/h_frist/day.png) no-repeat;background-size: 100% 100%;-webkit-background-size: 100% 100%;}
+.card .card_foot ul li span b.wan{width:16px;height: 14px;background:url(../images/h_frist/w.png) no-repeat;background-size: 100% 100%;-webkit-background-size: 100% 100%;}
+.card .card_foot ul li span b.xy{width:9px;height: 14px;margin-right:1px;background:url(../images/h_frist/xiaoyu.png) no-repeat;background-size: 100% 100%;-webkit-background-size: 100% 100%;}
+.card .card_foot ul li span b.no_start{position:relative;top:1px;width:63px;height: 18px;background:url(../images/h_frist/syks.png) no-repeat;background-size: 100% 100%;-webkit-background-size: 100% 100%;}
 .card .card_foot ul li i{color:#999;font-size:12px;}
 .card .card_foot .progress{background-color:#616161;height:4px;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;font-size:0px;margin:10px;}
 .card .card_foot .progress span{background-color:#ff2d6f;display:block;height:4px;border-radius:10px;width:50%;}
@@ -112,9 +112,9 @@ body{background-color:#393939}
 .slide_card_menu ul{display:box;display:-webkit-box;display:-moz-box;display:-moz-box;font-size:18px;color:#f50057;}
 .slide_card_menu ul li{box-flex:1;-webkit-box-flex:1;-moz-box-flex:1;text-align:center;position:relative;}
 /*
-.slide_card_menu ul li.menu_left i {   background: url(/images/icon.png) no-repeat left center;   background-position: -94px -462px;   width: 25px;   height: 29px;   display: inline-block;top:6px;position:absolute; }
-.slide_card_menu ul li.menu_left i.act {   background: url(/images/icon.png) no-repeat left center;   background-position: -38px -463px; width: 25px;   height: 29px;   display: inline-block;top:6px;position:absolute; }
-.slide_card_menu ul li.menu_right i {   background: url(/images/icon.png) no-repeat left center;   background-position: -122px -462px;   width: 25px;   height: 29px;   display: inline-block;top:6px;position:absolute; }
+.slide_card_menu ul li.menu_left i {   background: url(../images/icon.png) no-repeat left center;   background-position: -94px -462px;   width: 25px;   height: 29px;   display: inline-block;top:6px;position:absolute; }
+.slide_card_menu ul li.menu_left i.act {   background: url(../images/icon.png) no-repeat left center;   background-position: -38px -463px; width: 25px;   height: 29px;   display: inline-block;top:6px;position:absolute; }
+.slide_card_menu ul li.menu_right i {   background: url(../images/icon.png) no-repeat left center;   background-position: -122px -462px;   width: 25px;   height: 29px;   display: inline-block;top:6px;position:absolute; }
 .slide_card_menu ul li.menu_left span,.slide_card_menu ul li.menu_right span{display:inline-block;margin-left:30px;}
 .menu_active{border-radius:55px;-webkit-border-radius:55px;-moz-border-radius:55px;-ms-border-radius:55px;height:50px;background-color:#f50057;}
 .slide_card_menu ul li.menu_left span.act{color:#fff;}
@@ -179,7 +179,7 @@ body{background-color:#393939}
 .botonera ul li{width:100%;position:relative;}
 .botonera i{width:30px;height:1px;background:#FFF;margin:auto;display:block}
 .botonera ul li a{font-size:15px;position:relative;display:block;background-color:#464646;border-bottom:1px solid #848282;color:#fff;height:57px;line-height:57px;text-decoration:none;}
-.botonera ul li a em.m_icon{background:url(/images/h_frist/icon.png) no-repeat;margin-left:20px;position:absolute;left:20px;top:15px;}
+.botonera ul li a em.m_icon{background:url(../images/h_frist/icon.png) no-repeat;margin-left:20px;position:absolute;left:20px;top:15px;}
 .botonera ul li a em.icon_po01{background-position: -19px 4px;   width: 22px;   height: 28px;display: block}
 .botonera ul li a em.icon_po02{background-position: -16px -309px;   width: 22px;   height: 28px;display: block}
 .botonera ul li a em.icon_po03{background-position: -16px -376px;   width: 22px;   height: 28px;display: block}
@@ -261,7 +261,7 @@ body{background-color:#393939}
   width: 24px;
   height: 20px;
   top: 13px;
-  background-image:url(/images/h_frist/i.png);
+  background-image:url(../images/h_frist/i.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: inline-block;
@@ -501,7 +501,7 @@ body{background-color:#393939}
 .alert{width:100%;margin:0 auto;position: absolute;top:30px;z-index:10;}
 .alert .alert_box{width: 80%;margin:15% 10% 0 10%;background:#fff;border-radius:5px;-webkit-border-radius:5px;height: 80%;}
 .alert .alert_title{height: 30px;position: relative;}
-.local_icon{background-image: url(/images/icon.png);}
+.local_icon{background-image: url(../images/icon.png);}
 .alert .alert_title em{display: block; width: 60px; height: 67px; margin: 0 auto; background-position: -291px -626px;position: relative;top:-30px;background-size: 529px auto;}
 .alert .alert_title i{background-position: -147px -471px;
   position: absolute;
