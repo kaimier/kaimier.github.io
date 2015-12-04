@@ -1,0 +1,181 @@
+/*动画*/
+@-webkit-keyframes "loadingRotate" {
+  0% {-webkit-transform: rotate(0deg);}
+  100% {-webkit-transform: rotate(-360deg);}
+}
+
+@-webkit-keyframes "select_ant" {
+  0% {width: 0%;}
+  100% {width: 100%;}
+}
+
+/* 转场效果 - move */
+@-webkit-keyframes "pageAnimateMoveInCurrent" {
+  from {-webkit-transform: translate3d(0px, 0, 0px);}
+  to {-webkit-transform: translate3d(0px, -100%, 0px);}
+}
+
+@-webkit-keyframes "pageAnimateMoveInTarget" {
+  from {-webkit-transform: translate3d(0px, 100%, 0px);}
+  to {-webkit-transform: translate3d(0px, 0, 0px);}
+}
+
+@-webkit-keyframes "pageAnimateMoveOutCurrent" {
+  from {-webkit-transform: translate3d(0px, 0px, 0px);}
+  to {-webkit-transform: translate3d(0px, 100%, 0px);}
+}
+
+@-webkit-keyframes "pageAnimateMoveOutTarget" {
+  from {-webkit-transform: translate3d(0px, -100%, 0px);}
+  to {-webkit-transform: translate3d(0px, 0px, 0px);}
+}
+
+/* 转场效果 - vgomove */
+@-webkit-keyframes "pageAnimateVGOMoveInCurrent" {
+  from {-webkit-transform: translate3d(0px, 0px, 0px) scale3d(1,1,1); opacity: 1;}
+  to {-webkit-transform: translate3d(-30%, 0px, 0px) scale3d(0.8,0.8,1); opacity: 0;}
+}
+
+@-webkit-keyframes "pageAnimateVGOMoveInTarget" {
+  from {-webkit-transform: translate3d(30%, 0px, 0px) scale3d(0.8,0.8,1); opacity: 0;}
+  to {-webkit-transform: translate3d(0px, 0px, 0px) scale3d(1,1,1); opacity: 1;}
+}
+
+@-webkit-keyframes "pageAnimateVGOMoveOutCurrent" {
+  from {-webkit-transform: translate3d(0px, 0px, 0px) scale3d(1,1,1); opacity: 1;}
+  to {-webkit-transform: translate3d(30%, 0px, 0px) scale3d(0.8,0.8,1); opacity: 0;}
+}
+
+@-webkit-keyframes "pageAnimateVGOMoveOutTarget" {
+  from {-webkit-transform: translate3d(-30%, 0px, 0px) scale3d(0.8,0.8,1); opacity: 0;}
+  to {-webkit-transform: translate3d(0px, 0px, 0px) scale3d(1,1,1); opacity: 1;}
+}
+
+/* 转场效果 - slide */
+@-webkit-keyframes "pageAnimateSlideInCurrent" {
+  from {-webkit-transform: translate3d(0px, 0px, 0px);}
+  to {-webkit-transform: translate3d(0px, -100%, 0px);}
+}
+
+@-webkit-keyframes "pageAnimateSlideInTarget" {
+  from {-webkit-transform: translate3d(0px, 100%, 0px);}
+  to {-webkit-transform: translate3d(0px, 0px, 0px);}
+}
+
+@-webkit-keyframes "pageAnimateSlideOutCurrent" {
+  from {-webkit-transform: translate3d(0px, 0px, 0px);}
+  to {-webkit-transform: translate3d(0px, 100%, 0px);}
+}
+
+@-webkit-keyframes "pageAnimateSlideOutTarget" {
+  from {-webkit-transform: translate3d(0px, -100%, 0px);}
+  to {-webkit-transform: translate3d(0px, 0px, 0px);}
+}
+
+/* 转场效果 - flipboard */
+@-webkit-keyframes "pageAnimateFbInCurrent" {
+  from {-webkit-transform: scale3d(1,1,1); opacity: 1;}
+  to {-webkit-transform: scale3d(0.9,0.9,1); opacity: 0;}
+}
+
+@-webkit-keyframes "pageAnimateFbInTarget" {
+  0% {-webkit-transform: translate3d(100%, 0px, 0px);}
+  20% {-webkit-transform: translate3d(100%, 0px, 0px);}
+  100% {-webkit-transform: translate3d(0, 0px, 0px);}
+}
+
+@-webkit-keyframes "pageAnimateFbOutCurrent" {
+  from {-webkit-transform: scale3d(1,1,1); opacity: 1;}
+  to {-webkit-transform: scale3d(0.9,0.9,1); opacity: 0;}
+}
+
+@-webkit-keyframes "pageAnimateFbOutTarget" {
+  0% {-webkit-transform: translate3d(-100%, 0px, 0px);}
+  20% {-webkit-transform: translate3d(-100%, 0px, 0px);}
+  100% {-webkit-transform: translate3d(0, 0px, 0px);}
+}
+
+/* 转场效果 - cover */
+@-webkit-keyframes "pageAnimateCoverInCurrent" {
+  from {-webkit-transform: translate3d(0px, 0px, 0px);}
+  to {-webkit-transform: translate3d(0px, 0px, 0px);}
+}
+
+@-webkit-keyframes "pageAnimateCoverInTarget" {
+  from {-webkit-transform: translate3d(100%, 0px, 0px);}
+  to {-webkit-transform: translate3d(0px, 0px, 0px);}
+}
+
+@-webkit-keyframes "pageAnimateCoverOutCurrent" {
+  from {-webkit-transform: translate3d(0px, 0px, 0px);}
+  to {-webkit-transform: translate3d(0px, 0px, 0px);}
+}
+
+@-webkit-keyframes "pageAnimateCoverOutTarget" {
+  from {-webkit-transform: translate3d(-100%, 0px, 0px);}
+  to {-webkit-transform: translate3d(0px, 0px, 0px);}
+}
+
+/* 转场效果 - fade */
+@-webkit-keyframes "pageAnimateFadeCurrent" {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+@-webkit-keyframes "pageAnimateFadeTarget" {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* 转场效果 - vgofade */
+@-webkit-keyframes "pageAnimateVGOFadeCurrent" {
+  from {opacity: 1; -webkit-transform: translate3d(0px, 0px, 0px);}
+  to {opacity: 0; -webkit-transform: translate3d(0px, -20px, 0px);}
+}
+
+@-webkit-keyframes "pageAnimateVGOFadeTarget" {
+  from {opacity: 0; -webkit-transform: translate3d(0px, 20px, 0px);}
+  to {opacity: 1; -webkit-transform: translate3d(0px, 0px, 0px);}
+}
+
+/* 转场效果 - scale */
+@-webkit-keyframes "pageAnimateScaleInCurrent" {
+  from {-webkit-transform: scale3d(1,1,1) translate3d(0px, 0px, 0px); opacity: 1;}
+  to {-webkit-transform: scale3d(0.98,0.98,1) translate3d(-20px, 0px, 0px); opacity: 0;}
+}
+
+@-webkit-keyframes "pageAnimateScaleInTarget" {
+  from {-webkit-transform: scale3d(0.98,0.98,1) translate3d(20px, 0px, 0px); opacity: 0;}
+  to {-webkit-transform: scale3d(1,1,1) translate3d(0px, 0px, 0px); opacity: 1;}
+}
+
+@-webkit-keyframes "pageAnimateScaleOutCurrent" {
+  from {-webkit-transform: scale3d(1,1,1) translate3d(0px, 0px, 0px); opacity: 1;}
+  to {-webkit-transform: scale3d(0.98,0.98,1) translate3d(20px, 0px, 0px); opacity: 0;}
+}
+
+@-webkit-keyframes "pageAnimateScaleOutTarget" {
+  from {-webkit-transform: scale3d(0.98,0.98,1) translate3d(-20px, 0px, 0px); opacity: 0;}
+  to {-webkit-transform: scale3d(1,1,1) translate3d(0px, 0px, 0px); opacity: 1;}
+}
+
+/* 转场效果 - poker */
+@-webkit-keyframes "pageAnimatePokerInCurrent" {
+  from {-webkit-transform: rotateY(0deg) scale3d(1,1,1); opacity: 1;}
+  to {-webkit-transform: rotateY(-90deg) scale3d(0.9,0.9,1); opacity: 0.7;}
+}
+
+@-webkit-keyframes "pageAnimatePokerInTarget" {
+  from {-webkit-transform: rotateY(90deg) scale3d(0.9,0.9,1); opacity: 0.7;}
+  to {-webkit-transform: rotateY(0deg) scale3d(1,1,1); opacity: 1;}
+}
+
+@-webkit-keyframes "pageAnimatePokerOutCurrent" {
+  from {-webkit-transform: rotateY(0deg) scale3d(1,1,1); opacity: 1;}
+  to {-webkit-transform: rotateY(90deg) scale3d(0.9,0.9,1); opacity: 0.7;}
+}
+
+@-webkit-keyframes "pageAnimatePokerOutTarget" {
+  from {-webkit-transform: rotateY(-90deg) scale3d(0.9,0.9,1); opacity: 0.7;}
+  to {-webkit-transform: rotateY(0deg) scale3d(1,1,1); opacity: 1;}
+}
