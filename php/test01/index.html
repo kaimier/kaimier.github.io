@@ -5,8 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui" />
     <meta name="format-detection" content="telephone=no">
-    <meta name="description" content="京东东家是一个致力于为创业者提供融资机会，让投资人获得优质项目的互联网金融平台! "/>
-    <meta name="Keywords" content="京东理财,网上理财,京东众筹,京东东家,私募股权,风险投资,创业,融资,股权,投资,理财,投资人,风投机构,京东白条,京东理财,京东保险,基金理财,金融服务,马上有钱,理财规划,个人理财,家庭理财,第三方理财,投资理财"/>
+    <meta name="description" content="京东东家 老苏模仿 "/>
+    <meta name="Keywords" content="京东东家 老苏模仿"/>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <title>京东东家 京东金融互联网理财综合服务平台！</title>
     <link rel="icon" href="http://www.jd.com/favicon.ico" type="image/x-icon">
@@ -34,10 +34,10 @@
             </div>
         </li>
         <li>
-            <a href="http://m.dj.jd.com/funding/investor.html" clstag="pageclick|keycount|gqm_home_page_201509011|3"><em class="m_icon icon_po02"></em><b>认证合格投资人</b><i></i></a>
+            <a href="investor.html" clstag="pageclick|keycount|gqm_home_page_201509011|3"><em class="m_icon icon_po02"></em><b>认证合格投资人</b><i></i></a>
         </li>
         <li>
-            <a href="http://m.dj.jd.com/funding/myCrowdfunding.html" clstag="pageclick|keycount|gqm_home_page_201509011|4"><em class="m_icon icon_po03"></em><b>个人中心</b><i></i></a>
+            <a href="myCrowdfunding.html" clstag="pageclick|keycount|gqm_home_page_201509011|4"><em class="m_icon icon_po03"></em><b>个人中心</b><i></i></a>
         </li>
         <li id="loginLi">
             <a href="javascript:loginOut();" style="border-bottom:none;" clstag="pageclick|keycount|gqm_home_page_201509011|5"><em class="m_icon icon_po04"></em><b id="login_b">登录\退出</b><i></i></a>
@@ -126,7 +126,7 @@
                 </div>
             </div>
             <div class="card_con">
-                <a clstag="pageclick|keycount|gqm_home_page_201509011|12" href="http://m.dj.jd.com/funding/details/6852.html">
+                <a clstag="pageclick|keycount|gqm_home_page_201509011|12" href="details.html">
                                             <span class="rz icon"></span>
                                         <img src="images/default.png" class="snload" data-original="http://img30.360buyimg.com/cf/jfs/t2170/298/1219994842/184742/bf04994c/5645856dN4aed1904.png"></a>
             </div>
@@ -581,12 +581,12 @@
                     $('.btnMenu').click();
                     alert2("您确定要退出当前账户吗？")
                 }else{   //未登录或其他
-                    window.location.href='http://m.dj.jd.com/login.html?backurl=http://m.dj.jd.com/';
+                    window.location.href='login.html';
                 }
             },
             error:function(){
                 //未登录或其他
-                window.location.href='http://m.dj.jd.com/login.html?backurl=http://m.dj.jd.com/';
+                window.location.href='login.html';
             }
         });
     }

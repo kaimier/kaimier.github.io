@@ -1,0 +1,36 @@
+[{
+    "ptId": 5899,
+    "projectId": 7286,
+    "ptRealname": "韩雷",
+    "ptImg": "http://img30.360buyimg.com/cf/jfs/t1843/97/1497654535/22112/4774df2c/5661378bNd439f5e5.jpg",
+    "ptTitle": "CEO",
+    "ptIntroduce": "科幻发烧友，晚会制片人出身，09年创立晚会制片公司两年营业额1500万，现负责产品和市场。"
+}, {
+    "ptId": 5900,
+    "projectId": 7286,
+    "ptRealname": "褚成成",
+    "ptImg": "http://img30.360buyimg.com/cf/jfs/t1936/99/1459913077/20207/ec0efd70/566137a9N824cbb19.jpg",
+    "ptTitle": "CTO",
+    "ptIntroduce": "前中国空间技术研究院总体部主管工程师、副主任设计师，曾参与研发中国首台大型空间机械臂，10年机器人研发经验。"
+}, {
+    "ptId": 5901,
+    "projectId": 7286,
+    "ptRealname": "沈啸",
+    "ptImg": "http://img30.360buyimg.com/cf/jfs/t2284/236/1561324271/18965/b8b8ff73/566137beNf51475f1.jpg",
+    "ptTitle": "艺术总监",
+    "ptIntroduce": "高晓松式的博学型人才，工业设计出身，曾用10年时间构建了一个玄幻世界观（未发表），目前负责项目世界观的构建及机器人概念设计。"
+}, {
+    "ptId": 5902,
+    "projectId": 7286,
+    "ptRealname": "李梦朴",
+    "ptImg": "http://img30.360buyimg.com/cf/jfs/t2023/57/1565578619/19615/ad33f827/566137d3Ne56be4a0.jpg",
+    "ptTitle": "ID设计",
+    "ptIntroduce": "机器人发烧友，动画导演，17年动画行业工作经验，曾参与《火影忍者》原画工作，现负责机器人的外形设计工作。"
+}, {
+    "ptId": 5903,
+    "projectId": 7286,
+    "ptRealname": "陈嘉淇",
+    "ptImg": "http://img30.360buyimg.com/cf/jfs/t2236/343/1509583249/18679/f3ff90c3/566137efNc5750bf2.jpg",
+    "ptTitle": "MD设计",
+    "ptIntroduce": "国内顶级模型制作人，作品远销欧美，其中“阿凡达机甲”被好莱坞原设计师私人收藏，现负责产品的工业设计、涂装及细节设计。"
+}]

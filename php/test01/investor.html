@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui" />
+<meta name="description" content="京东东家是一个致力于为创业者提供融资机会，让投资人获得优质项目的互联网金融平台! "/>
+<meta name="Keywords" content="京东理财,网上理财,京东众筹,京东东家,私募股权,风险投资,创业,融资,股权,投资,理财,投资人,风投机构,京东白条,京东理财,京东保险,基金理财,金融服务,马上有钱,理财规划,个人理财,家庭理财,第三方理财,投资理财"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<title>京东东家 京东金融互联网理财综合服务平台！</title>
+<link rel="icon" href="http://www.jd.com/favicon.ico" type="image/x-icon">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="/css/base.css">
+<link rel="stylesheet" type="text/css" href="/css/auth/auth.css">
+<link rel="stylesheet" type="text/css" href="/css/my_form.css">
+</head>
+<body>
+
+<section class="wapper">
+    <form action="/funding/forinvestor.action" method="post" id="investorSubmit">
+        <input type="hidden" id="activeTitle"   value="" />
+        <input type="hidden" id="activeDesc"    value="" />
+        <input type="hidden" id="shareImg"      value="" />
+        <input type="hidden" id="shareUrl"      value="" />
+        <input type="hidden" id="activeId" name="activityFlag"    value="" />
+        <input type="hidden" id="code" name="code"    value="" />
+
+    <h1 class="title">合格投资人认证</h1>
+
+    <div class="box">
+        <div class="item line">
+            <dd><span class="red">*</span>真实姓名</dd>
+            <dt>
+                <input type="text" class="text" name="investorRealname" id="investorRealname" placeholder="真实姓名" data-event-agent="touchstart|default">
+                <span class="error"></span> 
+            </dt>
+            <div class="clear"></div>
+        </div>
+        <div class="item">
+            <dd><span class="red">*</span>手机号码</dd>
+            <dt>
+                <input type="text" class="text" name="investorPhone" id="investorPhone" placeholder="手机号码" data-event-agent="touchstart|default">
+                <span class="error"></span>
+            </dt>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="box">
+        <input type="hidden" name="investorForeign" value="0">
+        <div class="item">
+            <dd class="fix"><span class="red">*</span>是否外籍</dd>
+            <dt>
+                <img src="/images/empty.gif" class="icon select" name="investorForeign" id="investorForeign"  data-value="1" data-type="radio" data-name="investorForeign" data-event-agent="touchend|select">
+                <span class="desc pos"data-event-agent="touchend|select">是</span>
+                <img src="/images/empty.gif" class="icon select selected" name="investorForeign" id="investorForeign" data-value="0" data-type="radio" data-name="investorForeign" data-event-agent="touchend|select">
+                <span class="desc pos"  data-event-agent="touchend|select">否</span>
+                <span class="error"></span> 
+            </dt>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="box">
+        <input type="hidden" name="investorImg" id="addImg" value="">
+        <div class="item">
+            <dd class="one"><span class="red"></span>名片<span class="small">图片小于5MB格式为JPG、JPEG、PNG</span></dd>
+            <div class="clear"></div>
+        </div>
+        <div class="item file">
+            <dd>
+                <div id="upload"></div>
+            </dd>
+            <dt>
+                <img src="/images/auth/card.jpg" class="card" id="cardImg">
+            </dt>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="item line">
+            <input type="hidden" name="investorType" id="investorType" value="100">
+            <dd class="fix"><span class="red">*</span>个人/单位</dd>
+            <dt>
+                <img src="/images/empty.gif" class="icon select selected" data-value="100" data-type="radio" data-name="investorType" data-event-agent="touchend|select">
+                <span class="desc pos" data-event-agent="touchend|select">个人</span>
+                <img src="/images/empty.gif" class="icon select" data-value="0" data-type="radio" data-name="investorType" data-event-agent="touchend|select">
+                <span class="desc pos" data-event-agent="touchend|select">单位</span>
+                <span class="error"></span> 
+            </dt>
+            <div class="clear"></div>
+        </div>
+        <div class="item person show">
+            <input type="hidden" name="investorPeCase" id="investorPeCase" value="400">
+            <dd class="one"><span class="red">&nbsp;</span>符合以下条件之一的自然人投资者</dd>
+            <dd class="one">
+                <img src="/images/empty.gif" class="icon select" data-value="100" data-type="radio" data-name="investorPeCase" data-event-agent="touchend|select">
+                <span class="desc pos" data-event-agent="touchend|select">我的金融资产超过100万元</span>
+            </dd>
+            <dd class="one">
+                <img src="/images/empty.gif" class="icon select" data-value="200" data-type="radio" data-name="investorPeCase" data-event-agent="touchend|select">
+                <span class="desc pos" data-event-agent="touchend|select">我的年收入超过30万元</span>
+            </dd>
+            <dd class="one">
+                <img src="/images/empty.gif" class="icon select" data-value="300" data-type="radio" data-name="investorPeCase" data-event-agent="touchend|select">
+                <span class="desc pos" data-event-agent="touchend|select">我是专业的风险投资人</span>
+            </dd>
+            <dd class="one">
+                <img src="/images/empty.gif" class="icon select selected" data-value="400" data-type="radio" data-name="investorPeCase" data-event-agent="touchend|select">
+                <span class="desc pos" data-event-agent="touchend|select">我不符合上述任一条件</span>
+            </dd>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+
+    <div class="box">
+        <div class="item line">
+            <dd><span class="red" id="com_span">&nbsp;</span>所在公司</dd>
+            <dt>
+                <input type="text" class="text" name="investorCom" id="com_input" placeholder="所在公司" data-event-agent="touchstart|default">
+                <span class="error"></span> 
+            </dt>
+            <div class="clear"></div>
+        </div>
+        <div class="item line" id="investor_title">
+            <dd><span class="red">&nbsp;</span>职位/头衔</dd>
+            <dt>
+                <input type="text" class="text" name="investorTitle" id="title_input" placeholder="职位/头衔" data-event-agent="touchstart|default">
+                <span class="error"></span>
+            </dt>
+            <div class="clear"></div>
+        </div>
+        <div class="item line">
+            <dd><span class="red">*</span>自我描述</dd>
+            <dd class="one">
+                <span class="red">&nbsp;</span>
+                <input type="hidden" name="investorIntroduce" id="investorIntroduce" value=""/>
+                <textarea class="textarea" name="investorIntroduceTextarea" id="investorIntroduceTextarea" placeholder="自我描述"  data-event-agent="touchstart|default"></textarea>
+                <span class="error"></span>
+            </dd>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+
+
+    <div class="clearfix"></div>
+    <div class="agreement ">
+        <img src="/images/empty.gif" class="icon select" data-name="checkbox_id" id="checkbox_id" data-event-agent="touchend|select">
+        <p>
+            我承诺以上登记的所有信息属实，并对虚假信息产生的一切后果负责。我已阅读并同意签署以下协议<br>
+        </p>
+    </div>
+    <div class="agreement agreement_xy">
+        <a href="avascript:void(0);" data-event-agent="touchend|agrees" data-agrees="0">《用户服务协议》</a>&nbsp;
+        <a href="javascript:void(0);" data-event-agent="touchend|agrees" data-agrees="1">《投资人规则》</a>&nbsp;
+        <a href="javascript:void(0);" data-event-agent="touchend|agrees" data-agrees="2">《风险提示书》</a>
+    </div>
+    <div class="tip"></div>
+    <div class="box nomargintop">
+        <a href="javascript:void(0);" class="next" data-event-agent="touchend|next">提交</a>
+    </div>
+    <div class="null"></div>
+    <input type="hidden" id="AGREE_CODE" name="agreeCode" value="8bad2ac090103988193271ed84456e93"/>
+    </form>
+</section>
+<div class="cover_fix" style="display:none;"></div>
+<div class="alert" style="display:none;">
+    <div class="alert_box">
+        <div class="alert_title"></div>
+        <div class="alert_con">
+            <p id="content" class="small">普通页面提示</p>
+        </div>
+        <div id="queding" class="btn"><a href="javascript:void(0);">知道了</a></div>
+    </div>
+</div>
+<!-- 返回顶部 -->
+
+<div class="form_submit">
+    <div class="back"><img src="/images/h_frist/back.png" data-event-agent="touchend|back"  border="0" alt=""></div>
+    <p class="info_title">用户服务协议</p>
+    <p class="info_con">第一条 定义及解释<br/>
+        除本协议另有规定外，下列用语或术语应当具有以下定义:<br/>
+        1.1京东：北京长天资产管理有限公司，注册地址为北京市海淀区阜成路73号18层1815号，为京东私募股权融资平台的管理者及运营者。<br/>
+        1.2京东私募股权融资平台（下称“平台”）：指由京东运营并管理的，域名为http//dj.jd.com的网络金融信息服务平台，平台为其实名注册用户提供网络化公司股权投融资服务。<br/>
+        1.3用户：指通过平台实名认证审查，参与私募股权投融资活动的个人或单位，包括融资人和投资人。<br/>
+        1.4融资人：指通过平台实名认证的个人或单位。融资人应履行平台《融资人规则》中的相关义务。融资人在融资项目通过平台初步审核后应与京东签署《私募股权融资信息服务协议》。<br/>
+        1.5融资项目：由融资人发起并通过平台展示的待投项目。<br/>
+        1.6投资人：指经平台实名认证并满足平台《投资人规则》中合格投资人资格的个人和单位。<br/>
+        1.7平台规则：指在平台上发布的任何规范性文件，包括但不限于本协议、《私募股权融资信息服务协议》、《融资人规则》、《投资人规则》、《融资人信息披露规则》等任何经平台公示及生效的规则。</p>
+
+    <p class="info_con">第二条 平台服务宗旨及签约主体<br/>
+        2.1平台是一个致力于帮助中小企业和创业者实现梦想的专业化投融资平台。融资人可以在平台上发起创新项目的融资需求，投资人以现金认购项目公司股权。平台鼓励融资人与投资人共担风险，共享收益。<br/>
+        2.2为保护参与各方的合法权益，规范融资人及投资人的交易行为，维护平台秩序，京东与用户特依据《中华人民共和国合同法》、《中华人民共和国公司法》及其他相关法律、法规的规定，本着平等、自愿、等价有偿的原则达成如下用户服务协议（下称“本协议”），以资共同遵守。</p>
+
+    <p class="info_con">第三条 服务内容<br/>
+        3.1在本协议生效后，融资人有权依据本协议、《私募股权融资信息服务协议》及京东和平台的有关规则获得在线融资服务。<br/>
+        3.2在本协议生效后，投资人有权依据本协议与京东及平台的有关规则获得在线投资服务。</p>
+
+    <p class="info_con">第四条 协议生效和适用范围<br/>
+        4.1本协议内容包括协议正文以及京东和平台已经发布的或将来可能发布的各类规则和操作流程。所有规则均为本协议不可分割的一部分，与协议正文具有同等的法律效力。<br/>
+        4.2本协议自融资人或投资人注册成为平台认证用户并同意接受本协议全部条款之日起生效。<br/>
+        4.3平台有权根据需要不时修改本协议或平台各类规则及操作流程。如本协议有任何变更，京东和平台将在网站上以公示形式通知，且无需征得平台用户的事先同意。修改后的协议及规则一经公示即生效，成为本协议的一部分。如平台用户继续登录或使用平台的，即视为已阅读并接受修改后的协议。<br/>
+        4.4平台用户应该按照本协议约定行使权利并履行义务。如不能接受本协议约定，包括但不限于不能接受修订后的协议及各类规则，则应立即停止使用平台提供的服务，且京东及平台无需承担用户由此等停用行为所遭受的任何损失。</p>
+
+    <p class="info_con">第五条 平台权利及义务<br/>
+        5.1京东声明并承诺其是依据中国法律设立并有效存续的有限责任公司，具有一切必要的权利及能力订立及履行本协议项下的所有义务和责任；京东承诺并保证尽责管理和运营平台，为用户提供优质的在线投融资服务。<br/>
+        5.2京东及平台将对用户进行实名认证和投资资格审核，并对用户信息的真实性进行必要的审查。<br/>
+        5.3京东及平台仅对融资项目的合法性进行必要审核，不对融资人及投资人通过平台发布的信息的真实性、准确性、完整性负责，同时不对投资人的投资收益和交易的达成等事项作任何性质的担保或保证；京东及平台不对投资人的投资损失承担任何责任。<br/>
+        5.4京东及平台会采取必要措施防范用户的欺诈行为。若用户存在欺诈行为或其他损害用户利益的行为，平台将及时对欺诈行为进行公告，并根据情况终止相关私募股权活动或取消相关责任人的用户资格；<br/>
+        5.5京东及平台持续开展私募股权融资知识普及和风险教育活动，并与投资者签订投资风险提示书，确保投资者充分知悉投资风险；<br/>
+        5.6京东及平台会保守用户的商业秘密和隐私，非因法定原因不得泄露前述信息。</p>
+
+    <p class="info_con">第六条 用户行为规范<br/>
+        6.1用户声明并承诺其是依据中国法律设立并有效存续的有限责任公司/股份有限公司/其他形式的组织或具有完全民事行为能力的自然人，具有一切必要的权利及能力订立及履行本协议项下的所有义务和责任；本协议一经生效即对用户具有法律约束力。<br/>
+        6.2用户有权在平台相应位置发布信息，用户承诺并保证其提供或发布的所有信息（包括但不限于用户的基本资料、项目保密信息等）是真实、准确、完整的，符合中国各项法律、法规及规范性文件以及京东和平台的相关规则，不存在虚假、误导性陈述或重大遗漏，并承诺及时对已发布的信息进行更新、维护和管理。<br/>
+        6.3用户应维护京东及平台的正常运作及其公信力，不得实施有损于京东及平台的行为，包括但不限于以下行为：<br/>
+        6.3.1传输或发表损害国家、社会公共利益和涉及国家安全的信息资料或言论，不得发起、参与任何洗钱类项目；<br/>
+        6.3.2利用本站从事窃取商业秘密、窃取个人信息等违法犯罪活动。未经平台书面许可， 通过本协议约定方式之外的途径进入平台或京东计算机信息网络系统或者使用本协议约定范围外的信息网络资源或服务；<br/>
+        6.3.3未经平台书面许可，对平台或京东计算机信息网络中存储、处理或者传输的数据和应用程序进行删除、修改或者增加；<br/>
+        6.3.4采取不正当竞争行为，扰乱网上交易的正常秩序，从事与网上交易无关的行为故意制作、传播计算机病毒等破坏性程序；<br/>
+        6.3.5其他危害计算机信息网络安全、妨碍平台及京东正常运作、有损其公信力的行为。<br/>
+        6.3.6以虚构或歪曲事实的方式不当评价其他平台用户；<br/>
+        6.3.7其他京东认为该行为有损于平台或京东的行为。<br/>
+        6.4通过平台实名认证的注册用户，有权在其权限内浏览、发布信息、创建项目或进行在线投融资活动。用户承诺并保证妥善保管其在京东的账号和密码，并对其登录状态中的所有活动和事件承担责任。用户若发现任何非法使用其帐号或存在安全漏洞的情况，应立即通知京东或平台并采取措施以减少不必要的损失。<br/>
+        6.5用户承诺并保证其提供或发布的信息不存在以下情形：<br/>
+        6.5.1违反中国各项法律、法规及规范性文件规定的；<br/>
+        6.5.2危害国家安全、泄露国家秘密、颠覆国家政权、破坏国家统一的，煽动民族仇恨、民族歧视，破坏民族团结的，破坏国家宗教政策、宣扬邪教和封建迷信的，有损国家荣誉和利益的；<br/>
+        6.5.3散布谣言、含有淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪信息，扰乱社会秩序，破坏社会稳定的；<br/>
+        6.5.4侮辱或者诽谤他人，侵犯其他任何第三方知识产权及其他合法权益的；<br/>
+        6.5.5发布、传送、传播、储存侵害他人名誉权、肖像权、知识产权、商业秘密等合法权利的内容；<br/>
+        6.5.6其他含有法律、法规及规范性文件禁止内容的。<br/>
+        6.6用户通过平台发布的涉嫌违法或涉嫌侵犯他人合法权利或违反本协议的信息，平台有权依据其独立判断对该等信息予以修改、编辑或删除，而无需事先通知相关用户。用户违反上述行为规范对任意第三方造成损害的，用户应独立承担由此造成的一切损失和法律责任，并应确保京东及平台免于承担因此产生任何损失或费用。<br/>
+        6.7用户承诺并保证依据自身判断对在平台上创建、发布项目作出独立的、审慎的决定，并保证依法、依约履行其在融资项目下的义务。<br/>
+        6.8用户承诺并保证使用京东服务的风险由其自身承担。其根据自身需求下载或通过京东产品服务取得相关信息资料，由其自行承担系统受损、资料丢失以及其它任何风险。<br/>
+        6.9用户承诺并保证若其违反上述承诺和保证而给平台或京东造成损失，用户同意对平台或京东因此而遭受的损失承担赔偿责任。</p>
+
+    <p class="info_con">第七条 服务佣金<br/>
+        7.1 平台的服务佣金均通过第三方支付机构网银在线进行收取。<br/>
+        7.2融资人应根据《私募股权融资信息服务协议》及相关平台规则向平台缴纳服务佣金。<br/>
+        7.3 若用户不履行或不完全履行服务佣金缴纳义务，京东有权根据相关协议采取一切法律手段维护其合法权益。<br/>
+        7.4 京东及平台保留根据市场与技术的发展情况调整服务佣金费率的权利。在调整前，京东及平台将以适当的方式通知用户费率变更情况，包括但不限于在平台上公示。用户有权选择接受或拒绝。如果用户选择拒绝接收调整后的服务佣金费率，应立即停止使用平台的服务；用户继续使用平台的，即视为用户同意京东的费用变更。</p>
+
+    <p class="info_con">第八条 违约责任<br/>
+        8.1除本协议另有约定外，任何一方违反有关法律法规及规范性文件的规定、平台规则或相关协议的陈述、保证或承诺，而使另一方遭受任何诉讼、纠纷、索赔、处罚等的，违约方应负责及时补救并解决；该等违约行为使另一方发生任何费用、额外责任或遭受经济损失的，违约方应当负责赔偿。<br/>
+        8.2如一方发生违约行为，守约方可以书面通知方式要求违约方在指定的时限内停止违约行为，要求其消除影响。如违约方未能按时停止违约行为，则守约方有权立即终止本协议。如因京东自身原因造成用户的损失，京东向用户承担的总体责任和最高赔偿限额不应超过在本协议项下京东已向用户收取的服务佣金总额（如有）。<br/>
+        8.3除用户与京东或平台就违约责任另有特别规定，违约责任按照本协议追究。</p>
+
+    <p class="info_con">第九条 知识产权<br/>
+        9.1用户承诺通过其对平台发布、上传的所有内容拥有合法权利，不侵犯任何第三方的肖像权、隐私权、专利权、商标权、著作权等合法权利及其他合同权利。<br/>
+        9.2用户通过平台发布、上传的任何内容，用户授予京东及其关联公司非独家的、可转授权的、不可撤销的、全球通用的、永久的、免费的许可使用权利，并可对上述内容进行修改、改写、改编、发行、翻译、创造衍生性内容及/或可以将前述部分或全部内容加以传播、表演、展示，及/或可以将前述部分或全部内容放入任何现在已知和未来开发出的以任何形式、媒体或科技承载的作品当中。<br/>
+        9.3京东及平台向用户提供的服务含有受到相关知识产权及其他法律保护的专有保密资料或信息，亦可能受到著作权、商标、专利等相关法律的保护。未经京东或相关权利人书面授权，用户不得修改、出售、传播部分或全部该等信息，或加以制作衍生服务或软件，或通过进行还原工程、反向组译及其他方式破译原代码。</p>
+
+    <p class="info_con">第十条 协议终止及争议解决<br/>
+        10.1出现下列任一情形时，京东有权全部或部分中止或终止履行本协议项下的义务，而无须承担任何责任且无须征得用户的同意：<br/>
+        10.1.1用户的行为违反法律法规、监管政策或其他规定；<br/>
+        10.1.2用户的行为将引发或可能引发京东及平台运营的重大风险；<br/>
+        10.1.3用户的行为存在或可能存在明显危害其它用户利益的风险；<br/>
+        10.1.4因不可归责于京东的原因造成该用户无法继续接受京东的服务。<br/>
+        10.2如用户在线上或线下与京东签署的任何协议或规则的终止，使得平台用户协议的目的无法实现，则本协议将同时终止。因不可归责于京东的原因造成本协议相关规则的终止，在协议终止前的行为所导致的任何赔偿和责任，用户必须完全且独立地承担责任。但本协议的终止，不影响融资人与投资人之间的权利义务关系的履行。<br/>
+        10.3无论本协议因何种原因终止，并不影响本协议终止前已经发生的法律关系的效力。<br/>
+        10.4本协议的制定、解释、及其在执行过程中出现的或与本协议有关的异议的解决，受中华人民共和国现行有效的法律、法规及规范性文件的约束。在本协议执行过程中，若出现与本协议有关的争议，各方应尽量本着友好协商的精神予以协商解决；若双方于三十日内经协商不能解决或任意一方不同意协商解决的，则任何一方有权将争议提交北京市朝阳区人民法院通过诉讼解决。在诉讼过程中，除有争议的事项外，本协议应继续执行。</p>
+
+    <p class="info_con">第十一条 保密<br/>
+        协议任何一方对根据本协议获得的对方的保密信息（包括但不限于京东及平台的技术秘密、商业秘密、管理信息、资源，投资人的注册资料等基本信息）及本协议所涉保密事项承担同等保密义务。未经协议双方许可不得擅自将有关信息、资料披露给第三方（根据法律要求履行必要信息披露义务除外）。如因违反本保密义务给对方造成经济损失的，违约方应予以赔偿。</p>
+
+    <p class="info_con">第十二条 不可抗力<br/>
+        12.1若发生了任何一方无法预见、无法控制和无法避免的事件导致任何一方或双方不能履行其约定义务，该义务在不可抗力事件存在时暂停，而义务的履行期应自动按暂停期顺延而不加以处罚。<br/>
+        12.2遭遇不可抗力的一方或双方应在发生不可抗力事件后的十天内向对方提供发生不可抗力和其持续期的适当证明，并应尽其最大努力终止不可抗力事件或减少其影响。</p>
+
+    <p class="info_con">第十三条 附则<br/>
+        13.1 除非取得京东的书面同意，用户不得将其在本协议项下的全部或部分权利与义务转让给任何第三方。<br/>
+        13.2 任何一方未能或延迟行使和/或享受其根据本协议享有的权利和/或利益，不应视为对该等权利和/或利益的放弃，且对该等权利和/或利益的部分行使不应妨碍未来对此等权利和/或利益的行使。<br/>
+        13.3 本协议部分条款无效、被撤销或者终止的，不影响其他条款的效力，其他条款仍然有效。</p>
+    <p class="back_btn" data-event-agent="touchend|back">关闭</p>
+
+</div>
+<div class="form_submit">
+    <div class="back"><img src="/images/h_frist/back.png" data-event-agent="touchend|back" border="0" alt=""></div>
+    <p class="info_title">投资人规则</p>
+    <p class="info_con">北京长天资产管理有限公司（“京东”）及京东私募股权融资平台（下称“平台”）为更好的勤勉尽责，督促投融资双方依法合规开展众筹融资活动、履行约定义务，特制定并公示《京东私募股权融资平台投资人规则》（以下简称“投资人规则”或“本规则”），本投资人规则为京东为平台《用户服务协议》（以下简称“用户协议”）的补充，根据用户协议的约定，本规则一经在平台上公示即对本平台用户具有法律约束力。</p>
+    <p class="info_con">本投资人规则的内容与用户协议之约定不一致的，以本规则为准。</p>
+    <p class="info_con">第一条 投资人实名认证<br/>
+        1.1投资人应按照平台的实名认证流程，向京东提交真实有效的身份信息。<br/>
+        1.2向京东申请实名认证的投资人必须阅读并接受平台《用户协议》及《风险提示书》。<br/>
+        1.3未通过平台实名认证的投资人，不得在平台上浏览融资项目的融资信息，不享有《用户协议》中的任何服务。<br/>
+        1.4京东有权委托第三方对投资人进行符合法律法规要求的实名认证。</p>
+
+    <p class="info_con">第二条 合格投资人认证<br/>
+        2.1合格投资人应该符合相关法律法规中关于合格投资人的规定。投资人有义务向平台提交真实、合法、有效的证明材料，证明其符合合格投资人的法律要求。<br/>
+        2.2个人合格投资人需要符合下列条件之一：<br/>
+        （1）最近三年个人年均收入不低于30 万元人民币；<br/>
+        （2）金融资产不低于100 万元人民币；本条所指的金融资产包括银行存款、股票、债券、基金份额、资产管理计划、银行理财产品、信托计划、保险产品、期货权益等。<br/>
+        2.3单位合格投资人需要符合下列条件：<br/>
+        （1）投资单个融资项目的最低金额不低于10万元人民币；<br/>
+        （2）社会保障基金、企业年金等养老基金，慈善基金等社会公益基金，以及按照金融监管部门要求设立或备案的投资计划，前述投资者豁免穿透核查和合并计算投资者人数。<br/>
+        2.4申请合格投资人认证的投资者应当承担下列责任：<br/>
+        （1）按照京东及平台的要求提供真实、准确和完整的身份信息、财产、收入证明等信息；<br/>
+        （2）保证投资资金来源合法；<br/>
+        （3）主动了解众筹项目投资风险，并确认其具有相应的风险认知和承受能力；<br/>
+        （4）中国证券业协会规定和投资协议约定的其他职责。<br/>
+        2.5只有通过平台合格投资人身份认证的投资人，才能对平台上的融资项目进行投资。</p>
+
+    <p class="info_con">第三条 领投人资质认证<br/>
+        3.1领投人是指在项目所在领域有相对丰富经验的投资人，由其指导和带领多名跟投人一同对企业进行投资。领投人应通过平台合格投资人认证。<br/>
+        3.2在融资项目经过平台初步审查通过后，融资人可自愿选择是否需要领投人。选择有领投人融资的，融资人应当在融资项目预热阶段与有投资意愿的领投人接洽，当领投人最终确定后，由融资人及领投人共同向平台提交项目上线申请。<br/>
+        3.3领投人需要符合下列条件：<br/>
+        （1）应充分认同平台的发展原则及方向；<br/>
+        （2）在某个行业或领域有丰富的经验，独立的判断力，丰富的行业资源和影响力，很强的风险承受能力；<br/>
+        （3）具有投资管理能力以及投后管理能力；<br/>
+        （4）领投人至少有1个过往非上市股权投资项目已退出，或领投人具有自主成功创业的经验；<br/>
+        （5）勤勉尽职，乐于分享。<br/>
+        3.4领投人与融资人应以双向自愿选择为原则，在融资项目预热阶段，融资人与领投人通过平台可以相互邀请进行约谈。<br/>
+        3.5每个融资项目的领投人原则上只有一名。领投人对一个融资项目的认购金额通常应不低于该融资项目实际募集金额的百分之三十，并且不高于该融资项目实际募集金额的百分之八十。<br/>
+    </p>
+
+    <p class="info_con">第四条 领投人的权利及义务<br/>
+        4.1领投人享有如下权利：<br/>
+        （1）优先看到预热融资项目（包括未审核通过的项目源）和领投人社交群推荐项目；<br/>
+        （2）领投人在确认领投后有三天冷静期。冷静期内，领投人可以无条件放弃对融资项目的领投。领投人可对项目进行点评，并可在平台上公布；<br/>
+        （3）领投人负责为跟投人管理融资项目，跟投人应向领投人支付融资项目退出分成的百分之二十，除此之外，无需向领投人额外支付管理费；<br/>
+        （4）领投人的投资成绩和回报情况将会成为该投资人在相关领域的投资记录，并向跟投人展示；<br/>
+        （5）领投人可以在平台上对个人进行合理的宣传推广；<br/>
+        （6）领投人不对项目投后管理成果及项目收益承诺保底。<br/>
+        4.2领投人应当承担如下义务：<br/>
+        （1）确认领投后，协助融资项目完善《融资项目商业计划书》、确定估值、投资条款和融资额，协助项目路演和完成本轮对跟投人的融资；<br/>
+        （2）能够协助融资人按照《融资人信息披露规则》完成融资项目的信息披露；<br/>
+        （3）领投人应接受跟投人的委托，对融资项目进行管理；<br/>
+        （4）领投人应采取诸如电话沟通、实地走访等方式代表所有投资人对项目进行投后管理。每个季度领投人应至少一次将其采集的投后管理信息在平台上向跟投人进行披露。领投人还应代表所有投资人出席股东会或董事会，以投资人的利益为优先，合理评估收益与风险，尽职勤勉的作出最优投资决策，尽最大努力维护投资人合法权益。</p>
+
+    <p class="info_con">第五条 跟投人的权利及义务<br/>
+        5.1跟投人可以享有如下权利：<br/>
+        （1）跟投人与领投人在融资项目公司中的股权收益计算方式相同，即“同股同收益权”；<br/>
+        （2）如果跟投人能够为融资项目提供稀缺的重大价值，在成功投资后，可以与融资人自行约定其他合作协议，但不得损害其他投资人的合法权益，并进行信息披露；<br/>
+        （3）跟投人具有双重知情权，跟投人可以通过平台要求融资人进行信息披露，同时，亦可以通过平台要求领投人对投后管理信息进行披露，具体的信息披露内容，详见《融资人信息披露规则》。<br/>
+        （4）必要时，跟投人可以自行对融资项目进行独立的尽职调查，但该调查费用由跟投人自行承担；<br/>
+        （5）跟投人对项目的信息披露和领投人的投资管理如存在疑虑可以通过平台发出质询；<br/>
+        （6）跟投人可以根据投资人规则，行使其股东或合伙人权利；<br/>
+        （7）跟投人可依法转让其在有限合伙企业中的份额，并承担相应的成本及费用，但不可要求融资人赎回，也不能转给融资项目的竞争方。<br/>
+        （8）跟投人在其认购后有三天的冷静期，冷静期内，跟投人可以随时放弃对该融资项目股权的认购。<br/>
+        5.2跟投人应当承担如下义务：<br/>
+        （1）跟投人应符合合格投资人要求，对投资风险有充分的认识；<br/>
+        （2）跟投人应按照本规则4.1条第（3）款的规定向领投人支付融资项目退出分成；<br/>
+        （3）跟投人不参与公司的重大决策，不进行投资管理。领投人退出时，跟投人应以同等条件一起退出；<br/>
+        （4）跟投人应该遵守投资文件及有限合伙协议中作为一方的所有权利和义务；<br/>
+        （5）跟投人应承诺配合领投人（或其关联方）在设立有限合伙企业、执行及退出融资项目时的相关法律行为，签署相关文件。<br/>
+        5.3 跟投人声明及承诺<br/>
+        （1）跟投人应声明并同意放弃其在融资项目中除已投资部分的股权收益权及知情权以外的其它股东权利。</p>
+
+    <p class="info_con">第六条 有领投人投资流程<br/>
+        6.1“预热阶段”：领投人选择自己感兴趣的项目，并与融资人深入沟通，确定领投意愿，并对项目进行尽职调查并出具尽调报告或领投理由。<br/>
+        6.2“项目上线”：帮助融资人完善商业计划书，确定估值、融资额、最低单笔投资额、投资者席位数和投资条款，通过平台向其它跟投人推荐项目，协助项目路演，协助确定投资意向书条款，帮助项目落实跟投。<br/>
+        6.3“私募股权成功”：私募股权成功后，领投人与跟投人将众筹资金转入平台委托的第三方机构的资金账户或托管账户。投资人与融资人根据项目认购结果签订投资协议。待融资人办理工商变更手续并经平台审核通过并满足交割条件后，该第三方机构根据相关方指令将相应款项转入有限合伙企业，再由该有限合伙企业转入融资项目公司。平台、融资人和投资人就本6.3条另有一致约定的从其规定。<br/>
+        6.4“投资后”：领投人代表投资人跟踪融资项目进展情况、参与公司重大决策，尽最大努力为项目提供有价值的帮助。<br/>
+        6.5“选择退出”：领投人应代表投资人选择合适的时机以合理公允的市场价格退出，但退出前，要书面告知全体跟投人。</p>
+
+    <p class="info_con">第七条 设立有限合伙企业式领投规则<br/>
+        7.1设立有限合伙企业式投资规则是指，领投人应接受跟投人的委托，协助跟投人共同成立有限合伙企业并以该有限合伙企业作为投资人在平台投资融资项目。由领投人或其指定关联方担任该有限合伙企业的普通合伙人，跟投人担任该有限合伙企业的有限合伙人。<br/>
+        7.2普通合伙人代表跟投人进行管理，跟投人应配合其中涉及的一切法律事项。如果因为跟投人不配合导致投资延迟或无法正常推进，领投人有权要求平台取消该跟投人的资格，并保留追偿损失的权利。</p>
+
+    <p class="info_con">第八条 股权认购规则<br/>
+        8.1私募股权融资完成后，融资项目公司为股份有限公司的，其股东人数累计不得超过200人；融资项目公司为有限责任公司的，其股东人数不得超过50人；融资项目公司为有限合伙企业的，其合伙人的人数不得超过50人。法律法规另有规定的，从其规定。<br/>
+        8.2“项目上线后”的认购期原则上不超过90天。<br/>
+        8.3认购期届满时，如果认购额低于本次募集金额的80%，则本次私募股权失败。<br/>
+        8.4私募股权成功需满足如下任一条件：<br/>
+        （1）冷静期届满时，认购额等于或高于融资金额，本轮融资成功。<br/>
+        （2）认购期届满时，如果认购额超过本次募集资金的80% 但不足100%时，若领投人愿意补足，则该轮融资成功。<br/>
+        8.5募集失败的融资项目，融资人可以再对项目进行完善后，向平台请求重新募集。</p>
+
+    <p class="info_con">第九条 《投资意向书》与《投资协议》<br/>
+        9.1融资项目在平台上线前，融资人应与领投人签订《投资意向书》。<br/>
+        9.2当融资人自愿在平台上提交融资项目上线后，融资人及领投人应向其他跟投人披露《投资意向书》的主要内容。<br/>
+        9.3融资项目私募股权成功且投资人向第三方托管账户缴付认购款项后，跟投人与领投人或其指定关联方签署有限合伙协议成立有限合伙企业，由成立的有限合伙企业与融资人签订正式的《投资协议》。《投资协议》的内容应根据相应的《投资意向书》拟定。</p>
+
+    <p class="info_con">第十条 投资保证金及违约情形<br/>
+        10.1投资人应当在认购融资项目股权时按照平台的要求缴纳保证金，保证金的缴纳金额为投资人认购金额除以平台为该投资人匹配的信用倍率。<br/>
+        10.2投资人因参与私募股权项目所缴纳的保证金，通过平台冻结在京东小金库内。<br/>
+        10.3当众筹成功后，京东小金库内的保证金将解冻并退回给投资人。<br/>
+        10.4投资人在冷静期内放弃认购股权的，保证金将退还给该投资人。<br/>
+        10.5冷静期届满后，跟投人放弃认购股权的，视为该跟投人违约。该跟投人认购的投资意向金的0.5%将作为违约金从保证金内扣除。<br/>
+        10.6若投资人并不存在在冷静期内放弃认购等违约行为，但最终众筹失败的，保证金将退还给该投资人。</p>
+    10.7领投人在冷静期结束后决定放弃参与本轮投资的，融资项目宣告失败，融资方可选择重新进入路演环节或放弃本轮融资，领投人对全体跟投人及融资人承担违约责任。京东保留采取对违约领投人收取违约金，降低信用倍率等一切措施的权利。若领投人在连续十二个月内两次违约，则取消该自然人或机构的领投人资格，除非领投人可以提出强有力的证明其违约行为是为了保护跟投人的利益。若领投人的违约行为对平台声誉造成不良影响，京东和平台保留对领投人的一切追索权。</p>
+
+    <p class="info_con">第十一条 投资人承诺<br/>
+        11.1投资人承诺并保证其提供的所有资料或发布的所有信息是真实、准确、完整的，符合中国各项法律、法规及规范性文件以及本规则，不存在虚假、误导性陈述或重大遗漏，并承诺及时对已提供的资料或发布的信息进行更新、维护和管理。<br/>
+        11.2投资人承诺并保证依据自身判断对融资项目做出独立的投资决定、审慎发出投资意向；投资人承诺其所发出的投资意向为其真实的、不可撤销的意思表示，保证依据其发出的投资意向履行合同义务。投资人保证依法、依约完成其通过使用平台提供的服务而达成的各项交易。<br/>
+        11.3投资人承诺并保证其已充分了解并知晓投资项目的风险（具体风险参见《风险提示书》），其将合理评估自身的投资认知能力与风险承受能力，理性选择合适的投资方式和投资项目，且该投资行为造成的后果和风险由其自行承担。<br/>
+        11.4投资人承诺并保证若其违反上述承诺和保证而给京东或平台造成损失的，投资人同意对京东或平台因此而遭受的损失承担相应的赔偿责任。</p>
+
+    <p class="info_con">第十二条 附则<br/>
+        12.1京东或平台不对融资人及投资人在平台上发布的信息的真实性、准确性、完整性、合法性、及时性或有效性，投资人的投资收益，投资人交易的达成等事项作任何性质的担保或保证；同时京东或平台不对投资人的投资损失承担任何责任。除另有特殊说明外，京东或平台不以口头、书面或其他任何形式为投资人提供意见或信息。<br/>
+        12.2本规则服务期限自本规则生效之日起至投资人会员资格自愿或被终止之日止。<br/>
+        12.3本规则自在平台上公告起生效。<br/>
+        12.4本规则受中华人民共和国现行有效的法律、法规及规范性文件的约束。在本规则执行过程中，若出现与本规则有关的争议，各方应尽量本着友好协商的精神予以协商解决；若各方于三十日内协商不能解决或任意一方不同意协商解决的，则任何一方有权将争议提交北京朝阳区人民法院通过诉讼解决。</p>
+    <p class="back_btn" data-event-agent="touchend|back">关闭</p>
+
+</div>
+<div class="form_submit">
+    <div class="back"><img src="/images/h_frist/back.png" data-event-agent="touchend|back" border="0" alt=""></div>
+    <p class="info_title">风险提示书</p>
+
+    <p class="info_con">尊敬的京东私募股权融资平台用户：</p>
+    <p class="info_con">由于认购私募私募股权产品作为一种直接投资方式，京东私募股权融资平台（“平台”）及其项目发起方或领投人等，均无法保证您的本金及收益，在投资过程中可能会面临多种风险因素。因此，根据有关法律法规规定的要求，在您选择参与私募私募股权项目前，请仔细阅读以下重要内容。</p>
+    <p class="info_con">私募私募股权项目具有较高的风险，与债权类理财项目具有明显区别。平台提示您：在参与私募私募股权投资项目前，投资者应确保自己符合相关法律法规规定的合格投资人的标准，并完全明白该项投资的性质和所涉及的风险，详细了解和审慎评估私募股权项目的资金投资计划、风险评估及预期收益等基本情况，在审慎考虑后决定投资与自身风险承受能力和资产管理需求匹配的项目股权。在投资项目后，投资者应随时关注该项目的信息披露情况，及时获取相关信息。</p>
+
+    <p class="info_con">参与私募私募股权项目的投资人应自行承担下述类型的风险：<br/>
+        1.政策风险：私募私募股权项目是依照当前的法律法规、相关监管规定和政策设计的。如国家宏观政策以及市场法律法规、相关监管规定发生变化，可能影响被投项目的受理、投资运作、清算等业务的正常进行，并导致项目收益降低甚至本金损失，也可能导致项目违反国家法律、法规或者其他合同的有关规定，进而导致项目被宣告无效、撤销、解除或提前终止等。<br/>
+        2.信用风险：不排除在被投项目的经营过程中，被投项目的经营管理人存在信用风险或道德风险的可能性，或所投资的其它资产未达到预期收益，则投资人可能面临收益损失、本金部分损失、甚至本金全部损失的风险。<br/>
+        3.流动性风险：除另有约定外，投资者无提前终止权或提前赎回股权的权利，可能导致投资者需要资金时不能随时变现，并可能使投资者丧失其他投资机会导致实际收益率为负的风险。<br/>
+        4.市场风险：由于我国及周边国家、地区宏观经济环境和周边市场的变化，使任何市场主体的经营均处于剧烈波动中，从而导致被投企业的价值不同程度的贬损。<br/>
+        5.管理风险：受被投企业管理人经验、技能、判断力、执行力等方面的限制，可能对项目的运作及管理造成一定影响，并因此影响投资人收益，甚至造成本金损失。<br/>
+        6.信息传递风险：被投项目管理人应按照《融资人信息披露规则》中有关“信息披露”的约定，履行信息披露的义务。投资人应根据“信息披露”的约定及时进行查询。如果投资人未及时查询，或由于通讯故障、系统故障以及其他不可抗力等因素的影响使得投资人无法及时了解项目信息，并由此影响投资人的投资决策，因此而产生的责任和风险由投资人自行承担。另外，投资人预留在平台有效联系方式发生变更，应及时通知平台，若被投项目管理人无法及时联系到投资人，并可能会由此影响投资人的投资决策，由此而产生的责任和风险由投资人自行承担。<br/>
+        7.认购风险：如出现市场剧烈波动、相关法规政策变化或其他可能影响项目正常运作的情况，项目发起人有权终止项目并退回投资款，投资人将无法在约定募集期内认购该项目股权。因此造成的任何损失由投资人自行承担。<br/>
+        8.技术风险：由于平台的业务是通过电子通讯技术和电脑技术来实现的，这些技术存在被网络黑客和计算机病毒攻击的可能，平台将尽力保障平台正常运行，但您将承担由您的个人电脑终端故障或平台以外因素导致系统故障而造成的损失。<br/>
+        9.不可抗力及意外事件风险：包括但不限于自然灾害、金融市场危机、战争或国家政策变化等不能预见、不能避免、不能克服的不可抗力事件或银行系统故障、通讯故障、投资市场停止交易等意外事件的发生，可能对项目的成立、投资运作、资金返还、信息披露、公告通知等造成影响，甚至可能导致项目收益降低乃至本金损失。对于由于不可抗力及意外事件风险导致的任何损失，投资人须自行承担，平台对此不承担任何责任。<br/>
+        10.其他平台无法预见、无法避免或无法控制的风险。<br/>
+
+    <p class="info_con">本风险提示书并不保证揭示您使用平台在线投资服务进行投资所面临的全部风险，您参与此项业务前，应全面了解相关法律法规、认真阅读平台的《用户服务协议》及其他规则，并根据您自身的投资目的、投资期限、投资经验、资产状况等判断是否具备相应的投资风险承受能力。</p>
+    <p class="info_con">您承诺并保证已认真阅读本投资风险提示书，理解以上所揭示的所有风险，并愿意承担投资风险给您造成的损失。</p>
+    <p class="back_btn"  data-event-agent="touchend|back">关闭</p>
+</div>
+<div class="cover01"></div>
+<script type="text/javascript" src="/js/common/util.js"></script>
+<script type="text/javascript" src="/js/common/upload.v1.1.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/zepto.js"></script>
+<script type="text/javascript" src="/js/investor.js"></script>
+<script type="text/javascript">
+;(function() {
+globalZJdComTask.push(function() {
+    // 验证代码
+    var eln = sn(".tip");
+    var cover = sn.$(".cover01");
+    var tips = sn.$(".form_submit");
+    var validateCb = {
+        success: function(val) {
+            if(!personDetail()){
+                alert("很抱歉，您不具备申请合格投资人的条件！")
+                return;
+            }
+            //alert($("#investorIntroduce").val());
+            if(!checkIsRead()){
+                alert("请阅读并同意签署《用户服务协议》《投资人规则》《风险提示书》");
+                return;
+            }
+            $("#investorSubmit").submit();
+            // 验证成功
+        },
+        error: function(msg) {
+            // 验证失败 hash.msg
+            eln.html(msg)
+            eln.css("remove", "show");
+            eln.css("add", "show");
+        }
+    }
+
+    var vldConf = {
+        "investorRealname": ["真实姓名", true, [1, 60],null, '真实姓名输入不正确'], //   /^[\u4e00-\u9fa5_a-zA-Z0-9]+$/
+        "investorPhone": ["手机号码", true, null, /^1[3|4|5|7|8][0-9]\d{8}$/, '手机号码输入不正确'],
+        "investorForeign": ["是否外籍", true, [1, 10],/^.{1,10}$/i, '是否外籍输入不正确'],
+    //  "investorImg": ["名片", true, [1, 140],  /^.{1,140}$/i, '名片必须上传'],
+        "investorImg": ["名片", false,null,null],
+        "investorType": ["个人/单位", true, [1, 10], /^.{1,10}$/i, '个人/单位输入不正确'],
+        "investorPeCase": ["投资人", true, [1, 10], /^.{1,10}$/i, '投资人输入不正确'],
+        "investorCom": ["所在公司", false, null, null],
+        "investorTitle": ["职位/头衔", false, null, null],
+        "investorIntroduce": ["自我描述", true, [1, 160],null, '自我描述输入不正确，请检查'] ///  /^.{1,160}$/i
+        //"描述": ["key 字符串", "名称", "是否检查为空 boolean true false" , "长度限定 数组 如 [1,100] 空 null", "正则 空 null", "正则错误信息"]
+    }
+    //事件代理
+    globalEventAgent["touchend"]["money"] = function(e) {
+        eln.css("remove", "show");
+    }
+    globalEventAgent["touchend"]["agrees"] = function(e) {
+        var index = this.getAttribute("data-agrees");
+        go2top();
+        sn.css(tips[index]).add("show");
+        tipCurr = index;
+        sn.css(cover[0]).add("show");
+    }
+    globalEventAgent["touchend"]["back"] = function(e) {
+        sn.css(tips[tipCurr]).remove("show");
+        sn.css(cover[0]).remove("show");
+    }
+    globalEventAgent["touchstart"]["default"] = function(e) {}
+    globalEventAgent["touchend"]["select"] = function(e) {
+        var el = this;
+        if (el.nodeName !== "IMG") {
+            if (!el.previousElementSibling) {
+                return;
+            } else {
+                el = el.previousElementSibling;
+            }
+        }
+        var dataType = el.getAttribute("data-type");
+        if (dataType && dataType == "radio") {
+            var dataName = el.getAttribute("data-name");
+            sn(".select[data-name=" + dataName + "]").css("remove", "selected");
+            sn.css(el).add("selected");         
+        } else {
+            sn.css(el).toggle("selected");
+        }
+        if (sn.css(el)._contains("selected")) {
+            // 对应值
+            var name = el.getAttribute("data-name");
+            var val = el.getAttribute("data-value");
+            var els = sn.$("input[name=" + name + "]");
+            els.length !== 0 && (els[0].value = val);
+            // property 个人和单位单独处理
+            (name === "investorType") && perOrCom(val);
+        }
+        var name = el.getAttribute("data-name");
+        (name === "checkbox_id") && checkIsRead();
+    }
+    globalEventAgent["touchend"]["next"] = function(e) {
+        var val = $("#investorIntroduceTextarea").val();
+        $("#investorIntroduce").val(val);
+        var flagCom = $("#investorType").val();
+        if (flagCom==0) {
+            vldConf.investorCom = ["所在公司", true, [1,40], null,"所在公司输入不正确"];
+        } else{
+            vldConf.investorCom = ["所在公司", false, null, null]
+        }
+        var validate =  validate_middleware.validate(vldConf);
+
+        for (var key in vldConf) {
+            var els = sn.$("input[name=" + key + "]");
+            if (els.length === 0) {
+                continue;
+            }
+            var el = els[0];
+            var val = el.value;
+            var hash = validate[key](val);
+            if (!hash.status) {
+                // 遇到错误就返回
+                var msg = hash.msg;
+                return validateCb.error(msg);;
+            }
+        }
+        validateCb.success();
+    }
+    // form验证
+    // 上传组件
+    zJdComUpload(document.getElementById("upload"), {
+            _switch : "html5", //上传方式选择 html5 flash normal
+            datatype : "json", //返回值类型
+            begin: function(ele){
+                var word = ele.querySelectorAll('.upfile_c');
+                var link = word[0].querySelectorAll('.upfile_word')[0];
+                if (!link.getAttribute('_init')) {
+                    link.setAttribute("_init", link.innerHTML);
+                    link.innerHTML = '上传中..';
+                }
+                sn.css(word[0]).add('upfiling');
+                ele.querySelectorAll('input[type=file]')[0].style.display = "none";
+            },
+            end: function(ele){
+                var word = ele.querySelectorAll('.upfile_c');
+                var link = word[0].querySelectorAll('.upfile_word')[0];
+                link.innerHTML = link.getAttribute('_init');
+                sn.css(word[0]).remove('upfiling');
+                ele.querySelectorAll('input[type=file]')[0].style.display = "block";
+            },
+            onsuccess : function(ele, data){ //上传成功回调
+                if(data.result){
+                    $("#cardImg").attr("src",data.url);
+                    $("#addImg").val(data.url);
+                }else{
+                    alert("上传失败请重试！")
+                }
+                console.log('data, ele', data, ele);
+            },
+            onerror : function(e){ //产生错误回调
+                console.log('error', e);
+            },
+            progress : function(per, ele){ //上传进度条回调, 参数 per 代表百分比
+                console.log("progress", per, ele);
+            },
+            upload_url : "/upload_pic.action", //上传地址
+            //文件类型限制
+            type : "'jpeg|jpg|png'", //允许上传类型
+            size : 5 * 1024 * 1024, // 5M 单个文件大小限制
+            post_params: {"t": Math.random()} //post参数
+    });
+    function perOrCom(val) {
+        var els = sn(".person");
+        if (val === "100") {
+            els.css("add", "show");
+            $("#title_input").val("");
+            $("#com_input").val("");
+            $("#investor_title").show();
+            $("#com_span").html("&nbsp;");
+        } else {
+            $("#com_input").val("");
+            $("#investor_title").hide();
+            $("#com_span").html("*");
+            els.css("remove", "show");
+        }
+    }
+    function checkIsRead(){
+        var flag = $("#checkbox_id").hasClass("selected");
+        return flag;
+    }
+    function personDetail(){
+        var company = $("#investorType").val();
+        var value = $("#investorPeCase").val();
+        if(company ==100 && value == 400){
+            return false;
+        }
+        return true;
+    }
+
+});
+    function alert(msg){
+        var cover = $(".cover_fix");
+        var alert = $(".alert");
+        var queding = $("#queding");
+        $("#content").text(msg)
+        $(cover).show('fast')
+        alert.css("display","block");
+        queding.off("click");
+        queding.click(function(){
+            cover.css("display","none");
+            alert.css("display","none");
+        })
+    }
+    function go2top() {
+        document.documentElement && (document.documentElement.scrollTop = 0);
+        document.body && (document.body.scrollTop = 0);
+    }
+})("认证页面");
+
+</script>
+<script type="text/javascript" src="/js/jquery-1.11.2.min.js"></script>
+<!--<script type="text/javascript" src="http://t.jr.jd.com/js/clickGqzc.js"></script>
+<script type="text/javascript">
+    var jaq = jaq || [];
+    jaq.push(['account', 'UA-J2011-12']);
+    jaq.push(['domain', 'jr.jd.com']);
+    (function() {
+        var ja = document.createElement('script'); ja.type = 'text/javascript'; ja.async = true;
+        ja.src = ('https:' == document.location.protocol ? 'https://cscssl' : 'http://csc') + '.jd.com/joya.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ja, s);
+    })();
+</script>
+<script type="text/javascript">
+    var jaq = jaq || [];
+    jaq.push(['account','UA-J2011-12']);
+    jaq.push(['domain','jr.jd.com']);
+    (function() {
+        var ja = document.createElement('script'); ja.type = 'text/javascript'; ja.async = true;
+        ja.src = ('https:' == document.location.protocol ? 'https://click' : 'http://click') + '.jr.jd.com/wl.dev.js';
+        var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ja,s);
+    })();
+</script>
+-->
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui" />
+    <meta name="description" content="京东东家是一个致力于为创业者提供融资机会，让投资人获得优质项目的互联网金融平台! "/>
+    <meta name="Keywords" content="京东理财,网上理财,京东众筹,京东东家,私募股权,风险投资,创业,融资,股权,投资,理财,投资人,风投机构,京东白条,京东理财,京东保险,基金理财,金融服务,马上有钱,理财规划,个人理财,家庭理财,第三方理财,投资理财"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="format-detection" content="telephone=no">
+    <title>京东东家 京东金融互联网理财综合服务平台！</title>
+    <link rel="icon" href="http://www.jd.com/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/person_center/person_center.css">
+    <link rel="stylesheet" type="text/css" href="/css/my_form.css">
+</head>
+<body>
+<style>
+    .load_ing{height: 40px;background: #ccc;text-align: center;font-size:16px;color:#999;line-height: 40px;}
+    .index_loadmore{
+        height: 40px;
+        /* background: #ccc;*/
+        text-align: center;
+        font-size:16px;
+        color:#999;
+        line-height: 40px;
+        width: 100%;
+    }
+</style>
+<section class="wapper">
+    <a href="javaScript:window.location.href='/';" class="icon go_home">返回首页</a>
+    <!-- 头像 -->
+    <div class="head">
+        <div class="main">
+            <a href="javascript:void(0);"><img src="http://i.jd.com/commons/img/no-img_mid_.jpg" class="head"></a>
+            <!-- 投资人和V图标 -->
+            <br/>
+                                    <!-- /投资人和V图标 -->
+        </div>
+        <div class="name">jd_1306669542</div>
+        <div class="dial">上午好，入主众筹之家，点石成金。</div>
+    </div>
+    <!-- /头像 -->
+    <!-- 页卡 -->
+    <div class="clearfix rel">
+        <ul class="card">
+            <li class="curr" index="1" clstag="pageclick|keycount|gqm_myCrowdfunding_201509074|1"><img src="/images/empty.gif" class="icon icon1">我投资的</li>
+            <li index="2" clstag="pageclick|keycount|gqm_myCrowdfunding_201509074|2"><img src="/images/empty.gif" class="icon icon2">我发起的</li>
+            <li index="3" clstag="pageclick|keycount|gqm_myCrowdfunding_201509074|3"><img src="/images/empty.gif" class="icon icon3">我关注的</li>
+        </ul>
+        <div class="cardcon">
+            <section class="page" visible="true" index="1">
+                <!-- 无数据 -->
+                <div class="space" style="text-align: center;">
+                    您还没有投资任何项目！</br>机遇不常有。成功更需快人一步！快去首页寻找好的项目。
+                </div>
+                <div class="btn"><a href="/">去首页</a></div>
+                <input type="hidden" value="1" name="pageNo" id="myInverstmentPageNo">
+                <input type="hidden" value="1" name="pageCount" id="myInverstmentPageCount">
+            </section>
+            <section class="page" index="2">
+                <div class='index_loadmore' ref='loading'><img src='/images/loadmore.gif'></div>
+            </section>
+            <section class="page" index="3">
+                <div class='index_loadmore' ref='loading'><img src='/images/loadmore.gif'></div>
+            </section>
+
+        </div>
+    </div>
+    <!-- /页卡 -->
+</section>
+
+<div class="cover_fix" style="display:none;"></div>
+<div class="alert" style="display:none;">
+    <div class="alert_box">
+        <div class="alert_title"><em class="local_icon"></em></div>
+        <div class="alert_con">
+            <p id="content" class="small">项目还在审核中，请耐心等待。</p>
+        </div>
+        <div id="btnB" class="btn"><a href="javascript:void(0);">知道了</a></div>
+    </div>
+</div>
+<!-- 返回顶部 -->
+<div class="go2top">
+    <img src="/images/empty.gif" class="icon rock" data-event-agent="touchend|rock">
+</div>
+<!-- /返回顶部 -->
+
+<script src="/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/js/common/util.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/userCenter/userCenter.js"></script>
+<script type="text/javascript">
+    var myInverstmentLoading = false;
+    var myInverstmentPageCount = parseInt($("#myInverstmentPageCount").val());
+    var myInverstmentPageNo = 2;
+
+    var myConcerLoading = false;
+    var myConcerPageCount = 0;
+    var myConcerPageNo = 1;
+    var myConcerNoDate = false;
+
+    var mySponsorsLoading = false;
+    var mySponsorsPageCount = 0;
+    var mySponsorsPageNo = 1;
+    var mySponsorsNoDate = false;
+    ;(function() {
+
+        globalZJdComTask.push(run);
+
+//执行
+        function run() {
+            sn.snload({load_class:"snload"});
+            progress();
+
+            // 页卡
+            var currCard = 0;
+            // touchend 开关
+            var currCardSwt = false;
+            sn(".card li").bind("touchend", function(e) {
+                // 停用默认事件和冒泡
+                e.stopPropagation();
+                e.preventDefault();
+                var el = this.parentNode;
+                var index = sn.index(this) - 0;
+                var clear = function() {
+                    sn(".cardcon").unbind("touchstart,touchmove,touchend");
+                    currCardSwt = false;
+                }
+                if (index === currCard || currCardSwt) {
+                    window.___temp_clear = setTimeout(function (){
+                        clear();
+                    }, 300);
+                    return;
+                }
+                clearTimeout(window.___temp_clear);
+                currCardSwt = true;
+                sn.css(sn.$(".card li")[currCard]).remove("curr");
+                sn.css(this).add("curr");
+                // 解决动画时显示错误
+                // el.style.overflow = "hidden";
+                // 内容转换
+                // 解决转换时胡乱按产生左右滚动的问题
+                sn(".cardcon").bind("touchstart,touchmove,touchend", function(e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                });
+                globalDomEvtSwt = true;
+                sn.transition(
+                        currCard,
+                        index,
+                        (index > currCard) ? 'next' : 'pre',
+                        "fb",
+                        sn.$(".cardcon .page"),
+                        {
+                            begin: function(){},
+                            end: function(){
+                                currCard = index;
+                                currCardSwt = false;
+                                sn(".cardcon").unbind("touchstart,touchmove,touchend");
+                                // el.style.overflow = "visible";
+                                globalDomEvtSwt = false;
+                            }
+                        }
+                );
+
+            });
+        }
+        // [TODO] for test
+        $(window).scroll(function()
+        {
+            if (myInverstmentLoading == false && myInverstmentPageCount > 1 && myInverstmentPageCount >= myInverstmentPageNo && $("li[class='curr']").attr("index") == 1)
+            {
+                if($(document).height() - $(this).scrollTop() - $(this).height()<150)
+                {
+
+                    loadingMyInverstmentProject();
+                }
+            }
+            if (mySponsorsLoading == false && mySponsorsPageCount > 1 && mySponsorsPageCount >= mySponsorsPageNo && $("li[class='curr']").attr("index") == 2)
+            {
+                if($(document).height() - $(this).scrollTop() - $(this).height()<150)
+                {
+                    loadingMySponsorsProject();
+                }
+            }
+            if (myConcerLoading == false && myConcerPageCount > 1 && myConcerPageCount >= myConcerPageNo && $("li[class='curr']").attr("index") == 3)
+            {
+                if($(document).height() - $(this).scrollTop() - $(this).height()<150)
+                {
+                    loadingMyConcerProject();
+                }
+            }
+        });
+
+        $(".card li").bind("touchend", function(e) {
+            var _index = $(this).attr("index");
+            if(_index == 2 && mySponsorsPageCount == 0 && !mySponsorsNoDate ){
+                loadingMySponsorsProject();
+            }
+            if(_index == 3 && myConcerPageCount == 0 && !myConcerNoDate){
+                loadingMyConcerProject();
+            }
+        });
+    })("个人中心");
+
+    function loadingMyInverstmentProject() {
+        $.ajax({
+            url: '/funding/myInvestmentProjectList.action?pageNo='+myInverstmentPageNo,
+            type: 'post',
+            asynz:false,
+            dataType: 'json',
+            success: function (data) {
+                if(data.error!=null && data.error!=undefined && data.error=="NotLogin"){
+                    window.location.href = "http://m.dj.jd.com/login.html?backurl=http://m.dj.jd.com/funding/myCrowdfunding.html";
+                }
+                $("div[ref='loading']").remove();
+                myInverstmentProjectJson(data.investmentProjectList);
+
+                progress();
+                if(myInverstmentPageCount == myInverstmentPageNo && myInverstmentPageCount!=0){
+                    $("div[ref='loading']").remove();
+                    $("section[index='1']").append("<div class='index_loadmore'>已经是最后一条</div>");
+                    myInverstmentPageNo ++;
+                    return false;
+                }
+                myInverstmentPageNo ++;
+                myInverstmentLoading = false;
+                sn.sn2load ();
+            },
+            beforeSend:function()
+            {
+                myInverstmentLoading = true;
+               // $("section[index='1']").append("<div class='index_loadmore' ref='loading'><img src='/images/loadmore.gif'></div>");
+                // $("#errloading").hide();
+            },
+            error: function (error) {
+                myInverstmentLoading = false;
+                // $("#errloading").show();;
+            }
+        });
+    }
+    function loadingMySponsorsProject() {
+        $.ajax({
+            // url: '/funding/myLaunchProjectList.action?pageNo='+mySponsorsPageNo,
+            url: '/js/ajax/myLaunchProjectList.js',
+            type: 'post',
+            asynz:false,
+            dataType: 'json',
+            success: function (data) {
+                if(data.error!=null && data.error!=undefined && data.error=="NotLogin"){
+                    window.location.href = "http://m.dj.jd.com/login.html?backurl=http://m.dj.jd.com/funding/myCrowdfunding.html";
+                }
+                $("div[ref='loading']").remove();
+                mySponsorsProjectJson(data.sponsorsProjectList);
+                progress();
+                sn.sn2load ();
+                mySponsorsPageCount = parseInt(data.pageInfo.pageCount);
+                if(mySponsorsPageCount == mySponsorsPageNo && mySponsorsPageCount!=0){
+                    $("div[ref='loading']").remove();
+                    $("section[index='2']").append("<div class='index_loadmore'>已经是最后一条</div>");
+                    mySponsorsPageNo ++;
+                    return false;
+                }
+                if(mySponsorsPageCount == 0){
+                    mySponsorsNoDate =true;
+                }
+                mySponsorsPageNo ++;
+                mySponsorsLoading = false;
+            },
+            beforeSend:function()
+            {
+                mySponsorsLoading = true;
+              //  $("section[index='2']").append("<div class='index_loadmore' ref='loading'><img src='/images/loadmore.gif'></div>");
+                //  $("#errloading").hide();
+            },
+            error: function (error) {
+                mySponsorsLoading = false;
+                //  $("#errloading").show();;
+            }
+        });
+    }
+    function loadingMyConcerProject() {
+        $.ajax({
+            // url: '/funding/myConcernProject.action?pageNo='+myConcerPageNo,
+            url: '/js/ajax/myConcernProject.js',
+            type: 'post',
+            asynz:false,
+            dataType: 'json',
+            success: function (data) {
+                if(data.error!=null && data.error!=undefined && data.error=="NotLogin"){
+                    window.location.href = "http://m.dj.jd.com/login.html?backurl=http://m.dj.jd.com/funding/myCrowdfunding.html";
+                }
+                $("div[ref='loading']").remove();
+                var totalRec = parseInt(data.pageInfo.totalCount);
+                myConcerProjectJson(data.projectList,totalRec);
+                progress();
+                sn.sn2load ();
+                myConcerPageCount =  parseInt(data.pageInfo.pageCount);
+                if(myConcerPageCount == myConcerPageNo && totalRec!=0){
+                    $("div[ref='loading']").remove();
+                    $("section[index='3']").append("<div class='index_loadmore' >已经是最后一条</div>");
+                    myConcerPageNo ++;
+                    return false;
+                }
+                if(myConcerPageCount == 0){
+                    myConcerNoDate =true;
+                }
+                myConcerPageNo ++;
+                myConcerLoading = false;
+            },
+            beforeSend:function()
+            {
+                myConcerLoading = true;
+                //$("section[index='3']").append("<div class='index_loadmore' ref='loading'><img src='/images/loadmore.gif'></div>");
+                //  $("#errloading").hide();
+            },
+            error: function (error) {
+                myConcerLoading = false;
+                //  $("#errloading").show();;
+            }
+        });
+    }
+    function progress(){
+        sn(".lable[data-percent]").each(function(el, index) {
+            var percent = el.getAttribute('data-percent');
+            var initP = percent;
+            if (!jstools.isNumeric(percent)) {
+                return;
+            }
+            percent = percent - 0;
+            percent = percent < 0 ? 0 : (percent > 100 ? 100 : percent);
+            percent = Math.floor(( (el.parentNode.offsetWidth - el.offsetWidth) / el.parentNode.offsetWidth) * percent);
+            setTimeout(function() {
+                var __ptg = Math.floor((el.parentNode.offsetWidth*percent/100 + el.offsetWidth) * 100 / el.parentNode.offsetWidth);
+                __ptg = __ptg + 0.5;
+                sn.$(".status .line", el.parentNode)[0].style.width = (__ptg > 100 ? 100 : (initP >= 99 ? 100 : __ptg)) + "%";
+                el.style.left = percent + "%";
+
+            }, 0)
+        });
+    }
+
+</script>
+<script type="text/javascript" src="/js/jquery-1.11.2.min.js"></script>
+<!--
+<script type="text/javascript" src="http://t.jr.jd.com/js/clickGqzc.js"></script>
+<script type="text/javascript">
+    var jaq = jaq || [];
+    jaq.push(['account', 'UA-J2011-12']);
+    jaq.push(['domain', 'jr.jd.com']);
+    (function() {
+        var ja = document.createElement('script'); ja.type = 'text/javascript'; ja.async = true;
+        ja.src = ('https:' == document.location.protocol ? 'https://cscssl' : 'http://csc') + '.jd.com/joya.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ja, s);
+    })();
+</script>
+<script type="text/javascript">
+    var jaq = jaq || [];
+    jaq.push(['account','UA-J2011-12']);
+    jaq.push(['domain','jr.jd.com']);
+    (function() {
+        var ja = document.createElement('script'); ja.type = 'text/javascript'; ja.async = true;
+        ja.src = ('https:' == document.location.protocol ? 'https://click' : 'http://click') + '.jr.jd.com/wl.dev.js';
+        var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ja,s);
+    })();
+</script>-->
+</body>
+</html>
