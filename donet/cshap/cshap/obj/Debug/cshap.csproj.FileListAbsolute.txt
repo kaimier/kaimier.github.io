@@ -1,0 +1,6 @@
+G:\website\kaimier.github.io\donet\cshap\cshap\bin\Debug\cshap.exe.config
+G:\website\kaimier.github.io\donet\cshap\cshap\obj\Debug\cshap.csprojResolveAssemblyReference.cache
+G:\website\kaimier.github.io\donet\cshap\cshap\bin\Debug\cshap.exe
+G:\website\kaimier.github.io\donet\cshap\cshap\bin\Debug\cshap.pdb
+G:\website\kaimier.github.io\donet\cshap\cshap\obj\Debug\cshap.exe
+G:\website\kaimier.github.io\donet\cshap\cshap\obj\Debug\cshap.pdb
