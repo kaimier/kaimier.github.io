@@ -10,7 +10,7 @@ $sql=<<<EOF
 		username VARCHAR(20) NOT NULL,
 		password CHAR(20) NOT NULL,
 		age TINYINT UNSIGNED DEFAULT 18
-	)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 EOF;
 $res=$mysqli->query($sql);
 var_dump($res);
