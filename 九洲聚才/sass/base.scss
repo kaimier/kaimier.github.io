@@ -67,7 +67,7 @@ body,a{font-size: 12px; color: #585858;}
 	}
 	
 }
-.dl_three{ border: 1px #d7d6d6 solid; width: 353px; height: 325px; font-size: 14px; color: #606060;
+.dl_three{ border: 1px #d7d6d6 solid; width: 353px; height: 325px; font-size: 14px; color: #606060; margin-top: 20px; display: inline;
 	float: left; margin-left: 16px; background: #fff;
  dt,dd{ padding:0 12px; }
  dt{text-align: center; height: 90px; line-height: 90px; overflow: hidden; font-size:18px; color: #000;}
@@ -78,6 +78,134 @@ body,a{font-size: 12px; color: #585858;}
 .dl_three_3{ background: #fff url(../img/dl3.jpg) center bottom no-repeat;}
 
 .bg2{
-	height: 538px; background: url(../img/bg2.jpg) center top no-repeat; margin-top: 37px;
-	.dl_three{margin-top: 124px;}
+	height: 538px; background:url(../img/bg2.jpg) center top no-repeat; margin-top: 37px;
+	.dl_three{margin-top: 124px; 
+	dd{ padding: 0 20px; line-height: 30px; height: 150px; overflow: hidden;
+		a{ display: inline-block; width: 180px; height: 44px; background:#ff9600; line-height: 44px; text-align: center; color: #fff; margin: 0 auto;  font-size: 18px;
+			&:hover{ background:#e48a09;}
+		}
+	}
+	dd.dl_btn{ text-align: center; margin-top: 20px; height: 44px;}
+	}
+}
+.dl_four{
+	float: left;  display: inline; border: 1px #d7d6d6 solid; width: 262px; margin: 10px 0 0 15px;
+	dt{
+		width: 262px; height: 43px; line-height: 43px; overflow: hidden;  text-align: center;background:url(../img/dlfourT.jpg) center top no-repeat; font-size: 18px; color: #fff;
+	}
+}
+.box_four_two{
+	margin-top: 20px;
+	.dl_four{ border-color:#fff; margin-top: 15px;
+		dt{
+			height: 247px; text-align: center; background:none; 
+		}
+		dd{ color: #787878; line-height: 24px; padding: 0 24px; height: 120px; overflow: hidden; margin-top: 15px;
+			 b{ font-size: 16px; color:#444; font-weight: normal;}
+			 span{font-size: 14px; }
+
+		}
+	}
+}
+.minbanner{
+	margin-top: 50px;
+}
+.newsArea{
+	.news_mainBox{ margin-top: 48px;
+		float: left; width: 742px; height: 444px; overflow: hidden;
+		.news_tabBtn{ height: 38px; border-bottom: 1px #dcdcdc solid;
+			a{ float: left; display: inline-block; width: 114px; background:#fff; color: #141414; height: 38px; line-height: 38px; text-align: center; font-size: 18px;
+				&:hover,&.active{
+					background:#0e76cb; color: #fff;
+				}
+			}
+		}
+		.news_tabBox{
+			padding: 0 16px; margin-top: 21px; display: none;
+			.news_first{
+				height: 190px; overflow: hidden;
+				.img{float: left; margin-right: 30px;}
+				.news_tabBox_t{ display:  block; height: 30px; line-height: 30px;font-size: 16px; color: #333; overflow: hidden;
+					&:hover{ text-decoration: underline;}
+				}
+				.txt{ line-height: 30px; color: #5c5c5c; height: 120px; overflow: hidden; margin-top: 18px;}
+				.more{ text-align: right;  margin-top: 5px;
+					a{color: #2c77b8;}
+				}
+			}
+		}
+		.news_link{
+			margin-top: 15px;
+			li{ height: 36px; line-height: 36px; width: 334px; float: left; text-indent: 10px; background:url(../img/point.jpg) 0px center no-repeat; margin-left: 40px; overflow: hidden; display: inline;
+				.data{ float: right;}
+				.title{ display: inline-block; float: left; width: 200px; overflow: hidden;
+					&:hover{ text-decoration: underline;}
+				}
+			}
+		}
+	}
+	.news_sideBox{
+		width: 362px; float: right; background:#eef5fb; height: 444px; margin-top: 48px; overflow: hidden; color: #636363; font-size: 14px;
+		.news_title{ font-size: 18px; color: #fff; background:#0e76cb; height: 38px; line-height: 38px; text-indent: 20px;}
+		.sideCon{
+			padding:20px;
+			.sideTxt{
+				 height: 30px; line-height: 30px; margin-bottom: 20px;
+			}
+			dl{ height: 42px; position: relative; padding-left:70px; margin-top: 10px;
+				dt{
+					width: 70px; position: absolute; height: 36px; line-height: 36px; top: 0; left: 0;
+
+				}
+				dd{
+					input{ padding:4px; height: 26px; border:1px #cde2f4 solid;}
+					textarea{
+						width: 240px; border: 1px #cde2f4 solid; height: 130px;
+						line-height: 30px; padding: 5px;
+					}
+				}
+			}
+
+			.btnArea{
+				 margin-top: 20px; text-align: right; 
+				 input{ width: 110px; height: 35px; line-height: 35px; text-align: center; color: #fff; background:#2c77b8; border: none; margin-left: 20px;
+					&.submit{
+						background:#ff9600;
+					}
+				 }
+
+			}
+		}
+	}
+}
+.linkArea{
+	padding: 12px; position: relative; padding-left:100px; border: 1px #d5d5d5 solid; margin-top: 45px;
+	span{
+		position: absolute; left: 12px; top: 12px; color: #141414; font-size: 16px; line-height: 30px;
+	}
+	a{ padding-right: 20px; line-height: 30px;
+		&:hover{ text-decoration: underline;}
+	}
+}
+.footer{
+	padding-bottom: 40px;
+	.footer_nav{
+		background:#0e76cb; height: 45px; line-height: 45px; color: #fff; text-align: center; margin-top: 43px;
+		a{ color: #fff; font-size: 14px; padding: 0 20px;
+			&:hover{ text-decoration: underline;}
+		}
+	}
+	.foot{ font-family: 'SimSun';
+		padding:0 16px;
+		.footer_logo{
+			float: left; width: 230px; height: 70px; margin-top: 34px;
+		}
+		.txt{line-height: 24px; margin: 30px 0 0 100px; float: left;width: 420px;}
+		.winxin{
+			width: 136px; text-align: center; float: right; padding:10px;
+			p{
+				font-size: 14px; margin-top: 16px; color: #1d1d1d;
+			}
+		}
+	}
 }

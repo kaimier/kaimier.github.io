@@ -136,6 +136,8 @@ body, a {
   height: 325px;
   font-size: 14px;
   color: #606060;
+  margin-top: 20px;
+  display: inline;
   float: left;
   margin-left: 16px;
   background: #fff; }
@@ -167,3 +169,255 @@ body, a {
   margin-top: 37px; }
   .bg2 .dl_three {
     margin-top: 124px; }
+    .bg2 .dl_three dd {
+      padding: 0 20px;
+      line-height: 30px;
+      height: 150px;
+      overflow: hidden; }
+      .bg2 .dl_three dd a {
+        display: inline-block;
+        width: 180px;
+        height: 44px;
+        background: #ff9600;
+        line-height: 44px;
+        text-align: center;
+        color: #fff;
+        margin: 0 auto;
+        font-size: 18px; }
+        .bg2 .dl_three dd a:hover {
+          background: #e48a09; }
+    .bg2 .dl_three dd.dl_btn {
+      text-align: center;
+      margin-top: 20px;
+      height: 44px; }
+
+.dl_four {
+  float: left;
+  display: inline;
+  border: 1px #d7d6d6 solid;
+  width: 262px;
+  margin: 10px 0 0 15px; }
+  .dl_four dt {
+    width: 262px;
+    height: 43px;
+    line-height: 43px;
+    overflow: hidden;
+    text-align: center;
+    background: url(../img/dlfourT.jpg) center top no-repeat;
+    font-size: 18px;
+    color: #fff; }
+
+.box_four_two {
+  margin-top: 20px; }
+  .box_four_two .dl_four {
+    border-color: #fff;
+    margin-top: 15px; }
+    .box_four_two .dl_four dt {
+      height: 247px;
+      text-align: center;
+      background: none; }
+    .box_four_two .dl_four dd {
+      color: #787878;
+      line-height: 24px;
+      padding: 0 24px;
+      height: 120px;
+      overflow: hidden;
+      margin-top: 15px; }
+      .box_four_two .dl_four dd b {
+        font-size: 16px;
+        color: #444;
+        font-weight: normal; }
+      .box_four_two .dl_four dd span {
+        font-size: 14px; }
+
+.minbanner {
+  margin-top: 50px; }
+
+.newsArea .news_mainBox {
+  margin-top: 48px;
+  float: left;
+  width: 742px;
+  height: 444px;
+  overflow: hidden; }
+  .newsArea .news_mainBox .news_tabBtn {
+    height: 38px;
+    border-bottom: 1px #dcdcdc solid; }
+    .newsArea .news_mainBox .news_tabBtn a {
+      float: left;
+      display: inline-block;
+      width: 114px;
+      background: #fff;
+      color: #141414;
+      height: 38px;
+      line-height: 38px;
+      text-align: center;
+      font-size: 18px; }
+      .newsArea .news_mainBox .news_tabBtn a:hover, .newsArea .news_mainBox .news_tabBtn a.active {
+        background: #0e76cb;
+        color: #fff; }
+  .newsArea .news_mainBox .news_tabBox {
+    padding: 0 16px;
+    margin-top: 21px;
+    display: none; }
+    .newsArea .news_mainBox .news_tabBox .news_first {
+      height: 190px;
+      overflow: hidden; }
+      .newsArea .news_mainBox .news_tabBox .news_first .img {
+        float: left;
+        margin-right: 30px; }
+      .newsArea .news_mainBox .news_tabBox .news_first .news_tabBox_t {
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        color: #333;
+        overflow: hidden; }
+        .newsArea .news_mainBox .news_tabBox .news_first .news_tabBox_t:hover {
+          text-decoration: underline; }
+      .newsArea .news_mainBox .news_tabBox .news_first .txt {
+        line-height: 30px;
+        color: #5c5c5c;
+        height: 120px;
+        overflow: hidden;
+        margin-top: 18px; }
+      .newsArea .news_mainBox .news_tabBox .news_first .more {
+        text-align: right;
+        margin-top: 5px; }
+        .newsArea .news_mainBox .news_tabBox .news_first .more a {
+          color: #2c77b8; }
+  .newsArea .news_mainBox .news_link {
+    margin-top: 15px; }
+    .newsArea .news_mainBox .news_link li {
+      height: 36px;
+      line-height: 36px;
+      width: 334px;
+      float: left;
+      text-indent: 10px;
+      background: url(../img/point.jpg) 0px center no-repeat;
+      margin-left: 40px;
+      overflow: hidden;
+      display: inline; }
+      .newsArea .news_mainBox .news_link li .data {
+        float: right; }
+      .newsArea .news_mainBox .news_link li .title {
+        display: inline-block;
+        float: left;
+        width: 200px;
+        overflow: hidden; }
+        .newsArea .news_mainBox .news_link li .title:hover {
+          text-decoration: underline; }
+.newsArea .news_sideBox {
+  width: 362px;
+  float: right;
+  background: #eef5fb;
+  height: 444px;
+  margin-top: 48px;
+  overflow: hidden;
+  color: #636363;
+  font-size: 14px; }
+  .newsArea .news_sideBox .news_title {
+    font-size: 18px;
+    color: #fff;
+    background: #0e76cb;
+    height: 38px;
+    line-height: 38px;
+    text-indent: 20px; }
+  .newsArea .news_sideBox .sideCon {
+    padding: 20px; }
+    .newsArea .news_sideBox .sideCon .sideTxt {
+      height: 30px;
+      line-height: 30px;
+      margin-bottom: 20px; }
+    .newsArea .news_sideBox .sideCon dl {
+      height: 42px;
+      position: relative;
+      padding-left: 70px;
+      margin-top: 10px; }
+      .newsArea .news_sideBox .sideCon dl dt {
+        width: 70px;
+        position: absolute;
+        height: 36px;
+        line-height: 36px;
+        top: 0;
+        left: 0; }
+      .newsArea .news_sideBox .sideCon dl dd input {
+        padding: 4px;
+        height: 26px;
+        border: 1px #cde2f4 solid; }
+      .newsArea .news_sideBox .sideCon dl dd textarea {
+        width: 240px;
+        border: 1px #cde2f4 solid;
+        height: 130px;
+        line-height: 30px;
+        padding: 5px; }
+    .newsArea .news_sideBox .sideCon .btnArea {
+      margin-top: 20px;
+      text-align: right; }
+      .newsArea .news_sideBox .sideCon .btnArea input {
+        width: 110px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        color: #fff;
+        background: #2c77b8;
+        border: none;
+        margin-left: 20px; }
+        .newsArea .news_sideBox .sideCon .btnArea input.submit {
+          background: #ff9600; }
+
+.linkArea {
+  padding: 12px;
+  position: relative;
+  padding-left: 100px;
+  border: 1px #d5d5d5 solid;
+  margin-top: 45px; }
+  .linkArea span {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    color: #141414;
+    font-size: 16px;
+    line-height: 30px; }
+  .linkArea a {
+    padding-right: 20px;
+    line-height: 30px; }
+    .linkArea a:hover {
+      text-decoration: underline; }
+
+.footer {
+  padding-bottom: 40px; }
+  .footer .footer_nav {
+    background: #0e76cb;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    text-align: center;
+    margin-top: 43px; }
+    .footer .footer_nav a {
+      color: #fff;
+      font-size: 14px;
+      padding: 0 20px; }
+      .footer .footer_nav a:hover {
+        text-decoration: underline; }
+  .footer .foot {
+    font-family: 'SimSun';
+    padding: 0 16px; }
+    .footer .foot .footer_logo {
+      float: left;
+      width: 230px;
+      height: 70px;
+      margin-top: 34px; }
+    .footer .foot .txt {
+      line-height: 24px;
+      margin: 30px 0 0 100px;
+      float: left;
+      width: 420px; }
+    .footer .foot .winxin {
+      width: 136px;
+      text-align: center;
+      float: right;
+      padding: 10px; }
+      .footer .foot .winxin p {
+        font-size: 14px;
+        margin-top: 16px;
+        color: #1d1d1d; }
