@@ -111,13 +111,79 @@ namespace note01
             //Console.WriteLine(sum);
             //Console.ReadKey();
             #endregion
-            #region 定义方法来实现：有一个整数数组：{1,3,5,7,90,2,4,6,8,10}找出其中最大值，并输出不能调用数组自身的Max()方法，自己定义一个方法。
+           #region 定义方法来实现：有一个整数数组：{1,3,5,7,90,2,4,6,8,10}找出其中最大值，并输出不能调用数组自身的Max()方法，自己定义一个方法。
             //int[] arrNumber = { 1, 3, 5, 7, 90, 2, 4, 6, 8, 10 };
             //int max = GetMaxValuesFromArray(arrNumber);
             ////alt+shift+f10;
             //Console.WriteLine(max);
             //Console.ReadKey();
+            #endregion            
+
+            #region 定义方法来实现：有一个字符串数组：{"马龙","迈克尔乔丹","雷吉米勒","蒂姆邓肯","科比布莱恩特"},请输入字符数最多的字符串
+            //string[] name = { "马龙", "迈克尔乔丹", "雷吉米勒", "蒂姆邓肯", "科比布莱恩特" };
+            //string[] name = new string[] { "马龙", "迈克尔乔丹", "雷吉米勒", "蒂姆邓肯", "科比布莱恩特","老苏最长长长长" };
+            //string userName = GetLongestName(name);
+            //Console.WriteLine(userName);//科比布莱恩特
+            //Console.ReadKey();
             #endregion
+            #region 定义方法实现：请计算出一个整形数组的平均值。{1,3,5,7,90,2,4,6,8,10}
+            //int[] arrInt = { 1, 3, 5, 7, 90, 2, 4, 6, 8, 10 };
+            //double avg = GetAvgFromArray(arrInt);
+            //Console.WriteLine("平均值是：{0:F}",avg);
+            //Console.ReadKey();
+            #endregion
+            #region 请通过冒泡排序法对整数数组{1,3,,5,7,90,2,4,6,8,10}实现升序排序
+            int[] arrInt={1,3,5,7,90,2,4,6,8,10};
+            MySort(arrInt); //引用类型
+            for (int i = 0; i < arrInt.Length; i++)
+            {
+                Console.WriteLine(arrInt[i]);
+            }
+            Console.ReadKey();
+            #endregion
+        }
+
+        private static void MySort(int[] arrInt)
+        {
+            //多层循环条件是比较的轮数，相邻两个比较要比较多少轮。
+            for (int i = 0; i < arrInt.Length-1; i++)
+            {
+                //这个循环是用来进行相邻两两比较的
+                for (int j = arrInt.Length-1; j>i; j--)
+                {
+                    if (arrInt[j]<arrInt[j-1])
+                    {
+                        int tmp = arrInt[j];
+                        arrInt[j] = arrInt[j - 1];
+                        arrInt[j - 1] = tmp;
+                    }
+                }
+            }
+        }
+
+        private static double GetAvgFromArray(int[] arrInt)
+        {
+            int sum = 0;
+            for (int i = 0; i < arrInt.Length; i++)
+            {
+                sum += arrInt[i];
+            }
+            //sum*1.0 转为double类型
+            //Math.Round(value,num);
+            return Math.Round(sum*1.0 / arrInt.Length,2);
+        }
+
+        private static string GetLongestName(string[] name)
+        {
+            string result = name[0];
+            for (int i = 1; i < name.Length; i++)
+            {
+                if (result.Length<name[i].Length)
+                {
+                    result = name[i];
+                }
+            }
+            return result;
         }
 
         private static int GetMaxValuesFromArray(int[] arrNumber)
