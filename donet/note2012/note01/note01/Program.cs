@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace note01
@@ -133,14 +134,246 @@ namespace note01
             //Console.ReadKey();
             #endregion
             #region 请通过冒泡排序法对整数数组{1,3,,5,7,90,2,4,6,8,10}实现升序排序
-            int[] arrInt={1,3,5,7,90,2,4,6,8,10};
-            MySort(arrInt); //引用类型
+            //int[] arrInt={1,3,5,7,90,2,4,6,8,10};
+            //MySort(arrInt); //引用类型不需要返回值
+            //for (int i = 0; i < arrInt.Length; i++)
+            //{
+            //    Console.WriteLine(arrInt[i]);
+            //}
+            //Console.ReadKey();
+            #endregion
+            #region 请输入一个十进制数字，计算出对应的二进制数字，以字符串方式输出。
+            //while (true)
+            //{
+            //    Console.WriteLine("请输入一个十进制数字:");
+            //    int num = Convert.ToInt32(Console.ReadLine());
+            //    string result = GetBinaryNumber(num);
+            //    Console.WriteLine(result);
+               
+            //}
+            #endregion
+            #region 请输入一个年份，判断该年份是否为闰年。条件：1--> 能被4整除但不能被100整除; 2--> 能被400整除
+            //while (true)
+            //{
+            //    Console.WriteLine("请输入一个年份：");
+            //    int year = Convert.ToInt32(Console.ReadLine());
+            //    bool b = IsLeapYear(year);
+            //    Console.WriteLine(b);
+            //}
+            #endregion
+            #region 在控制台输出如下显示的“乘法口诀表”
+            //for (int i = 1; i <= 9; i++)
+            //{
+            //    for (int j = 1; j <= i; j++)
+            //    {
+            //        Console.Write("{0}*{1}={2}\t",j,i,j*i);
+            //    }
+            //    Console.WriteLine();
+            //}
+            //Console.ReadKey();
+            #endregion
+            #region 编写一个函数，实现类似.net中trim()函数的功能：去两端空格 
+            //string msg = "    你 好 吗？  ";
+            //Console.WriteLine("==================="+MyTrim(msg)+"==============");
+            //Console.ReadKey();
+            #endregion
+            #region 随机生成10个1-100之间的不重复的偶数，填充到List<int>集合中。
+            //List<int> list = new List<int>();
+            //Random random = new Random();
+            //int index = 0;
+            //while (list.Count<10)
+            //{
+            //    //Random random = new Random();循环次数巨增
+            //    int num = random.Next(1, 101);
+            //    if (num%2 == 0 && !list.Contains(num))
+            //    {
+            //        list.Add(num);
+            //    }
+            //    index++;
+            //}
+            ////for (int i = 0; i < list.Count; i++)
+            ////{
+            ////    Console.WriteLine(list[i]);
+            ////}
+            //foreach (var item in list)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //Console.WriteLine("==============");
+            //Console.WriteLine(index);
+            //Console.ReadKey();
+            #endregion
+            #region random 参数种子一样，随机数一样
+            //Random random = new Random(98765);
+            //for (int i = 0; i < 20; i++)
+            //{
+            //    int n = random.Next(1, 101);
+            //    Console.WriteLine(n);
+            //}
+            //Console.ReadKey();
+            #endregion
+            #region 有如下字符串：【"患者：“大夫，我咳嗽得很重。”     大夫：“你多大年记？”     患者：“七十五岁。”     大夫：“二十岁咳嗽吗”患者：“不咳嗽。”     大夫：“四十岁时咳嗽吗？”     患者：“也不咳嗽。”     大夫：“那现在不咳嗽，还要等到什么时咳嗽？”"】。需求：①请统计出该字符中“咳嗽”一词的出现次数，以及每次“咳嗽”出现的索引位置。②扩展（*）：统计出每个字符的出现次数。
+              //1.正则
+            //string sourceStr = "患者：“大夫，我咳嗽得很重。”     大夫：“你多大年记？”     患者：“七十五岁。”     大夫：“二十岁咳嗽吗”患者：“不咳嗽。”     大夫：“四十岁时咳嗽吗？”     患者：“也不咳嗽。”     大夫：“那现在不咳嗽，还要等到什么时咳嗽？”";
+            //string str = "咳嗽";
+            //RegexIndex(sourceStr,str);
+            //Console.ReadKey();
+            //2.split
+            //string[] s = { "咳嗽" };
+            //string[] result = sourceStr.Split(s, StringSplitOptions.None);
+            //for (int i = 0; i < result.Length; i++)
+            //{
+            //    Console.WriteLine(result[i]);
+            //}
+            //int num = result.Length - 1;
+            //Console.WriteLine("咳嗽出现{0}次", num);
+            //Console.WriteLine("每次咳嗽出现的索引位置:");
+            //int worldLength = 0;
+            //for (int i = 0; i < result.Length-1; i++)
+            //{
+            //    if (i==0)
+            //    {
+            //        worldLength += result[i].Length;
+            //    }
+            //    else
+            //    {
+            //        worldLength+=result[i].Length+2;
+            //    }
+            //    Console.WriteLine("第{0}次出现的位置是{1}",i+1,worldLength);
+            //}
+            
+            //3.IndexOf() 没找到返回-1
+            //string word ="咳嗽";
+            //int index = 0;
+            //int count = 0;
+            //while ((index= sourceStr.IndexOf(word,index))!=-1)
+            //{
+            //    count++;
+            //    Console.WriteLine("第{0}次出现【咳嗽】,出现索引是：{1}",count,index);
+            //    index += word.Length;
+            //}
+            //Console.ReadKey();
+            #endregion
+            #region 将字符串"  hello      world,你  好 世界   !    "两端空格去掉，并且将其中的所有其他空格都替换成一个空格，输出结果为："hello world,你 好 世界 !"
+            //string msg = "  hello      world,你  好 世界   !    ";
+            //msg = msg.Trim();
+            ////使用Split
+            //string[] result = msg.Split(new char[]{' '},StringSplitOptions.RemoveEmptyEntries);
+            ////把result字符串数组中的第个字符使用' '连起来
+            //string str=string.Join(" ", result);
+            //Console.WriteLine(str);
+            //Console.ReadKey();
+            #endregion
+            #region  请统计出数组：{1,2,3,4,5,6,7,8,9,1,2,3,79,23,45,64,9,3,2,4}中的不重复的数字的个数。【思考】如果题目要求变更为去除重复数字放到一个新数组中，如何实现？
+            int[] arrInt = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 79, 23, 45, 64, 9, 3, 2, 4, 1, 1, 1, 1, 1, 1 };
+            //统计不重复的元素个数
+            int count = 0;
             for (int i = 0; i < arrInt.Length; i++)
             {
-                Console.WriteLine(arrInt[i]);
+                bool b = true;
+                for (int j=0;j<arrInt.Length; j++)
+                {
+                    if (arrInt[i]==arrInt[j] && i!=j)
+                    {
+                        b=false;
+                        break;
+                    }
+                }
+
+                if (b)
+                {
+                    count++;
+                }
             }
+            Console.WriteLine("不重复的元素个数是{0}",count);
             Console.ReadKey();
             #endregion
+        }
+
+        private static void RegexIndex(string sourceStr, string str)
+        {
+            Regex r = new Regex(str);
+            MatchCollection m = r.Matches(sourceStr);
+            Console.WriteLine(str+"总共出现了{0}次\r\n 位置分别为",m.Count);
+            foreach (Match ma in m)
+            {
+                Console.Write(ma.Index+"  ");
+            }
+        }
+        /// <summary>
+        /// 模拟Trim()去掉字符串两端的空白符
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        private static string MyTrim(string msg)
+        {
+            int start = 0;
+            int end = msg.Length - 1;
+            while (start<msg.Length)
+            {
+                if (!char.IsWhiteSpace(msg[start]))
+                {
+                    break;
+                }
+                start++;
+            }
+            while (end>=start)
+            {
+                if (!char.IsWhiteSpace(msg[end]))
+                {
+                    break;
+                }
+                end--;
+            }
+            return msg.Substring(start, end-start+1);
+        }
+        /// <summary>
+        /// 判断是否是闰年
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
+        private static bool IsLeapYear(int year)
+        {
+            if ((year%4==0 && year%100!=0) || year%400==0)
+            {
+               return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private static string GetBinaryNumber(int num)
+        {
+            #region 1
+            //StringBuilder sb = new StringBuilder();
+            //while (num >= 2)
+            //{
+            //    int shang = num / 2;
+            //    int yushu = num % 2;
+            //    sb.Append(yushu);
+
+            //    num = shang;
+            //}
+            //sb.Append(num);
+            //return sb.ToString();
+            #endregion
+            #region list集合
+            List<string> list = new List<string>();
+            while (num >= 2)
+            {
+                int shang = num / 2;
+                int yushu = num % 2;
+                list.Add(yushu.ToString());
+                num = shang;
+            }
+            list.Add(num.ToString());
+            list.Reverse();
+
+            return string.Join("", list.ToArray());
+            #endregion
+
         }
 
         private static void MySort(int[] arrInt)
