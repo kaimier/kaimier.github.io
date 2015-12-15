@@ -4,3 +4,9 @@ D:\website\kaimier.github.io\donet\note2012\note01\note01\bin\Debug\note01.pdb
 D:\website\kaimier.github.io\donet\note2012\note01\note01\obj\Debug\note01.csprojResolveAssemblyReference.cache
 D:\website\kaimier.github.io\donet\note2012\note01\note01\obj\Debug\note01.exe
 D:\website\kaimier.github.io\donet\note2012\note01\note01\obj\Debug\note01.pdb
+G:\website\kaimier.github.io\donet\note2012\note01\note01\bin\Debug\note01.exe.config
+G:\website\kaimier.github.io\donet\note2012\note01\note01\obj\Debug\note01.exe
+G:\website\kaimier.github.io\donet\note2012\note01\note01\obj\Debug\note01.pdb
+G:\website\kaimier.github.io\donet\note2012\note01\note01\bin\Debug\note01.exe
+G:\website\kaimier.github.io\donet\note2012\note01\note01\bin\Debug\note01.pdb
+G:\website\kaimier.github.io\donet\note2012\note01\note01\obj\Debug\note01.csprojResolveAssemblyReference.cache

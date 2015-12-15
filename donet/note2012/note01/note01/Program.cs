@@ -265,27 +265,80 @@ namespace note01
             //Console.ReadKey();
             #endregion
             #region  请统计出数组：{1,2,3,4,5,6,7,8,9,1,2,3,79,23,45,64,9,3,2,4}中的不重复的数字的个数。【思考】如果题目要求变更为去除重复数字放到一个新数组中，如何实现？
-            int[] arrInt = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 79, 23, 45, 64, 9, 3, 2, 4, 1, 1, 1, 1, 1, 1 };
+            //int[] arrInt = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 79, 23, 45, 64, 9, 3, 2, 4, 1, 1, 1, 1, 1, 1,1000};
             //统计不重复的元素个数
-            int count = 0;
-            for (int i = 0; i < arrInt.Length; i++)
-            {
-                bool b = true;
-                for (int j=0;j<arrInt.Length; j++)
-                {
-                    if (arrInt[i]==arrInt[j] && i!=j)
-                    {
-                        b=false;
-                        break;
-                    }
-                }
+            //int count = 0;
+            //for (int i = 0; i < arrInt.Length; i++)
+            //{
+            //    bool b = true;
+            //    for (int j=0;j<arrInt.Length; j++)
+            //    {
+            //        if (arrInt[i]==arrInt[j] && i!=j)
+            //        {
+            //            b=false;
+            //            break;
+            //        }
+            //    }
 
-                if (b)
+            //    if (b)
+            //    {
+            //        count++;
+            //    }
+            //}
+            //Console.WriteLine("不重复的元素个数是{0}",count);
+            //Console.ReadKey();
+            //Array.Sort(arrInt);
+            //List<int> list = new List<int>();
+            //for (int i = 0; i < arrInt.Length-1; i++)
+            //{
+            //    if (arrInt[i] !=arrInt[i+1])
+            //    {
+            //        list.Add(arrInt[i]);
+            //    }
+            //}
+            //list.Add(arrInt[arrInt.Length - 1]);
+            //for (int i = 0; i < list.Count; i++)
+            //{
+            //    Console.WriteLine(list[i]);
+            //}
+            //Console.ReadKey();
+            #endregion
+            #region 用户输入quit时
+            //List<string> list = new List<string>();
+            //string userName = string.Empty;
+            //do
+            //{
+            //    Console.WriteLine("请输入姓名:");
+            //    userName = Console.ReadLine();
+            //    list.Add(userName);
+            //} while (userName.ToLower()!="quit");
+            //list.RemoveAt(list.Count - 1);
+            //Console.WriteLine("共输入了:{0}个学生，每个学生信息是：",list.Count);
+            //foreach (string item in list)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            List<string> list = new List<string>();
+            string userName = string.Empty;
+            int count = 0;
+            do
+            {
+                Console.WriteLine("请输入姓名：");
+                userName = Console.ReadLine();
+                if (userName.IndexOf('王')==0)
                 {
                     count++;
                 }
+                list.Add(userName);
+            } while (userName.ToLower() != "quit");
+            list.RemoveAt(list.Count - 1);
+            Console.WriteLine("共输入了：{0}个学生，每个学生信息是：",list.Count);
+            foreach (string name in list)
+            {
+                Console.WriteLine(name);
             }
-            Console.WriteLine("不重复的元素个数是{0}",count);
+            Console.WriteLine("姓王的同学是{0}",name);
             Console.ReadKey();
             #endregion
         }
