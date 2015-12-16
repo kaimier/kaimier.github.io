@@ -319,28 +319,86 @@ namespace note01
             //    Console.WriteLine(item);
             //}
 
-            List<string> list = new List<string>();
-            string userName = string.Empty;
-            int count = 0;
-            do
-            {
-                Console.WriteLine("请输入姓名：");
-                userName = Console.ReadLine();
-                if (userName.IndexOf('王')==0)
-                {
-                    count++;
-                }
-                list.Add(userName);
-            } while (userName.ToLower() != "quit");
-            list.RemoveAt(list.Count - 1);
-            Console.WriteLine("共输入了：{0}个学生，每个学生信息是：",list.Count);
-            foreach (string name in list)
-            {
-                Console.WriteLine(name);
-            }
-            Console.WriteLine("姓王的同学是{0}",name);
-            Console.ReadKey();
+            //List<string> list = new List<string>();
+            //string userName = string.Empty;
+            //int count = 0;
+            //do
+            //{
+            //    Console.WriteLine("请输入姓名：");
+            //    userName = Console.ReadLine();
+            //    if (userName.IndexOf('王')==0)
+            //    {
+            //        count++;
+            //    }
+            //    list.Add(userName);
+            //} while (userName.ToLower() != "quit");
+            //list.RemoveAt(list.Count - 1);
+            //Console.WriteLine("共输入了：{0}个学生，每个学生信息是：",list.Count);
+            //foreach (string name in list)
+            //{
+            //    Console.WriteLine(name);
+            //}
+            //Console.WriteLine("姓王的同学是{0}",name);
+            //Console.ReadKey();
             #endregion
+
+            #region 转换日期
+            //while (true)
+            //{
+            //    Console.WriteLine("请输入一个日期：");
+            //    string date = Console.ReadLine();
+            //    date = ConvertDate(date);
+            //    Console.WriteLine(date);
+            //    Console.ReadKey();
+            //}
+            #endregion
+        }
+
+        private static string ConvertDate(string date)
+        {
+            //字符串不可变性
+            //先生成一个char数组
+            char[] chs = date.ToCharArray();
+            for (int i = 0; i < chs.Length; i++)
+            {
+                switch (chs[i])
+                {
+                    case '0':
+                        chs[i] = '零';
+                        break;
+                    case '1':
+                        chs[i] = '一';
+                        break;
+                    case '2':
+                        chs[i] = '二';
+                        break;
+                    case '3':
+                        chs[i] = '三';
+                        break;
+                    case '4':
+                        chs[i] = '四';
+                        break;
+                    case '5':
+                        chs[i] = '五';
+                        break;
+                    case '6':
+                        chs[i] = '六';
+                        break;
+                    case '7':
+                        chs[i] = '七';
+                        break;
+                    case '8':
+                        chs[i] = '八';
+                        break;
+                    case '9':
+                        chs[i] = '九';
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return new string(chs);
         }
 
         private static void RegexIndex(string sourceStr, string str)
