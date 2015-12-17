@@ -352,6 +352,27 @@ namespace note01
             //    Console.ReadKey();
             //}
             #endregion
+
+            #region 请将字符串数组{"中国","美国","巴西","澳大利亚","加拿大"}中的内容反转。然后输出反转后的数组。不能用数组的Reverse()方法
+            string[] names = { "中国", "美国", "巴西", "澳大利亚", "加拿大" };
+            MyReverse(names);
+            for (int i = 0; i < names.Length; i++)
+            {
+                Console.WriteLine(names[i]);
+            }
+            Console.ReadKey();
+            #endregion
+        }
+
+        private static void MyReverse(string[] names)
+        {
+            //交换names.length/2轮
+            for (int i = 0; i < names.Length/2; i++)
+            {
+                string tmp = names[i];
+                names[i] = names[names.Length - 1 - i];
+                names[names.Length - 1 - i] = tmp;
+            }
         }
 
         private static string ConvertDate(string date)

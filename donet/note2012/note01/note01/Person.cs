@@ -22,5 +22,10 @@ namespace note01
             get;
             set;
         }
+        public int Age { get; set; }
+        public virtual void SaiHi()
+        {
+            Console.WriteLine("Hi````````in person");
+        }
     }
 }

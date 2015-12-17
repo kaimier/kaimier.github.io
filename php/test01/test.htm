@@ -1,0 +1,730 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--[1194,1,494] published at 2015-10-14 11:29:19 from #21 by 12937-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="GB18030">
+<meta http-equiv="cache-control" content="no-cache"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<title>写书评 赢大奖！</title>
+<meta name="author" content="NorthWind" />
+<link rel="stylesheet" href="http://jiangsu.sinaimg.cn/zt/s/css/reset.css">
+<script type="text/javascript" src="http://jiangsu.sinaimg.cn/js/jquery_1.11.2.min_jsonp.js"></script>
+
+<!-- 
+<script src="http://jiangsu.sinaimg.cn/js/jquery1.11.1.min.js"></script>
+<script src="http://jiangsu.sinaimg.cn/js/jquery.transit.min.js"></script>
+ -->
+<link rel="stylesheet" href="http://jiangsu.sinaimg.cn/js/idangerous.swiper.css">
+<script src="http://jiangsu.sinaimg.cn/js/idangerous.swiper.min.js"></script>
+<link rel="stylesheet" href="http://jiangsu.sinaimg.cn/js/animate.min.css">
+<script src="http://jiangsu.sinaimg.cn/js/swiper.animate1.0.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://act.city.sina.com.cn/style/captcha.css" />
+<script type="text/javascript" src="http://act.city.sina.com.cn/js/voteCaptcha.js" charset="utf-8"></script>
+<script src="http://jiangsu.sinaimg.cn/js/layer.mobile-v1.5/layer.m/layer.m.js"></script>
+<!-- 自适应缩放css -->
+<style type="text/css">
+body{ font-size: 12px; overflow-x: hidden; background-color: #000; max-width: 640px; margin: 0 auto; }
+.swiper-container{   -webkit-transform-origin: top left; -ms-transform-origin: top left; transform-origin: top left; margin: 0; background-color: #eaebe6;  }
+.swiper-wrapper *{ -webkit-backface-visibility: hidden; } /* 避免ip4Safari闪动 */
+.page-provider{ position:absolute; top:0; text-align: center; width: 100%; font-size: 1.2em;line-height: 3em; color: #e5d2d4; }
+.page-provider#page-provider-bottom{ top:auto; bottom: 0; }
+.swiper-slide{  position: relative; overflow: hidden;  }
+.slide-top{ position: absolute; top: 0; width: inherit; background-color: RGBA(255,100,100,0.5); }
+.slide-center{ width: inherit; height: 820px; position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto; background-color: RGBA(0,100,255,0.5); }
+.slide-bottom{ position: absolute; bottom: 0; width: inherit; background-color: RGBA(100,255,100,0.5); }
+</style>
+<style type="text/css">
+.swiper-container{
+ background-image: url("http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/1.jpg");
+ background-repeat: no-repeat;
+ background-size: cover;
+ -webkit-transition: background-image 1.2s;
+}
+
+.swiper-wrapper{ display: none; }
+
+.swiper-slide{
+ background: none!important;
+}
+
+.abs{ position: absolute; left: 0; top: 0; }
+.w100{ width: 100%; }
+/* 
+#s1{ background-image: url("http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/1.jpg"); }
+#s2{ background-image: url("http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/2.jpg"); }
+#s3{ background-image: url("http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/3.jpg"); }
+#s4{ background-image: url("http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/4.jpg"); }
+#s5{ background-image: url("http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/5.jpg"); }
+*/
+
+#s1 .ani{ -webkit-animation-timing-function: cubic-bezier(0.07, 0.32, 0.06, 0.99); }
+#s3 .ani{ -webkit-animation-timing-function: cubic-bezier(0.07, 0.32, 0.06, 0.99); }
+#s4 .ani{ -webkit-animation-timing-function: cubic-bezier(0.07, 0.32, 0.06, 0.99); }
+
+.formWrap {
+  width: 60%;
+  margin: 40% auto 0;
+  font-size: 13px;
+ }
+.formWrap input,.formWrap textarea{ font-size: 13px;  display: block; width: 100%; border-radius: 3px; border: 1px solid #AAA; padding: 0; margin:10px 0; line-height: 1.8em; }
+.formWrap .submitBtn{  background-color: #ff4200; padding:4px 0; border-radius: 4px; color: #FFF; font-weight: bold; font-size: 13px; cursor: pointer; -webkit-appearance: none; }
+
+/* 树叶飘动特效 */
+.leaf{
+  animation: tr-lb linear 8s;
+  animation-iteration-count: infinite; 
+  animation-timing-function: ease; 
+  transform-origin: 50% 50%;
+  -webkit-animation: tr-lb linear 8s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease; 
+  -webkit-transform-origin: 50% 50%;
+}
+.leaf1{ top: -30px; left: 200px; -webkit-animation-delay: 0s;    -webkit-animation-duration: 8s; }
+.leaf2{ top: -30px; left: 360px; -webkit-animation-delay: 3s;    -webkit-animation-duration: 5.3s; }
+.leaf3{ top: 150px; left: 360px; -webkit-animation-delay: 2.4s;  -webkit-animation-duration: 9.7s; }
+
+@keyframes tr-lb{
+  0% {    transform:  translate(0px,0px) rotate(0);   }
+  100% {    transform:  translate(-370px,270px) rotate(500deg) ;  }
+}
+
+@-webkit-keyframes tr-lb {
+  0% {    -webkit-transform:  translate(0px,0px) rotate(0)  ;  }
+  100% {    -webkit-transform:  translate(-370px,270px) rotate(500deg)  ;  }
+}
+
+.topLeafBox {  top: 0;  right: 0;  left: auto;  background: url("http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/topLeaf.png") no-repeat;  background-size: 100%;  width: 309px;  height: 88px;  position: absolute;}
+.topLeaf{
+ position: absolute; 
+ top: -20px; 
+ display: block;
+
+  animation: topLeafYoyo ease-in-out 4s;
+  animation-direction:alternate;
+  animation-iteration-count: infinite; 
+  transform-origin: 50% 50%;
+  -webkit-animation: topLeafYoyo ease-in-out 4s;
+  -webkit-animation-direction:alternate;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-transform-origin: 50% 50%;
+}
+.topLeaf1{   left: 98px;  -webkit-transform-origin: top center; }
+.topLeaf2{ left: 268px; top: -15px; -webkit-transform-origin: top right;  -webkit-animation-delay: 1.2s;    -webkit-animation-duration: 5.7s; }
+
+@keyframes topLeafYoyo{
+  0% {    transform:   rotate(-5deg);   }
+  100% {    transform:   rotate(5deg) ;  }
+}
+
+@-webkit-keyframes topLeafYoyo{
+   0% {    -webkit-transform:   rotate(-5deg);   }
+  100% {    -webkit-transform:   rotate(5deg) ;  }
+}
+
+/* 作品列表 */
+.card-itemBox {
+  padding: 0.4em 1.2em;
+}
+
+.card-item {
+  background-color: #F9F5EF;
+  color: #323232;
+  padding: 0 0.6em;
+  position: relative;
+  box-shadow: 0 2px 7px -1px rgba(0, 0, 0, 0.38);
+}
+
+.work-descBox {
+  font-size: 14px;
+  line-height: 2;
+  font-weight: bold;
+  border-bottom: 1px solid #CBCBCB;
+}
+
+.work-textBox {
+  text-indent: 2em;
+  padding: 0.4em 0;
+}
+
+.work-voteBtnBox {
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+  background-color: #F4EDDC;
+  height: 3em;
+  vertical-align: middle;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.22);
+} 
+
+.work-name {
+  float: left;
+  line-height: 36px;
+  color: #424242;
+  padding-left: 0.6em;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+}
+.work-name:BEFORE {
+
+}
+
+.work-voteBtn {
+  width: 80px;
+  padding: 0.4em 0;
+  outline: none;
+  -webkit-appearance: none;
+  border: none;
+  background-color: #FF4400;
+  color: #FFF;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  -webkit-transition: all 0.3s;
+  margin: 6px 0 0;
+  box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.56);
+  position: absolute;
+  right: 14px;
+  line-height: 13px;
+  height: 24px;
+}
+.work-voteBtn:HOVER{ box-shadow: 1px 1px 4px rgba(174, 49, 52, 0.7); }
+.work-voteBtn:ACTIVE{ background-color: #ff4400; }
+.work-voteBtnBox {
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+  background-color: #F4EDDC;
+  height: 3em;
+  vertical-align: middle;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.22);
+}
+
+.work-votecountBox {
+  text-align: right;
+  position: absolute;
+  bottom: 22px;
+  right: 5px;
+}
+.work-votecount {
+  background-color: #FDA400;
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 11px;
+  color: #FFF;
+  text-align: center;
+  vertical-align: middle;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.31);
+}
+
+</style>
+
+</head>
+<body ontouchmove="event.preventDefault()"><!-- body code begin -->
+
+<!-- SUDA_CODE_START --> 
+<script type="text/javascript"> 
+//<!--
+(function(){var aE="V=2.1.13";var ax=window,N=document,w=navigator,ah=w.userAgent,aF=ax.screen,k=ax.location.href;var aW="https:"==ax.location.protocol?"https://s":"http://",aQ="beacon.sina.com.cn";var X=aW+aQ+"/a.gif?",F=aW+aQ+"/g.gif?",ab=aW+aQ+"/f.gif?",aw=aW+aQ+"/e.gif?",aT=aW+"beacon.sinauda.com/i.gif?";var aS=N.referrer.toLowerCase();var an="SINAGLOBAL",aj="FSINAGLOBAL",R="Apache",Z="ULV",m="SUP",aX="UOR",M="_s_acc",ai="_s_tentry",p=false,aR=false,I=(document.domain=="sina.com.cn")?true:false;var r=0;var aY=false,G=false;var aC="";var n=16777215,ak=0,J,U=0;var v="",b="",a="";var W=[],ad=[],S=[];var y=0;var z=0;var s="";var aD=false;var B=false;function Y(){var e=document.createElement("iframe");e.src=aW+aQ+"/data.html?"+new Date().getTime();e.id="sudaDataFrame";e.style.height="0px";e.style.width="1px";e.style.overflow="hidden";e.frameborder="0";e.scrolling="no";document.getElementsByTagName("head")[0].appendChild(e)}function l(){var e=document.createElement("iframe");e.src=aW+aQ+"/ckctl.html";e.id="ckctlFrame";e.style.height="0px";e.style.width="1px";e.style.overflow="hidden";e.frameborder="0";e.scrolling="no";document.getElementsByTagName("head")[0].appendChild(e)}function u(){var e=document.createElement("script");e.src=aW+aQ+"/h.js";document.getElementsByTagName("head")[0].appendChild(e)}function j(aZ,i){var D=N.getElementsByName(aZ);var e=(i>0)?i:0;return(D.length>e)?D[e].content:""}function o(){var a0=N.getElementsByName("sudameta");var a6=[];for(var a4=0;a4<a0.length;a4++){var a1=a0[a4].content;if(a1){if(a1.indexOf(";")!=-1){var e=a1.split(";");for(var D=0;D<e.length;D++){var a5=aN(e[D]);if(!a5){continue}a6.push(a5)}}else{a6.push(a1)}}}var a2=N.getElementsByTagName("meta");for(var a4=0,aZ=a2.length;a4<aZ;a4++){var a3=a2[a4];if(a3.name=="tags"){a6.push("content_tags:"+encodeURI(a3.content))}}return a6}function ag(a2,D,a0,aZ){if(a2==""){return""}aZ=(aZ=="")?"=":aZ;D+=aZ;var a1=a2.indexOf(D);if(a1<0){return""}a1+=D.length;var i=a2.indexOf(a0,a1);if(i<a1){i=a2.length}return a2.substring(a1,i)}function x(e){if(undefined==e||""==e){return""}return ag(N.cookie,e,";","")}function aK(a0,e,i,aZ){if(e!=null){if((undefined==aZ)||(null==aZ)){aZ="sina.com.cn"}if((undefined==i)||(null==i)||(""==i)){N.cookie=a0+"="+e+";domain="+aZ+";path=/"}else{var D=new Date();var a1=D.getTime();a1=a1+86400000*i;D.setTime(a1);a1=D.getTime();N.cookie=a0+"="+e+";domain="+aZ+";expires="+D.toUTCString()+";path=/"}}}function g(D){try{var i=document.getElementById("sudaDataFrame").contentWindow.storage;return i.get(D)}catch(aZ){return false}}function aI(D,aZ){try{var i=document.getElementById("sudaDataFrame").contentWindow.storage;i.set(D,aZ);return true}catch(a0){return false}}function V(){var a1=15;var D=window.SUDA.etag;if(!I){return"-"}if(y==0){Y();u()}if(D&&D!=undefined){B=true}ls_gid=g(an);if(ls_gid===false||B==false){return false}else{aD=true}if(ls_gid&&ls_gid.length>a1){aK(an,ls_gid,3650);p=true;return ls_gid}else{if(D&&D.length>a1){aK(an,D,3650);aR=true}var i=0,a0=500;var aZ=setInterval((function(){var e=x(an);if(B){e=D}i+=1;if(i>3){clearInterval(aZ)}if(e.length>a1){clearInterval(aZ);aI(an,e)}}),a0);return B?D:x(an)}}function af(e,aZ,D){var i=e;if(i==null){return false}aZ=aZ||"click";if((typeof D).toLowerCase()!="function"){return}if(i.attachEvent){i.attachEvent("on"+aZ,D)}else{if(i.addEventListener){i.addEventListener(aZ,D,false)}else{i["on"+aZ]=D}}return true}function av(){if(window.event!=null){return window.event}else{if(window.event){return window.event}var D=arguments.callee.caller;var i;var aZ=0;while(D!=null&&aZ<40){i=D.arguments[0];if(i&&(i.constructor==Event||i.constructor==MouseEvent||i.constructor==KeyboardEvent)){return i}aZ++;D=D.caller}return i}}function h(i){i=i||av();if(!i.target){i.target=i.srcElement;i.pageX=i.x;i.pageY=i.y}if(typeof i.layerX=="undefined"){i.layerX=i.offsetX}if(typeof i.layerY=="undefined"){i.layerY=i.offsetY}return i}function aN(aZ){if(typeof aZ!=="string"){throw"trim need a string as parameter"}var e=aZ.length;var D=0;var i=/(\u3000|\s|\t|\u00A0)/;while(D<e){if(!i.test(aZ.charAt(D))){break}D+=1}while(e>D){if(!i.test(aZ.charAt(e-1))){break}e-=1}return aZ.slice(D,e)}function d(e){return Object.prototype.toString.call(e)==="[object Array]"}function T(aZ,a3){var a5=aN(aZ).split("&");var a4={};var D=function(i){if(a3){try{return decodeURIComponent(i)}catch(a7){return i}}else{return i}};for(var a1=0,a2=a5.length;a1<a2;a1++){if(a5[a1]){var a0=a5[a1].split("=");var e=a0[0];var a6=a0[1];if(a0.length<2){a6=e;e="$nullName"}if(!a4[e]){a4[e]=D(a6)}else{if(d(a4[e])!=true){a4[e]=[a4[e]]}a4[e].push(D(a6))}}}return a4}function ar(D,a0){for(var aZ=0,e=D.length;aZ<e;aZ++){a0(D[aZ],aZ)}}function aA(i){var e=new RegExp("^http(?:s)?://([^/]+)","im");if(i.match(e)){return i.match(e)[1].toString()}else{return""}}function az(a6){try{var a3="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";var D="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_=";var a8=function(e){var a9="",ba=0;for(;ba<e.length;ba++){a9+="%"+aZ(e[ba])}return decodeURIComponent(a9)};var aZ=function(e){var i="0"+e.toString(16);return i.length<=2?i:i.substr(1)};var a7=function(bg,bd,a9){if(typeof(bg)=="string"){bg=bg.split("")}var bf=function(bp,br){for(var bq=0;bq<bp.length;bq++){if(bp[bq]==br){return bq}}return -1};var ba=[];var bo,bm,bj="";var bn,bl,bi,bh="";if(bg.length%4!=0){}var e=/[^A-Za-z0-9\+\/\=]/g;var bk=a3.split("");if(bd=="urlsafe"){e=/[^A-Za-z0-9\-_\=]/g;bk=D.split("")}var bc=0;if(bd=="binnary"){bk=[];for(bc=0;bc<=64;bc++){bk[bc]=bc+128}}if(bd!="binnary"&&e.exec(bg.join(""))){return a9=="array"?[]:""}bc=0;do{bn=bf(bk,bg[bc++]);bl=bf(bk,bg[bc++]);bi=bf(bk,bg[bc++]);bh=bf(bk,bg[bc++]);bo=(bn<<2)|(bl>>4);bm=((bl&15)<<4)|(bi>>2);bj=((bi&3)<<6)|bh;ba.push(bo);if(bi!=64&&bi!=-1){ba.push(bm)}if(bh!=64&&bh!=-1){ba.push(bj)}bo=bm=bj="";bn=bl=bi=bh=""}while(bc<bg.length);if(a9=="array"){return ba}var be="",bb=0;for(;bb<ba.lenth;bb++){be+=String.fromCharCode(ba[bb])}return be};var a0=[];var a5=a6.substr(0,3);var a2=a6.substr(3);switch(a5){case"v01":for(var a1=0;a1<a2.length;a1+=2){a0.push(parseInt(a2.substr(a1,2),16))}return decodeURIComponent(a8(a7(a0,"binnary","array")));break;case"v02":a0=a7(a2,"urlsafe","array");return a8(a7(a0,"binnary","array"));break;default:return decodeURIComponent(a6)}}catch(a4){return""}}var aG={screenSize:function(){return(n&8388608==8388608)?aF.width+"x"+aF.height:""},colorDepth:function(){return(n&4194304==4194304)?aF.colorDepth:""},appCode:function(){return(n&2097152==2097152)?w.appCodeName:""},appName:function(){return(n&1048576==1048576)?((w.appName.indexOf("Microsoft Internet Explorer")>-1)?"MSIE":w.appName):""},cpu:function(){return(n&524288==524288)?(w.cpuClass||w.oscpu):""},platform:function(){return(n&262144==262144)?(w.platform):""},jsVer:function(){if(n&131072!=131072){return""}var a0,e,a2,D=1,aZ=0,i=(w.appName.indexOf("Microsoft Internet Explorer")>-1)?"MSIE":w.appName,a1=w.appVersion;if("MSIE"==i){e="MSIE";a0=a1.indexOf(e);if(a0>=0){a2=window.parseInt(a1.substring(a0+5));if(3<=a2){D=1.1;if(4<=a2){D=1.3}}}}else{if(("Netscape"==i)||("Opera"==i)||("Mozilla"==i)){D=1.3;e="Netscape6";a0=a1.indexOf(e);if(a0>=0){D=1.5}}}return D},network:function(){if(n&65536!=65536){return""}var i="";i=(w.connection&&w.connection.type)?w.connection.type:i;try{N.body.addBehavior("#default#clientCaps");i=N.body.connectionType}catch(D){i="unkown"}return i},language:function(){return(n&32768==32768)?(w.systemLanguage||w.language):""},timezone:function(){return(n&16384==16384)?(new Date().getTimezoneOffset()/60):""},flashVer:function(){if(n&8192!=8192){return""}var a2=w.plugins,aZ,a3,a5;if(a2&&a2.length){for(var a1 in a2){a3=a2[a1];if(a3.description==null){continue}if(aZ!=null){break}a5=a3.description.toLowerCase();if(a5.indexOf("flash")!=-1){aZ=a3.version?parseInt(a3.version):a5.match(/\d+/);continue}}}else{if(window.ActiveXObject){for(var a0=10;a0>=2;a0--){try{var D=new ActiveXObject("ShockwaveFlash.ShockwaveFlash."+a0);if(D){aZ=a0;break}}catch(a4){}}}else{if(ah.indexOf("webtv/2.5")!=-1){aZ=3}else{if(ah.indexOf("webtv")!=-1){aZ=2}}}}return aZ},javaEnabled:function(){if(n&4096!=4096){return""}var D=w.plugins,i=w.javaEnabled(),aZ,a0;if(i==true){return 1}if(D&&D.length){for(var e in D){aZ=D[e];if(aZ.description==null){continue}if(i!=null){break}a0=aZ.description.toLowerCase();if(a0.indexOf("java plug-in")!=-1){i=parseInt(aZ.version);continue}}}else{if(window.ActiveXObject){i=(new ActiveXObject("JavaWebStart.IsInstalled")!=null)}}return i?1:0}};var at={pageId:function(i){var D=i||v,a2="-9999-0-0-1";if((undefined==D)||(""==D)){try{var aZ=j("publishid");if(""!=aZ){var a1=aZ.split(",");if(a1.length>0){if(a1.length>=3){a2="-9999-0-"+a1[1]+"-"+a1[2]}D=a1[0]}}else{D="0"}}catch(a0){D="0"}D=D+a2}return D},sessionCount:function(){var e=x("_s_upa");if(e==""){e=0}return e},excuteCount:function(){return SUDA.sudaCount},referrer:function(){if(n&2048!=2048){return""}var e=/^[^\?&#]*.swf([\?#])?/;if((aS=="")||(aS.match(e))){var i=ag(k,"ref","&","");if(i!=""){return escape(i)}}return escape(aS)},isHomepage:function(){if(n&1024!=1024){return""}var D="";try{N.body.addBehavior("#default#homePage");D=N.body.isHomePage(k)?"Y":"N"}catch(i){D="unkown"}return D},PGLS:function(){return(n&512==512)?j("stencil"):""},ZT:function(){if(n&256!=256){return""}var e=j("subjectid");e.replace(",",".");e.replace(";",",");return escape(e)},mediaType:function(){return(n&128==128)?j("mediaid"):""},domCount:function(){return(n&64==64)?N.getElementsByTagName("*").length:""},iframeCount:function(){return(n&32==32)?N.getElementsByTagName("iframe").length:""}};var aM={visitorId:function(){var i=15;var e=x(an);if(e.length>i&&y==0){return e}else{return}},fvisitorId:function(e){if(!e){var e=x(aj);return e}else{aK(aj,e,3650)}},sessionId:function(){var e=x(R);if(""==e){var i=new Date();e=Math.random()*10000000000000+"."+i.getTime()}return e},flashCookie:function(e){if(e){}else{return s}},lastVisit:function(){var D=x(R);var a0=x(Z);var aZ=a0.split(":");var a1="",i;if(aZ.length>=6){if(D!=aZ[4]){i=new Date();var e=new Date(window.parseInt(aZ[0]));aZ[1]=window.parseInt(aZ[1])+1;if(i.getMonth()!=e.getMonth()){aZ[2]=1}else{aZ[2]=window.parseInt(aZ[2])+1}if(((i.getTime()-e.getTime())/86400000)>=7){aZ[3]=1}else{if(i.getDay()<e.getDay()){aZ[3]=1}else{aZ[3]=window.parseInt(aZ[3])+1}}a1=aZ[0]+":"+aZ[1]+":"+aZ[2]+":"+aZ[3];aZ[5]=aZ[0];aZ[0]=i.getTime();aK(Z,aZ[0]+":"+aZ[1]+":"+aZ[2]+":"+aZ[3]+":"+D+":"+aZ[5],360)}else{a1=aZ[5]+":"+aZ[1]+":"+aZ[2]+":"+aZ[3]}}else{i=new Date();a1=":1:1:1";aK(Z,i.getTime()+a1+":"+D+":",360)}return a1},userNick:function(){if(aC!=""){return aC}var D=unescape(x(m));if(D!=""){var i=ag(D,"ag","&","");var e=ag(D,"user","&","");var aZ=ag(D,"uid","&","");var a1=ag(D,"sex","&","");var a0=ag(D,"dob","&","");aC=i+":"+e+":"+aZ+":"+a1+":"+a0;return aC}else{return""}},userOrigin:function(){if(n&4!=4){return""}var e=x(aX);var i=e.split(":");if(i.length>=2){return i[0]}else{return""}},advCount:function(){return(n&2==2)?x(M):""},setUOR:function(){var a3=x(aX),a7="",i="",a6="",a0="",a4=k.toLowerCase(),D=N.referrer.toLowerCase();var a8=/[&|?]c=spr(_[A-Za-z0-9]{1,}){3,}/;var a2=new Date();if(a4.match(a8)){a6=a4.match(a8)[0]}else{if(D.match(a8)){a6=D.match(a8)[0]}}if(a6!=""){a6=a6.substr(3)+":"+a2.getTime()}if(a3==""){if(x(Z)==""){a7=aA(D);i=aA(a4)}aK(aX,a7+","+i+","+a6,365)}else{var a1=0,a5=a3.split(",");if(a5.length>=1){a7=a5[0]}if(a5.length>=2){i=a5[1]}if(a5.length>=3){a0=a5[2]}if(a6!=""){a1=1}else{var aZ=a0.split(":");if(aZ.length>=2){var e=new Date(window.parseInt(aZ[1]));if(e.getTime()<(a2.getTime()-86400000*30)){a1=1}}}if(a1){aK(aX,a7+","+i+","+a6,365)}}},setAEC:function(e){if(""==e){return}var i=x(M);if(i.indexOf(e+",")<0){i=i+e+","}aK(M,i,7)},ssoInfo:function(){var D=unescape(az(x("sso_info")));if(D!=""){if(D.indexOf("uid=")!=-1){var i=ag(D,"uid","&","");return escape("uid:"+i)}else{var e=ag(D,"u","&","");return escape("u:"+unescape(e))}}else{return""}},subp:function(){return x("SUBP")}};var ay={CI:function(){var e=["sz:"+aG.screenSize(),"dp:"+aG.colorDepth(),"ac:"+aG.appCode(),"an:"+aG.appName(),"cpu:"+aG.cpu(),"pf:"+aG.platform(),"jv:"+aG.jsVer(),"ct:"+aG.network(),"lg:"+aG.language(),"tz:"+aG.timezone(),"fv:"+aG.flashVer(),"ja:"+aG.javaEnabled()];return"CI="+e.join("|")},PI:function(e){var i=["pid:"+at.pageId(e),"st:"+at.sessionCount(),"et:"+at.excuteCount(),"ref:"+at.referrer(),"hp:"+at.isHomepage(),"PGLS:"+at.PGLS(),"ZT:"+at.ZT(),"MT:"+at.mediaType(),"keys:","dom:"+at.domCount(),"ifr:"+at.iframeCount()];return"PI="+i.join("|")},UI:function(){var e=["vid:"+aM.visitorId(),"sid:"+aM.sessionId(),"lv:"+aM.lastVisit(),"un:"+aM.userNick(),"uo:"+aM.userOrigin(),"ae:"+aM.advCount(),"lu:"+aM.fvisitorId(),"si:"+aM.ssoInfo(),"rs:"+(p?1:0),"dm:"+(I?1:0),"su:"+aM.subp()];return"UI="+e.join("|")},EX:function(i,e){if(n&1!=1){return""}i=(null!=i)?i||"":b;e=(null!=e)?e||"":a;return"EX=ex1:"+i+"|ex2:"+e},MT:function(){return"MT="+o().join("|")},V:function(){return aE},R:function(){return"gUid_"+new Date().getTime()}};function aP(){var a2="-",aZ=N.referrer.toLowerCase(),D=k.toLowerCase();if(""==x(ai)){if(""!=aZ){a2=aA(aZ)}aK(ai,a2,"","weibo.com")}var a0=/weibo.com\/reg.php/;if(D.match(a0)){var a1=ag(unescape(D),"sharehost","&","");var i=ag(unescape(D),"appkey","&","");if(""!=a1){aK(ai,a1,"","weibo.com")}aK("appkey",i,"","weibo.com")}}function f(e,i){Q(e,i)}function Q(i,D){D=D||{};var e=new Image(),aZ;if(D&&D.callback&&typeof D.callback=="function"){e.onload=function(){clearTimeout(aZ);aZ=null;D.callback(true)}}SUDA.img=e;e.src=i;aZ=setTimeout(function(){if(D&&D.callback&&typeof D.callback=="function"){D.callback(false);e.onload=null}},D.timeout||2000)}function C(e,aZ,D){SUDA.sudaCount++;if(!aM.visitorId()&&!V()){if(y<3){y++;setTimeout(C,500);return}}var i=X+[ay.V(),ay.CI(),ay.PI(e),ay.UI(),ay.MT(),ay.EX(aZ,D),ay.R()].join("&");Q(i);if(window.location.host.search("auto.sina.com.cn")>=0){wrating_url="http://m.wrating.com/m.gif?a=&c=860010-2370010112&mcookie="+aM.visitorId()+"&"+ay.R()+"=";Q(wrating_url)}}function E(e,D,i){if(aY||G){return}if(SUDA.sudaCount!=0){return}C(e,D,i)}function ao(e,aZ){if((""==e)||(undefined==e)){return}aM.setAEC(e);if(0==aZ){return}var D="AcTrack||"+x(an)+"||"+x(R)+"||"+aM.userNick()+"||"+e+"||";var i=aw+D+"&gUid_"+new Date().getTime();f(i)}function aH(a0,e,i,a1){a1=a1||{};if(!i){i=""}else{i=escape(i)}var aZ="UATrack||"+x(an)+"||"+x(R)+"||"+aM.userNick()+"||"+a0+"||"+e+"||"+at.referrer()+"||"+i+"||"+(a1.realUrl||"")+"||"+(a1.ext||"");var D=aw+aZ+"&gUid_"+new Date().getTime();f(D,a1)}function aV(a2){var i=h(a2);var a0=i.target;var aZ="",a3="",D="";var a1;if(a0!=null&&a0.getAttribute&&(!a0.getAttribute("suda-uatrack")&&!a0.getAttribute("suda-actrack")&&!a0.getAttribute("suda-data"))){while(a0!=null&&a0.getAttribute&&(!!a0.getAttribute("suda-uatrack")||!!a0.getAttribute("suda-actrack")||!!a0.getAttribute("suda-data"))==false){if(a0==N.body){return}a0=a0.parentNode}}if(a0==null||a0.getAttribute==null){return}aZ=a0.getAttribute("suda-actrack")||"";a3=a0.getAttribute("suda-uatrack")||a0.getAttribute("suda-data")||"";sudaUrls=a0.getAttribute("suda-urls")||"";if(a3){a1=T(a3);if(a0.tagName.toLowerCase()=="a"){D=a0.href}opts={};opts.ext=(a1.ext||"");a1.key&&SUDA.uaTrack&&SUDA.uaTrack(a1.key,a1.value||a1.key,D,opts)}if(aZ){a1=T(aZ);a1.key&&SUDA.acTrack&&SUDA.acTrack(a1.key,a1.value||a1.key)}}if(window.SUDA&&Object.prototype.toString.call(window.SUDA)==="[object Array]"){for(var aa=0,au=SUDA.length;aa<au;aa++){switch(SUDA[aa][0]){case"setGatherType":n=SUDA[aa][1];break;case"setGatherInfo":v=SUDA[aa][1]||v;b=SUDA[aa][2]||b;a=SUDA[aa][3]||a;break;case"setPerformance":ak=SUDA[aa][1];break;case"setPerformanceFilter":J=SUDA[aa][1];break;case"setPerformanceInterval":U=SUDA[aa][1]*1||0;U=isNaN(U)?0:U;break;case"setGatherMore":W.push(SUDA[aa].slice(1));break;case"acTrack":ad.push(SUDA[aa].slice(1));break;case"uaTrack":S.push(SUDA[aa].slice(1));break}}}aY=(function(D,i){if(ax.top==ax){return false}else{try{if(N.body.clientHeight==0){return false}return((N.body.clientHeight>=D)&&(N.body.clientWidth>=i))?false:true}catch(aZ){return true}}})(320,240);G=(function(){return false})();aM.setUOR();var aL=aM.sessionId();window.SUDA=window.SUDA||[];SUDA.sudaCount=SUDA.sudaCount||0;SUDA.log=function(){C.apply(null,arguments)};SUDA.acTrack=function(){ao.apply(null,arguments)};SUDA.uaTrack=function(){aH.apply(null,arguments)};af(N.body,"click",aV);window.GB_SUDA=SUDA;GB_SUDA._S_pSt=function(){};GB_SUDA._S_acTrack=function(){ao.apply(null,arguments)};GB_SUDA._S_uaTrack=function(){aH.apply(null,arguments)};window._S_pSt=function(){};window._S_acTrack=function(){ao.apply(null,arguments)};window._S_uaTrack=function(){aH.apply(null,arguments)};window._S_PID_="";E();try{l()}catch(ae){}function K(e){var i;i=e+"=";offset=document.cookie.indexOf(i);if(offset!=-1){offset+=i.length;end=document.cookie.indexOf(";",offset);if(end==-1){end=document.cookie.length}return document.cookie.substring(offset,end)}else{return""}}function P(i,aZ,a2,a1,a0){var e=new sinaadToolkit.Box({width:160,height:160,position:"left bottom",follow:1,zIndex:10010,autoShow:1});e.getMain().innerHTML=sinaadToolkit.ad.createHTML("image","http://newsurvey.client.sina.com.cn/static/img/invite.jpg","160px","160px","http://newsurvey.client.sina.com.cn/q.php?qname=survey_2015");var D=document.createElement("div");D.style.cssText+=";width: 40px; height: 18px; position: absolute; right: 0px; top: 0px; cursor: pointer; background: url(http://newsurvey.client.sina.com.cn/static/img/close-h.jpg) 0% 50% no-repeat rgb(235, 235, 235);";e.getMain().appendChild(D);D.onclick=function(){e.hide()}}var O="user_survey";var q=30;var am=3;var c=50;var aO="";var H="";var A=750;var L=600;var t=new Array(480);function aJ(i){var e=x(O);if(e!=""){e=(parseInt(e)+1)+""}else{e="1"}if(i!=""&&i!="undefined"&&i!=null){e=i}aK(O,e,q)}function aq(e){if(x(e)==""){return false}return true}function aU(i){var e=Math.floor(Math.random()*100);if(i>e){return true}else{return false}}function al(){var e=/\/(www|news|finance|sports|fashion|eladies|ent|tech|auto|video|edu|travel|astro|baby|test\.www|data|webtest|)\.sina\.com\.cn.*/;var i=document.location.href.toLowerCase();if(i.match(e)){return true}else{return false}}function ap(){var i=Math.floor(Math.random()*t.length);var e=P(t[i],0,100,A,L)}function ac(){dt=new Date();sdt=((dt.getYear()+1900)*10000+(1+dt.getMonth())*100+dt.getDate()).toString();var e=x(O);if(e==""||e.length!=10||e.search(sdt)!=0){aK(O,sdt+"00");return true}else{cnt=parseInt(e.substr(8,2));if(cnt<(am-1)){cnt++;aK(O,sdt+"0"+cnt);return true}else{return false}}}function aB(){try{if(!al()){return}var i=x(H);if(i=="1"){return}if(aU(c)){if(ac()){ap()}else{}}}catch(D){}}poploopcnt=0;if(typeof(sinaadToolkit)=="undefined"&&poploopcnt<3){poploopcnt++;setTimeout(aB,2000)}else{if(!(typeof(sinaadToolkit)=="undefined")){aB()}}})();
+//-->
+</script> 
+<noScript> 
+<div style='position:absolute;top:0;left:0;width:0;height:0;visibility:hidden'><img width=0 height=0 src='http://beacon.sina.com.cn/a.gif?noScript' border='0' alt='' /></div> 
+</noScript> 
+<!-- SUDA_CODE_END -->
+
+<!-- SSO_GETCOOKIE_START -->
+<script type="text/javascript">var sinaSSOManager=sinaSSOManager||{};sinaSSOManager.getSinaCookie=function(){function dc(u){if(u==undefined){return""}var decoded=decodeURIComponent(u);return decoded=="null"?"":decoded}function ps(str){var arr=str.split("&");var arrtmp;var arrResult={};for(var i=0;i<arr.length;i++){arrtmp=arr[i].split("=");arrResult[arrtmp[0]]=dc(arrtmp[1])}return arrResult}function gC(name){var Res=eval("/"+name+"=([^;]+)/").exec(document.cookie);return Res==null?null:Res[1]}var sup=dc(gC("SUP"));if(!sup){sup=dc(gC("SUR"))}if(!sup){return null}return ps(sup)};</script>
+<!-- SSO_GETCOOKIE_END -->
+
+<script type="text/javascript">new function(r,s,t){this.a=function(n,t,e){if(window.addEventListener){n.addEventListener(t,e,false);}else if(window.attachEvent){n.attachEvent("on"+t,e);}};this.b=function(f){var t=this;return function(){return f.apply(t,arguments);};};this.c=function(){var f=document.getElementsByTagName("form");for(var i=0;i<f.length;i++){var o=f[i].action;if(this.r.test(o)){f[i].action=o.replace(this.r,this.s);}}};this.r=r;this.s=s;this.d=setInterval(this.b(this.c),t);this.a(window,"load",this.b(function(){this.c();clearInterval(this.d);}));}(/http:\/\/www\.google\.c(om|n)\/search/, "http://keyword.sina.com.cn/searchword.php", 250);</script>
+<!-- body code end -->
+
+        <img src="http://jiangsu.sinaimg.cn/2015/0513/U12547P1194DT20150513173836.jpg" style="position: absolute; top: -400px;"/>
+  <!-- 
+  * 说明：
+  * 多页面滑动模板，适用于 类ppt 页面
+  * 使用 idangerous.swiper 插件切换页面 ，参数请在下方 【Initialize swiper】中自行更改
+  * 页 swiper-slide
+  *   页眉 slide-top
+  *   正文 slide-center
+  *   页脚 slide-bottom
+   -->
+  <div class="swiper-container">
+
+    <!-- 树叶飘动特效 -->
+    <img class="abs leaf leaf1" src="http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/leaf_1.png" width="59">
+    <img class="abs leaf leaf2" src="http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/leaf_2.png" width="33">
+    <img class="abs leaf leaf3" src="http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/leaf_3.png" width="49">
+
+    <!-- 树叶摆动特效 -->
+    <div class="abs topLeafBox">
+      <img class="abs topLeaf topLeaf1" src="http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/topLeaf_1.png" width="53">
+      <img class="abs topLeaf topLeaf2" src="http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/topLeaf_2.png" width="52">
+    </div>
+
+    <div class="swiper-wrapper">
+        <!--First Slide-->
+      <div class="swiper-slide" id="s1">
+        <img class="abs w100 ani" alt="" src="http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/1.png" swiper-animate-effect="zoomIn" swiper-animate-duration="2s" swiper-animate-delay="0s">
+        <img class="abs w100 ani" alt="" src="http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/2.png" swiper-animate-effect="zoomIn" swiper-animate-duration="2s" swiper-animate-delay="0.4s">
+      </div>
+
+      <!--Second Slide-->
+      <div class="swiper-slide" id="s2">
+        <img class="abs w100 ani" alt="" src="http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/t2.png" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0s">
+        <img class="abs w100 ani" alt="" src="http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/211.png" swiper-animate-effect="bounceInLeft" swiper-animate-duration="2.2s" swiper-animate-delay="0s">
+        <img class="abs w100 ani" alt="" src="http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/212.png" swiper-animate-effect="bounceInLeft" swiper-animate-duration="2.2s" swiper-animate-delay="0.13s">
+        <img class="abs w100 ani" alt="" src="http://jiangsu.sinaimg.cn/2015/0513/U12547P1194DT20150513154716.png" swiper-animate-effect="bounceInLeft" swiper-animate-duration="2.2s" swiper-animate-delay="0.26s">
+        <img class="abs w100 ani" alt="" src="http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/22.png"  swiper-animate-effect="bounceInLeft" swiper-animate-duration="2.2s" swiper-animate-delay="0.39s">
+      </div>
+
+      <!--Third Slide-->
+      <div class="swiper-slide" id="s3">
+        <img class="abs w100 ani" alt="" src="http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/t3.png" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0s">
+        <img class="abs w100 ani" alt="" src="http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/31.png" swiper-animate-effect="slideInUp" swiper-animate-duration="1.3s" swiper-animate-delay="0s" style="top: -30px;">
+      </div>
+
+      <!--4 Slide-->
+      <div class="swiper-slide" id="s4">
+        <img class="abs w100 ani" alt="" src="http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/t4.png" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0s">
+        <img class="abs w100 ani" alt="" src="http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/41.png" swiper-animate-effect="slideInUp" swiper-animate-duration="1.4s" swiper-animate-delay="0s" style="top: -30px;">
+      </div>
+
+      <div class="swiper-slide" id="s5">
+        <style>
+        .s6View{   width: 100%;  height: 100%;  position: relative;  overflow-y: scroll; -webkit-overflow-scrolling: touch; }
+        </style>
+        <div class="s6View">
+          <div class="s6Content">
+            <img class="w100 ani" alt="" src="http://jiangsu.sinaimg.cn/2015/0922/U12937P1194DT20150922115455.png" style="margin-top: 20%;" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0s">
+            <div class="workList">
+            <div class="card-itemBox">
+  <div class="card-item">
+  <div class="work-descBox"><div class="work-desc">小王子</div></div>
+          <div class="work-textBox"><div class="work-text">如果你存在于一颗行星，那么我看着这满天的繁星，就觉得他们都笑了起来”，小王子对于我是一场爱的启蒙，有关于驯养，跋涉，以及星辰斑斓的黄昏。总有一天我们会离开身边的玫瑰和小火山，走向更大的世界，而当终于我们成长，别忘记带着灵魂，回到故乡。</div></div>
+        <div class="work-nameBox"></div>
+            <div class="work-voteBtnBox"><div class="work-name"></div></div>  
+
+         </div>
+
+  <div class="card-item">
+  <div class="work-descBox"><div class="work-desc">城门开</div></div>
+          <div class="work-textBox"><div class="work-text">枯木逢春，时光可以倒流吗？没有人比你和这座城，更加遥远和寂寞。消逝的北京城，回不去的昨天。青灯寂寥，光影弥漫；尘梦婉转，一晃数年。你用文字构筑的城池，充斥着用诗性打捞的记忆。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">长恨歌</div></div>
+          <div class="work-textBox"><div class="work-text">长恨歌未央，世人独彷徨。一本沾染岁月尘土、满溢旧时气息的小说，娓娓道来，一场繁华旧梦。这梦诉说着王琦瑶从素净淡雅到杳无声息消失于世间的经历。蝴蝶翩跹，夹竹桃开落，置身旧上海的繁华魅影，孤独的身影依然无处可遁，只因她，消逝的青春，飞逝了的时间。与时光有关的东西，总是直指悲剧的东西。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">平凡的世界</div></div>
+          <div class="work-textBox"><div class="work-text">其实这个世界里的人大多是平凡的，但就算是平凡的梦想也是需要信念与勇气来实现的。或许对于这个庞大喧嚣不堪的世界我们是平凡的，但我们要在自己的小世界里做一个努力乐观向上的人。这本书带给我最大的力量就是，每个人与生俱来的世界不一样，越是平凡的世界，就越有理由去改变自己的世界。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">解忧杂货店</div></div>
+          <div class="work-textBox"><div class="work-text">东野圭吾的新书，虽然不是他最擅长的犯罪推理小说，但却用他最擅长的构思带给大家一个感人而又神奇的故事。世界很大，很可能我们都会有丝丝缕缕的联系而不自知，有时我们对别人温暖一点，某一个不相干的时间点我们恰会感受到这个世界的温度。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">小王子</div></div>
+          <div class="work-textBox"><div class="work-text">骄傲的玫瑰花还在寂寞的星球上等着逝去的爱重来，而勇敢的小狐狸已经决定不爱我的我不爱了。我们总是难以在爱的独木桥上保持平衡。爱我们的太轻，而我们爱的又太重。生命的轻与重，美与痛就这么如水般流过，身体老去逝去，回忆永远年轻。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">弟子规</div></div>
+          <div class="work-textBox"><div class="work-text">品之《弟子规》，文字浅近，适宜读颂，蕴含良习，传承人道，弘扬传统。践之，道理浅显，有规有矩，路径清晰，人人可为，事事可依。悟之，核心价值，叶落归根，广为传承，常读日践，振兴中华，中国梦圆。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">不能承受的生命之轻</div></div>
+          <div class="work-textBox"><div class="work-text">人们常常感叹的是不能承受的生命之重，《不能承受的生命之轻》这本书作者反过来说，这就进入了深层：人生就是履行责任背负重担，人人都有不能承受的生命之重。最沉重的负担同时也成了最强盛的生命力的影像。负担越重，我们的生命越贴近大地，它就越真切实在。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">你的孤独，虽败犹荣</div></div>
+          <div class="work-textBox"><div class="work-text">人生犹如行驶的火车，倒退的风景，以前迷茫，是因为四周与前方太黑暗，但貌似一切都在我们自己的掌握之中，无需羡慕，不需鸡血，耐得住寂寞，经得起推敲，自会拥有最有安全感的人生！其实我们的青春，我们的孤独，大都雷同。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">活着</div></div>
+          <div class="work-textBox"><div class="work-text">相信看完余华的《活着》，记忆最深刻的一句话就是：没有什么比时间更具有说服力了，因为时间无需通知我们就可以改变一切。长这么大，有时候在某一刻，甚至应该说是很多时候，我们都会突然迷失，找不到生活下去的理由。但是只有活着才会有一万种可能。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">平凡的世界</div></div>
+          <div class="work-textBox"><div class="work-text">平凡的磨砺在创造后的泥泞中蜕变出亮色的生活，但也注定留下蹉跎的疮疤，望见永跨不过的鸿沟。也许，我们最终是不必跨出各自的双水村的，双方绚烂的背景下，我们仍有平凡、壮丽而骄傲的生活。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">小王子</div></div>
+          <div class="work-textBox"><div class="work-text">我们的人生会经历各种各样的历险，作为过程的人生意义本就在于体验与奉献。在我们拼搏、竞争、心累的时候，以小王子这样孩子式的眼光反思成人的空虚、盲目，愚妄和死板教条，便会感到身为人类的孤独寂寞与没有根基随风流浪的命运。追求真善美，是孩子们最初的梦想，更是大人们需要坚定的理想。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">文化苦旅</div></div>
+          <div class="work-textBox"><div class="work-text">一支笔，一串脚印，悄悄走进历史深处，开启一场探索中华文化源流的灵魂之旅。一双深邃的眼睛，透过漫漫黄沙，追溯黄河文明的兴衰；一种文人情怀，心系家国命运，审视民族的未来；一颗赤子之心，沉醉于山水，又在山水中超拔，观照山水中的人文精神，纵观人类文明的进化。这是一场震撼心灵的文化洗礼。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">悟空传</div></div>
+          <div class="work-textBox"><div class="work-text">我想每一个人，都是从黑暗里走到光明.美酒浇灌荆棘，这条路上英雄和小丑共舞.重要的不是经历了什么，而是前方有什么.只要方向是对的，就该不顾一切走下去，带着人性的高贵与理性，走向正确的彼岸。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">呼兰河传</div></div>
+          <div class="work-textBox"><div class="work-text">民国时期的许多书无论什么时候来读都能深入人心，引发共鸣。我是看过《黄金时代》之后才读萧红的《呼兰河传》。经历一生坎坷的萧红在病榻上仍能以如此真挚、纯真的感触记述童年，并且同样不幸的经历中只记取美好的一面，对他人的不幸又投以充分的悲悯！联想到她颠沛、窘迫被人辜负的一生，我是含着泪读完她的童年，或喜或悲，但仿佛不远处，萧红在望着我说，嗨，不喜不悲。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">百年孤独</div></div>
+          <div class="work-textBox"><div class="work-text">一个浓缩的宇宙，一个自己的世界，一个家族的兴衰历史，一片土地上的沉默。每一寸土地都是寂寞的，每一个人都是孤独的，每一个存在都是被历史滚滚车轮推着向前的，在马孔多，是一片百年的孤独。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">不过，一场生活</div></div>
+          <div class="work-textBox"><div class="work-text">我们难过的其实不是心，而是时间雕琢后麻木的面孔，生活的无奈，每个人肯定有很多苦，有些人忍着一辈子，有些人就在时间里消失殆尽了，和谁在一起，谁又真的试着去问过你的内心世界，又或者根本也不太重要。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">倾城之恋</div></div>
+          <div class="work-textBox"><div class="work-text">虽然《倾城之恋》讲述了一个爱情故事，爱情一直在台前招摇、表演，但绑缚在它身上的细线却紧紧牵在命运的手中，是它在幕后指挥、拉扯。爱情是被动的、搀满杂质的，也是值得同情与哀怜的，它的牢固度与耐久度永远不能让人轻松。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">多情剑客无情剑</div></div>
+          <div class="work-textBox"><div class="work-text">这是古龙武侠的巅峰之作，确立了他独特的武侠风格，一举奠定了他与金庸并立的历史地位。古龙用刀削斧凿般锋利的笔法创造了一个包罗万象的江湖，对人性的冰冷刻画震撼人心。李寻欢身上有着古龙自己的影子，他和孙小红的喜酒，或许是古龙对自己、对读者的开解：人性的善恶都来源于执念。</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+<div class="card-item">
+  <div class="work-descBox"><div class="work-desc">红楼梦</div></div>
+          <div class="work-textBox"><div class="work-text">一本人生百科全书，值得一读再读，并且常读常新。通过对人性的本质把握，跨越了时间和空间，用文学实现了永恒。 
+</div></div>
+        <div class="work-nameBox"></div>
+              <div class="work-voteBtnBox"><div class="work-name"></div></div>
+
+         </div>
+        </div>
+
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript">
+        var lastY;
+        $(".s6View").bind("touchmove", function(e) {
+          if ($(this).scrollTop() <= 0) {
+            //超出顶部
+              var currentY = e.originalEvent.touches[0].clientY;
+              if(currentY > (lastY || 0)){
+
+              }else if(currentY < (lastY || 0)){
+              e.stopPropagation();
+              }
+              lastY = currentY;
+          }else if($(this).scrollTop() >= ($(this).children().height() - $(this).height())){
+            //超出底部
+            var currentY = e.originalEvent.touches[0].clientY;
+              if(currentY > (lastY || 0)){
+              e.stopPropagation();
+              }else if(currentY < (lastY || 0)){
+
+              }
+              lastY = currentY;
+          }else{
+            //在内容区域滑动
+            e.stopPropagation();
+          }
+        });
+        </script>
+
+      </div>
+
+    </div>
+
+<!-- BGM DOM -->
+<audio id="bgm" src="http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/bgmcut.mp3" autoplay="autoplay" loop style="display: none; width: 0; height: 0;"></audio>
+
+<!-- BGM play/mut Btn -->
+<style>
+.bgm-btn{ position:absolute; top: 16px; right:16px; width: 30px; height: 30px; background-size: 100%; background-image: url("http://s3img.city.sina.com.cn/activity/common/large/9f9acca088ab3e67f12eb612bdd12c07.png"); z-index: 1; -webkit-animation: myrotate 5s linear 0s infinite normal;}
+.bgm-btn.mut{ background-position: 0px -30px; -webkit-animation: none;}
+
+@-webkit-keyframes myrotate /*Safari and Chrome*/
+{
+0% { -webkit-transform:rotate(0deg);}
+25% { -webkit-transform:rotate(-90deg);}  
+50% { -webkit-transform:rotate(-180deg);}
+75% { -webkit-transform:rotate(-270deg);}
+100% { -webkit-transform:rotate(-360deg);}
+}
+
+</style>
+<div class="bgm-btn"></div>
+
+<!-- Touch to play BGM. JS -->
+<script type="text/javascript">
+var firstTouch = true;
+$('body').bind("touchstart",function(e){
+  if ( firstTouch ) {
+    firstTouch = false;
+    document.getElementById('bgm').play();
+  }else{
+    return;
+  }
+});
+
+$(".bgm-btn").bind("touchstart",function(e){  
+  //e.preventDefault();
+  //e.stopPropagation();
+  var dom = document.getElementById('bgm');
+  if( dom.paused ){
+    dom.play();
+    $(".bgm-btn").removeClass("mut");
+  }else{
+    dom.pause();
+    $(".bgm-btn").addClass("mut");
+  }
+});
+</script>
+<!-- / BGM DOM -->
+
+  </div>
+</body>
+
+<script type="text/javascript">
+var mySwiper;
+document.onreadystatechange = function() {
+  if(document.readyState == "complete"){ 
+    $(".swiper-wrapper").show();
+  }
+};
+
+window.onload = function() {
+
+  /* zoom swiper-container */
+  fixPageHeight();
+  window.onresize = fixPageHeight;
+  function fixPageHeight() {
+    $("body, .swiper-container").height( window.innerHeight ); //修正整数页面高度 
+    return "page has been resized!";
+  }
+
+  /* Initialize swiper */
+  mySwiper = new Swiper('.swiper-container',{
+    // options
+    mode:'vertical', //vertical //horizontal
+    mousewheelControl: true, //鼠标滚轮控制
+    keyboardControl: true,   // 键盘控制
+    onInit: function(swiper) {
+      swiper.myactive = 0;
+        swiperAnimateCache(swiper); 
+        swiperAnimate(swiper); 
+    },
+    onSlideChangeEnd : Swipercallback
+  });  
+}
+
+/* 每页背景列表 */
+var bgList = [
+              "http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/1.jpg",
+              "http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/2.jpg",
+              "http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/3.jpg",
+              "http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/4.jpg",
+              "http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/5.jpg",
+              "http://jiangsu.sinaimg.cn/zt/s/yxqxwspds/mobile/images/5.jpg"
+              ];
+for ( var i in bgList) {
+  var img = new Image();
+  img.src = bgList[i];
+}
+
+/* SlideChangeEndCallback */
+function Swipercallback(swiper){
+    var act = swiper.activeIndex; 
+    setTimeout(function() {
+      $(".swiper-container").css("background-image", 'url("' + bgList[act] + '")');
+  }, 1200);
+    swiperAnimate(swiper);
+}
+
+var isSubmited = false;
+function 提交书评() {
+  if (isSubmited) {
+    layer.open({
+        content: '您已提交过了',
+        style: 'background-color:RGBA(0,0,0,0.8); color:#fff; border:none; text-align: center;',
+        time: 1
+    });
+  }
+
+  var data = {};
+  data.act_id = 11042;
+  data.custom_1 = $("#f_bookName").val();
+  data.custom_2 = $("#f_bookdesc").val();
+  data.custom_3 = $("#f_name").val();
+  data.custom_4 = $("#f_phone").val();
+
+  if(data.custom_1==""){
+    $("#g_phone").focus();
+    layer.open({
+        content: '请输入书名！',
+        style: 'background-color:RGBA(0,0,0,0.8); color:#fff; border:none; text-align: center;',
+        time: 1
+    });
+    return false;
+  }
+  if(data.custom_2==""){
+    $("#g_phone").focus();
+    layer.open({
+        content: '请输入书评！',
+        style: 'background-color:RGBA(0,0,0,0.8); color:#fff; border:none; text-align: center;',
+        time: 1
+    });
+    return false;
+  }
+  if(data.custom_3==""){
+    $("#g_phone").focus();
+    layer.open({
+        content: '请输入姓名！',
+        style: 'background-color:RGBA(0,0,0,0.8); color:#fff; border:none; text-align: center;',
+        time: 1
+    });
+    return false;
+  }
+  var partten = /^1[3,4,5,7,8]\d{9}$/;
+    if(!partten.test(data.custom_4)){
+    $("#g_phone").focus();
+    layer.open({
+        content: '请填正确的手机号',
+        style: 'background-color:RGBA(0,0,0,0.8); color:#fff; border:none; text-align: center;',
+        time: 1
+    });
+    return false;
+  }
+
+    var submitAni = layer.open({
+        type: 2,
+        content: '正在提交',
+        shadeClose: false,
+    });
+
+    $.JSONP('http://act.city.sina.com.cn/interface/activity/json_add_signup.php',data,function(bm){
+      layer.close(submitAni);
+        if(bm.error==0){
+          layer.open({
+          content: '提交成功！<br/>快分享给朋友吧',
+          style: 'background-color:RGBA(0,0,0,0.8); color:#fff; border:none; text-align: center;',
+          time: 10
+      });
+          isSubmited = true;
+        }else{
+          layer.open({
+          content: bm.errmsg,
+          style: 'background-color:RGBA(0,0,0,0.8); color:#fff; border:none; text-align: center;',
+          time: 4
+      });
+        }
+    }); 
+}
+
+function 投票(id){  
+  $.JSONP("http://act.city.sina.com.cn/interface/activity/json_get_act_info.php", {act_id:11042}, function(data){
+    if (data.data.vote_captcha != 0) {
+    /* 需要填写验证码 */
+      new CAP.ui.captcha({act_id: 11042, height: 50, width: 120, ok_callback: function(captcha) {
+          var loadLayer = layer.open({
+              type: 2,
+              content: '请稍候'
+          });
+          $.JSONP('http://vote.act.city.sina.com.cn/interface/activity/json_add_vote.php',{id: id, captcha: captcha},function(json){
+              layer.close(loadLayer);
+              if(json.error == 0){
+                layer.open({
+                    content: '投票成功!',
+                    style: 'background-color:RGBA(0,0,0,0.6); color:#fff; border:none;',
+                    time: 2
+                });
+                $("#N_"+id).text(parseInt($("#N_"+id).text()) + 1);
+                  }else{
+                    layer.open({
+                    content: json.errmsg,
+                    style: 'background-color:RGBA(0,0,0,0.6); color:#fff; border:none;',
+                    time: 2
+                });
+                  }
+          });
+        }
+      });
+    }else{
+    /* 无需验证码投票 */
+      $.JSONP("http://vote.act.city.sina.com.cn/interface/common/get_token.php", {act_id:11042, work_id: id }, function(data){
+        var loadLayer = layer.open({
+            type: 2,
+            content: '请稍候'
+        });
+        $.JSONP('http://vote.act.city.sina.com.cn/interface/activity/json_add_vote.php',{id: id, token: data.token},function(json){
+            layer.close(loadLayer);
+            if(json.error == 0){
+              layer.open({
+                  content: '投票成功!',
+                  style: 'background-color:RGBA(0,0,0,0.6); color:#fff; border:none;',
+                  time: 2
+              });
+              $("#N_"+id).text(parseInt($("#N_"+id).text()) + 1);
+                }else{
+                  layer.open({
+                  content: json.errmsg,
+                  style: 'background-color:RGBA(0,0,0,0.6); color:#fff; border:none;',
+                  time: 2
+              });
+                }
+          });
+      });
+
+    }
+  });
+
+}
+
+</script>
+
+</html>
