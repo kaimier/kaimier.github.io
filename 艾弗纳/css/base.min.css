@@ -1,0 +1,262 @@
+.w960 {
+  width: 960px;
+  margin: 0 auto; }
+
+.top {
+  height: 36px;
+  line-height: 36px;
+  background: #ebebeb;
+  font-size: 12px;
+  color: #8a8383;
+  text-align: right; }
+  .top .topT {
+    float: left; }
+  .top a {
+    padding: 0 10px;
+    color: #8a8383; }
+    .top a:hover {
+      text-decoration: underline; }
+
+.header .logoArea {
+  height: 112px; }
+  .header .logoArea .logo, .header .logoArea .logoTxt {
+    float: left; }
+  .header .logoArea .tel {
+    float: right;
+    padding-left: 45px;
+    background: url(../img/tel.jpg) left center no-repeat;
+    height: 45px;
+    margin-top: 36px; }
+    .header .logoArea .tel dt {
+      font-size: 12px;
+      color: #6e7672; }
+    .header .logoArea .tel dd {
+      font-family: Arial;
+      font-size: 24px;
+      color: #009de4;
+      font-weight: bold; }
+
+.nav {
+  background: #006db2;
+  height: 50px;
+  line-height: 50px; }
+.nav a{ display: inline-block; height: 50px; line-height: 50px; font-size: 14px; color: #fff; width: 120px; text-align: center; float: left;}
+.nav a:hover,.nav a.active{ background: #63a6d0;}
+.banner{ background: url(../img/banner.jpg) center top no-repeat; height: 582px;}
+.banner{ height: 530px; background-position: center bottom;}
+.indexBox{ margin-top: 50px;}
+.indexBox .indexTitle{ text-align: center; background: url(../img/line.jpg) 0 center repeat-x;}
+.indexBox .indexTitle p{display: inline-block; background: #fff; padding: 0 10px; position:relative; font-size: 24px; color: #006db2;}
+.indexBox .indexTitle p i{ display: inline-block; position: absolute;  width: 8px; height: 8px; background: url(../img/point.jpg) center center no-repeat; top:50%; margin-top: -4px; left: 0;}
+.indexBox .indexTitle p span{ font-size: 16px; color: #a5a5a5;}
+.indexBox .indexTitle p .bottom{ display: inline-block; position: absolute; left: auto; right: 0;}
+.indexBox .indexTitle p b{ display: block;}
+.indexBox .indexTitle .seemore{ font-size: 12px; color: #939393; display:block;}
+.indexBoxCon{ position: relative; height: 102px;}
+.indexBoxCon .iBtns{ width: 28px; height: 64px; display: inline-block; background: url(../img/btn.jpg) 0 0 no-repeat; position: absolute; margin-top: 24px;}
+.indexBoxCon .iBtnRight{ background-position: 0 right; right: 0; background-position: right 0;}
+.indexBoxCon .indexBoxConWarp{ margin-left: 50px; position: relative; width: 865px; overflow: hidden; height: 102px; margin-top: 15px;}
+.indexBoxCon ul{ position: absolute; left:0;}
+.indexBoxCon ul li{ float: left; margin-left: 15px; display: inline;}
+.indexBox2 .indexBoxCon{ height: auto;}
+.indexBox2 .indexBoxCon dl.left{ padding-right:450px; background: url(../img/dlLeft.jpg) right center no-repeat;
+margin-top: 40px; height: 330px;}
+.indexBox2 .indexBoxCon dl.left dd p{
+   width: 410px;
+}
+.indexBox2 .indexBoxCon dl dt{ font-size: 20px; line-height: 30px;}
+.blue{color: #006db2;}
+.indexBox2 .indexBoxCon dl dd{ font-size: 12px; color: #393939; margin-top: 30px;
+   line-height: 28px;
+}
+.indexBox2 .indexBoxCon dl dd p{ padding-left: 16px; background: url(../img/pBg.jpg) left 10px no-repeat;}
+.indexBox2 .indexBoxCon dl.right{  padding-left: 526px;  background: url(../img/dlRight.jpg) 0 0 no-repeat; height: 328px;}
+.indexBox2 .indexBoxCon dl.right dt{ font-size: 20px; line-height: 30px; padding-top: 20px;}
+.indexBox2 .indexBoxCon dl.right dt p{
+
+}
+.indexBox3{ margin-top: 10px;}
+.indexBox3 .indexBoxCon,.indexBox4 .indexBoxCon{ height: auto;}
+.indexBox3 .indexBoxCon .tabs{ margin-top: 30px;}
+.indexBox3 .indexBoxCon .tabs a{ display: inline-block; color: #4b4b4b; width: 166px; height: 41px; line-height: 41px; text-align: center; background: url(../img/tab.jpg) 0 0 no-repeat; margin-left: 18px;}
+.indexBox3 .indexBoxCon .tabs a:hover,.indexBox3 .indexBoxCon .tabs a.active{ background: url(../img/tabCur.jpg) 0 0 no-repeat; color: #fff;}
+.indexBox3 .indexBoxCon .tabBox{ margin-top: 36px; width: 368px;}
+.indexBox4 .tabs{ height: 40px;  border: 1px #73c9f0 solid;}
+.indexBox4 .tabs a{display: inline-block; height: 38px; line-height: 38px; margin-top: 1px; width: 150px; text-align: center; margin-left: 5px; color: #4b4b4b; font-size: 14px;}
+.indexBox4 .indexBoxCon{ margin-top: 30px; height: 630px;}
+.indexBox4 .tabs a.active,.indexBox4 .tabs a:hover{ background: #3d90c4; color: #fff;}
+.indexBox4 .tabBox{ }
+.indexBox4 .tabBox dl{ padding:20px; margin-top: 20px; }
+.indexBox4 .tabBox dt{ width: 480px; height: 264px; float: left;}
+.indexBox4 .tabBox dd{ width: 420px; float: left; margin-left: 10px;}
+.indexBox4 .tabBox dd .title{
+  font-size: 25px; color: #006db2;
+}
+.indexBox4 .tabBox dd p.text{ font-size: 14px; color: #4b4b4b; line-height: 24px; margin-top: 24px; height: 120px; overflow: hidden;}
+.indexBox4 .tabBox dd .linkBox{
+   height: 42px; margin-top: 20px;
+}
+.indexBox4 .tabBox dd .linkBox a{ display: inline-block; margin-right: 10px;}
+.indexBox4 .tabBox ul li{ float: left;  text-align: center;
+ margin: 0 8px;}
+.indexBox4 .tabBox ul li img{ display: inline-block; padding: 4px; border: 1px #cfcfcf solid;}
+.indexBox4 .tabBox ul li p{ padding:0 4px;font-size: 14px; height: 30px; line-height: 30px;}
+.indexBox4 .tabBox ul li p a{ color: #4b4b4b; }
+.indexBox4 .tabBox ul li p a:hover{ text-decoration: underline; color: #4b4b4b;}
+.indexBox5{ height: 548px; background: #006db2; margin-top:0;}
+.indexBox5 .left{ width: 396px; float: left; margin-right: 26px;}
+.indexBox5 .img{ border: 4px #abcfe6 solid; display: inline-block;}
+.indexBox5 span.img{ margin-left: 8px; float: left;}
+.indexBox5 .Atitle{ font-size: 25px; color: #fff; height: 30px; line-height: 30px;}
+.indexBox5 .right {color: #fff;}
+.indexBox5 .right .text{ line-height: 24px; overflow: hidden; height: 120px; margin-top: 14px; font-size: 14px;}
+.indexBox5 .right .pcList{ margin-top: 40px;}
+.indexBox5 .right .pcList dd{ margin-top: 20px;}
+.indexBox6 .indexBoxCon .indexBoxConWarp{ height: 214px;}
+.indexBox6 .indexBoxCon .indexBoxConWarp li{ padding:4px; border: 1px #cfcfcf solid;}
+.indexBox6 .indexBoxCon{ height: auto}
+.indexBox6 .indexBoxCon .iBtns{ margin-top: 80px; }
+.indexBox8{ height: 356px; background: #f0f9f4;}
+.indexBox8 .tabs{ height: 38px; padding-top: 22px;}
+.indexBox8 .tabs a{ display: inline-block; width: 111px; height: 38px;line-height: 38px; text-align: center;
+background: url(../img/btn2.jpg) right center no-repeat; margin-right: 4px}
+.indexBox8 .tabs a.active,.indexBox8 .tabs a:hover{
+  background: url(../img/btn2.jpg) left center no-repeat; color: #fff;
+}
+.indexBox8 .left{ float: left; width: 650px;}
+.indexBox8 .left .tabBox{ margin-top: 26px;}
+.indexBox8 .left .tabBox .side{ width: 290px; float: left; margin-right: 16px;}
+.indexBox8 .left .tabBox .side dt{ height: 116px;}
+.indexBox8 .left .tabBox .side dd{ font-size: 12px; color: #585858; line-height: 20px; height: 80px; overflow: hidden; margin-top: 20px;}
+.indexBox8 .left .tabBox  ul{ width: 340px; float: left;}
+.indexBox8 .left .tabBox  ul li{ height: 39px; line-height: 39px; border-bottom: 1px #c9d2cd dashed; background: url(../img/jt.jpg) 0 center no-repeat; padding-left:16px;}
+.indexBox8 .left .tabBox  ul li a{ font-size: 14px; color: #2c312d; display: inline-block; float: left; width: 220px; overflow: hidden;  overflow: hidden; height: 39px;}
+.indexBox8 .left .tabBox  ul li a:hover{ text-decoration: underline;}
+.indexBox8 .left .tabBox  ul li span{ font-size: 12px; float: right; color: #b2b8b4;
+}
+.indexBox8 .right{ width: 242px; float: right;
+}
+.indexBox8 .qaBox{ margin-top: 16px;}
+.indexBox8 .qaBox .qaTitle{ font-size: 18px; color: #767676;
+  border-bottom: 1px #c8d1cc dashed; height: 50px; line-height: 50px;
+}
+.indexBox8 .qaBox .seemore{color: #767676; font-size: 12px; float: right;
+}
+.indexBox8 .qaList dl{ border-bottom: 1px #c8d1cc dashed; height: 118px;}
+.indexBox8 .qaList dt,.indexBox8 .qaList dd{ padding-left:28px; color: #585858; font-size:12px; background: url(../img/qa.jpg) 0 10px no-repeat;}
+.indexBox8 .qaList dt{ height: 36px; line-height: 36px; margin-top: 10px; overflow: hidden;}
+.indexBox8 .qaList dt a{ font-size: 14px; color: #585858;}
+.indexBox8 .qaList dt a:hover{text-decoration: underline;}
+.indexBox8 .qaList dd{ background: url(../img/aqa.jpg) 0 0 no-repeat; height: 60px; line-height: 20px; overflow: hidden;}
+.keywords{ line-height: 30px; margin-top: 20px; color: #585858; font-size: 12px;}
+.keywords span{ font-size: 14px;}
+.keywords a{ color: #585858; padding-right: 18px;}
+.keywords a:hover{ color:#585858; text-decoration: underline;}
+.fNav{ height: 40px; line-height: 40px; overflow: hidden; text-align: center; background: #006db2; margin-top: 20px;}
+.fNav a{ color: #fff; font-size: 14px; padding: 0 20px; }
+.fNav a:hover{ text-decoration: underline;  }
+.foot{ margin-top: 20px; padding-bottom: 20px;}
+.foot .tlog{ float: left; margin-right: 70px;}
+.foot p{ font-size: 12px; color: #616161; line-height: 20px; }
+.foot .weixin{
+  float: right;
+}
+
+/**/
+.bg{
+  background: url(../img/bg.jpg)  0 0 repeat-x;
+}
+.side{width: 210px; float: left;}
+.sideBox { margin-top: 32px;}
+.sideBox .sideCon{}
+.daohang .thead{ height: 47px; line-height: 47px; background: url(../img/tbg.jpg) 0 0 no-repeat; font-size: 20px; color: #fff; text-indent: 10px; }
+.daohang .sideCon{ position: relative; border: 1px #e2e2e2 solid;}
+.daohang .sideCon a{ display: block; width: 215px; position: relative; left: -1px; z-index: 1; height: 28px; line-height: 28px; font-size: 12px; color: #4d4d4d; text-indent: 20px; overflow: hidden;}
+.daohang .sideCon a.cur,.daohang .sideCon a:hover{ background: url(../img/aBg.jpg); font-size: 14px; color: #197ab8;}
+.sideBox_rykh{border: 1px #e2e2e2 solid; margin-top: 10px;}
+.sideBox_rykh .thead{ height: 34px; line-height: 34px; width: 208px; background: url(../img/tbg2.jpg); font-size: 14px; color: #333; text-indent:10px;}
+.sideBox_rykh .sideCon{ padding:0 10px 10px;}
+.sideBox_rykh li{ float: left; display: inline; width: 78px; height: 40px; border: 1px #e2e2e2 solid; margin:10px 0 0 10px;}
+.sideBox_rykh dl{ font-size: 12px; text-align: center; width: 168px; margin: 12px auto 0;}
+.sideBox_rykh dl a{ color: #666;}
+.sideBox_rykh dl dt{padding: 1px; border: 1px #e2e2e2 solid; width: 166px; height: 131px; }
+.sideBox_rykh dl a:hover{ text-decoration: underline;}
+.sideBox_rykh dl dd{ height: 24px; line-height: 24px;}
+
+.main{ width: 730px; float: right; margin-top: 32px;}
+#crumbs{ height: 28px; line-height: 28px;}
+#crumbs,#crumbs a{ font-size: 12px; color: #636363;}
+#crumbs a:hover{ color: #006db2;}
+#crumbs span{ color: #006db2;}
+.mainBox{border: 1px #e3e3e3 solid; margin-top: 20px;}
+.mainBox_aboutUs{ padding:25px; font-size: 12px; min-height: 880px; color: #7f7f7f; line-height: 20px;}
+.winxinBox{ float: right; width: 188px; color: #333; font-size: 12px; text-align: center; margin-left: 50px; margin-right: 20px;}
+.winxinBox .red{ color: #ff3333;}
+.winxinBox dd{ color: #333;}
+.mainBox_aboutUs b{ font-weight: bold; color: #666; }
+
+/**/
+.mainBox_jjfa{padding:0 0 20px 20px;}
+.mainBox_jjfa .jjfaList{ height: 206px; border-bottom:1px #b4b4b4 dashed ; padding-top: 18px; overflow: hidden;}
+.jjfaList .jjImg{ border: 1px #e2e2e2 solid; width: 306px; height: 194px; float: left;}
+.jjfaList .jjCon{ padding-right: 22px; width: 360px; float: right;}
+.jjfaList .jjT{ height: 40px; line-height: 40px; color: #333; font-size: 14px; border-bottom: 1px #b4b4b4 dashed;}
+.jjfaList .jjTxt{font-size: 12px; color: #7e7e7e; line-height: 20px; height: 60px; overflow: hidden; margin-top: 10px;}
+.blue{color: #006db2;}
+.jjfaList .jjTxt a:hover{ text-decoration: underline; color: #006db2;}
+.jjfaList .jjLinkBtn{ text-align: right; height: 32px; margin-top: 25px;}
+.jjfaList .jjLinkBtn a{ display: inline-block; width: 94px; height: 32px; line-height: 32px; text-align: right; background: url(../img/aBtn.jpg) 0 0 no-repeat; color: #fff; font-size: 12px; padding-right: 14px;} 
+.jjfaList .jjLinkBtn a.aRight{background-position: right 0 ;}
+.jjfaList .jjLinkBtn a:hover{ opacity: 0.8; filter:alpha(opacity=80);}
+
+/**/
+#pagination{text-align:center;padding:20px 0;font:.76em verdana; clear: both; text-align: right; padding-right: 20px;}
+#pagination a,#pagination span{margin:0 1px; color: #2b2b2b;}
+#pagination .previous,#pagination .first,#pagination .end,#pagination .next,#pagination .pagenumber{display:inline-block;margin:0 5px;width:24px;height:24px; color:#666;text-align:center;font-size:12px;line-height:24px;}
+#pagination a:hover{color:#006db2;text-decoration:none;}
+#pagination .pagenumber{}
+#pagination .pagenum{ background: url(../img/p1.jpg); width: 46px;}
+#pagination .current{ background: url(../img/p2.jpg); color:#006db2;cursor:default}
+/**/
+.mainBox_rzcp{ font-size: 12px; padding:14px 0 20px;}
+.mainBox_rzcp dl{ border:1px #e2e2e2 solid; width: 678px; margin:  16px 0 0 25px;}
+.mainBox_rzcp dl dt{ height: 33px; line-height: 33px; border-bottom: 1px #e2e2e2 solid; text-align: right; padding-right: 20px;  color: #a9a9a9;}
+.mainBox_rzcp dl dt b{ display: inline-block; height: 33px; line-height: 33px; background: url(../img/tt.jpg); position: relative;padding: 0 32px; float: left; color: #006db2;}
+.mainBox_rzcp dl dt b i{ display: inline-block; height: 33px; width: 18px; background: url(../img/z1.jpg) right center no-repeat; position: absolute; right: 0;}
+.mainBox_rzcp dl dt span.point{ padding:0 4px; color: #a9a9a9; }
+.mainBox_rzcp dl dt span.pointNum{ padding:0 10px; color: #626262;}
+.mainBox_rzcp dl dd{ line-height: 24px; padding:30px 20px; color: #666;}
+.mainBox_rzcp dl dd b{ font-weight: bold;}
+/**/
+.mainBox_khjz{ padding: 0 14px 20px; border: 1px #e2e2e2 solid;}
+.mainBox_khjz dl{ font-size: 12px; margin-top: 16px; padding-bottom: 10px; border-bottom: 1px #e2e2e2 dashed;}
+.mainBox_khjz dl dt{ width: 108px; height: 108px; padding: 5px; border: 1px #e2e2e2 solid; float: left; margin-right: 20px;}
+.mainBox_khjz dl dd{height: 108px;}
+.mainBox_khjz dl dd p.thead{ height: 40px; line-height: 40px; overflow: hidden; font-size: 14px; color: #7e7e7e;}
+.mainBox_khjz dl dd p.thead b{ color: #333; padding-right: 20px;}
+.mainBox_khjz dl dd p.thead .timer{font-size: 12px; color: #999;}
+.mainBox_khjz dl dd p.text{color: #7e7e7e; height: 60px; line-height: 20px; overflow: hidden;}
+.mainBox_khjz dl dd p.text a:hover{ color: #006db2; text-decoration: underline;}
+
+/**/
+.banner3{ background:#fbeece url(../img/banner2.jpg) center top no-repeat;}
+.banner3 .w960{ position: relative;}
+.banner3 .formArea{width: 230px; height: 270px; background: #fff; border: 6px #e4d9bb solid; position: absolute; top: 91px; right: 42px;padding: 15px 20px;}
+.formArea .thead{ font-size:16px;margin-bottom: 10px;}
+.formArea td{ font-size:12px; padding:12px 0; vertical-align: middle;}
+.formArea td input{ width: 170px; height: 18px; padding:4px; float: left; background: url(../img/input.jpg);}
+.formArea td input.sortInput{ width: 90px; margin-right:10px; height: 20px; padding:4px; background: url(../img/input.jpg); visibility: middle;}
+.formArea .chioce{ text-align:right; font-size: 12px; margin-top: 6px;}
+.formArea .chioce a:hover{ color: #fe9900;}
+.formArea .chioce label{float: left;}
+.formArea .chioce label input{ vertical-align: middle; margin-right: 4px;}
+.formArea input.submitBtn{ width: 228px; height: 33px; line-height: 33px; text-align: center; border: none; color: #fff; background: url(../img/submit.jpg); font-size: 14px; margin-top: 16px;}
+.formArea input.submitBtn:hover{opacity: 0.8; filter:alpha(opacity=80);}
+.mainBox_conectUs{ padding:10px 25px;}
+.mainBox_conectUs .text{ line-height: 24px; font-size: 12px; color: #6d6d6d;}
+.mainBox_conectUs .text p{ padding: 8px 0;}
+/**/
+.mainBox_ryzz{ padding:15px 0 25px;}
+.mainBox_ryzz .ryzzList{ float: left; margin-left: 20px;}
+.mainBox_ryzz .ryzzList dl{padding:1px; width: 210px; border: 1px #e3e3e3 solid; margin-top: 10px;}
+.mainBox_ryzz .ryzzList dd{ height: 30px; line-height: 30px; text-align: center; font-size: 12px; width: 100%; color: #666;}

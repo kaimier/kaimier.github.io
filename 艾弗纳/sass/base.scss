@@ -1,0 +1,30 @@
+@charset "utf-8";
+.w960{ width:960px; margin:0 auto;}
+.top{
+		height:36px; line-height:36px; background:#ebebeb; font-size:12px; color: #8a8383; text-align: right;
+		.topT{
+			float: left;
+		}
+		a{ padding: 0 10px; color: #8a8383;
+			&:hover{text-decoration: underline;}
+		}
+	}
+.header{
+	.logoArea{
+		height: 112px;
+		.logo,.logoTxt{float: left;}
+		.tel{ float: right; padding-left:45px; background: url(../img/tel.jpg) left center no-repeat; height: 45px; margin-top:36px;
+
+			dt{ font-size:12px; color: #6e7672;}
+			dd{ font-family:Arial; font-size:24px; color: #009de4; font-weight:bold;}
+
+
+		}
+	}
+}
+.nav{
+	background: #006db2; height: 50px; line-height:50px;
+}
+.indexBox{}
+.indexBox .indexTitle{ text-align: center;}
+.indexBox .indexTitle .seemore{}
