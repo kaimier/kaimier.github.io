@@ -13,8 +13,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal; }
 
 a {
-  text-decoration: none;
-  color: #999; }
+  text-decoration: none; }
 
 a:active {
   outline: 0 none; }
@@ -90,12 +89,9 @@ q:before, q:after {
 
 a {
   color: #2a2a2a; }
+a:hover{text-decoration: underline;}
 
 a:visited, a[tabindex='-1']:focus {
-  outline: 0 none; }
-
-a:hover {
-  color: #4bc8b6;
   outline: 0 none; }
 
 .n {
