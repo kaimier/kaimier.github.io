@@ -1,0 +1,260 @@
+@charset "utf-8";
+@import url("../animate.css");
+html,body{width: 100%; height: 100%; background-color: #424242; font-size: 10px;}
+body{overflow-x:hidden;}
+.wapper{font-size: 1.2rem;}
+.wapper .head {
+  width: 100%;
+  height: 230px;
+  position: relative;
+  background-image:url(/images/person_center/t1.png);
+  background-color: #000;
+  background-size:100% 100%;
+}
+
+.wapper .head .main{
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: 50%;
+  left: 50%;
+  margin-top: -70px;
+  margin-left: -40px;
+}
+.wapper .head .dial{width: 100%;position: absolute;left:0px;bottom:18%;text-align: center;color: #999;font-size:14px;}
+.wapper .head .name{width: 100%;position: absolute;left:0px;bottom:27%;text-align: center;color: #fff;font-size:19px;}
+.wapper .head .main img.head{
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+.wapper .head .main img.ico_tzr{
+  background-position: -121px -534px;
+  width: 32px;
+  height: 16px;
+  display: inline-block;
+  -webkit-transform: translate(10px, -14px);
+}
+img.ico_null{
+  width: 32px;
+  height: 16px;
+}
+.wapper .head .main img.ico_v{
+  background-position: -158px -534px;
+  width: 18px;
+  height: 16px;
+  display: inline-block;
+  -webkit-transform: translate(10px, -14px);
+}
+
+.wapper .rel{ position: relative; width: 100%; height: 50px;}
+.wapper .card{
+  width: 100%;
+  height: 50px;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+}
+.wapper .card li{
+  width: 33.33333%;
+  height: 100%;
+  float: left;
+  font-size: 1.4rem;
+  line-height: 50px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  box-sizing:border-box;
+  background-color: #3b3b3b;
+  border-right: 5px solid #424242;
+  border-top: 5px solid #000;
+}
+.wapper .card li img{
+  display: inline-block;
+  -webkit-transform: translate(0, 3px);
+}
+.wapper .card li:last-child{
+  border-right: none;
+}
+.wapper .card li.curr{
+  background-color: #be45f9;
+  border-top: 5px solid #bb32f9;
+}
+.wapper .card li .icon{
+  width: 17px;
+  height: 17px;
+  padding-right: 0.5rem;
+}
+.wapper .card li .icon1{
+  background-position: -74px -446px;
+}
+.wapper .card li .icon2{
+  background-position: -98px -446px;
+}
+.wapper .card li .icon3{
+  background-position: -148px -446px;
+}
+
+.wapper .cardcon{ width: 100%; height: auto; overflow-x:hidden; clear: both; min-height: 300px;}
+.wapper .cardcon .page{display: none; position: absolute; overflow: hidden; top: 50px; left: 0; width: 100%; height: auto; padding-bottom: 60px;}
+.wapper .cardcon .page[visible="true"] { display: block !important;}
+.wapper .cardcon .page[visible="false"] { display: none !important;}
+.wapper .cardcon .page .space{color:#ccc;text-align: left;padding:30px 5%;font-size:14px;line-height: 24px; height: auto; min-height: 40px;}
+.wapper .cardcon .page .btn{width: 100px;height: 30px;line-height: 30px;background-color:#f50057;border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;margin:20px auto;text-align:center;}
+.wapper .cardcon .page .btn a{text-align: center;color:#fff;text-decoration: none;}
+.wapper .box{
+  margin-top: 25px;
+  margin-left: 5%;
+  width: 90%;
+  height: auto;
+  min-height: 100px;
+  background-color: #000;
+  border-radius: 1rem;
+  line-height: 2rem;
+}
+.wapper .box .con{
+  width: 92%;
+  margin-left: 4%;
+  padding-bottom: 1rem;
+  height: auto;
+}
+.wapper .box .con ul{
+  display: box;display: -webkit-box;
+  margin-top:10px;
+}
+.wapper .box .con ul li{box-flex:1;-webkit-box-flex:1;font-size:12px;}
+.wapper .box .con ul li.left{text-align:left;}
+.wapper .box .con ul li.right{text-align: right;}
+.wapper .box .con ul li.right span.date{ color:#555; padding-top: 2px;}
+.wapper .box .con ul li.right span.mq{font-size:14px;}
+.wapper .box .con ul li span{display: block;color:#fff;}
+.wapper .box .con ul li span p{padding-left:62px;}
+.wapper .box .banner{
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.wapper .box .banner .status{
+  width: 100%; height: 40px;
+  color: #000; position: absolute; left: 0; bottom:6px;
+  background-color: rgba(0,0,0, 0.5);
+}
+.wapper .box .banner .status .lable{
+  width: 90px; height: 21px; color: #fff; display: block; position: absolute; left: 0;
+  bottom:3px; line-height: 21px;
+  font-size: 1.3rem;
+  -webkit-transition: left 0.3s ease-out;
+}
+.wapper .box .banner .status .lable .text{
+  display: block;
+  float: left;
+  width: 64px;
+  height: 100%;
+  overflow: hidden;
+  background-color: #ff2d6f;
+  text-align: center;
+}
+.wapper .box .banner .status img{
+  border-radius: 0;
+}
+.wapper .box .banner .status .ico_left{
+  width: 13px; height: 21px;
+  float: left;
+  background-position: -44px -712px;
+}
+.wapper .box .banner .status .ico_right{
+  width: 13px; height: 21px;
+  float: left;
+  background-position: -101px -712px;
+}
+
+.wapper .box .banner .status .line{
+  display: block;
+  position: absolute;left: 0;
+  bottom:0;
+  width: 0%;
+  height: 3px;
+  -webkit-transition: width .3s ease-out;
+}
+.wapper .box .banner .status .line_black{
+  display: block; position: absolute;
+  left: 0; bottom:0;
+  width: 100%;
+  height: 3px;
+}
+.wapper .box h1.title{
+  width: 92%;
+  margin-left: 4%;
+  font-size: 1.8rem;
+  color: #fff;
+  height: auto;
+  position: relative;
+  margin-top:10px;
+}
+.wapper .title span.ct{
+  border-radius: 6px;
+  padding: 1px 3px;
+  margin-left: 10px;
+  display: inline-block;
+  background-position: -74px -534px;
+  width: 41px;
+  height: 14px;
+  display: inline-block;
+  position: absolute;
+  top: 5px;
+  background-size: 527px auto;
+}
+.wapper .title span.xf{
+  background-position: -33px -535px;
+  width: 41px;
+  height: 14px;
+  display: inline-block;
+  width: 41px;
+  height: 14px;
+  display: inline-block;
+  position: absolute;
+  top: 5px;
+  background-size: 527px auto;
+}
+.wapper .box .banner img{
+  border-top-left-radius:1rem;
+  border-top-right-radius:1rem;
+  width: 100%;
+}
+
+.wapper .box .con .img{
+  -webkit-flex: 1;flex: 1;
+}
+
+.wapper .box .con .name{
+  -webkit-flex: 1;flex: 1;
+  padding-top: 1rem;
+}
+.wapper .box .con .name h1{
+  font-size: 1.6rem;
+  color: #848485;
+}
+.wapper .box .con .name h2{
+  font-size: 1.4rem;
+  color: #848485;
+}
+.wapper .box .con .money{
+  -webkit-flex: 1;flex: 1;
+  padding-top: 1rem;
+}
+.wapper .box .con .money h3{
+  font-size: 1.6rem;
+  color: #fff;
+  text-align: right;
+}
+.wapper .box .con .money h4{
+  font-size: 1.4rem;
+  color: #848485;
+  text-align: right;
+}
+/**/

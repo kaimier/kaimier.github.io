@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="#ffffff" name="msapplication-TileColor" />
+    <meta http-equiv="Expires" CONTENT="-1">
+    <meta http-equiv="Cache-Control" CONTENT="no-store">  
+    <meta http-equiv="Pragma" CONTENT="no-cache">  
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>注册</title>
+    <link rel="stylesheet" href="/st/css/base2014.css?v=20150906"/>
+    <link rel="stylesheet" href="/st/css/login.css?v=20150401"/>
+    <!-- <link rel="icon" href="http://m.jd.com/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" href="http://m.jd.com/images/apple-touch-icon.png"/> -->
+</head>
+<body>
+<div class="header">
+    <a href="javascript:;" class="new-a-back"><span></span></a>
+    <h2>众筹之家注册</h2>
+</div>
+<div class="common-wrapper">
+    <div class="main">
+        <div class="item item-tips" style="display:none;">
+            <div class="err-msg"></div>
+        </div>
+        <div class="item item-captcha" style="display:">
+            <div class="input-info">
+                <input class="txt-input txt-captcha" type="text" autocomplete="off" placeholder="请输入图片验证码" />
+                <span id="captcha-img"><img src="/cgi-bin/m/authcode?mod=reg" width="63" height="25" alt="" /></span>
+            </div>
+        </div>
+        <div class="item item-phone">
+            <input class="txt-input txt-phone" type="tel" placeholder="请输入手机号"/>
+            <a href="javascript:;" class="btn-retransmit btn-retransmit-disabled">获取短信验证码</a>
+        </div>
+        <div class="item item-sms-captcha">
+            <input class="txt-input txt-sms-captcha" type="tel" autocomplete="off" placeholder="请输入短信验证码" />
+        </div>
+        <div class="item item-password">
+            <input class="txt-input txt-password" type="text" autocomplete="off" placeholder="请设置6-20位登录密码" required />
+            <b class="tp-btn btn-off btn-on"></b>
+            <div class="err-tips">注册即视为同意<a href="http://m.jd.com/help/app/register.html">《京东用户注册协议》</a></div>
+        </div>
+        <div class="item item-btns">
+            <a href="javascript:;" class="btn-login btn-disabled">注册</a>
+        </div>
+    </div>
+</div>
+<div id="success-toast" style="display:none;">
+    <div class="pop pop1" style="width: 100px; height: 40px; margin: -40px 0 0 -50px; background-color: #333333;">
+        <p class="pop-msg" style="color: #F5F5F5; padding-top: 8px;">注册成功</p>
+    </div>
+</div>
+<div class="pop-total" style="display:none;">
+    <div class="pop-bg"></div>
+    <div class="pop pop2">
+        <p class="pop-msg"></p>
+        <div class="pop-btns">
+            <a href="javascript:;" class="btn-pop btn-cancel">取消</a>
+            <a href="javascript:;" class="btn-pop btn-continue">继续注册</a>
+        </div>
+    </div>
+</div>
+<script src="/st/js/zepto-1.1.6.min.js"></script>
+<script src="/st/js/common.js"></script>
+<script src="/st/js/mping.min.js"></script>
+<script>
+    try{
+        var pv= new MPing.inputs.PV();   // 构造pv 请求
+        var mping = new MPing();         // 构造上报实例
+        mping.send(pv);                  // 上报pv
+    } catch (e){}
+</script>
+<script>
+;
+(function() {
+    var _need_ck = true,
+        _phone = '',
+        _len_phone = 0,
+        _len_passwd = 0,
+        _len_sms = 0,
+        _len_ckcode = 0;
+    $(document).ready(function() {
+        hasCookie();
+        bindEvents();
+        pop();
+        enableCaptcha();
+        enableRegister();
+        _phone = $('.txt-phone').val();
+    });
+
+    function hasCookie() {
+        if (!navigator.cookieEnabled) {
+            $('.item-tips').show().children('.err-msg').html('您的手机浏览器不支持或已经禁止使用cookie，无法正常登录，请开启或更换其他浏览器');
+        }
+        if (location.search && (location.search.indexOf('&inApp=1') != -1 || location.search.indexOf('?inApp=1') != -1)) {
+            $('.header').hide();
+        }
+    }
+
+    function bindEvents() {
+        $('.new-a-back').on('click', function() {
+            window.history.back();
+        });
+        $('.btn-off').on('click', function() {
+            if ($(this).hasClass('btn-on')) {
+                $(this).removeClass('btn-on');
+                $(this).prev().attr('type', 'password');
+            } else {
+                $(this).addClass('btn-on');
+                $(this).prev().attr('type', 'text');
+            }
+        });
+        $('#captcha-img').on('click', function() {
+            refreshAuth();
+        });
+        _len_phone = $('.txt-phone').on('input', function() {
+            $(this).removeClass('txt-err');
+            _phone = this.value;
+            _len_phone = _phone.length;
+            enableCaptcha();
+            enableRegister();
+        }).val().length;
+        _len_passwd = $('.txt-password').on('input', function() {
+            $(this).removeClass('txt-err');
+            _len_passwd = this.value.length;
+            enableRegister();
+        }).val().length;
+        _len_ckcode = $('.txt-captcha').on('input', function() {
+            $(this).removeClass('txt-err');
+            _len_ckcode = this.value.length;
+            enableRegister();
+        }).val().length;
+        _len_sms = $('.txt-sms-captcha').on('input', function() {
+            $(this).removeClass('txt-err');
+            _len_sms = this.value.length;
+            enableRegister();
+        }).val().length;
+        $('.btn-retransmit').on('click', function() {
+            if (!$(this).hasClass('btn-retransmit-disabled')) {
+                docheckPhone();
+            }
+        });
+        $('.btn-login').on('click', function() {
+            if (!$(this).hasClass('btn-disabled')) {
+                register();
+            }
+        });
+    }
+
+    function pop() {
+        $('.btn-cancel').on('click', function() {
+            if (_need_ck) {
+                refreshAuth();
+            }
+            pop.hide();
+        });
+        $('.btn-continue').on('click', function() {
+            sendSmsCode(_phone, parseInt($(this).data('is_unbind'), 10));
+            pop.hide();
+        });
+    }
+    pop.show = function(info) {
+        var $total = $('.pop-total');
+        $('.pop-msg', $total).html(info.msg);
+        $('.btn-continue', $total).html(info.btn).data('is_unbind', info.unbind);
+        $total.css('display', 'block');
+    };
+    pop.hide = function() {
+        $('.pop-total').css('display', 'none');
+    };
+
+    function enableRegister() {
+        if (_len_phone && _len_passwd && _len_sms && (!_need_ck || _need_ck && _len_ckcode)) {
+            $('.btn-login').removeClass('btn-disabled');
+        } else {
+            $('.btn-login').addClass('btn-disabled');
+        }
+    }
+
+    function enableCaptcha() {
+        var $btn = $('.btn-retransmit');
+        if (_len_phone && !$btn.hasClass('is-restransit')) {
+            $btn.removeClass('btn-retransmit-disabled');
+        } else {
+            $btn.addClass('btn-retransmit-disabled');
+        }
+    }
+
+    function refreshAuth() { //刷新验证码图
+        var url = '/cgi-bin/m/authcode?mod=reg&v=' + Math.random();
+        $('#captcha-img').children('img').attr('src', url).parent().prev().val('');
+        _len_ckcode = 0;
+        enableRegister();
+    }
+
+    function checkPhone(phone) {
+        var pattern = /^1[0-9]{10}$/;
+        return pattern.test(phone);
+    }
+
+    function checkPassword(pwd) {
+        var len = pwd.length;
+        return (len >= 6 && len <= 20);
+    }
+
+    function errTips(msg) {
+        if (msg == undefined || msg.length == 0) {
+            $('.item-tips').hide();
+        } else {
+            $('.item-tips').show().children('.err-msg').html(msg);
+        }
+    }
+
+    function makeParams() {
+        var params = {};
+        params.mobile = _phone;
+        params.pwd = $('.txt-password').val();
+        params.checkcode = $('.txt-sms-captcha').val();
+        var rsa_n = "A4FDA453C25A775D18C60EF6867ED9B54486CD296B520F9827AF5D10E3ED9E3420C5A088ABA7DB3DF22DC4D2C1448252E54471171351EB2F81618A88A87152B4F4DD340C045416030608C7469D716E162B9FBEE1D3E1C9AB7CD19A8B011D0DFA3BC536FB6A98D47DC2947E1F2E6D23377D79CF4569D11C0232FF7FB3B72E26A5";
+        setMaxDigits(131);
+        var key = new RSAKeyPair("3", "10001", rsa_n, 1024);
+        var c = window.btoa(encryptedString(key, params.pwd, RSAAPP.PKCS1Padding, RSAAPP.RawEncoding));
+        params.pwd = c;
+        params.s_token = '';
+        return params;
+    }
+
+    function docheckPhone() {
+        var params = {
+            'mobile': _phone,
+            's_token': ''
+        };
+        if (_need_ck) {
+            var authcode = $('.txt-captcha').val();
+            if (authcode.length == 0) {
+                errTips('请输入图片验证码');
+                $('.txt-captcha').addClass('txt-err');
+                return;
+            }
+            params.authcode = authcode;
+        }
+        if (!checkPhone(_phone)) {
+            errTips('手机号格式错误');
+            $('.txt-phone').addClass('txt-err');
+            return;
+        }
+        var start = (new Date()).getTime();
+        $.ajax({
+            url: '/cgi-bin/m/docheckphone',
+            type: 'POST',
+            data: params,
+            dataType: 'json',
+            success: function(rdata) {
+                var time = (new Date()).getTime() - start;
+                window.pl_report({
+                    interfaceID: 524290,
+                    loginName: params.mobile,
+                    callTime: time,
+                    status: rdata.errcode
+                });
+                if (rdata.errcode == 0) {
+                    errTips('');
+                    pop.show({
+                        'msg': '我们将发送短信验证码至<br />' + _phone,
+                        'btn': '确定',
+                        'unbind': 0
+                    });
+                } else {
+                    if (rdata.needauth) {
+                        $('.item-captcha').show();
+                        refreshAuth();
+                        _need_ck = true;
+                    } else {
+                        $('.item-captcha').hide();
+                        _need_ck = false;
+                    }
+                    switch (rdata.errcode) {
+                        case 28:
+                        case 29:
+                            errTips(rdata.message);
+                            $('.txt-phone').focus().addClass('.txt-err');
+                            break;
+                        case 22:
+                            errTips('');
+                            pop.show({
+                                'msg': '<span>手机号' + _phone + '已绑定其它帐号，</span><br />继续注册将解除该手机与原京东帐号的绑定，并绑定新注册的京东账号',
+                                'btn': '继续注册',
+                                'unbind': 1
+                            });
+                            break;
+                        case 257:
+                            errTips(rdata.message);
+                            $('.txt-captcha').focus().addClass('.txt-err');
+                            break;
+                        default:
+                            errTips(rdata.message);
+                            break;
+                    }
+                }
+            },
+            error: function() {
+                errTips('服务器开小差，请稍后重试');
+                var time = (new Date()).getTime() - start;
+                window.pl_report({
+                    interfaceID: 524290,
+                    loginName: params.mobile,
+                    callTime: time,
+                    status: '255'
+                });
+            }
+        });
+    }
+
+    function sendSmsCode(phone, is_unbind) {
+        var start = (new Date()).getTime();
+        var iID = is_unbind ? 524293 : 524291;
+        $.ajax({
+            url: '/cgi-bin/m/dosendmsgcode',
+            type: 'POST',
+            data: {
+                'mobile': phone,
+                's_token': '',
+                'is_unbind': is_unbind
+            },
+            dataType: 'json',
+            success: function(rdata) {
+                var time = (new Date()).getTime() - start;
+                window.pl_report({
+                    interfaceID: iID,
+                    loginName: phone,
+                    callTime: time,
+                    status: rdata.errcode
+                });
+                if (rdata.errcode == 0) {
+                    var $btn = $('.btn-retransmit');
+                    $btn.html('重新发送（120s）').addClass('btn-retransmit-disabled').addClass('is-restransit');
+                    var count = 120;
+                    var ret = setInterval(function() {
+                        --count;
+                        if (count == 0) {
+                            $btn.html('获取短信验证码').removeClass('btn-retransmit-disabled').removeClass('is-restransit');
+                            clearInterval(ret);
+                        } else {
+                            $btn.html('重新发送（' + count + 's）');
+                        }
+                    }, 1000);
+                    $('.item-captcha').hide();
+                    _need_ck = false;
+                } else {
+                    if (_need_ck) {
+                        refreshAuth();
+                    }
+                    errTips(rdata.message);
+                }
+            },
+            error: function() {
+                if (_need_ck) {
+                    refreshAuth();
+                }
+                errTips('服务器开小差，请稍后重试');
+                var time = (new Date()).getTime() - start;
+                window.pl_report({
+                    interfaceID: iID,
+                    loginName: phone,
+                    callTime: time,
+                    status: '255'
+                });
+            }
+        });
+    }
+
+    function register() {
+        if (!checkPhone(_phone)) {
+            errTips('手机号格式错误');
+            $('.txt-phone').focus().addClass('txt-err');
+            return;
+        }
+        var params = makeParams();
+        if (!checkPassword($('.txt-password').val())) {
+            errTips('请将密码位数设置为6-20位');
+            $('.txt-password').focus().addClass('txt-err');
+            return;
+        }
+        $('.btn-login').addClass('btn-disabled').html('注册中');
+        var start = (new Date()).getTime();
+        $.ajax({
+            url: '/cgi-bin/m/domreg',
+            type: 'POST',
+            data: params,
+            dataType: 'json',
+            success: function(rdata) {
+                var time = (new Date()).getTime() - start;
+                window.pl_report({
+                    interfaceID: 524292,
+                    loginName: params.mobile,
+                    callTime: time,
+                    status: rdata.errcode
+                });
+                if (rdata.errcode == 0) {
+                    $("#success-toast").fadeIn();
+                    setTimeout(function() {
+                        location.href = rdata.succcb;
+                    }, 2000);
+                } else {
+                    $('.btn-login').removeClass('btn-disabled').html('注册');
+                    switch (rdata.errcode) {
+                        case 49:
+                        case 51:
+                        case 29:
+                        case 28:
+                        case 22:
+                            errTips(rdata.message);
+                            $('.txt-phone').focus().addClass('txt-err');
+                            break;
+                        case 52:
+                        case 30:
+                        case 25:
+                            errTips(rdata.message);
+                            $('.txt-sms-captcha').focus().addClass('txt-err');
+                            break;
+                        case 41:
+                            errTips(rdata.message);
+                            $('.txt-password').focus().addClass('txt-err');
+                            break;
+                        case 105:
+                            location.href = rdata.succcb;
+                            break;
+                        default:
+                            errTips(rdata.message);
+                            break;
+                    }
+                }
+            },
+            error: function() {
+                $('.btn-login').removeClass('btn-disabled').html('注册');
+                errTips('服务器开小差，请稍后重试');
+                var time = (new Date()).getTime() - start;
+                window.pl_report({
+                    interfaceID: 524292,
+                    loginName: params.mobile,
+                    callTime: time,
+                    status: '255'
+                });
+            }
+        });
+    }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="#ffffff" name="msapplication-TileColor" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>登录</title>
+    <link rel="stylesheet" href="st/css/base2014.css?v=20150906"/>
+    <link rel="stylesheet" href="st/css/login.css?v=2015031618"/>
+    <link rel="icon" href="http://m.jd.com/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" href="http://m.jd.com/images/apple-touch-icon.png"/>
+</head>
+<body>
+<div id="header" class="header" style="display:none;">
+    <a href="javascript:;" class="new-a-back"><span></span></a>
+    <h2>众筹之家登录</h2>
+</div>
+<div class="common-wrapper">
+    <div class="main">
+        <div class="item item-tips" style="display:none;">
+            <div class="err-msg"></div>
+        </div>
+        <div class="item item-username">
+            <input class="txt-input txt-username" type="text" placeholder="请输入用户名/邮箱/已验证手机" autofocus required />
+        </div>
+        <div class="item item-password">
+            <input class="txt-input txt-password" type="password" autocomplete="off" placeholder="请输入密码" required />
+            <b class="tp-btn btn-off"></b>
+        </div>
+        <div class="item item-captcha">
+            <div class="input-info"  style="display:;">
+                <input class="txt-input txt-captcha" type="text" size="11" maxlength="6" autocomplete="off" placeholder="请输入验证码" />
+                <span id="captcha-img"><img src="/cgi-bin/m/authcode?mod=login" width="63" height="25" alt="" /></span>
+            </div>
+            <div class="login-free login-free-selected"><b></b>一个月内免登录</div>
+        </div>
+        <div class="item item-btns">
+            <a class="btn-login btn-disabled" href="javascript:;">登录</a>
+        </div>
+        <div class="item item-login-option">
+            <span class="register-free">
+                <a href="mreg.html" class="">快速注册</a>
+            </span>
+            <span class="retrieve-password">
+                <a href="fillAccountName.html" class="">找回密码</a>
+            </span>
+        </div>
+        <div class="item item-login-other">
+            <dl>
+                <dt>其它登录方式</dt>
+                <dd>
+                    <a href="/cgi-bin/m/qqlogin" class="qq"><span>QQ</span></a>
+                    <!-- <a href="http://m.jd.com/login/renrengonggao.action" class="renren"><span>人人</span></a>
+                    <a href="http://m.jd.com/login/weibogonggao.action" class="weibo"><span>新浪微博</span></a>
+                    <a href="http://m.jd.com/login/doubangonggao.action" class="douban"><span>豆瓣</span></a> -->
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="pop-total" id="pop-choose" style="display:none;">
+    <div class="pop-bg"></div>
+    <div class="pop pop2">
+        <p class="pop-msg"></p>
+        <div class="pop-btns">
+            <a href="javascript:;" class="btn-pop btn-cancel">取消</a>
+            <a href="javascript:;" class="btn-pop btn-continue">继续注册</a>
+        </div>
+    </div>
+</div>
+<div class="pop-total" id="pop-confirm" style="display:none;">
+    <div class="pop-bg"></div>
+    <div class="pop pop2">
+        <p class="pop-msg">您的账号存在安全风险，请前往电脑版京东验证账号，有问题请致电京东客服4006065500</p>
+        <div class="pop-btns">
+            <a href="javascript:;" class="btn-pop btn-confirm">确定</a>
+        </div>
+    </div>
+</div>
+<script src="st/js/zepto-1.1.6.min.js"></script>
+<script src="/st/js/common.js"></script>
+<script src="/st/js/mping.min.js"></script>
+<script>
+    var show_title = 1;
+    if(show_title){
+        $('#header').show();
+    }else{
+        $('#header').hide();
+    }
+</script>
+<script>
+    try{
+        var pv= new MPing.inputs.PV();   // 构造pv 请求
+        var mping = new MPing();         // 构造上报实例
+        mping.send(pv);                  // 上报pv
+    } catch (e){}
+</script>
+<script>
+;
+(function() {
+    var _login_free = true,
+        _need_ck = true,
+        _len_user = 0,
+        _len_passwd = 0,
+        _len_ckcode = 0;
+    $(document).ready(function() {
+        hasCookie();
+        bindEvents();
+    });
+
+    function hasCookie() {
+        if (!navigator.cookieEnabled) {
+            $('.item-tips').show().children('.err-msg').html('您的手机浏览器不支持或已经禁止使用cookie，无法正常登录，请开启或更换其他浏览器');
+        }
+    }
+
+    function bindEvents() {
+        $('.new-a-back').on('click', function() {
+            window.history.back();
+        });
+        $('.login-free').on('click', function() {
+            $(this).toggleClass('login-free-selected');
+            _login_free = !_login_free;
+        });
+        $('.btn-off').on('click', function() {
+            if ($(this).hasClass('btn-on')) {
+                $(this).removeClass('btn-on');
+                $(this).prev().attr('type', 'password');
+            } else {
+                $(this).addClass('btn-on');
+                $(this).prev().attr('type', 'text');
+            }
+        });
+        $('#captcha-img').on('click', function() {
+            refreshAuth();
+        });
+        $('.btn-cancel').on('click', function() {
+            $(this).parents('#pop-choose').css('display', 'none');
+        });
+        $('.btn-confirm').on('click', function() {
+            $(this).parents('#pop-confirm').css('display', 'none');
+        });
+        _len_user = $('.txt-username').on('input', function() {
+            $(this).removeClass('txt-err');
+            _len_user = this.value.length;
+            enableLogin();
+        }).val().length;
+        _len_passwd = $('.txt-password').on('input', function() {
+            $(this).removeClass('txt-err');
+            _len_passwd = this.value.length;
+            enableLogin();
+        }).val().length;
+        _len_ckcode = $('.txt-captcha').on('input', function() {
+            $(this).removeClass('txt-err');
+            _len_ckcode = this.value.length;
+            enableLogin();
+        }).val().length;
+        $('.btn-login').on('click', function() {
+            if (!$(this).hasClass('btn-disabled')) {
+                login();
+            }
+        });
+    }
+
+    function enableLogin() {
+        if (_len_user && _len_passwd && (!_need_ck || _need_ck && _len_ckcode)) {
+            $('.btn-login').removeClass('btn-disabled');
+        } else {
+            $('.btn-login').addClass('btn-disabled');
+        }
+    }
+
+    function refreshAuth() {
+        var url = '/cgi-bin/m/authcode?mod=login&v=' + Math.random();
+        $('#captcha-img').children('img').attr('src', url);
+    }
+
+    function makeParams() {
+        var params = {};
+        params.username = $('.txt-username').val();
+        params.pwd = $('.txt-password').val();
+        var rsa_n = "A4FDA453C25A775D18C60EF6867ED9B54486CD296B520F9827AF5D10E3ED9E3420C5A088ABA7DB3DF22DC4D2C1448252E54471171351EB2F81618A88A87152B4F4DD340C045416030608C7469D716E162B9FBEE1D3E1C9AB7CD19A8B011D0DFA3BC536FB6A98D47DC2947E1F2E6D23377D79CF4569D11C0232FF7FB3B72E26A5";
+        setMaxDigits(131);
+        var key = new RSAKeyPair("3", "10001", rsa_n, 1024);
+        var c = window.btoa(encryptedString(key, params.pwd, RSAAPP.PKCS1Padding, RSAAPP.RawEncoding));
+        params.pwd = c;
+        params.remember = _login_free;
+        params.s_token = '';
+        if (_need_ck) {
+            params.authcode = $('.txt-captcha').val();
+        }
+        return params;
+    }
+
+    function pop(info) {
+        var $total = $('#pop-choose');
+        $('.pop-msg', $total).html(info.msg);
+        $('.btn-continue', $total).html(info.btn).attr('href', info.url);
+        $total.css('display', 'block');
+    }
+
+    function login() {
+        $('.btn-login').addClass('btn-disabled').html('登录中');
+        $('.item-tips').hide();
+        var params = makeParams();
+        var start = (new Date()).getTime();
+        $.ajax({
+            url: '/cgi-bin/m/domlogin',
+            type: 'POST',
+            data: params,
+            dataType: 'json',
+            success: function(rdata) {
+                $('.btn-login').removeClass('btn-disabled').html('登录');
+                var time = (new Date()).getTime() - start;
+                window.pl_report({
+                    interfaceID: 393217,
+                    loginName: params.username,
+                    callTime: time,
+                    status: rdata.errcode
+                });
+                if (rdata.errcode == 0) {
+                    location.href = rdata.succcb;
+                } else {
+                    if (rdata.needauth) {
+                        $('.input-info').show();
+                        _need_ck = true;
+                        refreshAuth();
+                        enableLogin();
+                    } else {
+                        $('.input-info').hide();
+                        _need_ck = false;
+                    }
+                    switch (rdata.errcode) {
+                        case 6:
+                            $('.txt-password').focus().addClass('txt-err');
+                            $('.item-tips').show().children('.err-msg').html(rdata.message);
+                            break;
+                        case 7:
+                            $('.txt-username').focus().addClass('txt-err');
+                            $('.item-tips').show().children('.err-msg').html(rdata.message);
+                            break;
+                        case 257:
+                            $('.txt-captcha').focus().addClass('txt-err');
+                            $('.item-tips').show().children('.err-msg').html(rdata.message);
+                            break;
+                        case 128:
+                            pop({
+                                msg: '您的账号存在安全风险，请进行短信登录验证',
+                                btn: '确定',
+                                url: rdata.succcb
+                            });
+                            break;
+                        case 100:
+                            $('#pop-confirm').css('display', 'block');
+                            break;
+                        case 103:
+                            pop({
+                                msg: rdata.message,
+                                btn: '找回密码',
+                                // url: 'https://passport.m.jd.com/findloginpassword/fillAccountName.action'
+                                url: 'fillAccountName.html'
+                            });
+                            break;
+                        case 105:
+                            location.href = rdata.succcb;
+                            break;
+                        default:
+                            $('.item-tips').show().children('.err-msg').html(rdata.message);
+                            break;
+                    }
+                }
+            },
+            error: function() {
+                $('.item-tips').show().children('.err-msg').html('服务器开小差，请稍后重试');
+                $('.btn-login').removeClass('btn-disabled').html('登录');
+                var time = (new Date()).getTime() - start;
+                window.pl_report({
+                    interfaceID: 393217,
+                    loginName: params.username,
+                    callTime: time,
+                    status: '255'
+                });
+            }
+        });
+    }
+}());
+</script>
+</body>
+</html>

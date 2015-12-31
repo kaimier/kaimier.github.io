@@ -1,0 +1,137 @@
+@charset "utf-8";
+@import url("animate.css");
+html,body{width: 100%; height: 100%; background-color: #424242; font-size: 10px;}
+body{overflow-x: hidden;}
+.head_img{width:100%; height: auto; position: relative;}
+.head_img img{ width: 100%;}
+.head_img .link{ display: block; width: 40px; height: 40px; text-indent: -9999px;}
+.head_img .go_home{background-position:-342px 0;position: absolute; left: 15px;top:20px; background-size: 1000px auto;}
+
+.bar{width:100%;height:45px;position:relative;}
+.bar .status{width:96%;height:40px;color:#000;position:relative;margin-left:2%}
+.bar .status .lable{width:90px;height:21px;color:#fff;display:block;position:absolute;left:0;bottom:3px;line-height:21px;font-size:1.2rem;-webkit-transition:left .3s ease-out}
+.bar .status .lable .text{display:block;font-size:1.3rem;float:left;width:64px;height:100%;overflow:hidden;background-color:#00b7ee;text-align:center}
+.bar .status .ico_left{width:8px;height:21px;float:left;background-position:-191px 0}
+.bar .status .ico_right{width:8px;height:21px;float:left;background-position:-262px 0}
+.bar .status .luyangzhong{background-position:-43px -711px}
+.bar .status .rongzizhong{background-position:-179px -756px}
+.bar .status .rongzichenggong{background-position:-269px -804px}
+.bar .status .luyangjieshu{background-position:-43px -882px}
+.bar .status .mujichenggong{background-position:-158px -882px}
+.bar .status .line{display:block;position:absolute;left:0;bottom:0;width:0;height:3px;-webkit-transition:width .2s ease-out}
+.bar .status .line_black{display:block;position:absolute;left:0;bottom:0;width:100%;height:3px}
+.bar .circle{width:70px;height:70px;background-color:#43454a;border-radius:50%;position:absolute;right:2%;top:-60px}
+.bar .circle p.percent{text-align:center;color:#fffefe;padding-top:25px}
+.bar .circle p.percent img{width:15px;height:19px}
+.bar .circle p.percent img.t0{background-position:0 -1596px}
+.bar .circle p.percent img.t1{width:7px;background-position:-25px -1596px}
+.bar .circle p.percent img.t2{background-position:-43px -1596px}
+.bar .circle p.percent img.t3{background-position:-66px -1596px}
+.bar .circle p.percent img.t4{background-position:-90px -1596px}
+.bar .circle p.percent img.t5{background-position:-116px -1596px}
+.bar .circle p.percent img.t6{background-position:-140px -1596px}
+.bar .circle p.percent img.t7{background-position:-165px -1596px}
+.bar .circle p.percent img.t8{background-position:-188px -1596px}
+.bar .circle p.percent img.t9{background-position:-213px -1596px}
+.bar .circle p.percent img.tper{width:10px;background-position:-267px -1596px}
+.bar .circle .canvas{position:absolute;top:0;left:0}
+
+.title{width:100%;height:28px;color:#fff;position:relative;padding-top:.5rem}
+.title h1{font-size:1.9rem;line-height:28px;padding-left:1.5rem;float:left}
+.title_sub{width:100%;height:auto;color:#fff;line-height:2rem}
+.title_sub h2{font-size:1.4rem;padding-left:1.5rem;padding-right:1.5rem;padding-bottom:1rem}
+.title span.xf{background-position:-33px -535px;width:41px;height:14px;margin-left:1px;display:inline-block}
+.title span.ct{background-position:-79px -535px;width:41px;height:14px;display:inline-block;color:#fff}
+
+.num{width:100%;height:60px;color:#fff}
+.num ul{height:50px;width:100%;margin-top:5px}
+.num ul li{box-sizing:border-box;font-size:1.3rem;float:left;width:25%;height:100%;border-right:1px solid #b5b5b5;color:#fff;text-align:center;padding-top:5px}
+.num ul li.big{width:30%}
+.num ul li.small{width:20%}
+.num ul li span{font-size:1.4rem}
+.num ul li:last-child{border-right:none}
+.detail-top-bg { background:url(../img/bg2.jpg) center top no-repeat; -webkit-background-size: cover;
+background-size: cover;}
+
+.list{width:100%;height:auto}
+.list .item{position:relative;padding-top:10px}
+.list .item div.arr{display:block;width:40px;height:40px;position:absolute;top:2rem;right:1rem}
+.list .item div.arr span{display:block;width:20px;height:20px;background-position:-331px -444px;margin-top:.5rem;margin-left:.5rem;-webkit-transition:all .1s ease-out}
+.list .item a.but{display:block;width:20px;height:20px;background-position:-213px -444px;text-indent:-9999px;position:absolute;top:2rem;right:2rem}
+.list .item div.arr.show span{-webkit-transform:rotate(180deg)}
+.list .item p{background-color:#555;font-size:1.4rem;color:#bdbdbd;padding:1rem;padding-top:1rem;padding-bottom:1rem;line-height:2rem}
+.list .item p.desc{padding-top:0;display:none}
+.list .item p.desc.show{display:block;-webkit-animation:desc .3s ease-out 0s 1}
+.list .item p strong{color:#fff;font-size:1.6rem}
+.list .item p span{color:#fff;font-size:1.6rem}
+.list .item p.item_person .photo{ display: inline-block; width: 24%; float: left; text-align: center; margin-top: 1rem;  }
+.list .item p.item_person .photo a{display: inline-block; width: 100%; height: 6rem; border-radius: 50%; max-width: 100px; max-height: 100px;}
+.list .item p.item_person .photo a img{ width: 100%; height: 100%; border-radius: 50%;}
+.list .item p.item_person .photo .tag{ display: inline-block; height: 18px; background: url(../img/icon.png) -269px 0 no-repeat; background-size: 500px auto; width: 50px;}
+.list .item p.item_person .photo .notag{background: none;}
+
+.rel{position:relative}
+.card{width:100%;height:50px;z-index:10;position:absolute;top:0;left:0;background-color:#000; margin-top: 10px;}
+.card li{width:25%;height:100%;float:left;font-size:1.5rem;line-height:50px;text-align:center;color:#fff;position:relative}
+.arrow-down{display:none;position:absolute;left:50%;top:100%;margin-left:-5px;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid #fcc000}
+.flipInX .arrow-down{display:block}
+.flipInX{background-color:#fcc000}
+.cardcon{width:100%;height:auto;overflow-x:hidden}
+.cardcon .page{display:none;position:absolute;overflow:hidden;top:50px;left:0;width:100%;height:auto;min-height:100px;padding-bottom:60px}
+.cardcon .page[visible=true]{display:block!important}
+.cardcon .page[visible=false]{display:none!important}
+.cardcon section.page img{width:100%;heigh:auto}
+.cardcon section.page p img{width:100%;heigh:auto}
+.cardcon section.page.jihuashu img{width:100%;heigh:auto}
+.cardcon section.page.jihuashu p img{width:100%;heigh:auto}
+.cardcon .page .space{padding:5%;color:#ccc;text-align:left;margin:30px 0;font-size:14px;line-height:24px}
+.cardcon .page.jihuashu p{width:100%;height:30px;padding:2rem 0;padding-top:2rem;text-align:center;color:#fff;font-size:15px}
+.cardcon .page.jihuashu p a{line-height:3rem;color:#fcc000;border-radius:.5rem;font-size:1.6rem;text-decoration:underline}
+.cardcon .member{width:100%;height:auto;background-color:#555;margin-bottom:10px}
+.cardcon .member p.head{font-size:1.6rem;padding:2rem 0;margin:0 2rem;color:#fff;border-bottom:2px dotted #4b4b4b}
+.cardcon .member p.desc{font-size:1.4rem;padding:1rem 0;margin:0 2rem;color:#fff;line-height:2rem}
+.cardcon .default{font-size:1.4rem;padding:1rem 0;margin:0 2rem;color:#fff;line-height:2rem}
+.cardcon .member p.head img{width:50px;border-radius:25px;float:left;margin-right:2rem}
+.cardcon .redo img{width:100%!important;height:auto!important}
+
+
+.invest{position:fixed;bottom:0;left:0;z-index:600;display:none;box-sizing:border-box;width:100%;height:60px;background:url(../img/bg2.jpg) center center no-repeat; -webkit-background-size: cover;
+background-size: cover;}
+.invest .con{position:relative;width:100%;height:100%}
+.invest .con>.touzi{position:absolute;bottom:60px;left:0;display:none;width:100%;height:auto;background-color:#fff}
+.invest .con>.touzi a.com{position:relative;display:block;margin-top:1rem;margin-bottom:1rem;margin-left:5%;padding:1rem 0;width:90%;border:1px solid #fcc000;border-radius:1rem;color:#fcc000;text-align:center;text-decoration:none;font-size:1.8rem}
+.invest .con>.touzi.show{display:block}
+.invest .con>.touzi a.com.selected img.selected{display:block}
+.invest .con>.touzi a.com.full img.full{display:block}
+.invest .con>.touzi a.com img.selected{position:absolute;top:1.5rem;right:2rem;display:none;width:21px;height:21px;background-position:-323px -406px}
+.invest .con>.touzi a.com img.full{position:absolute;top:1rem;right:2rem;display:none;width:50px;height:27px;background-position:-289px -467px}
+.invest .con>.touzi a.disabled{border-color:#a0a0a0;color:#a0a0a0;cursor:default}
+.invest .con .buts{padding-top:1%;width:100%;height:90%}
+.invest>.share{position:absolute;top:0;left:0;display:none;width:100%;height:100%;background:url(../img/bg2.jpg) center center no-repeat; -webkit-background-size: cover;
+background-size: cover; }
+.invest>.share.show{display:block;-webkit-animation:flipInY .3s ease-out 0s 1}
+.invest>.share .buts{padding-top:1%;width:100%;height:90%}
+.invest>.share .buts li{float:left;width:25%;height:100%;color:#fff;text-align:center;font-size:1.8rem;line-height:54px}
+.invest>.share .buts li.sicon{box-sizing:border-box;width:75%;border-right:1px solid #ccc}
+.invest .share .buts li.sicon a{margin-right:20px}
+.invest .share .buts li.sicon img{width:26px;height:21px; -webkit-background-size: 250px auto;
+background-size: 250px auto;}
+.invest .share .buts li.sicon img.null{background-position:0 -31px}
+.invest .share .buts li.sicon img.weixin{background-position:-64px -31px}
+.invest .share .buts li.sicon img.sina{background-position:-128px -31px}
+.invest .share .buts li img.close{width:27px;height:23px; background-position:-223px -30px; -webkit-background-size: 250px auto;
+background-size: 250px auto;}
+.invest .con .buts li{float:left;width:25%;height:100%;color:#fff;text-align:center;font-size:1.8rem;line-height:54px}
+.invest .con .buts li.but{box-sizing:border-box;width:50%;border-right:1px solid #ccc;border-left:1px solid #ccc}
+.invest .con .buts li.but a{color:#fff;text-decoration:none}
+.invest .con .buts li img{ -webkit-background-size: 250px auto;
+background-size: 250px auto;}
+.invest .con .buts li img.star{width:16px;height:17px;background-position:-26px -13px}
+.invest .con .buts li img.zan{background-position:-172px -446px}
+.invest .con .buts li img.share{width:17px;height:17px;background-position:0 -13px}
+.share_weixin{position:fixed;top:0;left:0;z-index:700;display:none;width:100%;height:100%;background-color:rgba(0,0,0,.5)}
+.share_weixin .weixin{width:100%;height:auto}
+.share_weixin .qrcode{margin-top:25px;margin-left:25px}
+.share_weixin .wh300{position:absolute;top:50%;left:50%;margin-top:-125px;margin-left:-125px;width:250px;height:250px;border-radius:10px;background-color:#fff}
+
+

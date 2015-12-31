@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>找回密码</title>
+        <meta charset="utf-8" />
+        <meta name="author" content="m.jd.com">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+            <link rel="stylesheet" type="text/css" href="/st/css/base2013.css?v=20130806100001" charset="gbk"/>
+            <link rel="stylesheet" type="text/css" href="/st/css/password.css" charset="gbk"/> 
+            <link rel="apple-touch-icon-precomposed" href="http://m.jd.com/images/apple-touch-icon.png"/>
+            <script type="text/javascript" src="/st/js/jquery-1.6.2.min.js"></script>
+            <script type="text/javascript" src="/st/js/html5/common.js?v=201307121358"></script>
+            <script type="text/javascript" src="/st/js/html5/spin.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="/st/css/common/header.css" charset="utf-8"/>
+            <script src="/st/js/common/m_common_header_bottom.js" type="text/javascript"></script>
+    </head>
+
+<body id="body">
+<a name="top"></a>
+    <header></header>
+    <div class="new-ct bind">
+    <div class="new-pay-pw">
+        <div class="new-set-info">
+            <form id="form_fillAccountName" name="form_fillAccountName" action="" method="post">
+                <span class="new-input-span mg-b15">
+                <input type="text" id="userInput" class="new-input" name="userInput" placeholder="用户名/邮箱/已验证手机号">
+                </span>
+                <div id="username_error" class="new-txt-err"></div>
+                <span class="new-tbl-type new-mg-b5">
+                    <span class="new-tbl-cell w100">
+                        <span class="new-input-span">
+                            <input name="validateCode" type="text"  id="validateCode" class="new-input" placeholder="请输入验证码" tip="请输入验证码" errorLabel="codeError" notBlank="notBlank" valueMissingTxt="未输入验证码" "/>
+                        </span>
+                    </span>
+                    <span class="new-tbl-cell">
+                      <span class="new-abtn-code">
+                        <a href="javascript:void(0)" onclick="com_jd_passport_m_validateCode('code','codeKey','3');">
+                            <img id='code' style="width:100px;height:40px;" src="/authCode/authCodeImg.action?key=1e95012cdd8c22423e25c104680a3d2c" />
+                        </a>
+                      </span>
+                         <a href="javascript:void(0);"  onclick="com_jd_passport_m_validateCode('code','codeKey','3');"  class="new-txt-rd2">换一张</a>
+                         <input type="hidden" value="1e95012cdd8c22423e25c104680a3d2c" name="codeKey" id="codeKey">
+                    </span>
+                </span>
+                
+                <a class="new-abtn-type new-mg-t30" href="javascript:void(0);" id="btnFillAccountName">下一步</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/st/js/html5/validateCode.js" ></script>
+<script type="text/javascript" src="/st/js/html5/findLoginPassword.js"></script>
+<script type="text/javascript">
+    var sid = 'af94adb7cb1fd48defd4d2ae2d0aa524';
+    
+    var formSubmit = function(){
+        if(userInputBlur()){
+            var param;
+            if(sid == ''){
+                param = {userInput:$("#userInput").val(),validateCode:$("#validateCode").val(),codeKey:$("#codeKey").val()};
+            }else{
+                param = {userInput:$("#userInput").val(),validateCode:$("#validateCode").val(),codeKey:$("#codeKey").val(),sid:sid};
+            }   
+            jQuery.get('/findloginpassword/checkUserInputUsername.json?',
+                    param,
+                    function(data){ 
+                    com_jd_passport_m_validateCode('code','codeKey','3');
+                        if(data.isSuccess=="T" ){
+                            form_fillAccountName.action = '/findloginpassword/selectAuthenticationPattern.action?sid=af94adb7cb1fd48defd4d2ae2d0aa524';
+                            form_fillAccountName.submit();
+                        }
+                        else{
+                            if(data.returnCode=="needUserName"){
+                                //邮箱不唯一
+                                form_fillAccountName.action = '/findloginpassword/emailNotUnique.action?sid=af94adb7cb1fd48defd4d2ae2d0aa524';
+                                form_fillAccountName.submit();
+                            }
+                            else if(data.returnCode=="chooseEmailOrUsername"){
+                                //用户名和邮箱相同且唯一
+                                form_fillAccountName.action = '/findloginpassword/usernameSameWithEmailUnique.action?sid=af94adb7cb1fd48defd4d2ae2d0aa524';
+                                form_fillAccountName.submit();
+                            }
+                            else if(data.returnCode=="chooseNeedEmailOrUsername"){
+                                //用户名和邮箱相同不唯一
+                                form_fillAccountName.action = '/findloginpassword/usernameSameWithEmailNotUnique.action?sid=af94adb7cb1fd48defd4d2ae2d0aa524';
+                                form_fillAccountName.submit();
+                            }
+                            else if(data.returnCode=="chooseMobileOrUsername"){
+                                //用户名和手机相同
+                                form_fillAccountName.action = '/findloginpassword/usernameSameWithMobile.action?sid=af94adb7cb1fd48defd4d2ae2d0aa524';
+                                form_fillAccountName.submit();
+                            }
+                            else if(data.returnCode=="none"){
+                                $("#username_error").show();
+                                $("#username_error").html("用户名 不存在");
+                            }
+                            else if(data.returnCode=="codeError"){
+                                $("#username_error").show();
+                                $("#username_error").html("验证码错误");
+                            }
+                            else{
+                                $("#username_error").show();
+                                $("#username_error").html("系统异常");
+                            }
+                            
+                        }
+                });
+        }
+        
+    }
+    var userInputBlur = function(){
+        if($("#userInput").val()==''){
+            $("#username_error").show();
+            $("#username_error").html("输入不能为空");
+            return false;
+        }
+        return true;
+    }
+    var userInputFocus = function(){
+        $("#username_error").hide();
+    }
+    $(document).ready(function(){
+        $('#userInput').blur(userInputBlur);
+        $('#userInput').focus(userInputFocus);
+        $('#btnFillAccountName').click(formSubmit);
+    }); 
+</script>
+
+
+
+
+
+
+
+    <div style="display:none;">
+            <img src="/ja.jsp?&amp;utmn=1496648570&amp;utmr=http%3A%2F%2Flocalhost%3A8080%2Flogin.html&amp;utmp=%2Ffindloginpassword%2FfillAccountName.action&amp;guid=ON&jav=touch&pin=-&utmac=MO-J2011-1" />
+        </div>
+
+    <script type="text/javascript">
+        var jap = {
+            siteId : 'MO-J2011-1',
+            topic: 'traffic-jdm',
+            account : '',
+            skuid: '',
+            shopid: '',
+            orderid: '',
+            adsCookieName: 'mt_subsite',
+            jumpAppEnable : 1,
+            __cookie_jda: '__tra',
+            __cookie_jdb: '__trb',
+            __cookie_jdc: '__trc',
+            __cookie_jdu: '__tru',
+            __cookie_jdv: '__trv'
+        };
+        
+        (function() {
+            var ja = document.createElement('script'); 
+            ja.type = 'text/javascript'; 
+            ja.async = true;
+            ja.src = ('https:' == document.location.protocol ? 'https://miscssl' : 'http://misc') + '.360buyimg.com/jdf/1.0.0/unit/ja/1.0.0/ja.js';
+            var s = document.getElementsByTagName('script')[0]; 
+            s.parentNode.insertBefore(ja,s);
+        })();
+    </script>
+
+            <script type="text/javascript" src="https://h5.m.jd.com/active/track/mping.min.js"></script>
+        <script type="text/javascript">
+            try{
+                var pv= new MPing.inputs.PV();
+                var mping = new MPing();
+                mping.send(pv);
+            } catch (e){
+            }
+        </script>
+    
+
+<script type="text/javascript">
+$("#unsupport").hide();
+if(!testLocalStorage()){ //not support html5
+    if(0!=0 && !$clearCart && !$teamId){
+        $("#html5_cart_num").text(0>0>0);
+    }
+}else{
+    updateToolBar('');
+}
+
+$("#html5_cart").click(function(){
+//  syncCart('af94adb7cb1fd48defd4d2ae2d0aa524',true);
+    location.href='http://m.jd.com/cart/cart.action';
+});
+
+function reSearch(){
+var depCity = window.sessionStorage.getItem("airline_depCityName");
+    if(testSessionStorage() && isNotBlank(depCity) && !/^\s*$/.test(depCity) && depCity!=""){
+        var airStr = '<form action="/airline/list.action" method="post" id="reseach">'
+        +'<input type="hidden" name="sid"  value="af94adb7cb1fd48defd4d2ae2d0aa524"/>'
+        +'<input type="hidden" name="depCity" value="'+ window.sessionStorage.getItem("airline_depCityName") +'"/>'
+        +'<input type="hidden" name="arrCity" value="'+ window.sessionStorage.getItem("airline_arrCityName") +'"/>'
+        +'<input type="hidden" name="depDate" value="'+ window.sessionStorage.getItem("airline_depDate") +'"/>'
+        +'<input type="hidden" name="depTime" value="'+ window.sessionStorage.getItem("airline_depTime") +'"/>'
+        +'<input type="hidden" name="classNo" value="'+ window.sessionStorage.getItem("airline_classNo") +'"/>'
+        +'</form>';
+        $("body").append(airStr);
+        $("#reseach").submit();
+    }else{
+        window.location.href='http://m.jd.com/airline/index.action?sid=af94adb7cb1fd48defd4d2ae2d0aa524';
+    }
+}
+ //banner 关闭点击
+    $('.div_banner_close').click(function(){
+        $('#div_banner_header').unbind('click');
+        jQuery.post('/index/addClientCookieVal.json',function(d){
+              $('#div_banner_header').slideUp(500);
+        });
+    });
+    //banner 下载点击
+    $('.div_banner_download').click(function(){
+         var downloadUrl = $(this).attr('url');
+         jQuery.post('http://m.jd.com/index/addClientCookieVal.json',function(d){
+               window.location.href=downloadUrl;
+        });
+    });
+
+</script>
+
+
+
+<!--通用头尾  add by lizhenyou 2015-3-30 -->
+<script>
+    $(document).ready(function(){
+
+        //  通用头尾js add by lizhenyou 2015-4-20 由于 passport 是 https 的，
+        //  但是cdn暂不支持，所以把通用头尾的功能copy到本地
+
+        var option = {
+            
+            useDefaultImp : true,
+            
+            css : ['/st/css/common/header.css'],
+            
+            js : [
+                  '/st/js/common/m_common.js',
+                  '/st/js/html5/downloadAppPlugIn.js',
+                  ]
+            
+        };
+    
+        var mchb = new MCommonHeaderBottom(option);
+        
+        var title = "找回密码";
+        var headerArg = {hrederId : 'm_common_header', title:title, sid : 'af94adb7cb1fd48defd4d2ae2d0aa524', isShowShortCut : false};
+        mchb.header(headerArg);
+    
+        var sid = 'af94adb7cb1fd48defd4d2ae2d0aa524';
+        var pin = '';
+        var toPcSkipurl = 'http://www.jd.com/#m'; //跳转电脑版url
+        var footerPlatforms = mchb.platformEnum(toPcSkipurl,sid).enum3_1;
+        var bottomArg = {bottomId : 'm_common_bottom', sid : sid, pin : pin ,footerPlatforms : footerPlatforms};
+        mchb.bottom(bottomArg); 
+    
+        var tipArg = {tipId : 'm_common_tip', sid : 'af94adb7cb1fd48defd4d2ae2d0aa524', isfloat: true, isAlwayShow : false,
+                onClickTrynow: function(){},
+                onClickTipX: function(){}};
+        mchb.jdTip(tipArg);
+    });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    input{font-size:12px;vertical-align:middle;color:#333;outline:0;}
+    </style>
+</head>
+<body>
+        <span class="span_sel" clstag="pageclick|keycount|gq_home_page_201507032|1" ><input type="checkbox" id="firstSel" name="jindu" class="check_list" code_status="">所有进度</span>
+        <span class="span_sel" clstag="pageclick|keycount|gq_home_page_201507032|2" ><input type="checkbox"  name="jindu" class="check_list" code_status="500" >路演中</span>
+        <span class="span_sel"><input type="checkbox"  name="jindu" class="check_list" code_status="600" >待募集</span>
+        <span class="span_sel" clstag="pageclick|keycount|gq_home_page_201507032|3" ><input type="checkbox"  name="jindu" class="check_list" code_status="700">融资中</span>
+        <span class="span_sel" clstag="pageclick|keycount|gq_home_page_201507032|4" ><input type="checkbox"  name="jindu" class="check_list" code_status="900">募集成功</span>
+        <span class="span_sel" clstag="pageclick|keycount|gq_home_page_201507032|5" ><input type="checkbox"  name="jindu" class="check_list" code_status="1100">融资成功</span>
+                
+                <input type="hidden"  name="gqzc_category" value=""/>
+
+
+
+                <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+                <script type="text/javascript">
+                    window.onload=function(){
+                        console.log(0);
+                        var checkedSels=$("input[name='jindu']:checked");
+                        $.each(checkedSels,function(key,val){
+                            $(val).prop('checked',true);
+
+                        })
+
+
+                    $(".check_list").on("click",function(){
+
+                            var jindus = $("input[type=checkbox]");
+                            $.each(jindus,function(key,jindu){
+                                $(jindu).prop("checked",false)
+                            })
+                            $(this).prop("checked","checked");
+                            cl
+                        })  
+                    }
+                </script>
+</body>
+</html>
