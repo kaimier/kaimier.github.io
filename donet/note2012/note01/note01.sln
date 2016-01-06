@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02索引器", "_02索引�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_03练习", "_03练习\_03练习.csproj", "{4377F7E7-4EF6-4458-85B7-0AF44D573529}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "note02【索引器】", "note02【索引器】\note02【索引器】.csproj", "{25FD706F-55D4-4DA3-A628-46FD5AD87824}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4377F7E7-4EF6-4458-85B7-0AF44D573529}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4377F7E7-4EF6-4458-85B7-0AF44D573529}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4377F7E7-4EF6-4458-85B7-0AF44D573529}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25FD706F-55D4-4DA3-A628-46FD5AD87824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25FD706F-55D4-4DA3-A628-46FD5AD87824}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25FD706F-55D4-4DA3-A628-46FD5AD87824}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25FD706F-55D4-4DA3-A628-46FD5AD87824}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -354,14 +354,74 @@ namespace note01
             #endregion
 
             #region 请将字符串数组{"中国","美国","巴西","澳大利亚","加拿大"}中的内容反转。然后输出反转后的数组。不能用数组的Reverse()方法
-            string[] names = { "中国", "美国", "巴西", "澳大利亚", "加拿大" };
-            MyReverse(names);
-            for (int i = 0; i < names.Length; i++)
-            {
-                Console.WriteLine(names[i]);
-            }
-            Console.ReadKey();
+            //string[] names = { "中国", "美国", "巴西", "澳大利亚", "加拿大" };
+            //MyReverse(names);
+            //for (int i = 0; i < names.Length; i++)
+            //{
+            //    Console.WriteLine(names[i]);
+            //}
+            //Console.ReadKey();
             #endregion
+            #region  将普通日期格式："2011年6月4日" 转换成汉字
+            while (true)
+            {
+                Console.WriteLine("请输入一个日期：");
+                string data = Console.ReadLine();
+                data = ConvertData(data);
+                Console.WriteLine(data);
+                Console.ReadKey();
+            }
+            #endregion
+            #region  创建一个Person类,属性：姓名、性别、年龄;方法：SayHi()。再创建一个Employee类继承Person类，扩展属性Salary,重写SayHi方法。
+
+            #endregion
+        }
+
+        private static string ConvertData(string data)
+        {
+            char[] chs = data.ToCharArray();
+            for (int i = 0; i < chs.Length; i++)
+            {
+                switch (chs[i])
+                {
+                    case '0':
+                        chs[i] = '零';
+                        break;
+                    case '1':
+                        chs[i] = '一';
+                        break;
+                    case '2':
+                        chs[i] = '二';
+                        break;
+                    case '3':
+                        chs[i] = '三';
+                        break;
+                    case '4':
+                        chs[i] = '四';
+                        break;
+                    case '5':
+                        chs[i] = '五';
+                        break;
+                    case '6':
+                        chs[i] = '六';
+                        break;
+                    case '7':
+                        chs[i] = '七';
+                        break;
+                    case '8':
+                        chs[i] = '八';
+                        break;
+                    case '9':
+                        chs[i] = '九';
+                        break;
+                    default:
+                        chs[i] = chs[i];
+                        break;
+                        
+                }
+
+            }
+            return new string(chs);
         }
 
         private static void MyReverse(string[] names)
