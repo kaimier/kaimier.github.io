@@ -41,6 +41,7 @@
             this.txtNumber1.Name = "txtNumber1";
             this.txtNumber1.Size = new System.Drawing.Size(100, 21);
             this.txtNumber1.TabIndex = 0;
+            this.txtNumber1.TextChanged += new System.EventHandler(this.txtNumber1_TextChanged);
             // 
             // cboCaozuoFu
             // 
@@ -64,6 +65,7 @@
             this.txtNumber2.Name = "txtNumber2";
             this.txtNumber2.Size = new System.Drawing.Size(100, 21);
             this.txtNumber2.TabIndex = 0;
+            this.txtNumber2.TextChanged += new System.EventHandler(this.txtNumber2_TextChanged);
             // 
             // button1
             // 
@@ -83,6 +85,7 @@
             this.lblResult.Size = new System.Drawing.Size(41, 12);
             this.lblResult.TabIndex = 3;
             this.lblResult.Text = "label1";
+            this.lblResult.Click += new System.EventHandler(this.lblResult_Click);
             // 
             // Form2
             // 

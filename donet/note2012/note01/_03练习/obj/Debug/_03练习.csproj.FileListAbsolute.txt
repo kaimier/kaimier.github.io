@@ -11,3 +11,10 @@ D:\website\kaimier.github.io\donet\note2012\note01\_03练习\obj\Debug\_03练习
 G:\website\kaimier.github.io\donet\note2012\note01\_03练习\bin\Debug\_03练习.exe.config
 G:\website\kaimier.github.io\donet\note2012\note01\_03练习\obj\Debug\_03练习.exe
 G:\website\kaimier.github.io\donet\note2012\note01\_03练习\obj\Debug\_03练习.pdb
+G:\website\kaimier.github.io\donet\note2012\note01\_03练习\bin\Debug\_03练习.exe
+G:\website\kaimier.github.io\donet\note2012\note01\_03练习\bin\Debug\_03练习.pdb
+G:\website\kaimier.github.io\donet\note2012\note01\_03练习\obj\Debug\_03练习.csprojResolveAssemblyReference.cache
+G:\website\kaimier.github.io\donet\note2012\note01\_03练习\obj\Debug\_03练习.Form1.resources
+G:\website\kaimier.github.io\donet\note2012\note01\_03练习\obj\Debug\_03练习.Form2.resources
+G:\website\kaimier.github.io\donet\note2012\note01\_03练习\obj\Debug\_03练习.Properties.Resources.resources
+G:\website\kaimier.github.io\donet\note2012\note01\_03练习\obj\Debug\_03练习.csproj.GenerateResource.Cache

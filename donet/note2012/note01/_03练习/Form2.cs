@@ -60,5 +60,20 @@ namespace _03练习
         {
 
         }
+
+        private void lblResult_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNumber2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNumber1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
