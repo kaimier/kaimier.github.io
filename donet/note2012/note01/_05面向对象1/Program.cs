@@ -10,7 +10,7 @@ namespace _05面向对象1
     {
         static void Main(string[] args)
         {
-            xxx
+            
         }
     }
 }
