@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas 倒计时</title>
+</head>
+<body>
+    <canvas id="canvas" width="1024" height="768" style="border:1px #aaa solid; display: block; margin: 0 auto;"></canvas>
+    <script type="text/javascript">
+    window.onload=function(){
+        var canvas=document.getElementById('canvas');
+        canvas.width=1024;
+        canvas.height=768;
+        if (canvas.getContext("2d")) {
+            var context = canvas.getContext("2d");
+            context.moveTo(100,100);
+            context.lineTo(700,700);
+
+            context.stroke();//先状态设置 再调用绘制函数
+        };
+    }
+    </script>
+</body>
+</html>
