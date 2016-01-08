@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _07猜拳;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -363,18 +364,21 @@ namespace note01
             //Console.ReadKey();
             #endregion
             #region  将普通日期格式："2011年6月4日" 转换成汉字
-            while (true)
-            {
-                Console.WriteLine("请输入一个日期：");
-                string data = Console.ReadLine();
-                data = ConvertData(data);
-                Console.WriteLine(data);
-                Console.ReadKey();
-            }
+            //while (true)
+            //{
+            //    Console.WriteLine("请输入一个日期：");
+            //    string data = Console.ReadLine();
+            //    data = ConvertData(data);
+            //    Console.WriteLine(data);
+            //    Console.ReadKey();
+            //}
             #endregion
             #region  创建一个Person类,属性：姓名、性别、年龄;方法：SayHi()。再创建一个Employee类继承Person类，扩展属性Salary,重写SayHi方法。
 
             #endregion
+            //PC pc = new PC();
+            //Console.WriteLine(pc.Fist);
+            //Console.ReadKey();
         }
 
         private static string ConvertData(string data)

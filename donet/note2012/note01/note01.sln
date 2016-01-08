@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_06面向对象计算器", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_07猜拳", "_07猜拳\_07猜拳.csproj", "{80A28F37-3F1E-4D97-85FB-5C7CBD83DE16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_08变量作用域", "_08变量作用域\_08变量作用域.csproj", "{756A5BA8-EE3D-4350-8365-7576AB8D01C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{80A28F37-3F1E-4D97-85FB-5C7CBD83DE16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80A28F37-3F1E-4D97-85FB-5C7CBD83DE16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80A28F37-3F1E-4D97-85FB-5C7CBD83DE16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{756A5BA8-EE3D-4350-8365-7576AB8D01C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{756A5BA8-EE3D-4350-8365-7576AB8D01C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{756A5BA8-EE3D-4350-8365-7576AB8D01C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{756A5BA8-EE3D-4350-8365-7576AB8D01C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

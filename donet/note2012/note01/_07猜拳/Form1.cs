@@ -31,7 +31,7 @@ namespace _07猜拳
             string userfist = btn.Text;
             StartGame(userfist);
         }
-
+        
         private void StartGame(string userfist)
         {
             Player p1 = new Player();
@@ -42,7 +42,6 @@ namespace _07猜拳
             int pcFist = pc.ShowFist();
             labPC.Text = pc.Fist;
             int r = CaiPan.IsPlayerWin(playerfist, pcFist);
-
             switch (r)
             {
                 case 0:
