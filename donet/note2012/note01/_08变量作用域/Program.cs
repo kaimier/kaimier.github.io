@@ -8,11 +8,21 @@ namespace _08变量作用域
 {
     class Program
     {
+        //类中成员的默认访问修饰符是private的。
         static void Main(string[] args)
         {
-            M();
-            M1();
-            M2();
+            //M();
+            //M1();
+            //M2();
+            //Console.ReadKey();
+            int n = 100;
+            if (++n>100)
+            {
+                Console.WriteLine(n);
+                int x = 100;
+                x++;
+            }
+            //Console.WriteLine("=================={0}=============",x);   
             Console.ReadKey();
         }
         static int n = 10;
