@@ -5,20 +5,137 @@
     <title>Canvas 倒计时</title>
 </head>
 <body>
-    <canvas id="canvas" width="1024" height="768" style="border:1px #aaa solid; display: block; margin: 0 auto;"></canvas>
+    <!-- <canvas id="canvas" width="1024" height="768" style="border:1px #aaa solid; display: block; margin: 0 auto;"></canvas> -->
+    <canvas id="canvas" style="border:1px solid #aaa; display:block; margin:50px auto;">
+        当前浏览器不支持Canvas，请更换浏览器后再试
+    </canvas>
     <script type="text/javascript">
-    window.onload=function(){
-        var canvas=document.getElementById('canvas');
-        canvas.width=1024;
-        canvas.height=768;
-        if (canvas.getContext("2d")) {
-            var context = canvas.getContext("2d");
-            context.moveTo(100,100);
-            context.lineTo(700,700);
+        // context.arc(
+        //     centerx,centery,radius,//圆心x,圆心y，圆半径
+        //     startingAngle,endingAngle, //开始/结束孤度值
+        //     anticlockwise=false //是否顺时针
+        //     )
+        
+        // window.onload=function(){
+        //     var canvas=document.getElementById("canvas");
+        //     canvas.width=1024;
+        //     canvas.height=768;
+        //     var context=canvas.getContext("2d");
+        //     context.lineWidth=5
+        //     context.strokeStyle="#005588";
+        //     for(var i=0;i<10;i++){
+        //         context.beginPath()
+        //         context.arc(50+i*100,60,40,0,2*Math.PI*(i+1)/10)
+        //         context.closePath() //会自动封闭
+        //         context.stroke()
+        //     }
+        //     for(var i=0;i<10;i++){
+        //         context.beginPath()
+        //         context.arc(50+i*100,180,40,0,2*Math.PI*(i+1)/10)
+        //         //context.closePath() //会自动封闭
+        //         context.stroke()
+        //     }
+        //     for(var i=0;i<10;i++){
+        //         context.beginPath()
+        //         context.arc(50+i*100,300,40,0,2*Math.PI*(i+1)/10,true)
+        //         context.closePath() //会自动封闭
+        //         context.stroke()
+        //     }
+        //     for(var i=0;i<10;i++){
+        //         context.beginPath()
+        //         context.arc(50+i*100,400,40,0,2*Math.PI*(i+1)/10,true)
+        //         context.stroke()
+        //     }
+        //     context.fillStyle="#005588";
+        //     for(var i=0;i<10;i++){
+        //         context.beginPath()
+        //         context.arc(50+i*100,500,40,0,2*Math.PI*(i+1)/10,true)
+        //         context.closePath()
+        //         context.fill()
+        //     }
 
-            context.stroke();//先状态设置 再调用绘制函数
-        };
-    }
+            // context.arc(300,300,200,0,1.8*Math.PI,0)
+            // context.stroke();
+        // }
+
+
+
+
+
+
+
+
+
+        /*****************************************************************************************
+        // var tangram=[
+        //     {p:[{x:0,y:0},{x:800,y:0},{x:400,y:400}],color:"#caff67"},
+        //     {p:[{x:0,y:0},{x:400,y:400},{x:0,y:800}],color:"#67becf"},
+        //     {p:[{x:800,y:0},{x:800,y:400},{x:600,y:600}],color:"#ef3d61"},
+        //     {p:[{x:600,y:200},{x:600,y:600},{x:400,y:400}],color:"#f9f5la"}
+        //     ]
+        // window.onload=function() {
+        //     var canvas=document.getElementById('canvas');
+        //     canvas.width=800; canvas.height=800;
+        //     var context=canvas.getContext("2d");
+        //     for (var i = 0; i < tangram.length; i++) {
+        //         draw(tangram[i],context);
+        //     }
+        // }
+
+        // function draw(piece,cxt) {
+        //     cxt.beginPath();
+        //     cxt.moveTo(piece.p[0].x,piece.p[0].y);
+        //     for (var i = 1; i < piece.p.length; i++){
+        //          cxt.lineTo(piece.p[i].x,piece.p[i].y);
+        //     }
+                
+        //         cxt.closePath(); cxt.fillStyle= piece.color; cxt.fill();
+        //         cxt.strokeStyle="#000";cxt.lineWidth=5;cxt.stroke()
+        // }
+
+
+
+
+
+
+
+
+        /*************************************************************************************/
+        // window.onload=function(){
+        //     var canvas=document.getElementById('canvas');
+        //     canvas.width=1024;
+        //     canvas.height=768;
+        //     if (canvas.getContext("2d")) {
+        //         var context = canvas.getContext("2d");
+
+        //         context.beginPath()
+        //         context.moveTo(100,100);
+        //         context.lineTo(700,700);
+        //         context.lineTo(100,700);
+        //         context.lineTo(100,100);
+        //         context.closePath()
+
+
+
+        //         // context.fillStyle="rgb(2,100,30)";
+        //         // context.fill();
+
+        //         context.lineWidth=5;
+        //         context.strokeStyle="red";
+        //         context.stroke();//先状态设置 再调用绘制函数
+        //         //context.lineWidth=5;
+        //         // context.strokeStyle="#005588";
+        //         // context.stroke();//先状态设置 再调用绘制函数
+        //         context.beginPath()
+        //         context.moveTo(200,100)
+        //         context.lineTo(700,600)
+        //         context.closePath()
+        //         context.strokeStyle="black"
+        //         context.stroke()
+        //     };
+        // }
     </script>
+    <script src="../content/js/digit.js"></script>
+    <script src="../content/js/countdown.js"></script>
 </body>
 </html>
