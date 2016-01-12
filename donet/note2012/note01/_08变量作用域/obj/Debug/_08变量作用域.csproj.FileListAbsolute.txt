@@ -5,3 +5,7 @@ G:\website\kaimier.github.io\donet\note2012\note01\_08变量作用域\bin\Debug\
 G:\website\kaimier.github.io\donet\note2012\note01\_08变量作用域\obj\Debug\_08变量作用域.csprojResolveAssemblyReference.cache
 G:\website\kaimier.github.io\donet\note2012\note01\_08变量作用域\obj\Debug\_08变量作用域.exe
 G:\website\kaimier.github.io\donet\note2012\note01\_08变量作用域\obj\Debug\_08变量作用域.pdb
+D:\website\kaimier.github.io\donet\note2012\note01\_08变量作用域\bin\Debug\_08变量作用域.exe
+D:\website\kaimier.github.io\donet\note2012\note01\_08变量作用域\bin\Debug\_08变量作用域.pdb
+D:\website\kaimier.github.io\donet\note2012\note01\_08变量作用域\obj\Debug\_08变量作用域.exe
+D:\website\kaimier.github.io\donet\note2012\note01\_08变量作用域\obj\Debug\_08变量作用域.pdb
