@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第1章--面向对象</title>
+</head>
+<body>
+    <!--
+        1.1编程语言按照数据类型大体分两类：
+            1.静态类型
+            2.动态类型 javaScript
+    -->
+    <script type="text/javascript">
+    var duck={
+        duckSinging:function(){
+            console.log('嘎嘎');
+        }
+    }
+    var chicken={
+        duckSinging:function(){
+            console.log('嘎嘎');
+        }
+    }
+    var choir=[];//合唱团
+
+    var joinChoir=function(animal){
+        if (animal && typeof animal.duckSinging==='function') {
+            choir.push(animal);
+            console.log('恭喜加入合唱团');
+            console.log('合唱团已有成员数量：'+choir.length);
+        }
+    }
+    joinChoir(duck);
+    joinChoir(chicken);
+    </script>
+</body>
+</html>

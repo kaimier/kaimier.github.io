@@ -1,0 +1,8 @@
+D:\website\kaimier.github.io\donet\note2012\note01\_06面向对象计算器\bin\Debug\_06面向对象计算器.exe.config
+D:\website\kaimier.github.io\donet\note2012\note01\_06面向对象计算器\bin\Debug\_06面向对象计算器.exe
+D:\website\kaimier.github.io\donet\note2012\note01\_06面向对象计算器\bin\Debug\_06面向对象计算器.pdb
+D:\website\kaimier.github.io\donet\note2012\note01\_06面向对象计算器\obj\Debug\_06面向对象计算器.Form1.resources
+D:\website\kaimier.github.io\donet\note2012\note01\_06面向对象计算器\obj\Debug\_06面向对象计算器.Properties.Resources.resources
+D:\website\kaimier.github.io\donet\note2012\note01\_06面向对象计算器\obj\Debug\_06面向对象计算器.csproj.GenerateResource.Cache
+D:\website\kaimier.github.io\donet\note2012\note01\_06面向对象计算器\obj\Debug\_06面向对象计算器.exe
+D:\website\kaimier.github.io\donet\note2012\note01\_06面向对象计算器\obj\Debug\_06面向对象计算器.pdb

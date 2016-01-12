@@ -1,0 +1,9 @@
+D:\website\kaimier.github.io\donet\note2012\note01\_07猜拳\bin\Debug\_07猜拳.exe.config
+D:\website\kaimier.github.io\donet\note2012\note01\_07猜拳\bin\Debug\_07猜拳.exe
+D:\website\kaimier.github.io\donet\note2012\note01\_07猜拳\bin\Debug\_07猜拳.pdb
+D:\website\kaimier.github.io\donet\note2012\note01\_07猜拳\obj\Debug\_07猜拳.csprojResolveAssemblyReference.cache
+D:\website\kaimier.github.io\donet\note2012\note01\_07猜拳\obj\Debug\_07猜拳.Form1.resources
+D:\website\kaimier.github.io\donet\note2012\note01\_07猜拳\obj\Debug\_07猜拳.Properties.Resources.resources
+D:\website\kaimier.github.io\donet\note2012\note01\_07猜拳\obj\Debug\_07猜拳.csproj.GenerateResource.Cache
+D:\website\kaimier.github.io\donet\note2012\note01\_07猜拳\obj\Debug\_07猜拳.exe
+D:\website\kaimier.github.io\donet\note2012\note01\_07猜拳\obj\Debug\_07猜拳.pdb
