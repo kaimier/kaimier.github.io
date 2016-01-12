@@ -7,7 +7,20 @@
 <body>
     <!--
         1.2 多态
-        同一操作作用于不同的对象上面
+        同一操作作用于不同的对象上面,可以产生不同的解释和不同的执行结果
     -->
+    <script>
+    	var makeSound=function(animal){
+    		if (animal instanceof Duck) {
+    			console.log('嘎嘎嘎');
+    		} else{
+    			console.log('咯咯咯');
+    		}
+    	};
+    	var Duck=function(){};
+    	var Chicken=function(){};
+    	makeSound(new Duck());
+    	makeSound(new Chicken());
+    </script>
 </body>
 </html>
