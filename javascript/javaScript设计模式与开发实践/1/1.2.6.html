@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类型检查和多态</title>
+</head>
+<body>
+    <script type="text/javascript">
+    ;(function(){
+        var googleMap={
+            show:function () {
+                console.log('开始渲染谷歌地图');
+            }
+        }
+        var renderMap=function () {
+            googleMap.show();
+        }
+        renderMap();
+    })('输出 ---> 开始渲染谷歌地图');
+    //后因要换成百度地图，为了弹性加了个分支
+    ;(function(){
+        var googleMap={
+                show:function() {
+                    console.log('开始渲染谷歌地图2');
+                }
+        };
+        var baiduMap={
+            show:function() {
+                console.log('开始渲染百度地图2');
+            }
+        };
+        var renderMap=function(type) {
+            if (type==='google') {
+                googleMap.show()
+            } else if(type==='baidu'){
+                baiduMap.show();
+            };
+        }
+        renderMap('google');
+        renderMap('baidu');
+    })('如果要换成搜搜地图，那又得改动renderMap');
+    ;(function(){
+        var googleMap={
+                show:function() {
+                    console.log('开始渲染谷歌地图3');
+                }
+        };
+        var baiduMap={
+            show:function() {
+                console.log('开始渲染百度地图3');
+            }
+        };
+        var sousouMap={
+            show:function() {
+                console.log('开始渲染搜搜地图3');
+            }
+        }
+        var renderMap=function(map) {
+            if(map.show instanceof Function){
+                map.show();
+            }
+        }
+        renderMap(googleMap);
+        renderMap(baiduMap);
+        renderMap(sousouMap);
+    })();
+    //这个例子第个地图API提供展示地图的方法名都是show,在实际开发中也许不会如此顺利，这个时候可以借助适配器模式来解决问题。
+    </script>
+</body>
+</html>

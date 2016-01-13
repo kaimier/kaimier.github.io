@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装数据</title>
+</head>
+<body>
+    <script type="text/javascript">
+    ;(function(){
+        //除了ECMAScript 6 中提供的let之外，一般我们通过函数来创建作用域
+        //https://github.com/lukehoban/es6features
+        var myObject=(function(){
+            var __name='sven'; // 私有（private)变量
+            return{
+                getName:function(){
+                    return __name;
+                }
+            }
+        })();
+        console.log(myObject.getName()); //sven
+        console.log(myObject.__name); //undefined
+    })('Javascript只能依赖变量的作用域来实现封装性，只能模拟出public和private');
+    
+    </script>
+</body>
+</html>
