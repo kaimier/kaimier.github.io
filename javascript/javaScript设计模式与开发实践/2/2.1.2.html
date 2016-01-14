@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>丢失的this</title>
+</head>
+<body>
+<div id="div1"></div>
+    <script type="text/javascript">
+    ;(function() {
+        var obj={
+            myName:'sven',
+            getName:function() {
+                return this.myName;
+            }
+        };
+        console.log(obj.getName()); //sven;
+        var getName2=obj.getName;
+        console.log(getName2()); //underfined;
+        /*
+        1.当getName方法是作为obj对象的属性被调用的,this指向obj对象
+        2.当用别一个变量getName2来引用obj.getName,并且调用getName2时，此时是普通函数调用方式,this是指向全局window的，所以结果是undefined;
+         */
+        
+        /*
+        
+         */
+    })();
+    ;(function() {
+        /*
+        再看另一个例子，document.getElementById这个方法名实在有点过长，我们大概尝试过用一个短的函数来代替它，如同prototype.js等一些框架所做过的事情：
+         */
+        var getId=function(id) {
+            return document.getElementById(id);
+        };
+        getId('div1');
+    })();
+    ;(function() {
+        /*
+        在Chrome,Firefox,IE10中执行后就会发现，这段代码抛出了个异常。这是因为许多引擎的document.getElementById方法的内部实现中要用到this。这个this本来被期望指向document，当getElementById方法作为document对象的属性被调用时,方法内部的this确实是指向document的。
+        但当用getId来引用document.getElementById之后，再调用getId,此时就成了普通函数调用，函数内部的this指向了window，而不是原来的document.
+
+         */
+        var getId=document.getElementById;
+        // tgetId('div1');
+        
+    })();
+    ;(function() {
+        /*
+        我们可以尝试利用apply把document当作this传入getId函数,帮助“修正” this:
+         */
+        document.getElementById=(function(fnc) {
+            return function() {
+                return fnc.apply(document,arguments);
+            }
+        })(document.getElementById);
+        var getId=document.getElementById;
+        var div = getId('div1');
+        console.log(div.id); //div1
+    })();
+    </script>
+</body>
+</html>

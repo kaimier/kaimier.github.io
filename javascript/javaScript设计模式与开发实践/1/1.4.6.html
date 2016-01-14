@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型继承的未来</title>
+</head>
+<body>
+    <script type="text/javascript">
+    /*
+    ECMAScript 6带来了新的Class语法
+     */
+    class Animal{
+        constructor(name){
+            this.name=name;
+        }
+        getName(){
+            return this.name;
+        }
+    }
+    class Dog extends Animal{
+        constructor(name){
+            super(name);
+        }
+        speak(){
+            return "woof";
+        }
+    }
+    var dog=new Dog("Scamp");
+    console.log(dog.getName()+' says '+dog.speak());
+    </script>
+</body>
+</html>
