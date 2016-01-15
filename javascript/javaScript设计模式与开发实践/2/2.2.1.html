@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call和apply</title>
+</head>
+<body>
+    <div id="div1">div1</div>
+    <script type="text/javascript">
+    /*
+    ECAMScript3给Function的原型定义了两个方法，它们是Function.prototype.call和Function.prototype.apply.
+     */
+    ;(function() {
+        /*
+        Function.prototype.call和Function.prototype.apply它们的作用一模一样，区别仅在于传入参数形式的不同。
+
+        apply接受两个参数，第一个参数指定了函数体内this对象的指向，第二个参数为一个带下标的集合，这个集合可以为数组，也可以为类数组，apply方法把这个集合中的元素作为参数传递给被调用的函数：
+         */
+        
+        var func=function(a,b,c,d) {
+            console.log([a,b,c,d]);
+            console.log(this);
+        };
+        // func.apply(document,[1,2,3]);
+        // func.apply(null,[1,2,3]);
+        func.apply(document.getElementsByTagName('body')[0],[1,2,3,[1,2,3,4]]);
+        /*
+        call 传入的参数数量不固定，跟apply相同的是，第一个参数也是代表函数this的指向，从第二个参数开始往后，每个参数被依次传入函数：
+         */
+        var funCall=function(a,b,c) {
+            console.log([a,b,c]);
+            console.log(this);
+        }
+        funCall.call(document,1,['a','b','c'],{'a':'name','age':20})
+    })('call和apply的区别');
+    /*
+    注：在使用call或者apply时，如果我们传入的第一个参数是null，函数体内的this会指向window,但如果是在严格模式下，还是指向null
+    var func=function(a,b,c){
+            "use strict";
+            alert(this===null); //true;
+        }
+    func.apply(null,[1,2,3]);
+    借用其他对象的方法。
+    Math.max.apply(null,[1,2,3,5,4]);//5;
+     */
+    ;(function() {
+        var add=function(a,b) {
+            "use strict";
+            console.log(this);
+            return a+b;
+        }
+        var args=[2,30];
+        console.log(add.apply(this,args));
+        console.log(Math.max.apply(null,args));
+    })();
+    
+    ;(function(){
+        /*
+        1.改变this指向
+         */
+        var obj1={
+            name:'sven'
+        };
+        var obj2={
+            name:'anne'
+        };
+        window.name='window';
+        var getName=function() {
+            "use strict"
+            if (this===undefined) {
+                console.log(this);
+            } else{
+                console.log(this.name);
+            }
+             
+             
+        };
+        getName();// window;
+        getName.call(obj1);//sven;
+        getName.call(obj2);//anne;
+
+        document.getElementById('div1').onclick=function() {
+            console.log(this.id); //div1;
+            var func=function() {
+                alert(this.id); // 输出:underfined->this 指向window
+            }
+            func();
+        }
+        /*
+        用call来修正func函数的this,使其依然指向div:
+         */
+        document.getElementById('div1').onclick=function() {
+            var func=function() {
+                console.log(this.id)
+            }
+            func();
+            func.apply(this);
+            func.call(this);
+        }
+        document.getElementById=(function(func) {
+            return function() {
+                return func.apply(document,arguments);
+            }
+        })(document.getElementById);
+        var getId=document.getElementById;
+        var div=getId('div1');
+        console.log(div.id);
+        /**
+         * 2.Function.prototype.bind
+         */
+        Function.prototype.bind=function(context){
+            var self=this; //保存原函数
+            return function() { //返回一个新的函数
+                return self.apply(context,arguments);
+                /*
+                执行新的函数的时候，会把之前传入的context当作新函数体内的this
+                 */
+            }
+        }
+
+        var obj={
+            name:'sven'
+        };
+        var func1=function() {
+            console.log(this.name);
+        }
+        func1.bind(obj)();
+        var func=function(a,b) {
+            console.log(this.name+':'+(a+b));
+        }.bind(obj);
+        func(1,2);
+
+
+        ;(function() {
+            Function.prototype.bind=function() {
+                var self=this,//保存原函数
+                    context=[].shift.call(arguments),//需要绑定的this上下文
+                    args=[].slice.call(arguments); //剩余的参数转成数组
+                    // args=arguments; //剩余的参数转成数组
+                    /*
+                    arrarObject.shift()方法删除第一个数组元素并返回第一个元素的值。注：这方法不创建新数组，而是直接修改原有的数组，pop()是最后一个元素删除操作
+                     */
+                    // console.log(arguments);
+                return function(){ //返回一个新的函数
+                    for (var i = 0; i < arguments.length; i++) {
+                        console.log(arguments[i]);
+                    };
+                    return self.apply(context,[].concat.call(args,[].slice.call(arguments)));
+                    /*
+                    执行新的函数时，会把之家前传入的context当作新函数体内的this并且组合两次分别传入的参数，作为新函数的参数
+                     */
+                }
+            };
+            var obj={name:'jack'};
+            var func1=function(a,b,c,d,e,f,g) {
+                console.log(this.name);
+                console.log([a,b,c,d]);
+            }.bind(obj,1,2);
+            func1(3,4,8,9,10);
+        })('复杂版的Function.prototype.bind');
+    })('call和apply的用途');
+
+
+    ;(function() { // p33
+        var A=function(name) {
+            this.name=name;
+        };
+        var B=function() {
+            A.apply(this,arguments);
+        }
+        B.prototype.getName=function() {
+            return this.name;
+        }
+        var b=new B('sven');
+        console.log(b.getName()); //'sven'
+
+        /**
+         * 函数的参数列表arguments是一个类数组对象，虽然它也有"下标",但它并非真正的数组,所以不能像数组一样，进行排序操作或者往集合里添加一个新的元素。这种情况下，我们常常会借用Array.prototype对象上的方法。比如想住arguments中添加一个新的元素，通常会借用Array.prototype.puhs:
+         */
+        // Array.prototype.push.call(arguments,'老苏加的参数')
+        [].push.call(arguments,'老苏加的参数');
+        /*
+        我们可以把"任意"对象传入Array.prototype.push:
+         */
+        var a={};
+        // var a={length:0}; 在IE浏览器
+        Array.prototype.push.call(a,'first');
+        console.log(a.length);
+        console.log(a[0]);
+        console.log(arguments);
+        /**
+         * 前面之所以把“任意”两字加了双引号,是因为可以借用Array.prototype.push方法的对象还要满足以下两个条件，
+         * 1.对象本身要可以存取属性;
+         * 2.对象的length属性可读写。
+         * 对于第一个条件，对象本身存取属性并没有问题，但如果借用Array.prototype.push方法的不是一个object类型的数据，而是一个number类型的数据呢？我们无法在number身上存取其他数据：
+         */
+        var a=1;
+        [].push.call(a,'first');
+        console.log(a.length); //undefined
+        console.log(a[0]); //undfined
+
+    })('3.借用其他对象的方法。');
+    </script>
+</body>
+</html>
