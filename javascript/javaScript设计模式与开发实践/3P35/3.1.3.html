@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包的更多作用</title>
+</head>
+<body>
+    <script type="text/javascript">
+    ;(function() {
+        var mult=function() {
+            var a=1;
+            for(var i=0,l=arguments.length;i<l;i++){
+                a=a*arguments[i];
+            }
+            return a;
+        };
+        console.log(mult(1,2,3));//6
+    })('1.封闭变量');
+    ;(function() {
+        var cache={};
+        var mult=function() {
+            var args=Array.prototype.join.call(arguments,',');
+            //arguments伪数组借用数组的join方法转为string
+            console.log(typeof args);
+            if (cache[args]) {
+                return cache[args]+'已缓存数据';
+            }
+            var a=1;
+            for(var i=0,l=arguments.length;i<l;i++){
+                a=a*arguments[i];
+            }
+            return cache[args]=a; //给cache对象赋值并返回args当前参数为索引的值
+        }
+        console.log(mult(1,2,3));
+        console.log(mult(1,2,3));
+        console.log(mult(2,1,2));
+        console.log(mult(1,2,3));
+        console.log(cache);
+    })('1.1加入缓存机制');
+    ;(function() {
+        var mult=(function () {
+            var cache={};
+            return function() {
+                var args = Array.prototype.join.call(arguments,',');
+                if (args in cache) {
+                    return cache[args]+'已缓存数据';
+                }
+                var a=1;
+                for(var i=0,l=arguments.length;i<l;i++){
+                    a=a*arguments[i];
+                }
+                return cache[args] =a;
+            }
+        })();
+        // console.log(cache); //局部变量不能访问
+        console.log(mult(1,2,3)+' ====== 1.1.2');
+        console.log(mult(1,2,3)+' ====== 1.1.2');
+    })('1.1.2把缓存对象封装到mult函数内部，减少全局变量');
+    ;(function() {
+        var mult=(function() {
+            var cache={};
+            var calculate=function() { //提炼计算方法函数
+                console.log(this);
+                var a=1;
+                for(var i=0;l=arguments.length; i<l;i++){
+                    a=a*arguments[i];
+                }
+                return a;
+            };
+            return function() {
+                var args=Array.prototype.join.call(arguments,',');
+                if (args in cache) {
+                    return cache[args];
+                }
+                return cache[args] = calculate.apply(this,agruments);
+            }
+        })();
+    })('1.1.3提炼函数');
+    </script>
+</body>
+</html>
