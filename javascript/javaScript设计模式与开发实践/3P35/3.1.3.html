@@ -60,9 +60,9 @@
         var mult=(function() {
             var cache={};
             var calculate=function() { //提炼计算方法函数
-                console.log(this);
+                console.log(this); //this 为window,
                 var a=1;
-                for(var i=0;l=arguments.length; i<l;i++){
+                for(var i=0,l=arguments.length; i<l;i++){
                     a=a*arguments[i];
                 }
                 return a;
@@ -70,12 +70,25 @@
             return function() {
                 var args=Array.prototype.join.call(arguments,',');
                 if (args in cache) {
-                    return cache[args];
+                    return cache[args] +'缓存数据';
                 }
-                return cache[args] = calculate.apply(this,agruments);
+                // return cache[args] = calculate.apply(this,arguments);
+                return cache[args] = calculate.apply(null,arguments);
             }
         })();
+        console.log(mult(1,2,3));
+        console.log(mult(1,2,3));
     })('1.1.3提炼函数');
+    ;(function() {
+        /**
+         * img 对象经常用于进行数据上报，如下所示：
+         */
+        var report =function(src) {
+            var img=new Image();
+            img.src=src;
+        }
+        report('http://xxx.com/getUserInfo');
+    })('1.1.4延续局部变量的寿命P40');
     </script>
 </body>
 </html>

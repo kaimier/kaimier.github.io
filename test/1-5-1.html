@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>query.easypiechart.js</title>
+    <link rel="stylesheet" href="../content/css/carouselJquery.css">
+    <style type="text/css">
+    .codeArea{}
+    .crilerList{ position:absolute;}
+    .percentTxt{}
+    </style>
+</head>
+<body>
+<header class="commonheader"><nav class="w1000"></nav></header>
+    <div class="codeArea">
+    <div class="crilerList">
+    <span class="chart chart1" data-percent="90">
+        <span class="percentTxt">xxx
+        <span class="percent"></span>
+    </span>
+
+    </div>
+     <div class="crilerList">
+    <span class="chart chart1" data-percent="80">
+        <span class="percentTxt">xxx
+        <span class="percent"></span>
+    </span>
+    
+    </div>
+    </div>
+    <script src="../content/js/jquery.js"></script>
+    <script src="../content/js/common.js"></script>
+    <script type="text/javascript" src="../content/js/jquery.easypiechart.min.js"></script>
+    <script type="text/javascript">
+        $('.chart1').each(function(i,el) {
+            var index=(20*i);
+                CharsStart(index,$(el));
+                $(el).find('canvas').css({'top':index/2+'px'})
+            });
+        function CharsStart(index,obj) {
+            obj.easyPieChart({
+                barColor:'green',
+                tarckColor:'pink',
+                scaleColor:'red',
+                scaleLength:6,
+                lineCap:1,
+                lineWidth:10,
+                size:180+index,
+                onStep: function(from, to, percent) {
+                    $(this.el).find('.percent').text(Math.round(percent));
+                }
+            });
+
+        }
+    </script>
+</body>
+</html>
