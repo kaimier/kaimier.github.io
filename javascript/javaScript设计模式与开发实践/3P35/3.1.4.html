@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包和面向对象设计</title>
+</head>
+<body>
+    <script type="text/javascript">
+    /**
+     * P40:通常用面向对象思想能实现的功能，用闭包也能实现。反之亦然。在JavaScript语言的祖先Scheme语言中，甚至都没有提供面向对象的原生设计，但可以使用闭包来实现一个完整的对象系统。
+     * 下面来看看这段跟闭包相关的代码：
+     */
+    ;(function() {
+        var extent=function() {
+            var value=0;
+            return{
+                call:function() {
+                    value++;
+                    console.log(value);
+                }
+            }
+        };
+        var extent=extent();
+        extent.call(); //1
+        extent.call(); //2
+        extent.call(); //3
+        })('1.闭包写法');
+        ;(function() {
+            var extent={
+                value:0,
+                call:function() {
+                    this.value++;
+                    console.log(this.value);
+                }
+            };
+            extent.call();//1
+            extent.call();//2
+            extent.call();//3
+        })('2.换成面向对象写法');
+        ;(function() {
+            var Extent=function() {
+                this.value=0;
+            }
+            Extent.prototype.call=function() {
+                this.value++;
+                console.log(this.value);
+            }
+            var extent=new Extent();
+            extent.call();//1
+            extent.call();//2
+            extent.call();//3
+        })('3.换成面向对象写法2');
+        console.log('=======================================================================');
+    </script>
+    <button id="execute">点击我执行命令</button>
+    <button id="undo">点击我执行命令</button>
+    <script type="text/javascript">
+    ;(function() {
+        return;
+        var Tv={
+            open:function() {
+                console.log('打开电视机');
+            },
+            close:function() {
+                console.log('关上电视机');
+            }
+        };
+        var OpenTvCommand=function(receiver) {
+            this.receiver=receiver;
+        };
+        OpenTvCommand.prototype.execute=function() {
+            this.receiver.open(); //执行命令,打开电视机
+        };
+        OpenTvCommand.prototype.undo=function() {
+            this.receiver.close(); //撤销命令，关闭电视机
+        };
+        var setComman=function(command) {
+            document.getElementById('execute').onclick=function () {
+                command.execute();//打开电视机
+            }
+            document.getElementById('undo').onclick=function() {
+                command.undo();
+            }
+        }
+        setComman(new OpenTvCommand(Tv));
+        })();
+    /**
+     * 命令模式的意图是把请求封闭为对象，从而分离请求的发起者和请求的接收者之间的耦合关系。在命令被执行前，可以预先往命令中植入命令的接收者。
+     * 但在JavaScript中，函数作为一等对象，本身就可以四处传递，用函数对象而不是普通对象来封闭请求显得更加简单和自然。如果需要往函数对象中预先植入命令的接收者，那么闭包可以完成这个工作。在面向对象版本的命令模式中，预先植入的命令接收者被当成对象的属性保存起来;而在闭包版本的命令模式中，命令接收都会被封闭在闭包形成的环境中。代码如下：
+     */
+;(function() {
+
+        var Tv={
+            open:function() {
+                console.log('打开电视机');
+            },
+            close:function() {
+                console.log('关上电视机');
+            }
+        };
+        var createCommand=function(receiver) {
+            var execute=function() {
+                return receiver.open();
+            }
+            var undo=function() {
+                return receiver.close()
+            }
+            return{
+                execute:execute,
+                undo:undo
+            }
+        };
+        var setCommand=function(command) {
+            document.getElementById('execute').onclick=function() {
+                command.execute();
+            }
+            document.getElementById('undo').onclick=function() {
+                command.undo();
+            }
+        }
+        setCommand(createCommand(Tv));
+    })();
+    ;(function() {
+        /**
+         * p43======>
+         */
+    })('3.1.6 闭包与内存管理');
+    </script>
+</body>
+</html>

@@ -15,15 +15,13 @@
     <div class="codeArea">
     <div class="crilerList">
     <span class="chart chart1" data-percent="90">
-        <span class="percentTxt">xxx
-        <span class="percent"></span>
+        <span class="percentTxt"><span class="percent"></span>
     </span>
 
     </div>
      <div class="crilerList">
-    <span class="chart chart1" data-percent="80">
-        <span class="percentTxt">xxx
-        <span class="percent"></span>
+    <span class="chart chart1" data-percent="109.10202">
+        <span class="percentTxt"><span class="percent"></span>
     </span>
     
     </div>
@@ -32,25 +30,38 @@
     <script src="../content/js/common.js"></script>
     <script type="text/javascript" src="../content/js/jquery.easypiechart.min.js"></script>
     <script type="text/javascript">
+    var colorArray=['green','pink'];
         $('.chart1').each(function(i,el) {
-            var index=(20*i);
-                CharsStart(index,$(el));
-                $(el).find('canvas').css({'top':index/2+'px'})
+            var index=20+(i*50);
+            console.log(index);
+                CharsStart(index,$(el),i);
+                $(el).find('canvas').css({'left':index/2+'px','top':index/2+'px',zIndex:index})
+                
             });
-        function CharsStart(index,obj) {
+
+        function CharsStart(index,obj,i) {
             obj.easyPieChart({
-                barColor:'green',
+                barColor:colorArray[i],
                 tarckColor:'pink',
-                scaleColor:'red',
-                scaleLength:6,
+                // scaleColor:'red',
+                scaleLength:0,
                 lineCap:1,
                 lineWidth:10,
-                size:180+index,
+                size:180-index,
                 onStep: function(from, to, percent) {
+                    if (i===1) {
+                        $(this.el).find('.percent').parent().hide();
+                    };
                     $(this.el).find('.percent').text(Math.round(percent));
                 }
             });
-
+            $('canvas').eq(1).mouseenter(function() {
+                       $('.percent').parent().eq(1).fadeIn(400);
+                       $('.percent').parent().eq(0).fadeOut(100);
+            }).mouseleave(function() {
+                $('.percent').parent().eq(0).fadeIn();
+                       $('.percent').parent().eq(1).fadeOut();
+            })
         }
     </script>
 </body>

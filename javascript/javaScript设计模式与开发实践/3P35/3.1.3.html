@@ -88,6 +88,29 @@
             img.src=src;
         }
         report('http://xxx.com/getUserInfo');
+        /**
+         * 但是通过查询后台记录得知，一些低版本浏览器的实现存在bug，在这些浏览器下使用report函数进行数据上报会丢失30%左右的数据，原因是img是report函数中的局部变量，当report函数调用结束后，img局部变量随即被销毁，而此时或许还没来得及发出HTTP请求，
+         * 现在我们把img变量闭包封闭起来，便能解决请求丢失的问题：
+         */
+        var report1=(function() {
+            var imgs=[];
+            return function(src) {
+                var img=new Image();
+                imgs.push(img);
+                img.src=src;
+                return imgs;
+            }
+        })();
+        report1('http://www.zczj.com/skin/images/logo.png');
+        report1('http://ubmcmm.baidustatic.com/media/v1/0f0000nmWjCsGUQmd7u1F0.jpg');
+        var arr=report1('http://www.zczj.com/skin/images/logo.png');
+        console.log(arr);
+        for (var i = 0; i < arr.length; i++) {
+            document.getElementsByTagName('body')[0].insertBefore(arr[i],null);
+        };
+        
+        // report1('http://www.zczj.com/skin/images/logo.png');
+        // report1('http://www.zczj.com/skin/images/logo.png');
     })('1.1.4延续局部变量的寿命P40');
     </script>
 </body>
