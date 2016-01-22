@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高阶函数的其他应用</title>
+</head>
+<body>
+    <script type="text/javascript">
+    /**
+     * p49
+     */
+    ;(function() {
+        /**
+         * function curring ===>函数柯里化
+         */
+         // var monthlyCost=0;
+         // var cost=function(money) {
+         //     monthlyCost+=money;
+         // }
+         // cost(100);
+         // cost(200);
+         // cost(300);
+         // console.log(monthlyCost); //600;
+         // /**
+         //  * 如果在每个月的前29天，我们都只是保存好当天的开销，直到第30天才进行求值计算
+         //  */
+         // var cost1=(function() {
+         //     var args=[];
+         //     return function() {
+         //         if (arguments.length===0) {
+         //            var money=0;
+         //            for(var i=0,l=args.length;i<l;i++){
+         //                money += args[i];
+         //            }
+         //            return money;
+         //         }else{
+         //            [].push.apply(args,arguments);
+         //         }
+         //     }
+         // })();
+         // cost1(100);
+         // cost1(200);
+         // cost1(300); // 都没算值只走else分支语句
+         // console.log(cost1()); //600
+         /**
+          * 编写一个通用的function currying(){}
+          * 接受一个参数：将要被currying的函数
+          */
+         var currying=function(fn) {
+             var args=[];
+             return function() {
+                 if (arguments.length===0) {
+                    return fn.apply(this,args);
+                 }else{
+                    [].push.apply(args,arguments);
+                    //console.log(arguments.callee);
+                    return arguments.callee;
+                 }
+             }
+         };
+         var cost=(function() {
+             var money=0;
+             return function() {
+                 for(var i=0,l=arguments.length;i<l;i++){
+                    money+=arguments[i];
+                 }
+                 return money;
+             }
+         })();
+         var cost=currying(cost); //转化成curring函数
+         console.log(cost(100));
+       
+         // console.log(cost());
+         // alert(cost());
+    })('1.currying');
+    ;(function() {
+        Function.prototype.uncurrying=function() {
+            var self=this;
+            return function() {
+                var obj=Array.prototype.shift.call(arguments);//获取第一个参数[arugments]类数组
+                
+                // console.log(self.apply(obj,arguments));
+                return self.apply(obj,arguments);
+            }
+        };
+        // console.log(typeof Array.prototype.push); //function 所以调用了Function.prototype.uncurrying自定在Function对象的原型方法uncurring();
+        var push=Array.prototype.push.uncurrying();
+        (function() {
+            push(arguments,4);
+            console.log(arguments);
+        })(1,2,3);
+    })('2.uncurrying');
+    </script>
+</body>
+</html>
