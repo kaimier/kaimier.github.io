@@ -32,7 +32,7 @@
     <script type="text/javascript">
     var colorArray=['green','pink'];
         $('.chart1').each(function(i,el) {
-            var index=20+(i*50);
+            var index=20+(i*10);
             console.log(index);
                 CharsStart(index,$(el),i);
                 $(el).find('canvas').css({'left':index/2+'px','top':index/2+'px',zIndex:index})
@@ -46,8 +46,8 @@
                 // scaleColor:'red',
                 scaleLength:0,
                 lineCap:1,
-                lineWidth:10,
-                size:180-index,
+                lineWidth:2,
+                size:70-index,
                 onStep: function(from, to, percent) {
                     if (i===1) {
                         $(this.el).find('.percent').parent().hide();

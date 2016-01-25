@@ -50,10 +50,11 @@
              var args=[];
              return function() {
                  if (arguments.length===0) {
+                    console.log(args);
                     return fn.apply(this,args);
                  }else{
                     [].push.apply(args,arguments);
-                    //console.log(arguments.callee);
+                    // console.log(arguments.callee);
                     return arguments.callee;
                  }
              }
@@ -68,28 +69,104 @@
              }
          })();
          var cost=currying(cost); //转化成curring函数
-         console.log(cost(100));
-       
+         // console.log(cost(100));
+       cost(200);
+       console.log(cost());//200
+       console.log(cost());//400
+       // console.log(400);
+       cost(300);
+       console.log(cost());//900
          // console.log(cost());
          // alert(cost());
     })('1.currying');
     ;(function() {
         Function.prototype.uncurrying=function() {
-            var self=this;
+            var self=this; // self是Array.prototype.push;
             return function() {
-                var obj=Array.prototype.shift.call(arguments);//获取第一个参数[arugments]类数组
-                
-                // console.log(self.apply(obj,arguments));
+                var obj=Array.prototype.shift.call(arguments); //获取第一个参数
                 return self.apply(obj,arguments);
-            }
+            };
         };
-        // console.log(typeof Array.prototype.push); //function 所以调用了Function.prototype.uncurrying自定在Function对象的原型方法uncurring();
         var push=Array.prototype.push.uncurrying();
         (function() {
             push(arguments,4);
-            console.log(arguments);
+            console.log(arguments); //[1,2,3,4]
         })(1,2,3);
+        /**
+         * 一次性把Array.prototype上的方法‘复制’到array对象上，同样这这些方法可操作的对象也不仅仅只是array对象:
+         */
+        for(var i=0,fn,ary=['push','shift','forEach'];fn=ary[i++];){
+            Array[fn]=Array.prototype[fn].uncurrying();
+        }
+        var obj={'length':3,
+        '0':'a',
+        '1':'b',
+        '2':'c'
+    }
+        Array.push(obj,'d');
+        console.log(obj.length);
+        var first=Array.shift(obj);
+        console.log(first);
+        console.log(obj);
+        Array.forEach(obj,function(i,n) {
+            console.log(i);
+        })
     })('2.uncurrying');
+    ;(function() {
+        console.log(arguments);
+        var call=Function.prototype.call.uncurrying();
+        var fn=function(name) {
+            console.log(name);
+        };
+        call(fn,window,'sven');
+        var apply=Function.prototype.apply.uncurrying();
+        var fn=function(name) {
+            console.log(this.name);//sven
+            console.log(arguments); //[1,2,3]
+        }
+        apply(fn,{name:'sven'},[1,2,3]);
+
+        /**
+         *现在来分析调用Array.prototype.push.uncurrying()这句代码时发生了什么事情： 
+         */
+        Function.prototype.uncurrying=function() {
+            var self=this; //self此时是Array.prototype.push
+            return function() {
+                var obj=Array.prototype.shift.call(arguments);
+                /**
+                 * obj 是 {
+                 *         'length':1,
+                 *         '0':1
+                 *         }
+                 * argument对象的第一个元素被截去，剩下【2】
+                 */
+                return self.apply(obj,arguments);
+                //相当于Array.prototype.push.apply(obj,2);
+            };
+        };
+        var push=Array.prototype.push.uncurrying();
+        var obj={
+            'length':1,
+            '0':1
+        };
+        push(obj,2);
+        console.log(obj);
+        /**
+         * uncurring的另一种实现方式:
+         */
+        Function.prototype.uncurring=function() {
+            var self=this;
+            alert('ok')
+            return function() {
+                return Function.prototype.call.apply(self,arguments);
+            }
+        }
+
+
+
+
+
+    })('3.分析uncurrying方法===============================================');
     </script>
 </body>
 </html>
