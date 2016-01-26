@@ -3,8 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <title>3.函数节流</title>
+    <style type="text/css">
+    body{width: 100%; height: 400px; background: red;}
+    </style>
 </head>
 <body>
-    
+<div id="div1">点我绑定事件</div>
+    <script type="text/javascript">
+    ;(function() {
+        return;
+        var throttle=function(fn,interval) {
+            var __self=fn, //保存需要被延迟执行的函数引用
+            timer, //定时器
+            firstTime=true; //是否是第一次调用
+            return function() {
+                var args= arguments,
+                    __me=this;
+                if (firstTime) {
+                    __self.apply(__me,args);
+                    return firstTime =false;
+                }
+                if (timer) {
+                    return false;
+                }
+                timer=setTimeout(function() {
+                    clearTimeout(timer);
+                    timer=null;
+                    __self.apply(__me,args);
+                },interval||500);
+            };
+        };
+        // window.onresize=throttle(function() {
+        //     console.log(1);
+        // },500)
+        document.getElementsByTagName('body')[0].onmousemove=throttle(function() {
+                console.log(1);
+            });
+    })('throttle(函数节流)');
+    ;(function() {
+        // var ary=[];
+        // for(var i=1;i<=100000;i++){
+        //     ary.push(i);
+        // };
+        // var renderFriendList=function(data) {
+        //     for(var i=0,l=data.length;i<l;i++){
+        //         var div=document.createElement('div');
+        //         div.innerHTML=i;
+        //         document.body.appendChild(div);
+        //     }
+        // };
+        // renderFriendList(ary);
+        /**
+         * 这个问题的解决方案之一是下面的timeChunk函数，让创建节点的工作分批进行，比如把1分钟创建1000个节点
+         * 改为每隔200毫秒创建8个节点。
+         * timeChunk函数接受3个参数，1：创建节点时需要用到的数据，2：封装了创建节点的函数，3：第一批创建节点数量
+         */
+        var timeChunk=function(ary,fn,count) {
+            var obj, 
+                t; // 定时器
+            var len=ary.length;
+            var start=function() {
+                /*
+                第一轮8次
+                 */
+                for(var i=0;i<Math.min(count || 1,ary.length);i++){
+                    var obj=ary.shift(); //删除数组第一个元素，返回当前元素 ary.length在不停减少
+                    fn(obj);
+                }
+            };
+            return function() {
+                t=setInterval(function() {
+                    if (ary.length===0) { //如果全部节点都已经被创建好
+                        return clearInterval(t);
+                    }
+                    start();
+                },200) //分批执行的时间间隔，也可以用参数的形式传入
+            }
+        };
+        var ary=[];
+        for (var i = 1; i < 10; i++) {
+            ary.push(i);
+        };
+        var renderFriendList=timeChunk(ary,function(n) {
+            var div=document.createElement('div');
+            div.innerHTML=n;
+            document.body.appendChild(div);
+        },1000);
+        renderFriendList();
+    })('timeChunk(分时函数)');
+    ;(function() {
+        var addEvent=function(elem,type,handler) {
+            if (window.addEventListener) {
+                return elem.addEventListener(type,handler,false);
+            }
+            if (window.attachEvent) {//低版本ie有这个方法
+                return elem.attachEvent('on'+type,handler);
+            }
+        }
+        /**
+         * 这个函数的缺点是,当它每次被调用的时候都会执行里面的if条件分支，虽然执行这些if分支的开销不算大,
+         * 但有更好的方法：
+         * 我们把嗅探浏览器的操作提前到代码加载的时候，就立刻判断一次，以便让addEvent返回一个包裹了正确逻辑
+         * 的函数。如下代码：
+         */
+        var addEvent2=(function() {
+            if (window.addEventListener) {
+                return function(elem,type,handler) {
+                    elem.addEventListener(type,handler,false);
+                }
+            }
+            if (window.attachEvent) {
+                return function(elem,type,handler) {
+                    elem.attachEvent('on'+type,handler)
+                }
+            }
+        })();
+        /**
+         * addEvent2函数依然有个缺点，也许我们从头到尾都没有使用过addEvent函数，这样看来，前一次的浏览器
+         * 嗅探就是多余的操作，而且这也会稍稍延长页面的ready时间。
+         * 第三种方法即是我们要讨论的惰性载入函数方案。些时addEvent依然被声明为一个普通函数，在函数里依然
+         * 有一些分支判断。但是在第一次进入条件分支之后，在函数内部会重写这个函数，重写之后的函数就是我们
+         * 期望的addEvent函数，在下一次进入addEvent函数的时候，addEvent函数里不再存在条件分支语句：
+         */
+        var addEvent3=function(elem,type,handler) {
+            if(window.addEventListener){
+                addEvent3=function(elem,type,handler) {
+                    elem.addEventListener(type,handler,false);
+                }
+            }else if(window.attachEvent){
+                addEvent3=function(elem,type,handler) {
+                    elem.attachEvent('on'+type,handler);
+                }
+            }
+            addEvent3(elem,type,handler);
+        }
+        var div=document.getElementById('div1');
+        addEvent3(div,'click',function() {
+            alert('ok');
+        });
+        addEvent3(div,'click',function() {
+            alert('no');
+        });
+    })('惰性加载函数');
+    </script>
 </body>
 </html>
