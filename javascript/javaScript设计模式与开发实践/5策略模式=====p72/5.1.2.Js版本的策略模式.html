@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript 版本的策略模式</title>
+</head>
+<body>
+    <script type="text/javascript">
+    /**
+     * 在 5.1节中，我们让strategy对象从各个策略类中创建而来，
+     * 这是模拟一些传统面向对象语言的实现。实际上在 JavaScript
+     *  语言中，函数也是对象，所以更简单和直接的做法是把 strategy
+     *  直接定义为函数
+     */
+     var strategies={
+        "S":function(salary) {
+            return salary*4;
+        },
+        "A":function(salary) {
+            return salary*3;
+        },
+        "B":function(salary) {
+            return salary *2;
+        }
+     };
+     //同样，Context 也没有必要必须用 Bonus 类来表示，我们依然用 calculateBonus 函数充当
+    // Context来接受用户的请求。经过改造，代码的结构变得更加简洁：
+    var calculateBonus=function(level,salary) {
+        return strategies[level](salary);
+    };
+    console.log(calculateBonus('S',20000));
+    </script>
+</body>
+</html>

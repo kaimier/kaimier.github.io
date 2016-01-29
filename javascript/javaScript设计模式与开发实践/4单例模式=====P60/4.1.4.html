@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js中的单例模式</title>
+</head>
+<body>
+    <script type="text/javascript">
+    /**
+     * 单例模式的核心是确保只有一个实例，并提供全局访问。
+     * 以下几种方式可以相对降低全局变量带来的命名污染:
+     */
+      ;(function() {
+          var namespace1={
+            a:function() {
+                console.log(1);
+            },
+            b:function() {
+                console.log(2);
+            }
+          };
+      })('1.命名空间');
+      ;(function() {
+          var MyApp={};
+          MyApp.namespace=function(name) {
+              var parts=name.split('.');
+              var current=MyApp;
+              for(var i in parts){
+                if (!current[parts[i]]) {
+                    current[parts[i]]={};
+                }
+                current=current[parts[i]];
+              }
+          };
+          MyApp.namespace('event');
+          MyApp.namespace('dom.style');
+          console.dir(MyApp);
+          //上述代码等价于:
+          var MyApp={
+            event:{},
+            dom:{
+                style:{}
+            }
+          };
+      })('动态地创建命名空间');
+      ;(function() {
+          //这种方法把一些变量封装在闭包的内部，只暴露一些接口跟外界通信：
+          var user=(function() {
+              var __name='sven',
+                  __age=29;
+              return{
+                getUserInfo:function() {
+                    return __name+'-'+__age;
+                }
+              }
+          })();
+      })('2.使用闭包封装私有变量');
+      /**
+       * 我们用下划线来约定私有变量 __name 和 __age ，它们被封装在闭包产生的作用域中，外部是
+访问不到这两个变量的，这就避免了对全局的命令污染。
+       */
+    </script>
+</body>
+</html>
