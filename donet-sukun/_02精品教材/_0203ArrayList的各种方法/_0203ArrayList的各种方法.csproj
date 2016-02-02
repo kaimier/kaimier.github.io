@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E1CB5170-1FB6-486B-83F7-6568322221C9}</ProjectGuid>
+    <ProjectGuid>{85BD6FC3-7358-4E9E-A9CA-2AF9129AE509}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_0201里氏替换note</RootNamespace>
-    <AssemblyName>_02精品教材</AssemblyName>
+    <RootNamespace>_0203ArrayList的各种方法</RootNamespace>
+    <AssemblyName>_0203ArrayList的各种方法</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
