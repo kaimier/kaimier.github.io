@@ -187,11 +187,12 @@ html, body, button, input, select, textarea {
   -webkit-tap-highlight-color: transparent; 
 }
 
-.load_more{
+.load_more,.index_loadmore{
   height: 40px;background: #ccc;
   text-align: center;font-size:16px;
   color:#999;line-height: 40px; width: 100%;
   position: fixed;left: 0; bottom: 0;
   /*display: none;*/
 }
+.index_loadmore img{ height: 100%; }
 .gotham{font-family: "gotham";}
