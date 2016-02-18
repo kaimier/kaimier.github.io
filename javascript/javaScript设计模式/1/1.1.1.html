@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	;(function() {
+		
+		;(function() {
+			//1.3:用对象收编变量
+			var CheckObject={//a.键值对
+				checkName:function() {
+					//code
+					console.log('checkName');
+				},
+				checkEmail:function() {
+					//code
+					console.log('checkEmail');
+				},
+				checkPassword:function() {
+					//code
+					console.log('checkPassword');
+				}
+			}
+			CheckObject.checkName();
+		})('键值对')
+
+		;(function() {
+			/*
+			这个对象不能复制一份，就算是用new关键字创建新的对象也不能继成这些检测方法
+			*/
+			var CheckObject=function(){};
+				CheckObject.checkName=function() {
+					console.log('checkName');
+				}
+				CheckObject.checkPassword=function() {
+					console.log('checkPassword');
+				}
+				CheckObject.checkEmail=function() {
+					console.log('checkEmail');
+				}
+			
+			CheckObject.checkPassword();
+		})('1.4:对象的另一种形式');
+		(function() {
+			/*
+				如果只想简单的复制下，可以将这些方法放在一个函数对象中
+			*/
+			var CheckObject = function() {
+				return { //返回一个键值对象
+                    checkName:function() {
+                    	console.log('checkName');
+                    },
+                    checkEmail:function() {
+                    	console.log('checkEmail');
+                    },
+                    checkPassword:function() {
+                    	console.log('checkPassword');
+                    }
+				}
+			}
+			var a=CheckObject();
+			a.checkName=function() {
+				console.log(1);
+			}
+			var b=CheckObject();
+			b.checkName=function() {
+				console.log(2);
+			}
+			a.checkName();
+			b.checkName();
+		})('1.5真假对象');
+
+		;(function() {
+			/*
+				用new关键字来创建
+			*/
+			var CheckObject=function() {
+				this.checkName=function() {
+					console.log('checkName');
+				}
+				this.checkEmail=function() {
+					console.log('checkEmail');
+				}
+				this.checkPassword=function() {
+					console.log('checkPassword');
+				}
+			}
+			var a = new CheckObject();
+			a.checkName();
+		})('1.6类也可以');
+
+		;(function() {
+			/*
+              把方法挂在prototype原型上
+			*/
+			var CheckObject=function() {
+			
+			}
+			CheckObject.prototype.checkName=function() {
+				console.log('checkName');
+			}
+			CheckObject.prototype.checkEmail=function() {
+				console.log('checkEmail');
+			}
+			CheckObject.prototype.checkPassword=function() {
+				console.log('checkPassword');
+			}
+			var a=new CheckObject();
+			a.checkName();
+		})('1.7一个检测类');
+		;(function() {
+			var CheckObject=function() {
+				
+			}
+			CheckObject.prototype={
+				checkName:function() {
+					console.log('checkName');
+				},
+				checkEmail:function() {
+					console.log('checkEmail');
+				},
+				checkPassword:function() {
+					console.log('checkPassword');
+				}
+			}
+			/*
+            这个把一个对象挂在原型上好像是有construt指像问题，妙味有说
+			*/
+		    var a=new CheckObject();
+		    a.checkEmail();
+		})('1.7.1');
+
+		;(function() {
+			/*
+             返回对象，可链式调用
+			*/
+			var CheckObject={
+				checkEmail:function() {
+					console.log('chekcEmail');
+					return this;
+				},
+				checkName:function() {
+					console.log('checkName');
+					return this;
+				},
+				checkPassword:function() {
+					console.log('checkPassword');
+					return this;
+				}
+			}
+			CheckObject.checkName().checkEmail().checkPassword();
+		})('1.8 方法还可以这样用');
+		
+
+	})('第一章');
+	</script>
+</body>
+</html>
