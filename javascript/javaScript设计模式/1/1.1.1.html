@@ -153,8 +153,57 @@
 			}
 			CheckObject.checkName().checkEmail().checkPassword();
 		})('1.8 方法还可以这样用');
-		
+		;(function() {
+			var CheckObject=function() {
+				
+			}
+			CheckObject.prototype={
+				checkName:function() {
+					console.log('checkname');
+					return this;
+				},
+				checkEmail:function() {
+					console.log('checkEmail');
+					return this;
+				},
+				checkPassword:function() {
+					console.log('checkPassword');
+					return this
+				}
+			}
+			var a=new CheckObject();
+			a.checkName().checkEmail().checkPassword();
+		})('1.8.2');		
+		;(function() {
+			Function.prototype.addMethod=function(name,fn) {
+				this[name]=fn;
+			}
+			var methods= new Function();
+			methods.addMethod('checkName',function() {
+				console.log('checkName');
+			});
+			methods.addMethod('checkEmail',function() {
+				console.log('checkEmail');
+			})
+			methods.checkName();
+		})('1.9');
+		;(function() {
+			Function.prototype.addMethod=function(name,fn) {
+				this[name]=fn;
+				return this;
+			}
+			var methods=function() {}
+			methods.addMethod('checkName',function() {
+				console.log('checkName');
+				return this;
+			}).addMethod('checkEmail',function() {
+				console.log('checkEmail');
+				return this;
+			})
+			methods.checkName().checkEmail();
 
+
+		})('1.9.1');
 	})('第一章');
 	</script>
 </body>
