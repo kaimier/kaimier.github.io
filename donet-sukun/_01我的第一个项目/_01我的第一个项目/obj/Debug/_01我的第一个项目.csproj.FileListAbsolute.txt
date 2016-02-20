@@ -1,0 +1,5 @@
+D:\website\kaimier.github.io\donet-sukun\_01我的第一个项目\_01我的第一个项目\bin\Debug\_01我的第一个项目.exe.config
+D:\website\kaimier.github.io\donet-sukun\_01我的第一个项目\_01我的第一个项目\bin\Debug\_01我的第一个项目.exe
+D:\website\kaimier.github.io\donet-sukun\_01我的第一个项目\_01我的第一个项目\bin\Debug\_01我的第一个项目.pdb
+D:\website\kaimier.github.io\donet-sukun\_01我的第一个项目\_01我的第一个项目\obj\Debug\_01我的第一个项目.exe
+D:\website\kaimier.github.io\donet-sukun\_01我的第一个项目\_01我的第一个项目\obj\Debug\_01我的第一个项目.pdb

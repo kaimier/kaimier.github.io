@@ -95,6 +95,7 @@ a:visited, a[tabindex='-1']:focus {
   outline: 0 none; }
 
 a:hover {
+  color: #4bc8b6;
   outline: 0 none; }
 
 .n {
