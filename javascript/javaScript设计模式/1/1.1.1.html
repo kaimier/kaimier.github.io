@@ -204,6 +204,20 @@
 
 
 		})('1.9.1');
+		;(function() {
+			Function.prototype.addMethod=function(name,fn) {
+				this.prototype[name]=fn;
+				return this;
+			}
+			var Methods=function() {}
+			Methods.addMethod('checkName',function() {
+				console.log('checkName');
+			}).addMethod('checkEmail',function() {
+				console.log('checkEmail');
+			});
+	        var m= new Methods();
+	        m.checkName();
+		})('1.11 换成类式使用方法');
 	})('第一章');
 	</script>
 </body>

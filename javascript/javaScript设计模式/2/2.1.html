@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装</title>
+</head>
+<body>
+	<script>
+		;(function() {
+			var Book=function(id,bookname,price) {
+				this.id=id;
+				this.bookname=bookname;
+				this.price=price;
+			}	
+		})('2.2.1创建一个类')
+		;(function() {
+			var Book=function() {
+				
+			}
+			var Book2=function() {
+				
+			}
+			Book2.prototype.display=function() {
+				//
+				console.log(this.constructor);
+			}
+			// 或者
+			Book.prototype={
+
+				display:function() {
+				}
+			}
+			var b=new Book();
+			b.display();
+			var b2=new Book2();
+			b2.display();
+			console.log(b.constructor);//object
+		})('两个不同的类添加属性和方法');
+		;(function() {
+			var Book=function(id,name,price) {
+				this.Id=id;
+				this.Name=name;
+				this.Price=price;
+			}
+			Book.isChinese=true;
+			Book.resetTime=function() {
+			    console.log('new Time');	
+			};
+			Book.prototype={
+				isJSBook:false,
+				display:function() {
+					
+				}
+			}
+			var b=new Book(11,'Javascript 设计模式',50);
+			console.log(b.num);
+			console.log(b.isJSBook);
+			console.log(b.Id);
+			console.log(b.isChinese);
+			console.log(b.display);
+			console.log(b.resetTime);
+			console.log(Book.resetTime);
+		})();
+	</script>
+</body>
+</html>
