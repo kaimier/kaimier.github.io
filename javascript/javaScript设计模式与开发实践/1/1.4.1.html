@@ -23,18 +23,26 @@
            var clonePlane=Object.create(plane);
             console.log(clonePlane); 
         })();
-        ;(function(){
-            //console.log(clonePlane);
-            //在不支持Object.create方法的浏览器中，可以使用以下代码：
-            Object.create=Object.create||function(obj){
-                var F=function(){};
+        // ;(function(){
+        //     //console.log(clonePlane);
+        //     //在不支持Object.create方法的浏览器中，可以使用以下代码：
+        //     Object.create=Object.create||function(obj){
+        //         var F=function(){};
+        //         F.prototype=obj;
+        //         return new F();
+        //     }
+        //     var clonePlane=Object.create(plane);
+        //     console.log(clonePlane);
+        // })();
+        (function() {
+            Object.create=Object.create||function(obj) {
+                var F=function() {};
                 F.prototype=obj;
                 return new F();
             }
-            var clonePlane=Object.create(plane);
+            var clonePlane = Object.create(plane);
             console.log(clonePlane);
         })();
-        
         
     </script>
 </body>
