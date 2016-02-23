@@ -21,6 +21,7 @@
         var mult=function() {
             var args=Array.prototype.join.call(arguments,',');
             //arguments伪数组借用数组的join方法转为string
+            // console.log(args);
             console.log(typeof args);
             if (cache[args]) {
                 return cache[args]+'已缓存数据';
