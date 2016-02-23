@@ -1,0 +1,22 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        老苏的页面 <br />
+        @ViewBag.Greeting World(from the view);
+        <p>We're going to have an exiting party. <br />
+        (To do: sell it better. Add pictures or something.)</p>
+        @Html.ActionLink("PSVP Now", "RsvpForm");
+    </div>
+</body>
+</html>
