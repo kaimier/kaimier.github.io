@@ -21,7 +21,7 @@
     Function.prototype.after=function(afterfn) {
         var __self=this;
         return function() {
-            var ret= __self.apply(this,arguments);
+            var ret=__self.apply(this,arguments);
             afterfn.apply(this,arguments);
             return ret;
         }
