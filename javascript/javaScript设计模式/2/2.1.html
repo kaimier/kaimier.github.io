@@ -61,6 +61,35 @@
 			console.log(b.resetTime);
 			console.log(Book.resetTime);
 		})();
+		;(function() {
+			var Book=(function() {
+				var bookNum=0;//静态私有变量
+				function checkBook() {
+					//静态私有方法
+				}
+				//返回构造函数
+				return function(newId,newName,newPrice) {
+					var name,price; //私有变量
+					function checkID(id) {}//私有方法
+					//特权方法
+					this.getName=function() {};
+					this.getPrice=function(){};
+					this.setName=function(){};
+					this.setPrice=function(){};
+					//公有属性
+					this.id=newId;
+					//公有方法
+					this.copy=function(){};
+					bookNum++;
+					if (bookNum>100) {
+						throw new Error('我们仅出版100本书.');
+					}
+					//构造器
+					this.setName(name);
+					this.setPrice(price);
+				}
+			})();
+		})('你们看不到我--闭包实现');
 	</script>
 </body>
 </html>
