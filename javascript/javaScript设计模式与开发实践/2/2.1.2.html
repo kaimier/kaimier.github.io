@@ -50,7 +50,9 @@
         我们可以尝试利用apply把document当作this传入getId函数,帮助“修正” this:
          */
         document.getElementById=(function(fnc) {
+            console.log(fnc);//function getElementById(){}
             return function() {
+                // console.log(this);//window
                 return fnc.apply(document,arguments);
             }
         })(document.getElementById);

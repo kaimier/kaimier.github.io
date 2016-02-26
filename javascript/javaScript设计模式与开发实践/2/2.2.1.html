@@ -145,6 +145,7 @@
                     for (var i = 0; i < arguments.length; i++) {
                         console.log(arguments[i]);
                     };
+                    // console.log(context); //obj
                     return self.apply(context,[].concat.call(args,[].slice.call(arguments)));
                     /*
                     执行新的函数时，会把之家前传入的context当作新函数体内的this并且组合两次分别传入的参数，作为新函数的参数
@@ -152,11 +153,11 @@
                 }
             };
             var obj={name:'jack'};
-            var func1=function(a,b,c,d,e,f,g) {
+            var func1=function(a,b,c,d) {
                 console.log(this.name);
                 console.log([a,b,c,d]);
             }.bind(obj,1,2);
-            func1(3,4,8,9,10);
+            func1(3,4)
         })('复杂版的Function.prototype.bind');
     })('call和apply的用途');
 
