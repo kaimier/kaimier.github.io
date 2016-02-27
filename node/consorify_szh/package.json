@@ -4,6 +4,14 @@
     "version":"0.1.1",
     "description":"Censors words out of text",
     "main":"censortext",
+    "repository":{
+        "type":"git",
+        "url":"https://github.com/kaimier/kaimier.github.io/tree/master/node/consorify_szh"
+    },
+    "keywords":[
+        "censor_szh",
+        "words_szh"
+    ],
     "dependencies":{},
     "engines":{
         "node":"*"
