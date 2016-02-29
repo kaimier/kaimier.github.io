@@ -1,0 +1,48 @@
+doctype html
+html
+    <!--[if IE 8]><html class='ie8'><![endif]-->
+    <!--[if IE 9]><html class='ie9'><![endif]-->
+    <!--[if !IE]><html><![endif]-->
+    head
+        meta(charset='utf-8')
+        title imooc #{course}study
+    body
+        h2 注释
+        h3 单行注释
+        //h3.title(id='title',class='title3') imooc
+        h3 非缓冲注释(不被编译到HTML代码里)
+        //-#id.classname 非缓冲注释
+        h3 xxx
+        h1.title#id.class imooc szh
+        div.classname#id
+        h3 块级注释 #{course}
+        //-
+            h2.title(id='title',class="className") imooc
+            a(href='http://www.baidu.com',title='imooc jade study',data-tuch="xxx|touchEnd") baidu
+            img(src="http://www.zczj.com/skin/images/logo.png", alt="众筹之家")
+        input(type="text",name='course',value='jade')
+        input(type="checkbox",name='type',checked)
+        p
+            | 1.  aa 
+            | 2.  bb 
+            | 3.  cc 
+            | 4.  dd
+        p.
+            1.  aa 
+            2.  bb 
+            3.  cc 
+            4.  dd
+        p.
+            1.  aa <strong>xxx</strong>
+            2.  bb 
+            <span>22</span>
+            3.  cc 
+            4.  dd
+        p
+            | 1.  aa 
+            strong strong
+            | 2.  bb 
+            span span
+            | 3.  cc 
+            | 4.  dd
+</html>
