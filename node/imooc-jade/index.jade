@@ -1,18 +1,135 @@
-doctype html
-html
-    <!--[if IE 8]><html class='ie8'><![endif]-->
-    <!--[if IE 9]><html class='ie9'><![endif]-->
-    <!--[if !IE]><html><![endif]-->
-    head
-        meta(charset='utf-8')
-        title imooc #{course}study
-    body
+extends layout
+block content
+        h3 markdown
+        include style
+            style.
+                h2{color:red;}
+        include title.html
+        block desc
+        p desc  from index 
+        h2 模板继承
+        
+        h2 mixin
+        mixin lesson
+            p imooc jade study
+        +lesson
+        mixin study(name,courses)
+            p #{name}
+            ul.courses
+                each course in courses
+                    li=course
+        +study('tom',['jade','node','express'])
+
+        mixin group(student)
+            h4 #{student.name}
+            +study(student.name,student.courses)
+        +group({name:'tom',courses:['jade','node','express']})
+        h4 内联代码块
+        mixin team(slogon)
+            h4 #{slogon}
+            if block
+                block
+            else
+                p no team
+        +team('内联代码块')
+            h2 老苏
+        h3 属性
+        mixin attr(name)
+            p(class!=attributes.class) #{name}
+        +attr('attr')(class='magic')
+
+        mixin attrs(name)
+            p&attributes(attributes) #{name}
+        +attrs('magic2')(class='magic2',id='attrid')
+
+        mixin magic(name,...items)
+            ul(class='#{name}')
+                each item in items
+                    li= item
+        +magic('magic','node','jade','express')
+
+
+
+
+
+        h3 if else
+        - var isImooc = true
+        - var lessons =['jade','node']
+        if lessons
+            if lessons.length > 2
+                p more than 2: #{lessons.join(', ')}
+            else if lessons.length>1
+                p more than 1: #{lessons.join(', ')}
+            else
+                p no lesson
+        else
+            p no lesson
+        //- 反向
+        h3 unless
+        unless !isImooc 
+            p #{lessons.length}
+        h3 case xx
+        - var name='老苏'
+        case name
+            when 'java'
+            when 'node'
+                p Hi node!
+            when 'jade': p Hi jade!
+            when 'express': p Hi express
+            default
+                p Hi #{name}
+        h2 流程
+        h2 while
+        - var n=0
+        ul
+            while n<4
+                li= n++
+        - var imooc ={course:'jade',level:'high'}
+        - for(var k in imooc)
+            p=imooc[k]
+        h3 for each
+        - each value, key in imooc
+            p #{key}:#{value}
+        - var courses=['node','jade','express']
+            each item in courses
+                p= item
+        - var sections=[{id:1,items:['a','b','c']},{id:2,items:['e','f','g']}]
+        - var sections2=[{id:8},{id:9}]
+        dl
+            each section in sections
+                dt= section.id
+                each item in section.items
+                    dd= item
+        dl
+            each section in sections2.length >0? sections :[{id:0,items:['node','jade','express']},{id:1,items:['node1','jade1','express1']}]
+                dt= section.id
+                each item in section.items
+                    dd= item
+
+
+
+
+
+
+        h2 转义
+        - var data='text'
+        - var htmlData='<script>alert(1);</script><span>script</span>;'
+        - var newData='123'
+        p #{data}
+        p #{htmlData}
+        p !{htmlData}
+        p \!{htmlData}
+        p \#{htmlData}
+        p= data
+        p= htmlData
+        p!= htmlData
+        input(value=newData)
         h2 注释
         h3 单行注释
         //h3.title(id='title',class='title3') imooc
         h3 非缓冲注释(不被编译到HTML代码里)
         //-#id.classname 非缓冲注释
-        h3 xxx
+        h3 xxx szh #{course}
         h1.title#id.class imooc szh
         div.classname#id
         h3 块级注释 #{course}
@@ -45,4 +162,3 @@ html
             span span
             | 3.  cc 
             | 4.  dd
-</html>
