@@ -1,6 +1,22 @@
 extends layout
 block content
+        #runtime
+        script(src='node_modules/jade/runtime.js')
+        script(src='runtime.js')
+        script.
+            var runtimeNode=document.getElementById('runtime');
+            var runtimeHtml=template({
+                isRuntime:true
+            })
+            runtimeNode.innerHTML = runtimeHtml;
         h3 markdown
+        :markdown
+            Hi,this is **imooc** [link](http://imooc.com)
+        h3 coffee
+        script
+            :coffee
+                console.log 'This is coffee!'
+
         include style
             style.
                 h2{color:red;}
@@ -8,7 +24,9 @@ block content
         block desc
         p desc  from index 
         h2 模板继承
-        
+
+
+
         h2 mixin
         mixin lesson
             p imooc jade study

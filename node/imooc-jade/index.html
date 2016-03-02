@@ -8,7 +8,24 @@
     <title>jade study</title>
   </head>
   <body>
-    <h3>markdown</h3>
+    <div id="runtime"></div>
+    <script src="node_modules/jade/runtime.js"></script>
+    <script src="runtime.js"></script>
+    <script>
+      var runtimeNode=document.getElementById('runtime');
+      var runtimeHtml=template({
+          isRuntime:true
+      })
+      runtimeNode.innerHTML = runtimeHtml;
+    </script>
+    <h3>markdown</h3><p>Hi,this is <strong>imooc</strong> <a href="http://imooc.com">link</a></p>
+    <h3>coffee</h3>
+    <script>(function() {
+  console.log('This is coffee!');
+
+}).call(this);
+
+    </script>
     <style>h3{color:orange}</style>
     <style>h2{color:red;}</style><div>
     <h3>content form html</h3>
@@ -97,10 +114,10 @@
     <h3>单行注释</h3>
     <!--h3.title(id='title',class='title3') imooc-->
     <h3>非缓冲注释(不被编译到HTML代码里)</h3>
-    <h3>xxx szh </h3>
+    <h3>xxx szh szhx</h3>
     <h1 id="id" class="title class">imooc szh</h1>
     <div id="id" class="classname"></div>
-    <h3>块级注释 </h3>
+    <h3>块级注释 szhx</h3>
     <input type="text" name="course" value="jade">
     <input type="checkbox" name="type" checked>
     <p>
