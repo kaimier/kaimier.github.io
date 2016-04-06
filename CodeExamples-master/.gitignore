@@ -1,0 +1,17 @@
+_ReSharper.*
+**.ReSharper
+bin
+obj
+*.mdf
+*.ldf
+**.user
+**.suo
+**.cache
+TestResults
+_UpgradeReport_Files
+UpgradeLog*.XML
+*.stackdump
+**.ncrunch*
+Thumbs.db
+
+packages
