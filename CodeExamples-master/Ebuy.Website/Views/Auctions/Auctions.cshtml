@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Ebuy.Auction>
+<h2>Auctions</h2>
+
+<ul class="auctions">
+    @foreach (var auction in Model)
+    {
+        <li class="auction" data-key="@auction.Key">
+            <a href="#">
+                <span>@auction.Title</span>
+            </a>
+        </li>
+    }
+</ul>
+
+<section id="auction-details">
+    @* Render the first Auction using the Partial View on the server *@
+    @if (Model.Any())
+    {
+        <h3>Auction Details</h3>
+        @Html.Partial("Auction", Model.First())
+    }
+    else
+    {
+        <p>There are no auctions running right now. Try creating @Html.ActionLink("few", "Create").</p>
+    }
+</section>
+
+<script id="auction-template" type="text/x-template">
+<div class="title">{{Title}}</div>
+<div class="overview">
+<p>
+<strong>Current Price: </strong>
+<span class="current-bid">{{CurrentPrice.Code}} {{CurrentPrice.Value}}</span>
+</p>
+</div>
+<h3>Description</h3>
+<div class="description">
+{{Description}}
+</div>
+</script>
+
+@section scripts {
+    
+<script type="text/javascript" src="~/scripts/mustache.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        var templateSource = $('#auction-template').html();
+        var template = Mustache.compile(templateSource);
+        $('.auction').click(function () {
+            var auctionId = $(this).data("key");
+            $.ajax({
+                url: '@Url.Action("JsonAuction", "Auctions")/' + auctionId,
+                success: function (auction) {
+                    var html = template(auction);
+                    $('#auction-details').html(html);
+                }
+            });
+        });
+    });
+</script>
+}

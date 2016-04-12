@@ -1,0 +1,95 @@
+/*
+	TODO 站点颜色变量
+*/
+/*=============链接色调==================*/
+$Link: #0066CC;
+$hover: #4E9CCC;
+$active: #95A5A6;
+
+
+/*
+	TODO 基本样式
+*/
+a {
+  color: $Link;
+  text-decoration: none;
+  cursor: pointer;
+}
+a:hover {
+  color: $hover;
+}
+a:active {
+  color: $Link;
+  text-shadow: 1px 1px 1px $active;
+}
+
+
+
+
+/*
+	TODO 定位样式
+*/
+.ib {
+  display: inline-block;
+  *display:inline; zoom:1;
+}
+/* h1: 清除标签之间的空格 */
+.fix-space {
+  font-size:0;/* 所有浏览器 */
+  *word-spacing:-1px;/* IE6、7 */
+}
+@media screen and (-webkit-min-device-pixel-ratio:0){
+  /* firefox 中 letter-spacing 会导致脱离普通流的元素水平位移 */
+  .fix-space {
+    letter-spacing:-5px;/* Safari 等不支持字体大小为 0 的浏览器, N 根据父级字体调节*/
+  }
+}
+/* h2:  清除float浮动坍塌 */
+.fix {
+  zoom:1;
+}
+.fix:after {
+  display:block;
+  content:'.';
+  clear:both;
+  line-height:0;
+  visibility:hidden;
+}
+/* h2:  绝对定位垂直居中,父元素需要 relative */
+.vertical_center {
+  margin:auto 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+/* h2: 多行文本垂直居中,父元素用line-height 代替 height */
+.text_vertical_center {
+  @extend .ib;
+  line-height: 1.5em;
+  vertical-align: middle;
+}
+/* h2: 内联垂直居中 */
+.middle {
+  @extend .ib;
+  width:0;
+  height:100%;
+  vertical-align: middle;
+}
+/* h2: 溢出省略号 */
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* h2: 无限海洋居中放大 */
+.size {
+  width: 1000px;
+  height: 1000px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -500px 0 0 -500px;
+  text-align: center;
+}
