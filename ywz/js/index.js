@@ -155,6 +155,12 @@ $(document).ready(function(){
 
         $('.ar_l', parent_Con ).click(function(){
             test.next_Page();
+            test.listQuote.find('li').find('.text .new_pp3').css({
+                color:'#1ADBFF'
+            })
+            test.listQuote.find('li').eq(test._index).find('.text .new_pp3').css({
+                color:'#D32E2E'
+            }) 
         });
         $('.ar_r', parent_Con).click(function(){
             test.before_Page();
