@@ -13,9 +13,17 @@ const colors=["#33b5e5","#0099cc","#aa66cc","#9933cc","#99cc00","#669900","#ffbb
 
 
 window.onload=function(){
+
+    WINDOW_WIDTH = document.body.clientWidth;
+    WINDOW_HEIGHT = document.body.clientHeight;
+
+    MARGIN_LEFT = Math.round(WINDOW_WIDTH/10);
+    RADIUS = Math.round(WINDOW_WIDTH*4/5/108)-1;
+    MARGIN_TOP = Math.round(WINDOW_HEIGHT/3);
+
     var canvas=document.getElementById('canvas');
     var context=canvas.getContext("2d");
-
+    document.getElementsByTagName('body')[0].style.height=WINDOW_HEIGHT;
     canvas.width=WINDOW_WIDTH;
     canvas.height=WINDOW_HEIGHT;
 
@@ -88,7 +96,7 @@ function updateBalls() {
         if (balls[i].x+RADIUS>0 && balls[i].x - RADIUS<WINDOW_WIDTH)
             balls[cnt++] = balls[i];
 
-    while(balls.length>cnt){
+    while(balls.length>Math.min(300,cnt)){
         balls.pop();
     }
 
