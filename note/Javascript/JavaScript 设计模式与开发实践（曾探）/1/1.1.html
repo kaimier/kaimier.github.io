@@ -4,5 +4,42 @@
         <meta charset="utf-8">
     </head>
     <body>
+    <script type="text/javascript">
+    /*
+    1.1：动态类型语言和鸭子类型
+        编程语言按照数据类型大体分为两类-> 静态类型和动态类型语言
+        JavaScript是一门典型的动态类型语言。
+     */
+        /**
+         * 鸭子类
+         * @type {Class}
+         */
+        var duck={
+            duckSinging:function() {
+                console.log('嘎嘎嘎嘎');
+            }
+        };
+        /**
+         * 鸡类
+         * @type {Class}
+         */
+        var chicken={
+            duckSinging:function() {
+                console.log('嘎嘎嘎嘎');
+            }
+        };
+        var choir=[];//合唱团
+
+        var joinChoir=function(animal) {
+            if (animal && typeof animal.duckSinging=='function') {
+                choir.push(animal);
+                console.log('恭喜加入合唱团');
+                console.log('合唱团已有成员数量：'+choir.length);
+            }
+        };
+        joinChoir(duck);
+        joinChoir(chicken);
+
+    </script>
     </body>
 </html>

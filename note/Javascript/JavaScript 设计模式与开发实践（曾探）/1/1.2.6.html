@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>多态在面向对象程序设计中的作用</title>
+    </head>
+    <body>
+    <script type="text/javascript">
+        /*
+        假设我们要编写一个地图应用，现在有两家可选的地图 API提供商供我们接入自己的应用。
+        目前我们选择的是谷歌地图，谷歌地图的 API中提供了 show 方法，负责在页面上展示整个地图。
+        示例代码如下：
+         */
+
+        //谷歌地图的 API
+        // var googleMap={
+        //     show:function() {
+        //         console.log('开始渲染谷歌地图');
+        //     }
+        // };
+        // var renderMap = function() {
+        //     googleMap.show();
+        // };
+        // renderMap();
+        /*
+        后来因为某些原因，要把谷歌地图换成百度地图，为了让 renderMap 函数保持一定的弹性，
+        我们用一些条件分支来让 renderMap 函数同时支持谷歌地图和百度地图：
+         */
+        var googleMap={
+            show:function() {
+                console.log('开始渲染谷歌地图');
+            }
+        };
+        var baiduMap={
+            show:function() {
+                console.log('开始渲染百度地图');
+            }
+        };
+        var renderMap = function(type) {
+            if (type === 'google') {
+                googleMap.show();
+            }else if(type==='baidu'){
+                baiduMap.show();
+            }
+        };
+        renderMap('google');
+        renderMap('baidu');
+
+        /*
+        可以看到，虽然 renderMap 函数目前保持了一定的弹性，但这种弹性是很脆弱的，一旦需要
+        替换成搜搜地图，那无疑必须得改动 renderMap 函数，继续往里面堆砌条件分支语句。
+        我们还是先把程序中相同的部分抽象出来，那就是显示某个地图：
+         */
+         renderMap = function(map) {
+             if (map.show instanceof Function) {
+                map.show();
+             }
+         };
+         renderMap(googleMap);
+         renderMap(baiduMap);
+
+         //扩展搜搜地图
+         var sosoMap={
+            show:function() {
+                console.log('开始渲染搜搜地图');
+            }
+         };
+         renderMap(sosoMap);
+    </script>
+    </body>
+</html>

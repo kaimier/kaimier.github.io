@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>封装数据</title>
+    </head>
+    <body>
+    <script type="text/javascript">
+        var myObject = (function() {
+            var _name='even';
+            return {
+                getName:function() {
+                    return _name;
+                }
+            }
+        })();
+        console.log(myObject.getName());
+        console.log(myObject._name);
+    </script>
+    </body>
+</html>

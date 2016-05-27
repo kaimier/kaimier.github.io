@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>1.2 多态</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /**
+             * 发音行为
+             * @Author: 老苏
+             * @param   {对象} animal 会发音的动物
+             * @return  {无}        无返回值 执行各自的发音行为 ->多态
+             */
+            var makeSound = function(animal) {
+                if (animal instanceof Duck) {
+                    console.log('嘎嘎嘎嘎');
+                }else if(animal instanceof Chinken){
+                    console.log('唧唧唧');
+                }
+            };
+
+            //声明两个动物类：
+            var Duck = function () {}
+            var Chinken = function () {}
+
+            //同一行为作用在不同的动物实例上，发出不一样的叫声。->多态
+            makeSound(new Duck());
+            makeSound(new Chinken());
+
+        </script>
+    </body>
+</html>
