@@ -96,6 +96,32 @@
 		 B.prototype= new A();
 		 var b = new B();
 		 console.log(b.name);
+		 /*
+		 另外，ECMAScript 6带来了新的 Class语法。这让 JavaScript看起来像是一门基于类的语言，
+		 但其背后仍是通过原型机制来创建对象。通过 Class创建对象的一段简单示例代码
+		 ① 如下所示 ：
+		  */
+		 //通过Class 创建对象的一段简单示例代码①如下所示 ： Es6 --> 要在严格模式下
+		 class Animal{
+		 	constructor(name){
+		 		this.name = name;
+		 	}
+		 	getName(){
+		 		return this.name;
+		 	}
+		 }
+
+		 class Dog extends Animal{
+		 	constructor(name){
+		 		super(name);
+		 	}
+		 	speak(){
+		 		return "woof";
+		 	}
+		 }
+
+		 var dog = new Dog("Scamp");
+		 console.log(dog.getName() + ' says '+ dog.speak());
 		
 	</script>
 </body>
