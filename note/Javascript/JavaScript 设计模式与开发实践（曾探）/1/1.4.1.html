@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用克隆的原型模式</title>
+</head>
+<body>
+	<script>
+		//原型模式不单是一种设计模式，也被称为一种编程泛型。
+
+		/**
+		 * 1.4.1 使用克隆的原型模式
+		 * 原型模式的实现关键，是语言本身是否提供了 clone 方法。ECMAScript 5提供了 Object.create
+		方法，可以用来克隆对象。代码如下：
+		 */
+		var Plane = function() {
+			this.blood =100;
+			this.attackLevel =1; 
+			this.defenseLeve1= 1;
+		}
+		var plane = new Plane();
+		plane.blood =500;
+		plane.attackLevel = 10;
+		plane.defenseLeve1=7;
+		//在不支持 Object.create 方法的浏览器中，则可以使用以下代码：
+				Object.create = Object.create || function(obj) {
+					var F=function(){};
+					F.prototype =obj;
+					return new F();
+				}
+		var clonePlane = Object.create(plane);
+		console.log(clonePlane.blood);
+
+
+
+
+
+		
+	</script>
+</body>
+</html>
