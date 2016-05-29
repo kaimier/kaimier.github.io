@@ -2,14 +2,15 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>封装数据</title>
+        <title>封装数据 P12</title>
     </head>
     <body>
     <script type="text/javascript">
+        //除了 ECMAScript 6中提供的 let 之外，一般我们通过函数来创建作用域：
         var myObject = (function() {
-            var _name='even';
+            var _name='even';// 私有（private）变量
             return {
-                getName:function() {
+                getName:function() { // 公开（public）方法
                     return _name;
                 }
             }
