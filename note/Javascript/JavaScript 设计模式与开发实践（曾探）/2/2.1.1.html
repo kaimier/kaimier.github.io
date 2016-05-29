@@ -56,5 +56,82 @@
 
 		
 	</script>
+	<div id="div1">我是一个div</div>
+	<script>
+		window.id='window';
+		document.getElementById('div1').onclick=function() {
+			alert(this.id); // 'div1'
+			var callback = function() {
+				alert(this.id);//'window'
+			}
+			callback();
+		}
+		//此时有一种简单的解决方案，可以用一个变量保存 div 节点的引用
+		document.getElementById('div1').onclick=function() {
+			var _this = this;//保存div 的引用
+			var callback=function() {
+				console.log(_this.id);//输出：'div1';
+			}
+			callback();
+		}
+
+		/*
+		在 ECMAScript 5的 strict 模式下，这种情况下的 this 已经被规定为不会指向全局对象，而
+		是 undefined ：
+		 */
+		function func() {
+			"use strict"
+			alert(this); //输出:undefined;
+		}
+		func();
+
+		//3. 构造器调用
+		var MyClass= function() {
+			this.name='sven';
+		};
+
+		var obj = new MyClass();
+		console.log(obj.name); //sven
+		/*
+		但用 new 调用构造器时，还要注意一个问题，如果构造器显式地返回了一个 object 类型的对
+		象，那么此次运算结果最终会返回这个对象，而不是我们之前期待的 this 
+		 */
+		 var MyClass = function() {
+		 	this.name ='sven';
+		 	return{ // 显式地返回一个对象
+		 		name:'anne'
+		 	}
+		 };
+		 var obj = new MyClass();
+		 alert(obj.name); //输出：anne;
+		 /*
+		 如果构造器不显式地返回任何数据，或者是返回一个非对象类型的数据，就不会造成上述
+		 问题
+		  */
+		 var MyClass = function() {
+		 	this.name = 'sven';
+		 	return 'anne'; //返回字符串
+		 };
+		 var obj = new MyClass();
+		 console.log(obj.name); //输出：sven
+
+		 //4.  Function.prototype.call 或 Function.prototype.apply 调用
+		 /*
+		 跟普通的函数调用相比，用 Function.prototype.call 或 Function.prototype.apply 可以动态地
+		 改变传入函数的 this ：
+		  */
+		 var obj1 ={
+		 	name:'sven',
+		 	getName:function() {
+		 		return this.name;
+		 	}
+		 };
+		 var obj2={
+		 	name:'anne'
+		 };
+		 console.log(obj1.getName()); //输出：sven
+		 console.log(obj1.getName.call(obj2)); //输出anne
+
+	</script>
 </body>
 </html>
