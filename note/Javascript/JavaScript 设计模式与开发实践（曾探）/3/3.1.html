@@ -18,8 +18,78 @@ var func =function(){
 }
 func();
 console.log(a); //输出 Uncaught ReferenceError:a is not defined
+/*
+下面这段包含了嵌套函数的代码，也许能帮助我们加深对变量搜索过程的理解：
+ */
+ var a=1;
+ var func1=function() {
+ 	var b = 2; 
+ 	var func2=function() {
+ 		var c=3;
+ 		console.log(b);//2
+ 		console.log(a);//1;
+ 	}
+ 	func2();
+ 	//console.log(c); //ncaught ReferenceError: c is not defined
+ };
+ func1();
+
+//3.1.2 变量的生存周期
+/*
+全局变量的生存周期当然是永久的，除非我们主动销毁这个全局变量
+ */
+var func= function() {
+	var a=1;
+	return function() {
+		a++;
+		console.log(a);
+	}
+};
+var f=func();
+f();//2;
+f();//3;
+f();//4;
+f();//5;
 
 
+
+
+
+</script>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+<script>
+	var nodes = document.getElementsByTagName('div');
+	for(var i=0,len=nodes.length;i<len;i++){
+		nodes[i].onclick=function() {
+			console.log(i);//永远都是5
+		}
+	}
+	//闭包
+	for(var i=0,len=nodes.length;i<len;i++){
+		(function(i) {
+			nodes[i].onclick=function() {
+				console.log(i);
+			}
+		})(i)
+	}
+	//同理，我们还可以编写如下一段代码
+	var Type={};
+	for(var i=0,type;type=['String','Array','Number','Boolean'][i++];){
+		(function(type) {
+			Type['is' + type] = function(obj) {
+				console.log('[object '+type+']');
+				return Object.prototype.toString.call(obj) ==='[object '+type+']';
+			}
+		})(type)
+	};
+
+	console.log(Type.isArray([]));
+	console.log(Type.isString("str"));
+	console.log(Type.isNumberO(1));
 </script>
 </body>
 </html>
