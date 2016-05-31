@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3.2高阶函数 p44</title>
+</head>
+<body>
+<script src="http://test.zczj.com/js/jquery-1.11.0.min.js?v=20150401"></script>
+    <script type="text/javascript">
+        /*
+        3.2.1 函数作为参数传递
+        1. 回调函数
+         */
+        var getUserInfo = function(userId,callback) {
+            $.ajax('http://xxx.com/getUserInfo?'+userId,function(data) {
+                if (typeof callback === 'function') {
+                    callback(data);
+                }
+            });
+        }
+        // getUserInfo(13157,function(data) {
+        //     console.log(data.userName);
+        // });
+        /*
+        回调函数的应用不仅只在异步请求中，当一个函数不适合执行一些请求时，我们也可以把这
+        些请求封装成一个函数，并把它作为参数传递给另外一个函数，“委托”给另外一个函数来执行。
+        比如，我们想在页面中创建 100个 div 节点，然后把这些 div 节点都设置为隐藏。下面是一种编写代码的方式:
+         */
+        var appendDiv = function() {
+            for(var i=0;i<100;i++){
+                var div = document.createElement('div');
+                div.innerHTML= i;
+                document.body.appendChild(div);
+                div.style.display='none';
+            }
+        };
+        appendDiv();
+        /*
+        把 div.style.display = 'none' 的逻辑硬编码在 appendDiv 里显然是不合理的， appendDiv 未免
+        有点个性化，成为了一个难以复用的函数，并不是每个人创建了节点之后就希望它们立刻被隐藏。
+        于是我们把 div.style.display = 'none' 这行代码抽出来，用回调函数的形式传入 appendDiv
+        方法：
+         */
+        var appendDiv = function (callback) {
+            for(var i=0;i<100;i++){
+                var div = document.createElement('div');
+                div.innerHTML=i;
+                document.body.appendChild(div);
+                if (typeof callback === 'function') {
+                    callback(div);
+                }
+            }
+        }
+        appendDiv(function(node) {
+            node.style.display='inlineBlock';
+            node.style.width=100+'px';
+            node.style.height=100+'px';
+            node.style.backgroundColor='pink';
+            node.style.float='left';
+            node.style.margin=2+'px';
+            node.style.textAlign='center';
+            node.style.lineHeight=100+'px';
+            node.style.color='#193aae';
+            node.style.fontSize=20+'px';
+            node.style.fontWeight='blod';
+        })
+
+        //2.  Array.prototype.sort
+        /*
+        Array.prototype.sort 接受一个函数当作参数，这个函数里面封装了数组元素的排序规则。从
+        Array.prototype.sort 的使用可以看到，我们的目的是对数组进行排序，这是不变的部分；而使
+        用什么规则去排序，则是可变的部分。把可变的部分封装在函数参数里，动态传入
+        Array.prototype.sort ，使 Array.prototype.sort 方法成为了一个非常灵活的方法，代码如下：
+         */
+         ;(function() {
+             console.log([125,4,3].sort(function(a,b) {
+                 return a-b;
+             }));
+             console.log([125,4,3].sort(function(a,b) {
+                 return b-a;
+             }));
+
+         })();
+
+
+
+
+    </script>
+</body>
+</html>
