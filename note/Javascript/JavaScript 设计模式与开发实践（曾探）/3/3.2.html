@@ -5,6 +5,7 @@
     <title>3.2高阶函数 p44</title>
 </head>
 <body>
+<div id="div1">点我绑定事件</div>
 <script src="http://test.zczj.com/js/jquery-1.11.0.min.js?v=20150401"></script>
     <script type="text/javascript">
         /*
@@ -294,6 +295,13 @@
                      return self.apply(obj,arguments);
                  };
              };
+             Function.prototype.uncurrying = function() {
+                 var self=this;
+                 return function() {
+                    console.log(self);
+                     return Function.prototype.call.apply(self,arguments);
+                 }
+             }
              /*
              在讲解这段代码的实现原理之前，我们先来瞧瞧它有什么作用。
              在类数组对象 arguments 借用 Array.prototype 的方法之前，先把 Array.prototype.push.call
@@ -328,7 +336,181 @@
              console.log(obj);
              Array.forEach(obj,function(i,n) {
                  console.log(n+ ': '+ i);
-             })
+             });
+
+             //3. 函数节流 
+             //throttle ->
+             /*
+             将即将被执行的函数用
+             setTimeout 延迟一段时间执行。如果该次延迟执行还没有完成，则忽略接下来调用该函数的请求。
+             throttle 函数接受 2个参数，第一个参数为需要被延迟执行的函数，第二个参数为延迟执行的时
+             间。具体实现代码如下：
+              */
+             var throttle = function(fn,interval) {
+                 var self=fn, // 保存需要被延迟执行的函数引用
+                     timer, // 定时器
+                     firstTime = true; // 是否是第一次调用
+                     return function() {
+                         var args = arguments,
+                             $this= this;
+                             console.log(args);
+                        if (firstTime) { // 如果是第一次调用，不需延迟执行
+                            self.apply($this,args);
+                            return firstTime = false;
+                        }
+
+                        if (timer) { // 如果定时器还在，说明前一次延迟执行还没有完成
+                            return false;
+                        }
+
+                        timer= setTimeout(function() { // 延迟一段时间执行
+                            clearTimeout(timer);
+                            timer=null;
+                            self.apply($this,args);
+                        },interval || 500);
+                     };
+             };
+             window.onresize=throttle(function() {
+                 console.log(1);
+             },500)
+
+             //4. 分时函数
+             /*
+             在前面关于函数节流的讨论中，我们提供了一种限制函数被频繁调用的解决方案。下面我们
+             将遇到另外一个问题，某些函数确实是用户主动调用的，但因为一些客观的原因，这些函数会严重地影响页面性能。
+              */
+             /*
+             一个例子是创建 WebQQ的 QQ好友列表。列表中通常会有成百上千个好友，如果一个好友
+             用一个节点来表示，当我们在页面中渲染这个列表的时候，可能要一次性往页面中创建成百上千
+             个节点。
+             在短时间内往页面中大量添加 DOM节点显然也会让浏览器吃不消，我们看到的结果往往就
+             是浏览器的卡顿甚至假死。代码如下：
+              */
+             var ary=[];
+             for(var i=1;i<100000;i++){
+                ary.push(i); // 假设 ary 装载了 1000 个好友的数据
+             };
+
+             var renderFirendList=function(data) {
+                 for(var i=0,l=data.length;i<l;i++){
+                    var div = document.createElement('div');
+                    div.innerHTML=i+'好友';
+                    document.body.appendChild(div);
+                 }
+             };
+
+             //renderFirendList(ary);
+             
+             /*
+             这个问题的解决方案之一是下面的 timeChunk 函数， timeChunk 函数让创建节点的工作分批进
+             行，比如把 1秒钟创建 1000个节点，改为每隔 200毫秒创建 8个节点。
+             timeChunk 函数接受 3个参数，第 1个参数是创建节点时需要用到的数据，第 2个参数是封装
+             了创建节点逻辑的函数，第 3个参数表示每一批创建的节点数量。代码如下：
+              */
+             /**
+              * [timeChunk 函数让创建节点的工作分批进行]
+              * @param  {[type]}   ary   [创建节点时需要用到的数据]
+              * @param  {Function} fn    [封装了创建节点逻辑的函数]
+              * @param  {[type]}   count [每一批创建的节点数量]
+              * @param  {[type]}   interval [每一批创建执行的时间间隔]
+              * @return {[type]}         [description]
+              */
+             var timeChunk = function(ary,fn,count,interval) {
+                 var obj,
+                     t;
+                var len=ary.length;
+                var start=function() {
+                    for(var i=0;i < Math.min(count ||1,ary.length);i++){
+                        var obj = ary.shift();
+                        fn(obj);
+                    }
+                };
+
+                return function() {
+                    t=setInterval(function() {
+                        if (ary.length === 0 ) {
+                            return clearInterval(t);
+                        }
+                        start();
+                    },interval||200); // 分批执行的时间间隔，也可以用参数的形式传入
+                };
+             };
+
+             var ary = [];
+             for(var i=1;i<=1000; i++){
+                ary.push(i);
+             }
+             var renderFirendList = timeChunk(ary,function(n) {
+                 var div= document.createElement('div');
+                 div.innerHTML=n+'改版后';
+                 document.body.appendChild(div);
+             },8,1000)
+             renderFirendList();
+
+             //5. 惰性加载函数
+             /*
+             在 Web 开发中，因为浏览器之间的实现差异，一些嗅探工作总是不可避免。比如我们需要
+             一个在各个浏览器中能够通用的事件绑定函数 addEvent ，常见的写法如下：
+              */
+             var addEvent = function(elem,type,handler) {
+                 if (window.addEventListener) {
+                    return elem.addEventListener(type,handler,false);
+                 }
+                 if (window.attachEvent) {
+                    return elem.attachEvent('on'+type,handler);
+                 }
+             };
+             /*
+             这个函数的缺点是，当它每次被调用的时候都会执行里面的 if 条件分支，虽然执行这些 if
+             分支的开销不算大，但也许有一些方法可以让程序避免这些重复的执行过程。
+              */
+             var addEvent =(function() {
+                 if (window.addEventListener) {
+                    return function(elem,type,handler) {
+                        elem.addEventListener(type,hander,false);
+                    }
+                 }
+                 if (window.attachEvent) {
+                    return function(elem,type,handler) {
+                        elem.attachEvent('on'+type,handler);
+                    }
+                 }
+             })();
+             /*
+             目前的 addEvent 函数依然有个缺点，也许我们从头到尾都没有使用过 addEvent 函数，这样看
+             来，前一次的浏览器嗅探就是完全多余的操作，而且这也会稍稍延长页面 ready的时间。
+              */
+             /*
+             第三种方案即是我们将要讨论的惰性载入函数方案。此时 addEvent 依然被声明为一个普通函
+             数，在函数里依然有一些分支判断。但是在第一次进入条件分支之后，在函数内部会重写这个函
+             数，重写之后的函数就是我们期望的 addEvent 函数，在下一次进入 addEvent 函数的时候， addEvent
+             函数里不再存在条件分支语句：
+              */
+
+              var addEvent = function(elem,type,handler) {
+                  if (window.addEventListener) {
+                    addEvent=function(elem,type,handler) {
+                        elem.addEventListener(type,handler,false);
+                    }
+                  }else if(window.attachEvent){
+                    addEvent=function(elem,type,handler) {
+                        elem.attachEvent('on'+type,handler);
+                    }
+                  }
+                  addEvent(elem,type,handler);
+              };
+
+              var div = document.getElementById('div1');
+              addEvent(div,'click',function() {
+                  alert(1);
+              })
+              addEvent(div,'click',function() {
+                  alert(2);
+              })
+
+
+
+
 
     </script>
 </body>
