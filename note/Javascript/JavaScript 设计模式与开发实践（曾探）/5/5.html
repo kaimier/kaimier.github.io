@@ -6,6 +6,13 @@
 </head>
 <body>
     <div style="position:absolute;background:blue" id="div">我是 div</div>
+    <form action="http:// xxx.com/register" id="registerForm" method="post">
+    请输入用户名：<input type="text" name="userName"/ >
+    请输入密码：<input type="text" name="password"/ >
+    请输入手机号码：<input type="text" name="phoneNumber"/ >
+    <button>提交</button>
+    </form>
+
     <script type="text/javascript">
         /*
         策略模式的定义是：定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。
@@ -202,7 +209,7 @@
           这 4个参数的含义分别是动画已消耗的时间、小球原始位置、小
           球目标位置、动画持续的总时间，返回的值则是动画元素应该处在的当前位置。代码如下：
            */
-          var twenn={
+          var tween={
             linear: function( t, b, c, d ){
             return c*t/d + b;
             },
@@ -246,7 +253,7 @@
            * @param   {[type]} easing       [缓动算法]
            * @return  {[type]}              [description]
            */
-          Animate.prototype.start=function(propertyName,endPos,duration,easing) {
+          Animate.prototype.start=function(propertyName,endPos,duration,easing,fn) {
               this.startTime=+new Date;     // 动画启动时间
               this.startPos = this.dom.getBoundingClientRect()[propertyName]; // dom 节点初始位置
               this.propertyName = propertyName; // dom 节点需要被改变的 CSS 属性名
@@ -258,6 +265,7 @@
               var timeId=setInterval(function(){ // 启动定时器，开始执行动画
                   if (self.step()===false) { // 如果动画已结束，则清除定时器
                     clearInterval(timeId);
+                    fn&&fn();
                   }
               },19);
           };
@@ -266,7 +274,7 @@
           处，这个方法负责计算小球的当前位置和调用更新 CSS属性值的方法 Animate.prototype.update 。代码如下：
            */
           Animate.prototype.step=function() {
-              var t= +newDate; //取得当前时间
+              var t= +new Date; //取得当前时间
               if (t>=this.startTime + this.duration) { // (1)
                   this.update(this.endPos); // 更新小球的 CSS 属性值
                   return false;
@@ -281,6 +289,98 @@
           此外让 Animate.prototype.step 方法返回 false ，可以通知 Animate.prototype.start 方法清除定
           时器。
            */
+          //最后是负责更新小球 CSS属性值的 Animate.prototype.update 方法
+          Animate.prototype.update = function(pos) {
+              this.dom.style[this.propertyName] = pos + 'px';
+          };
+          var div = document.getElementById('div');
+          var animate = new Animate(div);
+          // animate.start('left',500,800,'strongEaseOut',function() {
+          //   animate.start('top',100,200,'strongEaseOut',function(){
+          //     animate.start('left',0,1000,'strongEaseOut',function(){
+          //       animate.start('top',0,1000,'strongEaseOut',function(){
+          //         animate.start('left',500,1000,'strongEaseOut',function(){
+          //         })
+          //       });
+          //     })
+          //   });
+          // });
+          animate.start( 'left', 500, 1000, 'strongEaseOut',function() {
+            animate.start( 'top', 500, 500, 'strongEaseIn' );
+          });
+          //5.6 表单校验
+          /*
+              假设我们正在编写一个注册的页面，在点击注册按钮之前，有如下几条校验逻辑。
+            用户名不能为空。
+            密码长度不能少于 6位。
+            手机号码必须符合格式。
+           */
+          
+          /*5.6.1 表单校验的第一个版本*/
+          var registerForm = document.getElementById('registerForm');
+          registerForm.onsubmit=function() {
+            if(registerForm.userName.value === ''){
+                alert('用户名不能为空');
+                return false;
+            }
+            if (registerForm.password.value.length<6) {
+              alert('密码长度不能少于6位');
+              return false;
+            }
+            if (!/(^1[3|5|8][0-9]{9}$)/.test( registerForm.phoneNumber.value )) {
+              alert ( '手机号码格式不正确' );
+              return false;
+            }
+          }
+          //这是一种很常见的代码编写方式，它的缺点跟计算奖金的最初版本一模一样。
+          /*
+           1.registerForm.onsubmit 函数比较庞大，包含了很多 if-else 语句，这些语句需要覆盖所有
+          的校验规则。
+           2.registerForm.onsubmit 函数缺乏弹性，如果增加了一种新的校验规则，或者想把密码的长
+          度校验从 6改成 8，我们都必须深入 registerForm.onsubmit 函数的内部实现，这是违反开
+          放 — 封闭原则的。
+            3.算法的复用性差，如果在程序中增加了另外一个表单，这个表单也需要进行一些类似的
+          校验，那我们很可能将这些校验逻辑复制得漫天遍野。
+           */
+          
+          //5.6.2 用策略模式重构表单校验
+          /*
+          下面我们将用策略模式来重构表单校验的代码，很显然第一步我们要把这些校验逻辑都封装
+          成策略对象：
+           */
+          var strategies={
+            isNonEmpty:function(value,errorMsg) {
+              if (value==='') {
+                return errorMsg;
+              }
+            },
+            minLength:function(value,length,errorMsg) {
+              if (value.length<length) {
+                return errorMsg;
+              }
+            },
+            isMobile:function(value,errorMsg) {
+              if (!/(^1[3|5|8][0-9]{9}$)/.test(value)) {
+                return errorMsg;
+              }
+            }
+          };
+          /*
+          接下来我们准备实现 Validator 类。 Validator 类在这里作为 Context，负责接收用户的请求
+          并委托给 strategy 对象。在给出 Validator 类的代码之前，有必要提前了解用户是如何向 Validator
+          类发送请求的，这有助于我们知道如何去编写 Validator 类的代码。代码如下：
+           */
+          var validataFunc = function() {
+            var validator = new Validator(); // 创建一个 validator 对象
+
+            /***************添加一些校验规则****************/
+            validator.add(registerForm.userName,'isNonEmpty','用户名不能为空');
+            validator.add(registerForm.password,'minLength:6','密码长度不能少于6位');
+            validator.add(registerForm.phoneNumber,'isMobile','手机号码格式不正确');
+
+            var errorMsg=validator.start(); //获取校验结果
+            return errorMsg;// 返回校验结果
+          }
     </script>
 </body>
 </html>
