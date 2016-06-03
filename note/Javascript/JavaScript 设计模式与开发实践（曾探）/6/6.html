@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>代理模式</title>
+</head>
+<body>
+    <input type="checkbox" id="1"></input>1
+    <input type="checkbox" id="2"></input>2
+    <input type="checkbox" id="3"></input>3
+    <input type="checkbox" id="4"></input>4
+    <input type="checkbox" id="5"></input>5
+    <input type="checkbox" id="6"></input>6
+    <input type="checkbox" id="7"></input>7
+    <input type="checkbox" id="8"></input>8
+    <input type="checkbox" id="9"></input>9
+    <script type="text/javascript">
+        //代理模式是为一个对象提供一个代用品或占位符，以便控制对它的访问。
+        //6.1 第一个例子——小明追 MM 的故事
+        //非代理模式的情况:
+        var Flower = function(){};
+        var xiaoming = {
+            sendFlower:function(target) {
+                var flower = new Flower();
+                target.receiveFlower(flower);
+            }
+        };
+        var A ={
+            receiveFlower:function(flower) {
+                console.log('收到花'+flower);
+            }
+        }
+        xiaoming.sendFlower(A);
+        //接下来，我们引入代理 B，即小明通过 B来给 A送花:
+        var Flower=function(){};
+        var xiaoming ={
+            sendFlower:function(target) {
+                var flower=new Flower();
+                target.receiveFlower(flower);
+            }
+        };
+        var B={
+            receiveFlower:function(flower) {
+                A.receiveFlower(flower);
+            }
+        };
+        var A={
+            receiveFlower:function(flower) {
+                console.log('收到花'+flower);
+            }
+        };
+        xiaoming.sendFlower(B);
+        /*
+        小明只管把花交给 B，B 会监听 A 的心情变化，然后选
+        择 A心情好的时候把花转交给 A，代码如下：
+         */
+        var Flower=function(){};
+        var xiaoming={
+            sendFlower:function(target) {
+                var flower=new Flower();
+                target.receiveFlower(flower);
+            }
+        };
+        var B = {
+            receiveFlower:function(flower) {
+                A.listenGoodMood(function() { // 监听 A 的好心情
+                    A.receiveFlower(flower);
+                })
+            }
+        };
+        var A={
+            receiveFlower:function(flower) {
+                console.log('收到花'+flower);
+            },
+            listenGoodMood:function(fn) {
+                setTimeout(function() { // 假设 10 秒之后 A 的心情变好
+                    fn();
+                },10000);
+            }
+        };
+        xiaoming.sendFlower(B);
+        //6.2 保护代理和虚拟代理
+        //6.3 虚拟代理实现图片预加载 P91
+        /*
+        下面我们来实现这个虚拟代理，首先创建一个普通的本体对象，这个对象负责往页面中创建
+        一个 img 标签，并且提供一个对外的 setSrc 接口，外界调用这个接口，便可以给该 img 标签设置src 属性：
+         */
+        var myImage=(function() {
+            var imgNode= document.createElement('img');
+            document.body.appendChild(imgNode);
+            return{
+                setSrc:function(src) {
+                    imgNode.src=src;
+                }
+            }
+        })();
+        // myImage.setSrc('http://open.weixin.qq.com/qr/code/?username=FrontDev');
+        //开始引入代理对象 proxyImage
+        var proxyImage = (function() {
+            var img= new Image;
+            img.onload=function() {
+                myImage.setSrc(this.src);
+            }
+            return{
+                setSrc:function(src) {
+                    myImage.setSrc('loading.jpg');
+                    img.src=src;
+                }
+            }
+        })();
+        proxyImage.setSrc('http://open.weixin.qq.com/qr/code/?username=FrontDev');
+
+        //6.4 代理的意义
+        //不用代理的预加载图片函数实现如下：
+        var MyImage=(function() {
+            var imgNode=document.createElement('img');
+            document.body.appendChild(imgNode);
+            var img = new Image;
+            img.onload=function() {
+                imgNode.src=img.src;
+            };
+            return{
+                setSrc:function(src) {
+                    imgNode.src='loading.jpg';
+                    img.src=src;
+                }
+            }
+        })();
+        MyImage.setSrc('http://open.weixin.qq.com/qr/code/?username=FrontDev');
+        /*
+        6.5 代理和本体接口的一致性
+        上一节说到，如果有一天我们不再需要预加载，那么就不再需要代理对象，可以选择直接请
+        求本体。其中关键是代理对象和本体都对外提供了 setSrc 方法，在客户看来，代理对象和本体
+        是一致的， 代理接手请求的过程对于用户来说是透明的，用户并不清楚代理和本体的区别，这
+        样做有两个好处:
+           1.用户可以放心地请求代理，他只关心是否能得到想要的结果。
+         2.在任何使用本体的地方都可以替换成使用代理。
+         */
+         /*
+         另外值得一提的是，如果代理对象和本体对象都为一个函数（函数也是对象），函数必然都
+         能被执行，则可以认为它们也具有一致的“接口”，代码如下：
+          */
+         var myImage2=(function() {
+             var imgNode=document.createElement('img');
+             document.body.appendChild(imgNode);
+
+             return function(src) {
+                 imgNode.src=src;
+             }
+         })();
+
+         var proxyImage =(function() {
+             var img = new Image;
+
+             img.onload=function() {
+                 myImage2(this.src);
+             }
+             return function(src) {
+                 myImage2('loading.jpg');
+                 img.src=src;
+             }
+         })();
+
+         proxyImage('http://open.weixin.qq.com/qr/code/?username=FrontDev');
+
+         //6.6 虚拟代理合并 HTTP 请求
+         var synchronousFile=function(id) {
+             console.log('开始同步文件，id为：' + id);
+         };
+         var checkbox = document.getElementsByTagName('input');
+
+         for(var i=0,c;c=checkbox[i++];){
+            c.onclick=function() {
+                if (this.checked === true) {
+                    synchronousFile(this.id);
+                }
+            }
+         };
+         //可以预见，如此频繁的网络请求将会带来相当大的开销。
+         /*
+         我们可以通过一个代理函数 proxySynchronousFile 来收集一段时间之内的请求，
+         最后一次性发送给服务器。比如我们等待 2 秒之后才把这 2 秒之内需要同步的文件 ID 打包发给
+         服务器，如果不是对实时性要求非常高的系统，2秒的延迟不会带来太大副作用，却能大大减轻
+         服务器的压力。代码如下：
+          */
+          var synchronousFile=function(id) {
+              console.log('开始同步文件，id为：'+ id);
+          };
+          var proxySynchronousFile =(function() {
+              var cache=[], // 保存一段时间内需要同步的 ID
+                  timer; // 定时器
+              return function(id) {
+                  cache.push(id);
+                  if (timer) { //// 保证不会覆盖已经启动的定时器
+                    return;
+                  }
+                  timer = setTimeout(function() {
+                      synchronousFile(cache.join(',')); // 2 秒后向本体发送需要同步的 ID 集合
+                      clearTimeout(timer);//清空定时器
+                      timer = null;
+                      cache.length=0; //清空ID集合
+                  },2000);
+              }
+          })();
+          var checkbox = document.getElementsByTagName('input');
+          for(var i=0,c;c=checkbox[i++];){
+            c.onclick=function() {
+                if (this.checked===true) {
+                    proxySynchronousFile(this.id);
+                }
+            }
+          };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
