@@ -315,7 +315,7 @@
             密码长度不能少于 6位。
             手机号码必须符合格式。
            */
-          
+
           /*5.6.1 表单校验的第一个版本*/
           var registerForm = document.getElementById('registerForm');
           registerForm.onsubmit=function() {
@@ -342,7 +342,7 @@
             3.算法的复用性差，如果在程序中增加了另外一个表单，这个表单也需要进行一些类似的
           校验，那我们很可能将这些校验逻辑复制得漫天遍野。
            */
-          
+
           //5.6.2 用策略模式重构表单校验
           /*
           下面我们将用策略模式来重构表单校验的代码，很显然第一步我们要把这些校验逻辑都封装
@@ -377,10 +377,172 @@
             validator.add(registerForm.userName,'isNonEmpty','用户名不能为空');
             validator.add(registerForm.password,'minLength:6','密码长度不能少于6位');
             validator.add(registerForm.phoneNumber,'isMobile','手机号码格式不正确');
-
             var errorMsg=validator.start(); //获取校验结果
             return errorMsg;// 返回校验结果
           }
+
+          var registerForm = document.getElementById('registerForm');
+          registerForm.onsubmit=function() {
+            var errorMsg = validataFunc(); // 如果 errorMsg 有确切的返回值，说明未通过校验
+            if (errorMsg) {
+              console.log(errorMsg);
+              return false; // 阻止表彰提交
+            }
+          }
+          /* validator.add 方法接受 3个参数，
+           1.registerForm.password 为参与校验的 input 输入框。
+           2.'minLength:6' 是一个以冒号隔开的字符串。冒号前面的 minLength 代表客户挑选的 strategy
+          对象，冒号后面的数字 6表示在校验过程中所必需的一些参数。 'minLength:6' 的意思就是
+          校验 registerForm.password 这个文本输入框的 value 最小长度为 6。如果这个字符串中不
+          包含冒号，说明校验过程中不需要额外的参数信息，比如 'isNonEmpty' 。
+            3.第 3个参数是当校验未通过时返回的错误信息。
+           */
+          var Validator = function() {
+            this.cache=[]; //保存校验规则
+          };
+          Validator.prototype.add = function(dom,rule,errorMsg) {
+              var ary=rule.split(':');  // 把 strategy 和参数分开
+              // console.log(ary); //["minLength", "6"];
+              this.cache.push(function() {
+                var strategy = ary.shift(); // 用户挑选的 strategy
+                ary.unshift(dom.value); // 把 input 的 value 添加进参数列表
+                ary.push(errorMsg);  // 把 errorMsg 添加进参数列表
+                //console.log(ary); //["", "用户名不能为空"]
+                return strategies[strategy].apply(dom,ary);
+              });
+          };
+          Validator.prototype.start=function() {
+            for(var i=0, validataFunc; validataFunc=this.cache[i++];){
+                var msg= validataFunc(); // 开始校验，并取得校验后的返回信息
+                if (msg) { // 如果有确切的返回值，说明校验没有通过
+                  return msg;
+                }
+            }
+          }
+
+          //5.6.3 给某个文本输入框添加多种校验规则
+          //下面提供的代码可用于一个文本输入框对应多种校验规则：
+
+    </script>
+
+
+    <form action="http:// xxx.com/register" id="registerForm2" method="post">
+    请输入用户名：<input type="text" name="userName"/ >
+    请输入密码：<input type="text" name="password"/ >
+    请输入手机号码：<input type="text" name="phoneNumber"/ >
+    <button>提交</button>
+    </form>
+
+  <!--   <form action="http:// xxx.com/register" id="registerForm2" method="post">
+    请输入用户名：<input type="text" name="userName"/ >
+    请输入密码：<input type="text" name="password"/ >
+    请输入手机号码：<input type="text" name="phoneNumber"/ >
+    <button>提交</button>
+    </form> -->
+    <script type="text/javascript">
+      /***********************策略对象**************************/
+      var strategies = {
+          isNonEmpty:function(value,errorMsg) {
+              if (value === '') {
+                  return errorMsg;
+              }
+          },
+          minLength:function(value,length,errorMsg) {
+              if (value.length<length) {
+                  return errorMsg;
+              }
+          },
+          isMobile:function(value,errorMsg) {
+              if (!/(^1[3|5|8][0-9]{9}$)/.test(value)) {
+                  return errorMsg;
+              }
+          }
+      };
+      /***********************Validator 类**************************/
+      var Validator = function() {
+          this.cache=[];
+      };
+      Validator.prototype.add = function(dom,rules) {
+        var self=this;
+        for(var i=0,rule;rule=rules[i++];){
+          (function(rule) {
+            var strategyAry= rule.strategy.split(':');
+            var errorMsg = rule.errorMsg;
+            self.cache.push(function() {
+              var strategy=strategyAry.shift();
+              strategyAry.unshift(dom.value);
+              strategyAry.push(errorMsg);
+              return strategies[strategy].apply(dom,strategyAry);
+            });
+          })(rule)
+        }
+      };
+      Validator.prototype.start = function() {
+        for(var i =0,validatorFunc;validatorFunc = this.cache[i++];){
+          var errorMsg = validatorFunc();
+          if (errorMsg) {
+            return errorMsg;
+          }
+        }
+      };
+
+      /***********************客户调用代码**************************/
+      var registerForm = document.getElementById('registerForm2');
+      var validataFunc = function() {
+        var validator = new Validator();
+
+        validator.add(registerForm.userName,[{
+          strategy:'isNonEmpty',
+          errorMsg:'用户名不能为空'
+        },{
+          strategy:'minLength:6',
+          errorMsg:'用户名长度不能小于6位'
+        },{
+          strategy: 'isMobile',
+          errorMsg: '用户名格式不正确'
+        }]);
+
+        validator.add( registerForm.password, [{
+        strategy: 'minLength:6',
+        errorMsg: '密码长度不能小于 6 位'
+        }]);
+
+        validator.add( registerForm.phoneNumber, [{
+        strategy: 'isMobile',
+        errorMsg: '手机号码格式不正确'
+        }]);
+
+        var errorMsg = validator.start();
+        return errorMsg;
+      }
+
+      registerForm.onsubmit=function() {
+        var errorMsg=validataFunc();
+        if (errorMsg) {
+          console.log(errorMsg);
+          return false;
+        }
+      }
+
+      //5.7 策略模式的优缺点
+      /*
+        1.策略模式利用组合、委托和多态等技术和思想，可以有效地避免多重条件选择语句。
+        2.策略模式提供了对开放 — 封闭原则的完美支持，将算法封装在独立的 strategy 中，使得它
+      们易于切换，易于理解，易于扩展。
+        3.策略模式中的算法也可以复用在系统的其他地方，从而避免许多重复的复制粘贴工作。
+        4.在策略模式中利用组合和委托来让 Context拥有执行算法的能力，这也是继承的一种更轻
+      便的替代方案。
+       */
+       /*
+       当然，策略模式也有一些缺点，但这些缺点并不严重。
+       首先，使用策略模式会在程序中增加许多策略类或者策略对象，但实际上这比把它们负责的
+       逻辑堆砌在 Context中要好。
+       其次，要使用策略模式，必须了解所有的 strategy ，必须了解各个 strategy 之间的不同点，
+       这样才能选择一个合适的 strategy 。比如，我们要选择一种合适的旅游出行路线，必须先了解选
+       择飞机、火车、自行车等方案的细节。此时 strategy 要向客户暴露它的所有实现，这是违反最少
+       知识原则的
+        */
+
     </script>
 </body>
 </html>
