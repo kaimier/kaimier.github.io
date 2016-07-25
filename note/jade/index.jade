@@ -1,0 +1,113 @@
+doctype html
+<!--[if IE 8]><html class='ie8'></![endif]-->
+<!--[if IE 9]><html class='ie9'></![endif]-->
+<!--[if !IE]><html></![endif]-->
+head
+    meta(charset='utf-8')
+    // - var course='jade'
+    title #{course.toUpperCase()} 定义变量 \#{}
+body
+    h2 mixin 区块定义
+    mixin lesson
+        p imooc jade study
+    +lesson
+    mixin study(name,courses)
+        p #{name} study
+        ul.courses
+            each course in courses
+                li= course
+    +study('tom',['node','java','jade','express'])
+
+    h3 mixin 嵌套
+    mixin group(student)
+        h4 #{student.name}
+        +study(student.name, student.courses)
+    +group({name:'tom',courses:['jade','node']})
+    h3 mixin 内联代码块
+    mixin team(slogon)
+        h4 #{slogon}
+        if block
+            block
+        else
+            p no team
+    +team('slogon')
+        p Good job!
+    h3 mixin 传递属性
+    mixin attr(name)
+        p(class!=attributes.class) #{name}
+    +attr('attr')(class='magicx')
+    mixin attrs(name)
+        p&attributes(attributes) #{name}
+    +attr('attrs')(class='magic2',id='attrid')
+
+
+
+
+    h2 流程
+    h3 if else
+    - var isImooc = true
+    - var lessons=['jade','node'];
+    if lessons
+        if lessons.length>2
+            p more than 2: #{lessons.join(', ')}
+        else if lessons.length >1
+            p more than 1: #{lessons.join(', ')}
+        else
+            p no lessons
+    else
+        p no lessons
+    h3 unless
+    unless !isImooc
+        p #{lessons.length}
+    h3 case
+    - var name = 'jade'
+    case name
+        when 'java'
+        when 'node'
+            p Hi node!
+        when 'jade': p Hi jade!
+        when 'express': p Hi express
+        default
+            p Hi #{name}
+
+
+    h3 while
+    - var n=0
+    ul
+        while n<4
+            li= n++
+    h3 for
+    - var imooc ={course:'jade',level:'high'}
+    - for(var k in imooc)
+        p= imooc[k]
+    h3 each
+    - each value, key in imooc
+        p #{key}:#{value}
+    h3 遍历数组
+    - var courses = ['node','jade','express']
+    each item in courses
+        p= item
+    h3 嵌套循环
+    - var sections =[]
+    dl
+        each section in sections.length>0?sections:[{id:0,items:['none']}]
+            dt= section.id
+            each item in section.items
+                dd= item
+    h2 转义
+    - var data="text"
+    - var htmlData ='<script> alert(1);</script><span>script</span>;'
+    p #{data}
+    p #{htmlData}
+    p !{htmlData}
+    p= data
+    p= htmlData
+    p!= htmlData
+    p \!{htmlData}
+    p \#{htmlData}
+    input(value='#{newData}')
+    input(value=newData)
+    h2 声明变量和替换数据
+    style.
+        body{background: #ff6600;}
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html><!--[if IE 8]><html class='ie8'></![endif]-->
+<!--[if IE 9]><html class='ie9'></![endif]-->
+<!--[if !IE]><html></![endif]-->
+<head>
+  <meta charset="utf-8">
+  <!-- - var course='jade'-->
+  <title>JADE 定义变量 #{}</title>
+</head>
+<body>
+  <h2>mixin 区块定义</h2>
+    <p>imooc jade study</p>
+    <p>tom study</p>
+    <ul class="courses">
+      <li>node</li>
+      <li>java</li>
+      <li>jade</li>
+      <li>express</li>
+    </ul>
+  <h3>mixin 嵌套</h3>
+    <h4>tom</h4>
+      <p>tom study</p>
+      <ul class="courses">
+        <li>jade</li>
+        <li>node</li>
+      </ul>
+  <h3>mixin 内联代码块</h3>
+    <h4>slogon</h4>
+    <p>Good job!</p>
+  <h3>mixin 传递属性</h3>
+    <p class="magicx">attr</p>
+    <p class="magic2">attrs</p>
+  <h2>流程</h2>
+  <h3>if else</h3>
+  <p>more than 1: jade, node</p>
+  <h3>unless</h3>
+  <p>2</p>
+  <h3>case</h3>
+  <p>Hi jade!</p>
+  <h3>while</h3>
+  <ul>
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+  <h3>for</h3>
+  <p>jade</p>
+  <p>high</p>
+  <h3>each</h3>
+  <p>course:jade</p>
+  <p>level:high</p>
+  <h3>遍历数组</h3>
+  <p>node</p>
+  <p>jade</p>
+  <p>express</p>
+  <h3>嵌套循环</h3>
+  <dl>
+    <dt>0</dt>
+    <dd>none</dd>
+  </dl>
+  <h2>转义</h2>
+  <p>text</p>
+  <p>&lt;script&gt; alert(1);&lt;/script&gt;&lt;span&gt;script&lt;/span&gt;;</p>
+  <p><script> alert(1);</script><span>script</span>;</p>
+  <p>text</p>
+  <p>&lt;script&gt; alert(1);&lt;/script&gt;&lt;span&gt;script&lt;/span&gt;;</p>
+  <p><script> alert(1);</script><span>script</span>;</p>
+  <p>!{htmlData}</p>
+  <p>#{htmlData}</p>
+  <input value="undefined">
+  <input>
+  <h2>声明变量和替换数据</h2>
+  <style>body{background: #ff6600;}</style>
+</body></html>
