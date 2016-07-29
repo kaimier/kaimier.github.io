@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>移动h5自适应布局</title>
+    <style>
+        /*320px布局*/
+        html{font-size: 100px;}
+        body{font-size: 0.14rem;/*实际相当于14px*/}
+        body{
+            padding:0;
+            margin:0;
+        }
+        .div2{
+            font-size:0.14rem;
+        }
+        .div3{
+            width:3rem;
+            height:3rem;
+
+            border:1px solid #000;
+            box-sizing:border-box;
+        }
+        .div4{
+            margin-top:0.1rem;
+            width:2rem;
+            height:2rem;
+
+            border:1px solid #000;
+            box-sizing:border-box;
+        }
+        .img1{
+            width:3.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="div2">动态更改html元素大小</div>
+    <div class="div3"></div>
+    <div class="div4"></div>
+    <img class="img1" src="http://www.baidu.com/img/bdlogo.png" alt="" />
+</body>
+<script>
+// 该代码来自http://www.ghugo.com/mobile-h5-fluid-layout-for-iphone6/
+(function (doc, win) {
+    // 分辨率Resolution适配
+    var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+            var clientWidth = docEl.clientWidth;
+            if (!clientWidth) return;
+            docEl.style.fontSize = 100 * (clientWidth / 320) + 'px';
+        };
+
+    // Abort if browser does not support addEventListener
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvt, recalc, false);
+    doc.addEventListener('DOMContentLoaded', recalc, false);
+
+    // 一物理像素在不同屏幕的显示效果不一样。要根据devicePixelRatio来修改meta标签的scale,要注释上面的meta标签
+    (function(){
+        return;
+        var dpr = scale =1;
+         var isIPhone = win.navigator.appVersion.match(/iphone/gi);
+        var devicePixelRatio = win.devicePixelRatio;
+        if (isIPhone) {
+            // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
+            if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {
+                dpr = 3;
+            } else if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)){
+                dpr = 2;
+            } else {
+                dpr = 1;
+            }
+        } else {
+            // 其他设备下，仍旧使用1倍的方案
+            dpr = 1;
+        }
+           scale = 1 / dpr;
+
+           //
+           var metaEl = "";
+           metaEl = doc.createElement('meta');
+        metaEl.setAttribute('name', 'viewport');
+        metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+        if (docEl.firstElementChild) {
+            docEl.firstElementChild.appendChild(metaEl);
+        } else {
+            var wrap = doc.createElement('div');
+            wrap.appendChild(metaEl);
+            doc.write(wrap.innerHTML);
+        }
+    })();
+
+})(document, window);
+</script>
+</html>
