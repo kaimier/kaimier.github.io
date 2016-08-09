@@ -12,7 +12,7 @@
         var myObject=(function(){
             var __name='sven'; // 私有（private)变量
             return{
-                getName:function(){
+                getName:function(){ //公共 (public) 方法
                     return __name;
                 }
             }
@@ -20,7 +20,7 @@
         console.log(myObject.getName()); //sven
         console.log(myObject.__name); //undefined
     })('Javascript只能依赖变量的作用域来实现封装性，只能模拟出public和private');
-    
+
     </script>
 </body>
 </html>
